@@ -14,16 +14,8 @@
         <meta property="og:image:height" content="600"/>
         <link rel="icon" type="image/png" href="<%= BASE_URL %>favicon.png" />
         <title><%= htmlWebpackPlugin.options.title %></title>
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
-        />
+        <link href="css/materialdesignicons.min.css" rel="stylesheet">
         <script>window.sa_event=window.sa_event||function(){a=[].slice.call(arguments);sa_event.q?sa_event.q.push(a):sa_event.q=[a]};</script>
-        <script async defer src="https://<%= htmlWebpackPlugin.options.analyticsDomain %>/latest.js" data-skip-dnt="true"></script>
     </head>
     <body>
         <noscript>
@@ -35,7 +27,5 @@
         </noscript>
         <div id="app"></div>
         <!-- built files will be auto injected -->
-
-        <noscript><img src="https://<%= htmlWebpackPlugin.options.analyticsDomain %>/noscript.gif?ignore-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
     </body>
 </html>
