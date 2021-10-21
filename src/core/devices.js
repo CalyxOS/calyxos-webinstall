@@ -10,8 +10,9 @@ const DEVICE_NAMES = {
     flame: "Pixel 4",
     coral: "Pixel 4 XL",
     sunfish: "Pixel 4a",
-    bramble: "Pixel 4a 5G",
+    bramble: "Pixel 4a (5G)",
     redfin: "Pixel 5",
+    barbet: "Pixel 5 (5G)"
 };
 
 export function getDeviceName(device) {
