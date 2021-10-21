@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0de50b_6b71d3b1",
+        "filename": "scripts/update-releases.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000005
+      },
+      "writtenOn": "2021-10-21T19:13:56Z",
+      "side": 1,
+      "message": "fixed in https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/6210",
+      "parentUuid": "0430cdf0_e212cb57",
+      "revId": "ccd3ddead00fd2a83bacdb9e9669b4a73827a30b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79e1e3c7_29245eda",
@@ -35,6 +53,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d8e3c79_88360b0a",
+        "filename": "src/config.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000005
+      },
+      "writtenOn": "2021-10-21T19:13:56Z",
+      "side": 1,
+      "message": "fixed in https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/6210",
+      "parentUuid": "79e1e3c7_29245eda",
+      "revId": "ccd3ddead00fd2a83bacdb9e9669b4a73827a30b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56217ec5_9faf557d",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-10-21T18:10:58Z",
       "side": 1,
       "message": "Same.",
+      "revId": "ccd3ddead00fd2a83bacdb9e9669b4a73827a30b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b301ef08_86b51f8c",
+        "filename": "src/config.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000005
+      },
+      "writtenOn": "2021-10-21T19:13:56Z",
+      "side": 1,
+      "message": "fixed in https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/6210",
+      "parentUuid": "56217ec5_9faf557d",
       "revId": "ccd3ddead00fd2a83bacdb9e9669b4a73827a30b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
