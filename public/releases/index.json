@@ -1,76 +1,95 @@
 {
-    "latest": {
-        "taimen": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_wahoo/v11.5.0/proton-aosp_taimen-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_wahoo/v11.5.0/proton-aosp_taimen-factory_11.5.0-gapps.zip"
-            }
-        ],
-        "walleye": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_wahoo/v11.5.0/proton-aosp_walleye-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_wahoo/v11.5.0/proton-aosp_walleye-factory_11.5.0-gapps.zip"
-            }
-        ],
-        "bramble": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_redbull/v11.5.0/proton-aosp_bramble-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_redbull/v11.5.0/proton-aosp_bramble-factory_11.5.0-gapps.zip"
-            }
-        ],
-        "redfin": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_redbull/v11.5.0/proton-aosp_redfin-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_redbull/v11.5.0/proton-aosp_redfin-factory_11.5.0-gapps.zip"
-            }
-        ],
-        "coral": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_coral/v11.5.0/proton-aosp_coral-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_coral/v11.5.0/proton-aosp_coral-factory_11.5.0-gapps.zip"
-            }
-        ],
-        "flame": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_coral/v11.5.0/proton-aosp_flame-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_coral/v11.5.0/proton-aosp_flame-factory_11.5.0-gapps.zip"
-            }
-        ]
-    }
+  "latest": {
+    "barbet": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/barbet-factory-202102100.zip"
+      }
+    ],
+    "bramble": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/bramble-factory-202102100.zip"
+      }
+    ],
+    "redfin": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/redfin-factory-202102100.zip"
+      }
+    ],
+    "sunfish": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/sunfish-factory-202102100.zip"
+      }
+    ],
+    "coral": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/coral-factory-202102100.zip"
+      }
+    ],
+    "flame": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/flame-factory-202102100.zip"
+      }
+    ],
+    "bonito": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/bonito-factory-202102100.zip"
+      }
+    ],
+    "sargo": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/sargo-factory-202102100.zip"
+      }
+    ],
+    "crosshatch": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/crosshatch-factory-202102100.zip"
+      }
+    ],
+    "blueline": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/blueline-factory-202102100.zip"
+      }
+    ],
+    "taimen": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/taimen-factory-202102100.zip"
+      }
+    ],
+    "walleye": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/walleye-factory-202102100.zip"
+      }
+    ],
+    "jasmine_sprout": [
+      {
+        "version": "2021-10-07",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/jasmine_sprout-factory-202102100.zip"
+      }
+    ]
+  }
 }
