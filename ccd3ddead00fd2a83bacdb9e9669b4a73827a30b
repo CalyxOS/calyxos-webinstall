@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0430cdf0_e212cb57",
+        "filename": "scripts/update-releases.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-21T18:10:58Z",
+      "side": 1,
+      "message": "Can we somehow get this from gerrit (which doesn\u0027t have raw downloads, but is a git repo) or our website instead?\n\nThat way it\u0027s only fetched from our servers.",
+      "revId": "ccd3ddead00fd2a83bacdb9e9669b4a73827a30b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79e1e3c7_29245eda",
+        "filename": "src/config.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-21T18:10:58Z",
+      "side": 1,
+      "message": "We call it Pixel 4a (5G) everywhere.",
+      "revId": "ccd3ddead00fd2a83bacdb9e9669b4a73827a30b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56217ec5_9faf557d",
+        "filename": "src/config.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-21T18:10:58Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "ccd3ddead00fd2a83bacdb9e9669b4a73827a30b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
