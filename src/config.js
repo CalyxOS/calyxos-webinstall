@@ -11,12 +11,20 @@ export default {
             model: "taimen",
         },
         {
-            name: "Pixel 4a 5G",
-            model: "bramble",
+            name: "Pixel 3",
+            model: "blueline"
         },
         {
-            name: "Pixel 5",
-            model: "redfin",
+            name: "Pixel 3 XL",
+            model: "crosshatch"
+        },
+        {
+            name: "Pixel 3a",
+            model: "sargo"
+        },
+        {
+            name: "Pixel 3a XL",
+            model: "bonito"
         },
         {
             name: "Pixel 4",
@@ -26,42 +34,36 @@ export default {
             name: "Pixel 4 XL",
             model: "coral",
         },
+        {
+            name: "Pixel 4a",
+            model: "sunfish"
+        },
+        {
+            name: "Pixel 5",
+            model: "redfin",
+        },
+        {
+            name: "Pixel 4a (5G)",
+            model: "bramble",
+        },
+        {
+            name: "Pixel 5a (5G)",
+            model: "barbet",
+        },
     ],
     RELEASE_VARIANTS: {
-        minimal: {
-            description: "Minimal version without Google apps or services.",
+        stable: {
+            description: "Stable release.",
             suffix: "",
-        },
-        gapps: {
-            description:
-                "Version with Google services included, so the apps you’re familiar with will work. Recommended for most users.",
-            suffix: " with Google services",
-        },
-        test: {
-            description: "Experimental version for testing only.",
-            suffix: "experimental",
-        },
-        beta: {
-            description: "Beta version for testing only.",
-            suffix: "beta",
         },
     },
     DONATION_LINKS: [
         {
-            title: "Recurring donation",
-            description:
-                "Please consider making a recurring donation on Patreon for benefits such as early access to updates, exclusive behind-the-scenes development news, and priority support. This allows us to support the project sustainably in the future.",
-            highlight: true,
-            url: "https://patreon.com/kdrag0n",
-            icon: "patreon",
-        },
-        {
-            title: "One-time donation",
-            description:
-                "You can also make a one-time donation through PayPal. It doesn’t help with sustainable support, but every little bit is appreciated!",
+            title: "Make a Tax-deductible Donation to Calyx Institute",
+            description: "You can donate through paypal, cryptocurrency, or by mail.",
             highlight: false,
-            url: "https://paypal.me/kdrag0ndonate",
-            icon: "paypal",
+            url: "https://members.calyxinstitute.org/donate",
+            icon: "",
         },
     ],
 };
