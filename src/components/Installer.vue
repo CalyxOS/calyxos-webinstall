@@ -16,25 +16,25 @@
             @nextStep="curStep += 1"
         >
             <v-stepper-header class="mb-3">
-                <v-stepper-step :complete="curStep > 1" step="1">
+                <v-stepper-step :complete="curStep > 0" step="0">
                     Connect
                 </v-stepper-step>
 
                 <v-divider></v-divider>
 
-                <v-stepper-step :complete="curStep > 2" step="2">
+                <v-stepper-step :complete="curStep > 1" step="1">
                     Unlock
                 </v-stepper-step>
 
                 <v-divider></v-divider>
 
-                <v-stepper-step :complete="curStep > 3" step="3">
+                <v-stepper-step :complete="curStep > 2" step="2">
                     Download
                 </v-stepper-step>
 
                 <v-divider></v-divider>
 
-                <v-stepper-step :complete="curStep > 4" step="4">
+                <v-stepper-step :complete="curStep > 3" step="3">
                     Install
                 </v-stepper-step>
             </v-stepper-header>
@@ -59,7 +59,7 @@
                         curStep === 0 ? 'd-flex flex-column flex-grow-1' : null
                     "
                 >
-                    <install-type-step
+                    <connect-step
                         :device="device"
                         :blob-store="blobStore"
                         :active="curStep === 0"
@@ -72,10 +72,11 @@
                         curStep === 1 ? 'd-flex flex-column flex-grow-1' : null
                     "
                 >
-                    <connect-step
+                    <unlock-step
                         :device="device"
                         :blob-store="blobStore"
-                        :active="curStep === 1"
+                        :curStep="curStep"
+                        stepNum="1"
                     />
                 </v-stepper-content>
 
@@ -85,11 +86,10 @@
                         curStep === 2 ? 'd-flex flex-column flex-grow-1' : null
                     "
                 >
-                    <unlock-step
+                    <download-step
                         :device="device"
                         :blob-store="blobStore"
-                        :curStep="curStep"
-                        stepNum="2"
+                        :active="curStep === 2"
                     />
                 </v-stepper-content>
 
@@ -99,7 +99,7 @@
                         curStep === 3 ? 'd-flex flex-column flex-grow-1' : null
                     "
                 >
-                    <download-step
+                    <install-step
                         :device="device"
                         :blob-store="blobStore"
                         :active="curStep === 3"
@@ -112,23 +112,10 @@
                         curStep === 4 ? 'd-flex flex-column flex-grow-1' : null
                     "
                 >
-                    <install-step
-                        :device="device"
-                        :blob-store="blobStore"
-                        :active="curStep === 4"
-                    />
-                </v-stepper-content>
-
-                <v-stepper-content
-                    step="5"
-                    :class="
-                        curStep === 5 ? 'd-flex flex-column flex-grow-1' : null
-                    "
-                >
                     <finish-step
                         :device="device"
                         :blob-store="blobStore"
-                        :active="curStep === 5"
+                        :active="curStep === 4"
                     />
                 </v-stepper-content>
             </v-stepper-items>
@@ -441,7 +428,7 @@ import * as fastboot from "android-fastboot";
 import { BlobStore } from "../core/download";
 import ConnectBanner from "./ConnectBanner";
 import PrepareStep from "./PrepareStep";
-import InstallTypeStep from "./InstallTypeStep";
+//import InstallTypeStep from "./InstallTypeStep";
 import ConnectStep from "./ConnectStep";
 import UnlockStep from "./UnlockStep";
 import DownloadStep from "./DownloadStep";
@@ -458,7 +445,7 @@ export default {
 
     components: {
         PrepareStep,
-        InstallTypeStep,
+//        InstallTypeStep,
         ConnectStep,
         UnlockStep,
         DownloadStep,
