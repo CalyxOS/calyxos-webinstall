@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e717f61d_8a2bb783",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-22T19:26:08Z",
+      "side": 1,
+      "message": "We can (perhaps drop Pixels sailfish / marlin) and add A2 to devices later after testing, hopefully it works.",
+      "revId": "924c13d52d00ba62dfd0cdf0452673f99d4cb37b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
