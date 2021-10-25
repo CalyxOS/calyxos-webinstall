@@ -1,94 +1,108 @@
 {
   "latest": {
+    "raven": [
+      {
+        "version": "2022-05-06",
+        "variant": "stable",
+        "url": "http://localhost:8000/raven-factory-22305010.zip"
+      }
+    ],
+    "oriole": [
+      {
+        "version": "2022-05-06",
+        "variant": "stable",
+        "url": "http://localhost:8000/oriole-factory-22305010.zip"
+      }
+    ],
     "barbet": [
       {
-        "version": "2021-10-07",
+        "version": "2022-05-06",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/barbet-factory-202102100.zip"
+        "url": "http://localhost:8000/barbet-factory-22305010.zip"
       }
     ],
     "bramble": [
       {
-        "version": "2021-10-07",
+        "version": "2022-05-06",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/bramble-factory-202102100.zip"
+        "url": "http://localhost:8000/bramble-factory-22305010.zip"
       }
     ],
     "redfin": [
       {
-        "version": "2021-10-07",
+        "version": "2022-05-06",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/redfin-factory-202102100.zip"
+        "url": "http://localhost:8000/redfin-factory-22305010.zip"
       }
     ],
     "sunfish": [
       {
-        "version": "2021-10-07",
+        "version": "2022-05-06",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/sunfish-factory-202102100.zip"
+        "url": "http://localhost:8000/sunfish-factory-22305010.zip"
       }
     ],
     "coral": [
       {
-        "version": "2021-10-07",
+        "version": "2022-05-06",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/coral-factory-202102100.zip"
+        "url": "http://localhost:8000/coral-factory-22305010.zip"
       }
     ],
     "flame": [
       {
-        "version": "2021-10-07",
+        "version": "2022-05-06",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/flame-factory-202102100.zip"
+        "url": "http://localhost:8000/flame-factory-22305010.zip"
       }
     ],
     "bonito": [
       {
-        "version": "2021-10-07",
+        "version": "2022-05-06",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/bonito-factory-202102100.zip"
+        "url": "http://localhost:8000/bonito-factory-22305010.zip"
       }
     ],
     "sargo": [
       {
-        "version": "2021-10-07",
+        "version": "2022-05-06",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/sargo-factory-202102100.zip"
+        "url": "http://localhost:8000/sargo-factory-22305010.zip"
       }
     ],
     "crosshatch": [
       {
-        "version": "2021-10-07",
+        "version": "2022-05-06",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/crosshatch-factory-202102100.zip"
+        "url": "http://localhost:8000/crosshatch-factory-22305010.zip"
       }
     ],
     "blueline": [
       {
-        "version": "2021-10-07",
+        "version": "2022-05-06",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/blueline-factory-202102100.zip"
+        "url": "http://localhost:8000/blueline-factory-22305010.zip"
       }
     ],
     "taimen": [
       {
-        "version": "2021-10-07",
+        "version": "2022-02-10",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/taimen-factory-202102100.zip"
+        "url": "http://localhost:8000/taimen-factory-22214000.zip"
       }
     ],
     "walleye": [
       {
-        "version": "2021-10-07",
+        "version": "2022-02-10",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/walleye-factory-202102100.zip"
+        "url": "http://localhost:8000/walleye-factory-22214000.zip"
       }
     ],
     "jasmine_sprout": [
       {
-        "version": "2021-10-07",
+        "version": "2022-02-10",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/jasmine_sprout-factory-202102100.zip"
+        "url": "http://localhost:8000/jasmine_sprout-factory-22214000.zip"
       }
     ]
   }
