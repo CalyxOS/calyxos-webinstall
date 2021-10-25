@@ -37,6 +37,12 @@
                 <v-stepper-step :complete="curStep > 4" step="4">
                     Install
                 </v-stepper-step>
+
+                <v-divider></v-divider>
+
+                <v-stepper-step :complete="curStep > 5" step="5">
+                    Lock
+                </v-stepper-step>
             </v-stepper-header>
 
             <v-stepper-items class="d-flex flex-column flex-grow-1">
@@ -125,10 +131,23 @@
                         curStep === 5 ? 'd-flex flex-column flex-grow-1' : null
                     "
                 >
-                    <finish-step
+                    <lock-step
                         :device="device"
                         :blob-store="blobStore"
                         :active="curStep === 5"
+                    />
+                </v-stepper-content>
+
+                <v-stepper-content
+                    step="5"
+                    :class="
+                        curStep === 6 ? 'd-flex flex-column flex-grow-1' : null
+                    "
+                >
+                    <finish-step
+                        :device="device"
+                        :blob-store="blobStore"
+                        :active="curStep === 6"
                     />
                 </v-stepper-content>
             </v-stepper-items>
@@ -446,6 +465,7 @@ import ConnectStep from "./ConnectStep";
 import UnlockStep from "./UnlockStep";
 import DownloadStep from "./DownloadStep";
 import InstallStep from "./InstallStep";
+import LockStep from "./LockStep";
 import FinishStep from "./FinishStep";
 
 fastboot.setDebugLevel(2);
@@ -463,6 +483,7 @@ export default {
         UnlockStep,
         DownloadStep,
         InstallStep,
+        LockStep,
         FinishStep,
         ConnectBanner,
     },
