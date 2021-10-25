@@ -16,6 +16,24 @@
       "message": "We can (perhaps drop Pixels sailfish / marlin) and add A2 to devices later after testing, hopefully it works.",
       "revId": "924c13d52d00ba62dfd0cdf0452673f99d4cb37b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "765c1eb8_0eb694ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000005
+      },
+      "writtenOn": "2021-10-25T22:03:00Z",
+      "side": 1,
+      "message": "I think we might drop pixel 2 as well, if it keeps not working.",
+      "parentUuid": "e717f61d_8a2bb783",
+      "revId": "924c13d52d00ba62dfd0cdf0452673f99d4cb37b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
