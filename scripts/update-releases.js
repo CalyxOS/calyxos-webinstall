@@ -14,7 +14,7 @@ function generateReleases (doc) {
       {
         "version": device["date"],
         "variant": "stable",
-        "url": device["factory_link"]
+        "url": device["factory_link"].replace("https://release.calyxinstitute.org", "http://localhost:8000")
       }
     ]
   })
