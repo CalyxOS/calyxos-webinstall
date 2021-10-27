@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae807b6d_95af790f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-27T06:12:08Z",
+      "side": 1,
+      "message": "I\u0027d still prefer vendoring, but I guess this is the next best thing.\n\nAssuming we\u0027ll need tags? I\u0027ll fork.",
+      "revId": "d8d0dc721f2ee2b09a0bc6c830441354a83de5cf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
