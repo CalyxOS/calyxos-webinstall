@@ -16,6 +16,24 @@
       "message": "I\u0027d still prefer vendoring, but I guess this is the next best thing.\n\nAssuming we\u0027ll need tags? I\u0027ll fork.",
       "revId": "d8d0dc721f2ee2b09a0bc6c830441354a83de5cf",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29027a1f_b2e944e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-10-27T06:13:37Z",
+      "side": 1,
+      "message": "i.e.: I\u0027ll create CalyxOS/fastboot.js",
+      "parentUuid": "ae807b6d_95af790f",
+      "revId": "d8d0dc721f2ee2b09a0bc6c830441354a83de5cf",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
