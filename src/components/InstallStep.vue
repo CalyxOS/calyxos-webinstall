@@ -198,9 +198,6 @@ export default {
                     }
                 );
 
-                this.installStatus = `Restarting into ${this.$root.$data.OS_NAME}`;
-                await this.device.reboot("");
-
                 this.installed = true;
                 this.error = null;
 
