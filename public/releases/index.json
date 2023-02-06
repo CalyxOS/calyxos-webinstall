@@ -1,94 +1,115 @@
 {
   "latest": {
+    "cheetah": [
+      {
+        "version": "2023-01-19",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/cheetah-factory-22405010.zip"
+      }
+    ],
+    "panther": [
+      {
+        "version": "2023-01-19",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/panther-factory-22405010.zip"
+      }
+    ],
+    "bluejay": [
+      {
+        "version": "2023-01-19",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/bluejay-factory-22405010.zip"
+      }
+    ],
+    "raven": [
+      {
+        "version": "2023-01-19",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/raven-factory-22405010.zip"
+      }
+    ],
+    "oriole": [
+      {
+        "version": "2023-01-19",
+        "variant": "stable",
+        "url": "https://release.calyxinstitute.org/oriole-factory-22405010.zip"
+      }
+    ],
     "barbet": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/barbet-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/barbet-factory-22405010.zip"
       }
     ],
     "bramble": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/bramble-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/bramble-factory-22405010.zip"
       }
     ],
     "redfin": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/redfin-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/redfin-factory-22405010.zip"
       }
     ],
     "sunfish": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/sunfish-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/sunfish-factory-22405010.zip"
       }
     ],
     "coral": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/coral-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/coral-factory-22405010.zip"
       }
     ],
     "flame": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/flame-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/flame-factory-22405010.zip"
       }
     ],
     "bonito": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/bonito-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/bonito-factory-22405010.zip"
       }
     ],
     "sargo": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/sargo-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/sargo-factory-22405010.zip"
       }
     ],
     "crosshatch": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/crosshatch-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/crosshatch-factory-22405010.zip"
       }
     ],
     "blueline": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/blueline-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/blueline-factory-22405010.zip"
       }
     ],
-    "taimen": [
+    "FP4": [
       {
-        "version": "2021-10-07",
+        "version": "2023-01-19",
         "variant": "stable",
-        "url": "https://release.calyxinstitute.org/taimen-factory-202102100.zip"
-      }
-    ],
-    "walleye": [
-      {
-        "version": "2021-10-07",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/walleye-factory-202102100.zip"
-      }
-    ],
-    "jasmine_sprout": [
-      {
-        "version": "2021-10-07",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/jasmine_sprout-factory-202102100.zip"
+        "url": "https://release.calyxinstitute.org/FP4-factory-22405010.zip"
       }
     ]
   }
