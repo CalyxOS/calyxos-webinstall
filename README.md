@@ -33,6 +33,22 @@ You can start with the following Yarn commands:
 
 All configuration is in `src/config.js` and `.env`, and the release index at `public/releases/index.json` is fetched from the root of the domain hosting the installer. You may also want to change the favicon at `public/favicon.png`.
 
+If you are using nodejs 18+ you will have to set the environment variable NODE_OPTIONS to "--openssl-legacy-provider".
+
+
+### Using docker
+
+Build the docker image: `docker build --tag YOUR_TAG .`
+
+Run the app in development: `docker run --rm -e NODE_OPTIONS="--openssl-legacy-provider" -p 8080:8080 YOUR_TAG`
+
+Create a production build:
+
+```
+mkdir docker_dist
+docker run --rm -e NODE_OPTIONS="--openssl-legacy-provider" -v ./docker_dist:/app/dist YOUR_TAG yarn build --no-clean
+```
+
 ## Contributing
 
 Contributions are welcome! If you adapt this installer or make other improvements to it, please contribute the improvements back to the official repository instead of forking it and keeping the changes to yourself. There are many rough edges that need to be improved upon.
