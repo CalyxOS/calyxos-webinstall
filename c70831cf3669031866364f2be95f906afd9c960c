@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ccc65e_0ccba993",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-02-07T21:40:32Z",
+      "side": 1,
+      "message": "I like to list the command ran to do this here to make it easier in the future for others repeating.",
+      "revId": "c70831cf3669031866364f2be95f906afd9c960c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bafbf8bf_00362265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-02-07T21:40:32Z",
+      "side": 1,
+      "message": "You could also send it as a PR to the upstream project perhaps.",
+      "revId": "c70831cf3669031866364f2be95f906afd9c960c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
