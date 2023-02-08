@@ -36,6 +36,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f997b3_2b0b4303",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-02-08T15:42:56Z",
+      "side": 1,
+      "message": "Oh I see there\u0027s no Change-Id here, so it\u0027d create a new change. Surprised `git review` didn\u0027t put one in.\n\nOtherwise gerrit uses per-project per-branch Change-Ids in the footer to track changes.\n\nFor https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/11093 that\u0027s `Change-Id: Ia3da5de42e00d3d04ace4afeece2cf9454e15ed6`\n\nSo if you have that change locally, update and amend it (which normally keeps the same Change-Id), and then upload - gerrit would know that it\u0027s an update to the same change, and adjust accordingly.\n\nNote that that change is the first in a chain of changes (commit c depends on commit b depends on commit a before it), and so is this (it\u0027s the last of the chain) - so ideally when working with that, you maintain the order.",
+      "parentUuid": "5db750ab_918cac5a",
+      "revId": "c70831cf3669031866364f2be95f906afd9c960c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bafbf8bf_00362265",
