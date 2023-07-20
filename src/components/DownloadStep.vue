@@ -19,18 +19,6 @@
             <p class="text-h5 red--text text--darken-3">
                 Your device isn’t supported
             </p>
-            <p class="text-body-1">We only support these devices:</p>
-
-            <v-list-item
-                two-line
-                v-for="device in $root.$data.SUPPORTED_DEVICES"
-                :key="device.model"
-            >
-                <v-list-item-title>{{ device.name }}</v-list-item-title>
-                <v-list-item-subtitle>{{
-                    device.model
-                }}</v-list-item-subtitle>
-            </v-list-item>
         </div>
         <div v-else class="d-flex flex-wrap justify-space-around">
             <v-card

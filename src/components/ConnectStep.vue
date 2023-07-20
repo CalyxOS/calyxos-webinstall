@@ -55,7 +55,6 @@
 
 <script>
 import ConnectBanner from "./ConnectBanner.vue";
-import { getDeviceName } from "../core/devices";
 
 export default {
     name: "ConnectStep",
@@ -73,8 +72,6 @@ export default {
     inject: ['emitError', 'emit', 'saEvent'],
     
     methods: {
-        getDeviceName,
-
         async errorRetry() {
             await this.connect();
         },

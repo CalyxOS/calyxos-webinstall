@@ -13,7 +13,7 @@
                         ].suffix
                     }}
                     on your
-                    {{ getDeviceName($root.$data.product) }}.
+                    {{ $root.$data.product }}.
                 </p>
                 <p v-if="$root.$data.installType === 'clean'">
                     Because you’re doing a clean install,
@@ -112,7 +112,6 @@
 
 <script>
 import * as fastboot from "android-fastboot";
-import { getDeviceName } from "../core/devices";
 
 const INSTALL_STATUS_ICONS = {
     load: "mdi-archive-arrow-down-outline",
@@ -142,8 +141,6 @@ export default {
     inject: ['emit', 'emitError', 'saEvent'],
 
     methods: {
-        getDeviceName,
-
         reconnectCallback() {
             this.emit("requestDeviceReconnect");
         },

@@ -16,7 +16,7 @@
     >
         <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
         <span class="text-body-1 green--text text--darken-3"
-            >Connected to {{ getDeviceName($root.$data.product) }}</span
+            >Connected to {{ $root.$data.product }}</span
         >
     </v-banner>
     <v-banner single-line outlined rounded class="mt-8" v-else-if="error">
@@ -26,15 +26,10 @@
 </template>
 
 <script>
-import { getDeviceName } from "../core/devices";
 
 export default {
     name: "ConnectBanner",
 
     props: ["device", "connecting", "error"],
-
-    methods: {
-        getDeviceName,
-    },
 };
 </script>
