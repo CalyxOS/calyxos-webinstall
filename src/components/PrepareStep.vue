@@ -6,22 +6,9 @@
             <div class="text-body-1">
                 <p>
                     This is an easy way to install
-                    {{ $root.$data.OS_NAME }} on your device. You’ll need an
-                    <strong>unlocked</strong> model of one of the supported
-                    devices:
+                    {{ $root.$data.OS_NAME }} on your device
                 </p>
             </div>
-
-            <v-list-item
-                two-line
-                v-for="device in $root.$data.SUPPORTED_DEVICES"
-                :key="device.model"
-            >
-                <v-list-item-title>{{ device.name }}</v-list-item-title>
-                <v-list-item-subtitle>{{
-                    device.model
-                }}</v-list-item-subtitle>
-            </v-list-item>
         </div>
 
         <div class="mb-10 mt-n4" v-else>
