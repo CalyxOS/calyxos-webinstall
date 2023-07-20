@@ -38,6 +38,7 @@
                 :device="device"
                 :connecting="connecting"
                 :error="error"
+                :name="getDeviceName()"
             />
         </div>
 
@@ -55,7 +56,6 @@
 
 <script>
 import ConnectBanner from "./ConnectBanner.vue";
-import { getDeviceName } from "../core/devices";
 
 export default {
     name: "ConnectStep",
@@ -73,8 +73,6 @@ export default {
     inject: ['emitError', 'emit', 'saEvent'],
     
     methods: {
-        getDeviceName,
-
         async errorRetry() {
             await this.connect();
         },
@@ -104,6 +102,19 @@ export default {
             } finally {
                 this.connecting = false;
             }
+        },
+
+        getDeviceName() {
+          let product = this.$root.$data.product;
+          if (!product) {
+              return '';
+          }
+          let release = this.$root.$data.releaseIndex[product];
+          if (release && release.name) {
+              return release.name;
+           } else {
+              return product;
+          }
         },
     },
 
