@@ -16,8 +16,7 @@
                     {{ getDeviceName($root.$data.product) }}.
                 </p>
                 <p v-if="$root.$data.installType === 'clean'">
-                    Because you’re doing a clean install to switch from another
-                    OS,
+                    Because you’re doing a clean install,
                     <strong class="red--text text--darken-3"
                         >all data on your device will be permanently
                         lost.</strong

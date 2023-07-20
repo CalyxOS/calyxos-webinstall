@@ -8,19 +8,18 @@
                     Put your device into bootloader mode by restarting it and
                     holding the
                     <strong>volume down</strong> button until you see a
-                    <span class="red--text text--darken-3">red</span> warning
+                    <span class="text-red-darken-2">red</span> warning
                     sign or
-                    <span class="green--text text--darken-3">green</span>
+                    <span class="text-green-darken-2">green</span>
                     Android robot.
                 </p>
-                <p>
+                <p class="mt-1">
                     Once your device is in bootloader mode, plug it into the
-                    computer or device you’re installing from. Make sure you use
-                    a
-                    <strong>high-quality</strong> USB cable, as many cables will
-                    cause issues. Avoid USB hubs if possible.
+                    computer or device you’re installing from.
                 </p>
-                <p>
+                <p class="mt-1">
+                    Make sure you use a <strong>high-quality</strong> USB cable,
+                    as many cables will cause issues. Avoid USB hubs if possible.
                     Your USB cable needs to be able to copy files. Charging-only
                     cables won’t work.
                 </p>

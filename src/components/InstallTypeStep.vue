@@ -5,9 +5,9 @@
 
             <div class="text-body-1">
                 <p>
-                    This installer can help you update from an older version of
-                    {{ $root.$data.OS_NAME }} or switch to it from another OS,
-                    but you need to choose which one you want.
+                    This installer can help you factory reset or update your
+                    {{ $root.$data.OS_NAME }} device or switch to
+                    {{ $root.$data.OS_NAME }} from another OS.
                 </p>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     Clean install</v-card-title
                 >
                 <v-card-text
-                    >Switch from the stock OS or another ROM to
+                    >Factory reset or switch to
                     {{ $root.$data.OS_NAME }}.
                     <strong class="red--text text--darken-2"
                         >All data on your device will be lost.</strong
