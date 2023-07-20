@@ -7,11 +7,7 @@
                 <p>
                     Put your device into bootloader mode by restarting it and
                     holding the
-                    <strong>volume down</strong> button until you see a
-                    <span class="red--text text--darken-3">red</span> warning
-                    sign or
-                    <span class="green--text text--darken-3">green</span>
-                    Android robot.
+                    <strong>volume down</strong> button.
                 </p>
                 <p>
                     Once your device is in bootloader mode, plug it into the
