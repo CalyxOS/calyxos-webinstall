@@ -53,8 +53,6 @@
                 </div>
             </v-banner>
             <v-banner
-                single-line
-                outlined
                 rounded
                 class="mt-8 pt-1"
                 v-else-if="installProgress !== null"
@@ -62,14 +60,17 @@
                 <v-icon slot="icon" color="primary">{{
                     installStatusIcon
                 }}</v-icon>
-                <span class="text-body-1">{{ installStatus }}</span>
-                <v-progress-linear
-                    class="my-3"
-                    buffer-value="0"
-                    :value="installProgress"
-                    stream
-                ></v-progress-linear>
+                <v-banner-text class="text-body-1">
+                    {{ installStatus }}
+                </v-banner-text>
             </v-banner>
+            <v-progress-linear
+                class="my-3"
+                buffer-value="0"
+                v-model="installProgress"
+                stream
+                v-if="installProgress !== null"
+            ></v-progress-linear>
             <v-banner
                 single-line
                 outlined
@@ -89,11 +90,11 @@
         <div class="d-flex justify-space-between flex-row-reverse">
             <v-btn
                 color="primary"
-                @click="$bubble('nextStep')"
+                @click="emit('nextStep')"
                 :disabled="installing || !installed"
                 >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
             >
-            <v-btn text @click="$bubble('prevStep')" :disabled="installing"
+            <v-btn text @click="emit('prevStep')" :disabled="installing"
                 >Back</v-btn
             >
         </div>
@@ -113,12 +114,6 @@
 <script>
 import * as fastboot from "android-fastboot";
 import { getDeviceName } from "../core/devices";
-
-fastboot.configureZip({
-    workerScripts: {
-        inflate: ["js/vendor/z-worker-pako.js", "pako_inflate.min.js"],
-    },
-});
 
 const INSTALL_STATUS_ICONS = {
     load: "mdi-archive-arrow-down-outline",
@@ -145,19 +140,13 @@ export default {
         memoryDialog: false,
     }),
 
-    watch: {
-        active: async function (newState) {
-            if (newState) {
-                this.saEvent("step_install");
-            }
-        },
-    },
+    inject: ['emit', 'emitError', 'saEvent'],
 
     methods: {
         getDeviceName,
 
         reconnectCallback() {
-            this.$bubble("requestDeviceReconnect");
+            this.emit("requestDeviceReconnect");
         },
 
         async retryMemory() {
@@ -203,13 +192,13 @@ export default {
 
                 if (this.firstInstall) {
                     this.firstInstall = false;
-                    this.$bubble("nextStep");
+                    this.emit("nextStep");
                 }
             } catch (e) {
                 this.installed = false;
                 this.installProgress = null;
 
-                let [handled, message] = this.bubbleError(e);
+                let [handled, message] = this.emitError(e);
                 this.error = message;
                 if (!handled) {
                     throw e;
@@ -217,6 +206,17 @@ export default {
             } finally {
                 this.installing = false;
             }
+        },
+    },
+
+    watch: {
+        active: {
+            async handler(newState) {
+                if (newState) {
+                    this.saEvent("step_install");
+                }
+            },
+            immediate: true
         },
     },
 };

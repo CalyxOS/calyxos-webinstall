@@ -36,13 +36,13 @@
                     >
                     Clean install</v-card-title
                 >
-                <v-card-subtitle
+                <v-card-text
                     >Switch from the stock OS or another ROM to
                     {{ $root.$data.OS_NAME }}.
                     <strong class="red--text text--darken-2"
                         >All data on your device will be lost.</strong
                     >
-                </v-card-subtitle>
+                </v-card-text>
             </v-card>
 
             <v-card
@@ -69,10 +69,10 @@
                         >
                         Update</v-card-title
                     >
-                    <v-card-subtitle
+                    <v-card-text
                         >Update from an older version of
                         {{ $root.$data.OS_NAME }}. Your data won’t be affected.
-                    </v-card-subtitle>
+                    </v-card-text>
                 </div>
             </v-card>
         </div>
@@ -80,11 +80,11 @@
         <div class="d-flex justify-space-between flex-row-reverse">
             <v-btn
                 color="primary"
-                @click="$bubble('nextStep')"
+                @click="emit('nextStep')"
                 :disabled="$root.$data.installType === null"
                 >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
             >
-            <v-btn text @click="$bubble('prevStep')">Back</v-btn>
+            <v-btn text @click="emit('prevStep')">Back</v-btn>
         </div>
     </v-container>
 </template>
@@ -108,25 +108,30 @@ export default {
     data: () => ({
         firstSet: true,
     }),
-
-    watch: {
-        active: async function (newState) {
-            if (newState) {
-                this.saEvent("step_installtype");
-            }
-        },
-    },
-
+    
+    inject: ['emit', 'saEvent'],
+    
     methods: {
         setType(newType) {
             this.$root.$data.installType = newType;
 
             if (this.firstSet) {
                 this.firstSet = false;
-                this.$bubble("nextStep");
+                this.emit("nextStep");
             }
 
             this.saEvent(`install_type__${newType}`);
+        },
+    },
+
+    watch: {
+        active: {
+            async handler(newState) {
+                if (newState) {
+                    this.saEvent("step_installtype");
+                }
+            },
+            immediate: true
         },
     },
 };

@@ -1,7 +1,7 @@
 <template>
-    <v-app id="inspire">
+    <v-app full-height id="inspire">
         <v-main class="grey lighten-3">
-            <v-container fill-height>
+            <v-container fluid>
                 <v-row align="center" justify="center">
                     <v-col cols="12" sm="2"></v-col>
 
@@ -12,11 +12,11 @@
                     >
                         <v-sheet
                             :min-height="
-                                $vuetify.breakpoint.mobile ? '100vh' : '75vh'
+                                $vuetify.display.mobile ? '100vh' : '75vh'
                             "
                             width="50rem"
-                            :rounded="$vuetify.breakpoint.mobile ? null : 'lg'"
-                            :elevation="$vuetify.breakpoint.mobile ? 0 : 4"
+                            :rounded="$vuetify.display.mobile ? null : 'lg'"
+                            :elevation="$vuetify.display.mobile ? 0 : 4"
                             class="d-flex flex-column"
                         >
                             <Installer />
@@ -106,17 +106,25 @@
 </style>
 
 <script>
-import Installer from "./components/Installer";
+import { h } from "vue";
+import Config from "@/config";
+import Installer from "@/components/Installer.vue";
 
 export default {
     name: "App",
-
     components: {
         Installer,
     },
-
-    data: () => ({
-        links: ["Home", "Install"],
-    }),
+    data() {
+        return {
+            links: ["Home", "Install"],
+            product: null,
+            zipBlob: null,
+            release: null,
+            installType: null,
+            ...Config,
+        }
+    },
+    render: () => h(this),
 };
 </script>

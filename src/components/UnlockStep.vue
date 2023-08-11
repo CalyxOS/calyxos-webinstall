@@ -78,11 +78,11 @@
         <div class="d-flex justify-space-between flex-row-reverse">
             <v-btn
                 color="primary"
-                @click="$bubble('nextStep')"
+                @click="emit('nextStep')"
                 :disabled="!unlocked"
                 >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
             >
-            <v-btn text @click="$bubble('prevStep')">Back</v-btn>
+            <v-btn text @click="emit('prevStep')">Back</v-btn>
         </div>
 
         <v-dialog v-model="oemUnlockDialog" width="500" persistent>
@@ -148,43 +148,9 @@ export default {
         error: null,
         oemUnlockDialog: false,
     }),
-
-    watch: {
-        curStep: async function (newStep, oldStep) {
-            if (newStep == this.stepNum) {
-                this.saEvent("step_unlock");
-
-                try {
-                    // Get unlock state once and save it. Not all bootloaders
-                    // update the unlocked value immediately after unlocking.
-                    if (this.unlocked === undefined) {
-                        this.unlocked =
-                            (await this.device.getVariable("unlocked")) ===
-                            "yes";
-                        this.initialUnlocked = this.unlocked;
-                    }
-
-                    // Skip step only if unlock state was never changed
-                    if (this.unlocked && this.initialUnlocked) {
-                        if (newStep > oldStep) {
-                            this.$bubble("nextStep");
-                        } else {
-                            this.$bubble("prevStep");
-                        }
-                    }
-
-                    this.error = null;
-                } catch (e) {
-                    let [handled, message] = this.bubbleError(e);
-                    this.error = message;
-                    if (!handled) {
-                        throw e;
-                    }
-                }
-            }
-        },
-    },
-
+    
+    inject: ['emit', 'emitError', 'saEvent'],
+    
     methods: {
         async retryOemUnlock() {
             this.oemUnlockDialog = false;
@@ -206,7 +172,7 @@ export default {
                 // Unlocking can't be done in fastbootd
                 if ((await this.device.getVariable("is-userspace")) === "yes") {
                     await this.device.reboot("bootloader", true, () => {
-                        this.$bubble("requestDeviceReconnect");
+                        this.emit("requestDeviceReconnect");
                     });
                 }
 
@@ -228,7 +194,7 @@ export default {
                     }
                 }
 
-                let [handled, message] = this.bubbleError(e);
+                let [handled, message] = this.emitError(e);
                 this.error = message;
                 if (!handled) {
                     throw e;
@@ -240,11 +206,50 @@ export default {
 
             if (this.firstUnlock) {
                 this.firstUnlock = false;
-                this.$bubble("nextStep");
+                this.emit("nextStep");
             }
 
             this.unlocking = false;
             this.saEvent(`unlock_bootloader__${this.$root.$data.product}`);
+        },
+    },
+
+    watch: {
+        curStep: {
+            async handler(newStep, oldStep) {
+                if (newStep == this.stepNum) {
+                    this.saEvent("step_unlock");
+
+                    try {
+                        // Get unlock state once and save it. Not all bootloaders
+                        // update the unlocked value immediately after unlocking.
+                        if (this.unlocked === undefined) {
+                            this.unlocked =
+                                (await this.device.getVariable("unlocked")) ===
+                                "yes";
+                            this.initialUnlocked = this.unlocked;
+                        }
+
+                        // Skip step only if unlock state was never changed
+                        if (this.unlocked && this.initialUnlocked) {
+                        if (newStep > oldStep || oldStep == null) {
+                                this.emit("nextStep");
+                            } else {
+                                this.emit("prevStep");
+                            }
+                        }
+
+                        this.error = null;
+                    } catch (e) {
+                        let [handled, message] = this.emitError(e);
+                        this.error = message;
+                        if (!handled) {
+                            throw e;
+                        }
+                    }
+                }
+            },
+            immediate: true
         },
     },
 };

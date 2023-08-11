@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta property="og:title" content="%VITE_APP_OS_NAME% Web Installer"/>
+        <meta property="og:description" content="Web installer for %VITE_APP_OS_NAME%"/>
+        <meta property="og:site_name" content="%VITE_APP_OS_NAME%"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="/favicon.png"/>
+        <meta property="og:image:width" content="600"/>
+        <meta property="og:image:height" content="600"/>
+        <link rel="icon" type="image/png" href="<%= BASE_URL %>favicon.png" />
+        <title>%VITE_APP_OS_NAME% Web Installer</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
+        />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+
+        <script>window.sa_event=window.sa_event||function(){a=[].slice.call(arguments);sa_event.q?sa_event.q.push(a):sa_event.q=[a]};</script>
+        <script async defer src="https://<%= htmlWebpackPlugin.options.analyticsDomain %>/latest.js" data-skip-dnt="true"></script>
+    </head>
+    <body>
+        <noscript>
+            <strong
+                >We’re sorry but the %VITE_APP_OS_NAME% Web Installer doesn’t
+                work properly without JavaScript enabled. Please enable it to
+                continue.</strong
+         >
+        </noscript>
+        <div id="app"></div>
+    </body>
+    <script type="module" src="/src/main.js"></script>
+</html>

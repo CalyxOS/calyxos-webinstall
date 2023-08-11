@@ -1,15 +1,15 @@
-import Vue from "vue";
-import Vuetify from "vuetify/lib/framework";
-import Config from "../config";
+import { createApp } from 'vue'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import 'vuetify/styles'
 
-Vue.use(Vuetify);
+const app = createApp()
 
-export default new Vuetify({
-    theme: {
-        themes: {
-            light: {
-                primary: Config.ACCENT_COLOR,
-            },
-        },
-    },
-});
+const vuetify = createVuetify(
+    components,
+    directives,
+)
+
+app.use(vuetify)
+

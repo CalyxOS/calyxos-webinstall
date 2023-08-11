@@ -17,12 +17,10 @@
                 v-for="device in $root.$data.SUPPORTED_DEVICES"
                 :key="device.model"
             >
-                <v-list-item-content>
-                    <v-list-item-title>{{ device.name }}</v-list-item-title>
-                    <v-list-item-subtitle>{{
-                        device.model
-                    }}</v-list-item-subtitle>
-                </v-list-item-content>
+                <v-list-item-title>{{ device.name }}</v-list-item-title>
+                <v-list-item-subtitle>{{
+                    device.model
+                }}</v-list-item-subtitle>
             </v-list-item>
         </div>
 
@@ -51,7 +49,7 @@
         <div class="d-flex justify-space-between flex-row-reverse">
             <v-btn
                 color="primary"
-                @click="$bubble('nextStep')"
+                @click="emit('nextStep')"
                 :disabled="!usbSupported"
             >
                 Start
@@ -68,12 +66,17 @@ export default {
     data: () => ({
         usbSupported: "usb" in navigator,
     }),
+    
+    inject: ['emit', 'saEvent'],
 
     watch: {
-        active: async function (newState) {
-            if (newState) {
-                this.saEvent("step_prepare");
-            }
+        active: {
+            async handler(newState) {
+                if (newState) {
+                    this.saEvent("step_prepare");
+                }
+            },
+            immediate: true,
         },
     },
 };

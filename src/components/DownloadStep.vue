@@ -26,12 +26,10 @@
                 v-for="device in $root.$data.SUPPORTED_DEVICES"
                 :key="device.model"
             >
-                <v-list-item-content>
-                    <v-list-item-title>{{ device.name }}</v-list-item-title>
-                    <v-list-item-subtitle>{{
-                        device.model
-                    }}</v-list-item-subtitle>
-                </v-list-item-content>
+                <v-list-item-title>{{ device.name }}</v-list-item-title>
+                <v-list-item-subtitle>{{
+                    device.model
+                }}</v-list-item-subtitle>
             </v-list-item>
         </div>
         <div v-else class="d-flex flex-wrap justify-space-around">
@@ -52,9 +50,9 @@
                 @click="download(release)"
             >
                 <v-card-title>{{ release.version }}</v-card-title>
-                <v-card-subtitle>{{
+                <v-card-text>{{
                     $root.$data.RELEASE_VARIANTS[release.variant].description
-                }}</v-card-subtitle>
+                }}</v-card-text>
             </v-card>
         </div>
 
@@ -76,21 +74,20 @@
                 </div>
             </v-banner>
             <v-banner
-                single-line
-                outlined
+                icon="mdi-download"
                 rounded
                 class="mt-8 pt-1"
                 v-else-if="downloadProgress !== null"
             >
-                <v-icon slot="icon" color="primary">mdi-download</v-icon>
-                <span class="text-body-1">Downloading…</span>
-                <v-progress-linear
-                    class="my-3"
-                    buffer-value="0"
-                    :value="downloadProgress"
-                    stream
-                ></v-progress-linear>
+                <v-banner-text class="text-body-1">Downloading…</v-banner-text>
             </v-banner>
+            <v-progress-linear
+                class="my-3"
+                buffer-value="0"
+                v-model="downloadProgress"
+                stream
+                v-if="downloadProgress !== null"
+            ></v-progress-linear>
             <v-banner
                 single-line
                 outlined
@@ -110,11 +107,11 @@
         <div class="d-flex justify-space-between flex-row-reverse">
             <v-btn
                 color="primary"
-                @click="$bubble('nextStep')"
+                @click="emit('nextStep')"
                 :disabled="$root.$data.zipBlob === null"
                 >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
             >
-            <v-btn text @click="$bubble('prevStep')">Back</v-btn>
+            <v-btn text @click="emit('prevStep')">Back</v-btn>
         </div>
     </v-container>
 </template>
@@ -145,23 +142,6 @@ export default {
         error: null,
     }),
 
-    watch: {
-        active: async function (newState) {
-            if (newState) {
-                this.saEvent("step_download");
-
-                if (this.releaseIndex === undefined) {
-                    let indexResp = await fetch("/releases/index.json");
-                    this.releaseIndex = await indexResp.json();
-                }
-
-                this.latestReleases = this.releaseIndex.latest[
-                    this.$root.$data.product
-                ];
-            }
-        },
-    },
-
     methods: {
         async errorRetry() {
             await this.download(this.$root.$data.release);
@@ -191,12 +171,12 @@ export default {
 
                 if (this.firstDownload) {
                     this.firstDownload = false;
-                    this.$bubble("nextStep");
+                    this.emit("nextStep");
                 }
             } catch (e) {
                 this.downloadProgress = null;
 
-                let [handled, message] = this.bubbleError(e);
+                let [handled, message] = this.emitError(e);
                 this.error = message;
                 if (!handled) {
                     throw e;
@@ -204,6 +184,28 @@ export default {
             } finally {
                 this.downloading = false;
             }
+        },
+    },
+    
+    inject: ['emit', 'emitError', 'saEvent'],
+
+    watch: {
+        active: {
+            async handler(newState) {
+                if (newState) {
+                    this.saEvent("step_download");
+
+                    if (this.releaseIndex === undefined) {
+                        let indexResp = await fetch("/releases/index.json");
+                        this.releaseIndex = await indexResp.json();
+                    }
+
+                    this.latestReleases = this.releaseIndex.latest[
+                        this.$root.$data.product
+                    ];
+                }
+            },
+            immediate: true
         },
     },
 };

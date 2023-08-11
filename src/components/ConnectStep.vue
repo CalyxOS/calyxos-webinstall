@@ -45,17 +45,17 @@
         <div class="d-flex justify-space-between flex-row-reverse">
             <v-btn
                 color="primary"
-                @click="$bubble('nextStep')"
+                @click="emit('nextStep')"
                 :disabled="$root.$data.product === null"
                 >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
             >
-            <v-btn text @click="$bubble('prevStep')">Back</v-btn>
+            <v-btn text @click="emit('prevStep')">Back</v-btn>
         </div>
     </v-container>
 </template>
 
 <script>
-import ConnectBanner from "./ConnectBanner";
+import ConnectBanner from "./ConnectBanner.vue";
 import { getDeviceName } from "../core/devices";
 
 export default {
@@ -64,23 +64,15 @@ export default {
     components: {
         ConnectBanner,
     },
-
-    props: ["device", "blobStore", "active"],
-
+    
     data: () => ({
         connecting: false,
         error: null,
         firstConnect: true,
     }),
-
-    watch: {
-        active: async function (newState) {
-            if (newState) {
-                this.saEvent("step_connect");
-            }
-        },
-    },
-
+    
+    inject: ['emitError', 'emit', 'saEvent'],
+    
     methods: {
         getDeviceName,
 
@@ -100,12 +92,12 @@ export default {
 
                 if (this.firstConnect) {
                     this.firstConnect = false;
-                    this.$bubble("nextStep");
+                    this.emit("nextStep");
                 }
 
                 this.saEvent(`device_connect__${this.$root.$data.product}`);
             } catch (e) {
-                let [handled, message] = this.bubbleError(e);
+                let [handled, message] = this.emitError(this, e);
                 this.error = message;
                 if (!handled) {
                     throw e;
@@ -113,6 +105,19 @@ export default {
             } finally {
                 this.connecting = false;
             }
+        },
+    },
+
+    props: ["device", "blobStore", "active"],
+
+    watch: {
+        active:{
+            handler(newState) {
+                if (newState) {
+                    this.saEvent("step_connect");
+                }
+            },
+            immediate: true
         },
     },
 };

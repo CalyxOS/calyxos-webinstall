@@ -1,5 +1,5 @@
 export default {
-    OS_NAME: process.env.VUE_APP_OS_NAME,
+    OS_NAME: import.meta.env.VITE_APP_OS_NAME,
     ACCENT_COLOR: "#0366d6",
     SUPPORTED_DEVICES: [
         {

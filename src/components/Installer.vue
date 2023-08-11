@@ -1,9 +1,9 @@
 <template>
-    <div class="d-flex flex-column flex-grow-1">
+    <div>
         <v-stepper
             ref="stepper"
             v-model="curStep"
-            :alt-labels="!$vuetify.breakpoint.mobile"
+            :alt-labels="!$vuetify.display.mobile"
             class="d-flex flex-column flex-grow-1"
             @errorConnectSelect="errorConnectSelect"
             @errorConnectUdev="errorConnectUdev"
@@ -14,128 +14,66 @@
             @requestDeviceReconnect="reconnectCallback"
             @prevStep="curStep -= 1"
             @nextStep="curStep += 1"
+            :items="['Start', 'Select', 'Connect', 'Unlock', 'Download', 'Install', 'Finish']"
+            hideActions
         >
-            <v-stepper-header class="mb-3">
-                <v-stepper-step :complete="curStep > 0" step="0">
-                    Connect
-                </v-stepper-step>
+            <template v-slot:[`item.1`]>
+                <prepare-step
+                    :device="device"
+                    :blob-store="blobStore"
+                    :active="curStep === 1"
+                />
+            </template>
+            
+            <template v-slot:[`item.2`]>
+                <install-type-step
+                    :device="device"
+                    :blob-store="blobStore"
+                    :active="curStep === 2"
+                />
+            </template>
 
-                <v-divider></v-divider>
+            <template v-slot:[`item.3`]>
+                <connect-step
+                    :device="device"
+                    :blob-store="blobStore"
+                    :active="curStep === 3"
+                />
+            </template>
+            
+            <template v-slot:[`item.4`]>
+                <unlock-step
+                    :device="device"
+                    :blob-store="blobStore"
+                    :curStep="curStep"
+                    stepNum="4"
+                />
+            </template>
 
-                <v-stepper-step :complete="curStep > 1" step="1">
-                    Unlock
-                </v-stepper-step>
+            <template v-slot:[`item.5`]>
+                <download-step
+                    :device="device"
+                    :blob-store="blobStore"
+                    :active="curStep === 5"
+                />
+            </template>
+                
+            <template v-slot:[`item.6`]>
+                <install-step
+                    :device="device"
+                    :blob-store="blobStore"
+                    :active="curStep === 6"
+                />
+            </template>
+                
+            <template v-slot:[`item.7`]>
+                <finish-step
+                    :device="device"
+                    :blob-store="blobStore"
+                    :active="curStep === 7"
+                />
+            </template>            
 
-                <v-divider></v-divider>
-
-                <v-stepper-step :complete="curStep > 2" step="2">
-                    Download
-                </v-stepper-step>
-
-                <v-divider></v-divider>
-
-                <v-stepper-step :complete="curStep > 3" step="3">
-                    Install
-                </v-stepper-step>
-
-                <v-stepper-step :complete="curStep > 4" step="4">
-                    Lock
-                </v-stepper-step>
-            </v-stepper-header>
-
-            <v-stepper-items class="d-flex flex-column flex-grow-1">
-                <v-stepper-content
-                    step="-1"
-                    :class="
-                        curStep === -1 ? 'd-flex flex-column flex-grow-1' : null
-                    "
-                >
-                    <prepare-step
-                        :device="device"
-                        :blob-store="blobStore"
-                        :active="curStep === -1"
-                    />
-                </v-stepper-content>
-
-                <v-stepper-content
-                    step="0"
-                    :class="
-                        curStep === 0 ? 'd-flex flex-column flex-grow-1' : null
-                    "
-                >
-                    <connect-step
-                        :device="device"
-                        :blob-store="blobStore"
-                        :active="curStep === 0"
-                    />
-                </v-stepper-content>
-
-                <v-stepper-content
-                    step="1"
-                    :class="
-                        curStep === 1 ? 'd-flex flex-column flex-grow-1' : null
-                    "
-                >
-                    <unlock-step
-                        :device="device"
-                        :blob-store="blobStore"
-                        :curStep="curStep"
-                        stepNum="1"
-                    />
-                </v-stepper-content>
-
-                <v-stepper-content
-                    step="2"
-                    :class="
-                        curStep === 2 ? 'd-flex flex-column flex-grow-1' : null
-                    "
-                >
-                    <download-step
-                        :device="device"
-                        :blob-store="blobStore"
-                        :active="curStep === 2"
-                    />
-                </v-stepper-content>
-
-                <v-stepper-content
-                    step="3"
-                    :class="
-                        curStep === 3 ? 'd-flex flex-column flex-grow-1' : null
-                    "
-                >
-                    <install-step
-                        :device="device"
-                        :blob-store="blobStore"
-                        :active="curStep === 3"
-                    />
-                </v-stepper-content>
-
-                <v-stepper-content
-                    step="4"
-                    :class="
-                        curStep === 4 ? 'd-flex flex-column flex-grow-1' : null
-                    "
-                >
-                    <lock-step
-                        :device="device"
-                        :blob-store="blobStore"
-                        :active="curStep === 4"
-                    />
-                </v-stepper-content>
-
-                <v-stepper-content
-                    step="5"
-                    :class="
-                        curStep === 5 ? 'd-flex flex-column flex-grow-1' : null
-                    "
-                >
-                    <finish-step
-                        :device="device"
-                        :blob-store="blobStore"
-                        :active="curStep === 5"
-                    />
-                </v-stepper-content>
-            </v-stepper-items>
         </v-stepper>
 
         <v-dialog v-model="connectSelectDialog" :width="userAgent.includes('Windows') ? 600 : 500">
@@ -192,38 +130,18 @@
                         To fix this, install Android udev rules on your system:
                     </p>
 
-                    <v-list-item two-line>
-                        <v-list-item-content>
-                            <v-list-item-title>Arch Linux</v-list-item-title>
-                            <v-list-item-subtitle
-                                >sudo pacman -S
-                                android-udev</v-list-item-subtitle
-                            >
-                        </v-list-item-content>
-                    </v-list-item>
+                    <v-list>
+                        <v-list-item title="Arch Linux" subtitle="sudo pacman -S
+                                    android-udev" lines="two">
+                        </v-list-item>
 
-                    <v-list-item two-line>
-                        <v-list-item-content>
-                            <v-list-item-title
-                                >Debian, Ubuntu</v-list-item-title
-                            >
-                            <v-list-item-subtitle
-                                >sudo apt install
-                                android-sdk-platform-tools-common</v-list-item-subtitle
-                            >
-                        </v-list-item-content>
-                    </v-list-item>
+                        <v-list-item title="Debian, Ubuntu" subtitle="sudo apt install
+                                    android-sdk-platform-tools-common" lines="two">
+                        </v-list-item>
 
-                    <v-list-item two-line>
-                        <v-list-item-content>
-                            <v-list-item-title
-                                >Other distributions</v-list-item-title
-                            >
-                            <v-list-item-subtitle
-                                >Instructions vary</v-list-item-subtitle
-                            >
-                        </v-list-item-content>
-                    </v-list-item>
+                        <v-list-item title="Other distributions" subtitle="Instructions vary" lines="two">
+                        </v-list-item>
+                    </v-list>
 
                     <p>
                         Once you’ve installed udev rules, unplug your device and
@@ -441,17 +359,18 @@
 </style>
 
 <script>
+import { logEvent } from "@/core/common";
+import * as errors from "@/core/errors";
 import * as fastboot from "android-fastboot";
-import { BlobStore } from "../core/download";
-import ConnectBanner from "./ConnectBanner";
-import PrepareStep from "./PrepareStep";
-//import InstallTypeStep from "./InstallTypeStep";
-import ConnectStep from "./ConnectStep";
-import UnlockStep from "./UnlockStep";
-import DownloadStep from "./DownloadStep";
-import InstallStep from "./InstallStep";
-import LockStep from "./LockStep";
-import FinishStep from "./FinishStep";
+import { BlobStore } from "@/core/download";
+import ConnectBanner from "@/components/ConnectBanner.vue";
+import PrepareStep from "@/components/PrepareStep.vue";
+import InstallTypeStep from "@/components/InstallTypeStep.vue";
+import ConnectStep from "@/components/ConnectStep.vue";
+import UnlockStep from "@/components/UnlockStep.vue";
+import DownloadStep from "@/components/DownloadStep.vue";
+import InstallStep from "@/components/InstallStep.vue";
+import FinishStep from "@/components/FinishStep.vue";
 
 fastboot.setDebugLevel(2);
 
@@ -459,16 +378,15 @@ let device = new fastboot.FastbootDevice();
 let blobStore = new BlobStore();
 
 export default {
-    name: "Installer",
-
+    name: "WebInstaller",
+    
     components: {
         PrepareStep,
-//        InstallTypeStep,
+        InstallTypeStep,
         ConnectStep,
         UnlockStep,
         DownloadStep,
         InstallStep,
-        LockStep,
         FinishStep,
         ConnectBanner,
     },
@@ -476,7 +394,7 @@ export default {
     data: () => ({
         device: device,
         blobStore: blobStore,
-        curStep: -1,
+        curStep: 1,
         userAgent: navigator.userAgent,
 
         connectSelectDialog: false,
@@ -496,6 +414,57 @@ export default {
     }),
 
     methods: {
+        emitError(err, retryCallback = undefined) {
+            let errEvent = null;
+            let errMessage = err.message;
+            if (errors.isConnectSelectError(err)) {
+                errEvent = "ConnectSelect";
+                errMessage = "No device selected";
+            } else if (errors.isConnectUdevError(err)) {
+                errEvent = "ConnectUdev";
+                errMessage = "Access denied";
+            } else if (errors.isClaimError(err)) {
+                errEvent = "Claim";
+                errMessage = "Can’t control device";
+            } else if (errors.isDisconnectError(err)) {
+                errEvent = "Disconnect";
+                errMessage = "Device disconnected";
+            } else if (errors.isStorageError(err)) {
+                errEvent = "Storage";
+                errMessage = "Out of storage";
+            } else if (errors.isMemoryError(err)) {
+                errEvent = "Memory";
+                errMessage = "Out of memory";
+            } else if (errors.isTimeoutError(err)) {
+                errEvent = "Timeout";
+                errMessage = "Device is stuck";
+            }
+
+            if (errEvent !== null) {
+                if ("handleSelfError" in this) {
+                    this.handleSelfError(
+                        `error${errEvent}`,
+                        retryCallback || this.errorRetry
+                    );
+                }
+
+                this.emit(
+                    `error${errEvent}`,
+                    retryCallback || this.errorRetry
+                );
+            }
+
+            return [errEvent !== null, errMessage];
+        },
+    
+        saEvent(event) {
+            logEvent(event);
+        },
+
+        emit(event, ...args) {
+            this.$refs.stepper.$emit(event, ...args);
+        },
+
         handleSelfError(error, retryCallback) {
             this.$refs.stepper.$emit(error, retryCallback);
         },
@@ -506,7 +475,7 @@ export default {
         },
         retryConnectSelect() {
             this.connectSelectDialog = false;
-            this.retryCallbacks.pop()();
+            this.retryCallbacks.pop();
         },
 
         errorConnectUdev(retry) {
@@ -515,7 +484,7 @@ export default {
         },
         retryConnectUdev() {
             this.connectUdevDialog = false;
-            this.retryCallbacks.pop()();
+            this.retryCallbacks.pop();
         },
 
         errorClaim(retry) {
@@ -524,7 +493,7 @@ export default {
         },
         retryClaim() {
             this.claimDialog = false;
-            this.retryCallbacks.pop()();
+            this.retryCallbacks.pop();
         },
 
         errorDisconnect(retry) {
@@ -546,7 +515,7 @@ export default {
                 );
                 this.disconnectReconnectError = null;
             } catch (e) {
-                let [handled, message] = this.bubbleError(e, this.retryDisconnect);
+                let [handled, message] = this.emitError(this, e);
                 this.disconnectReconnectError = message;
                 if (!handled) {
                     throw e;
@@ -558,7 +527,7 @@ export default {
 
             this.disconnectReconnecting = false;
             this.disconnectDialog = false;
-            this.retryCallbacks.pop()();
+            this.retryCallbacks.pop();
         },
 
         errorStorage(retry) {
@@ -567,7 +536,7 @@ export default {
         },
         retryStorage() {
             this.storageDialog = false;
-            this.retryCallbacks.pop()();
+            this.retryCallbacks.pop();
         },
 
         errorMemory(retry) {
@@ -578,7 +547,7 @@ export default {
         },
         retryMemory() {
             this.memoryDialog = false;
-            this.retryCallbacks.pop()();
+            this.retryCallbacks.pop();
         },
 
         reconnectCallback() {
@@ -601,8 +570,16 @@ export default {
         },
         retryTimeout() {
             this.timeoutDialog = false;
-            this.retryCallbacks.pop()();
+            this.retryCallbacks.pop();
         },
     },
+    
+    provide() {
+        return {
+            emitError: this.emitError,
+            emit: this.emit,
+            saEvent: this.saEvent
+        }
+    }
 };
 </script>
