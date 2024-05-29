@@ -1,0 +1,14 @@
+image: node:lts
+
+pages:
+  stage: deploy
+  before_script:
+    - npm install
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+  publish: dist
+  only:
+    - main
