@@ -1,0 +1,14 @@
+image: debian:
+
+before_script:
+  - dependencies
+
+pages:
+  stage: deploy
+  script:
+    - build step
+  artifacts:
+    paths:
+      - path/to/build/output
+  only:
+    - main
