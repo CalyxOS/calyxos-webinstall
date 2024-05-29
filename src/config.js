@@ -68,7 +68,7 @@ export default {
         },
     ],
     RELEASE_VARIANTS: {
-        stable: {
+        factory: {
             description: "Stable release.",
             suffix: "",
         },

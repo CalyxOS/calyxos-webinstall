@@ -9,11 +9,11 @@ const releases_src_url = 'https://calyxos.org/data/downloads.yml'
 
 function generateReleases (doc) {
   var releases = {"latest": {}}
-  doc["stable"].forEach(device => {
+  doc["factory"].forEach(device => {
     releases["latest"][device["codename"]] = [
       {
         "version": device["date"],
-        "variant": "stable",
+        "variant": "factory",
         "url": device["factory_link"]
       }
     ]
