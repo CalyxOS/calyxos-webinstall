@@ -1,9 +1,10 @@
-const https = require('https')
-const yaml  = require('js-yaml')
-const path  = require('path')
-const fs    = require('fs')
+import https from "https"
+import yaml from "js-yaml"
+import path from "path"
+import fs from "fs"
+import { fileURLToPath } from 'url'
 
-const base_path = path.resolve(__dirname, '..')
+const base_path = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const releases_dest_path = path.resolve(base_path, 'public', 'releases', 'index.json')
 const releases_src_url = 'https://calyxos.org/data/downloads.yml'
 
@@ -49,4 +50,3 @@ function main () {
 }
 
 main()
-console.log("DONE")
