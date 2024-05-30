@@ -26,27 +26,24 @@ By default, this installer is configured for the ProtonAOSP production environme
 
 You can start with the following Yarn commands:
 
-- `yarn install`
-- `yarn serve`
-- `yarn build`
-- `yarn lint`
+- `npm install`
+- `npm run dev`
+- `npm run build`
+- `npm run lint`
 
 All configuration is in `src/config.js` and `.env`, and the release index at `public/releases/index.json` is fetched from the root of the domain hosting the installer. You may also want to change the favicon at `public/favicon.png`.
 
-If you are using nodejs 18+ you will have to set the environment variable NODE_OPTIONS to "--openssl-legacy-provider".
-
-
 ### Using docker
 
-Build the docker image: `docker build --tag YOUR_TAG .`
+Build the docker image: `docker build --tag YOUR_TAG .` or `npm run docker-build`
 
-Run the app in development: `docker run --rm -e NODE_OPTIONS="--openssl-legacy-provider" -p 8080:8080 YOUR_TAG`
+Run the app in development: `docker run --rm -p 5173:5173 YOUR_TAG`
 
 Create a production build:
 
 ```
 mkdir docker_dist
-docker run --rm -e NODE_OPTIONS="--openssl-legacy-provider" -v ./docker_dist:/app/dist YOUR_TAG yarn build --no-clean
+docker run --rm -v ./docker_dist:/app/dist YOUR_TAG npm run build
 ```
 
 ## Contributing
