@@ -8,12 +8,13 @@
         "build": "vite build",
         "preview": "vite preview",
         "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
-        "update-releases": "node scripts/update-releases.js"
+        "update-releases": "node scripts/update-releases.js",
+        "docker-build": "docker build -t calyxos-webinstall:latest ."
     },
     "dependencies": {
         "@sentry/tracing": "^7.90.0",
         "@sentry/vue": "^7.90.0",
-        "@vitejs/plugin-vue": "^4.5.2",
+        "@vitejs/plugin-vue": "^5.0.4",
         "android-fastboot": "^1.0.7",
         "url": "^0.11.3",
         "vite": "^5.0.10",
@@ -43,6 +44,5 @@
         "> 1%",
         "last 2 versions",
         "not dead"
-    ],
-    "packageManager": "yarn@4.0.2"
+    ]
 }
