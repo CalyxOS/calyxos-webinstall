@@ -5,17 +5,9 @@
 
             <div class="text-body-1">
                 <p>
-                    This will install {{ $root.$data.OS_NAME }}
-                    {{ $root.$data.release.version
-                    }}{{
-                        $root.$data.RELEASE_VARIANTS[
-                            $root.$data.release.variant
-                        ].suffix
-                    }}
-                    on your
-                    {{ $root.$data.product }}.
+                  This will install {{ $root.$data.OS_NAME }} ({{ $root.$data.release.version }}) on your {{ $root.$data.product }}.
                 </p>
-                <p v-if="$root.$data.installType === 'clean'">
+                <p v-if="$root.$data.installType === 'clean'" >
                     Because you’re doing a clean install,
                     <strong class="red--text text--darken-3"
                         >all data on your device will be permanently
@@ -37,6 +29,7 @@
                 :color="installed ? null : 'primary'"
                 :disabled="installProgress !== null"
                 @click="install"
+	        class="mt-2"
                 >Install</v-btn
             >
         </div>
