@@ -59,15 +59,15 @@ export default {
     components: {
         ConnectBanner,
     },
-    
+
     data: () => ({
         connecting: false,
         error: null,
         firstConnect: true,
     }),
-    
+
     inject: ['emitError', 'emit', 'saEvent'],
-    
+
     methods: {
         async errorRetry() {
             await this.connect();
@@ -90,7 +90,7 @@ export default {
 
                 this.saEvent(`device_connect__${this.$root.$data.product}`);
             } catch (e) {
-                let [handled, message] = this.emitError(this, e);
+                let [handled, message] = this.emitError(e);
                 this.error = message;
                 if (!handled) {
                     throw e;
