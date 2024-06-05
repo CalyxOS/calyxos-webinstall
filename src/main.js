@@ -32,3 +32,7 @@ if (
         logErrors: true,
     });
 }
+
+if (process.env.NODE_ENV !== 'production' && typeof(window) !== 'undefined') {
+  window.$app = app;
+}
