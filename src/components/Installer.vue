@@ -14,7 +14,7 @@
             @requestDeviceReconnect="reconnectCallback"
             @prevStep="curStep -= 1"
             @nextStep="curStep += 1"
-            :items="['Start', 'Select', 'Connect', 'Unlock', 'Download', 'Install', 'Finish']"
+            :items="['Start', 'Connect', 'Unlock', 'Download', 'Install', 'Lock', 'Finish']"
             hideActions
         >
             <template v-slot:[`item.1`]>
@@ -24,9 +24,9 @@
                     :active="curStep === 1"
                 />
             </template>
-            
+
             <template v-slot:[`item.2`]>
-                <install-type-step
+                <connect-step
                     :device="device"
                     :blob-store="blobStore"
                     :active="curStep === 2"
@@ -34,45 +34,46 @@
             </template>
 
             <template v-slot:[`item.3`]>
-                <connect-step
-                    :device="device"
-                    :blob-store="blobStore"
-                    :active="curStep === 3"
-                />
-            </template>
-            
-            <template v-slot:[`item.4`]>
                 <unlock-step
                     :device="device"
                     :blob-store="blobStore"
                     :curStep="curStep"
-                    stepNum="4"
+                    :stepNum="3"
+                />
+            </template>
+
+            <template v-slot:[`item.4`]>
+                <download-step
+                    :device="device"
+                    :blob-store="blobStore"
+                    :active="curStep === 4"
                 />
             </template>
 
             <template v-slot:[`item.5`]>
-                <download-step
+                <install-step
                     :device="device"
                     :blob-store="blobStore"
                     :active="curStep === 5"
                 />
             </template>
-                
+
             <template v-slot:[`item.6`]>
-                <install-step
+                <lock-step
                     :device="device"
                     :blob-store="blobStore"
-                    :active="curStep === 6"
+                    :curStep="curStep"
+                    :stepNum="6"
                 />
             </template>
-                
+
             <template v-slot:[`item.7`]>
                 <finish-step
                     :device="device"
                     :blob-store="blobStore"
                     :active="curStep === 7"
                 />
-            </template>            
+            </template>
 
         </v-stepper>
 
@@ -365,11 +366,12 @@ import * as fastboot from "android-fastboot";
 import { BlobStore } from "@/core/download";
 import ConnectBanner from "@/components/ConnectBanner.vue";
 import PrepareStep from "@/components/PrepareStep.vue";
-import InstallTypeStep from "@/components/InstallTypeStep.vue";
+//import InstallTypeStep from "@/components/InstallTypeStep.vue";
 import ConnectStep from "@/components/ConnectStep.vue";
 import UnlockStep from "@/components/UnlockStep.vue";
 import DownloadStep from "@/components/DownloadStep.vue";
 import InstallStep from "@/components/InstallStep.vue";
+import LockStep from "@/components/LockStep.vue";
 import FinishStep from "@/components/FinishStep.vue";
 
 fastboot.setDebugLevel(2);
@@ -379,14 +381,14 @@ let blobStore = new BlobStore();
 
 export default {
     name: "WebInstaller",
-    
+
     components: {
         PrepareStep,
-        InstallTypeStep,
         ConnectStep,
         UnlockStep,
         DownloadStep,
         InstallStep,
+        LockStep,
         FinishStep,
         ConnectBanner,
     },
@@ -456,7 +458,7 @@ export default {
 
             return [errEvent !== null, errMessage];
         },
-    
+
         saEvent(event) {
             logEvent(event);
         },
@@ -573,7 +575,7 @@ export default {
             this.retryCallbacks.pop();
         },
     },
-    
+
     provide() {
         return {
             emitError: this.emitError,

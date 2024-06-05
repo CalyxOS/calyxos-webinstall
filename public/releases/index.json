@@ -1,193 +1,164 @@
 {
-  "latest": {
-    "akita": [
-      {
-        "version": "2024-05-17",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/akita-factory-24507010.zip"
-      }
-    ],
-    "husky": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/husky-factory-24507020.zip"
-      }
-    ],
-    "shiba": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/shiba-factory-24507020.zip"
-      }
-    ],
-    "felix": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/felix-factory-24507020.zip"
-      }
-    ],
-    "tangorpro": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/tangorpro-factory-24507020.zip"
-      }
-    ],
-    "lynx": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/lynx-factory-24507020.zip"
-      }
-    ],
-    "cheetah": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/cheetah-factory-24507020.zip"
-      }
-    ],
-    "panther": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/panther-factory-24507020.zip"
-      }
-    ],
-    "bluejay": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/bluejay-factory-24507020.zip"
-      }
-    ],
-    "raven": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/raven-factory-24507020.zip"
-      }
-    ],
-    "oriole": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/oriole-factory-24507020.zip"
-      }
-    ],
-    "barbet": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/barbet-factory-24507020.zip"
-      }
-    ],
-    "bramble": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/bramble-factory-24507020.zip"
-      }
-    ],
-    "redfin": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/redfin-factory-24507020.zip"
-      }
-    ],
-    "sunfish": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/sunfish-factory-24507020.zip"
-      }
-    ],
-    "coral": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/coral-factory-24507020.zip"
-      }
-    ],
-    "flame": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/flame-factory-24507020.zip"
-      }
-    ],
-    "bonito": [
-      {
-        "version": "2024-05-30",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/bonito-factory-24507030.zip"
-      }
-    ],
-    "sargo": [
-      {
-        "version": "2024-05-30",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/sargo-factory-24507030.zip"
-      }
-    ],
-    "crosshatch": [
-      {
-        "version": "2024-05-30",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/crosshatch-factory-24507030.zip"
-      }
-    ],
-    "blueline": [
-      {
-        "version": "2024-05-30",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/blueline-factory-24507030.zip"
-      }
-    ],
-    "FP4": [
-      {
-        "version": "2024-05-30",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/FP4-factory-24507030.zip"
-      }
-    ],
-    "FP5": [
-      {
-        "version": "2024-05-30",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/FP5-factory-24507030.zip"
-      }
-    ],
-    "axolotl": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/axolotl-factory-24507020.zip"
-      }
-    ],
-    "devon": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/devon-factory-24507020.zip"
-      }
-    ],
-    "hawao": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/hawao-factory-24507020.zip"
-      }
-    ],
-    "rhode": [
-      {
-        "version": "2024-05-23",
-        "variant": "stable",
-        "url": "https://release.calyxinstitute.org/rhode-factory-24507020.zip"
-      }
-    ]
+  "akita": {
+    "codename": "akita",
+    "version": "2024-05-17",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/akita-factory-24507010.zip"
+  },
+  "husky": {
+    "codename": "husky",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/husky-factory-24507020.zip"
+  },
+  "shiba": {
+    "codename": "shiba",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/shiba-factory-24507020.zip"
+  },
+  "felix": {
+    "codename": "felix",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/felix-factory-24507020.zip"
+  },
+  "tangorpro": {
+    "codename": "tangorpro",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/tangorpro-factory-24507020.zip"
+  },
+  "lynx": {
+    "codename": "lynx",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/lynx-factory-24507020.zip"
+  },
+  "cheetah": {
+    "codename": "cheetah",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/cheetah-factory-24507020.zip"
+  },
+  "panther": {
+    "codename": "panther",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/panther-factory-24507020.zip"
+  },
+  "bluejay": {
+    "codename": "bluejay",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/bluejay-factory-24507020.zip"
+  },
+  "raven": {
+    "codename": "raven",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/raven-factory-24507020.zip"
+  },
+  "oriole": {
+    "codename": "oriole",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/oriole-factory-24507020.zip"
+  },
+  "barbet": {
+    "codename": "barbet",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/barbet-factory-24507020.zip"
+  },
+  "bramble": {
+    "codename": "bramble",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/bramble-factory-24507020.zip"
+  },
+  "redfin": {
+    "codename": "redfin",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/redfin-factory-24507020.zip"
+  },
+  "sunfish": {
+    "codename": "sunfish",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/sunfish-factory-24507020.zip"
+  },
+  "coral": {
+    "codename": "coral",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/coral-factory-24507020.zip"
+  },
+  "flame": {
+    "codename": "flame",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/flame-factory-24507020.zip"
+  },
+  "bonito": {
+    "codename": "bonito",
+    "version": "2024-05-30",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/bonito-factory-24507030.zip"
+  },
+  "sargo": {
+    "codename": "sargo",
+    "version": "2024-05-30",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/sargo-factory-24507030.zip"
+  },
+  "crosshatch": {
+    "codename": "crosshatch",
+    "version": "2024-05-30",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/crosshatch-factory-24507030.zip"
+  },
+  "blueline": {
+    "codename": "blueline",
+    "version": "2024-05-30",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/blueline-factory-24507030.zip"
+  },
+  "FP4": {
+    "codename": "FP4",
+    "version": "2024-05-30",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/FP4-factory-24507030.zip"
+  },
+  "FP5": {
+    "codename": "FP5",
+    "version": "2024-05-30",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/FP5-factory-24507030.zip"
+  },
+  "axolotl": {
+    "codename": "axolotl",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/axolotl-factory-24507020.zip"
+  },
+  "devon": {
+    "codename": "devon",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/devon-factory-24507020.zip"
+  },
+  "hawao": {
+    "codename": "hawao",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/hawao-factory-24507020.zip"
+  },
+  "rhode": {
+    "codename": "rhode",
+    "version": "2024-05-23",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/rhode-factory-24507020.zip"
   }
 }

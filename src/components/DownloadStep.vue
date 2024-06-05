@@ -1,46 +1,29 @@
 <template>
     <v-container class="d-flex justify-space-between flex-column flex-grow-1">
-        <div class="mt-n4">
-            <h6 class="text-h6 pb-4">Download a build</h6>
-
-            <div class="text-body-1">
-                <p>
-                    Pick a build of {{ $root.$data.OS_NAME }} to download and
-                    install.
-                </p>
-            </div>
-        </div>
-
-        <v-skeleton-loader
-            v-if="latestReleases === null"
+<v-skeleton-loader
+            v-if="latestRelease === null"
             type="article, actions"
         ></v-skeleton-loader>
-        <div class="text-center" v-else-if="latestReleases === undefined">
+        <div class="text-center" v-else-if="latestRelease === undefined">
             <p class="text-h5 red--text text--darken-3">
                 Your device isn’t supported
             </p>
         </div>
         <div v-else class="d-flex flex-wrap justify-space-around">
-            <v-card
-                v-for="release in latestReleases"
-                :key="release.url"
+	  <div class="mt-n4">
+	    <p class="text-h5 font-weight-regular">Download the latest stable build of {{ $root.$data.OS_NAME }}: <span class="font-weight-bold">{{ latestRelease.version }}</span></p>
+          </div>
+
+          <v-card
+                :key="latestRelease.url"
                 outlined
                 max-width="16rem"
                 class="ma-4 d-flex flex-column"
                 ripple
-                :color="
-                    downloadingRelease === release ? 'grey lighten-4' : null
-                "
-                :class="
-                    downloadingRelease === release ? 'v-card--selected' : null
-                "
+                :color="downloading ? 'grey lighten-4' : null"
                 :disabled="downloading"
-                @click="download(release)"
-            >
-                <v-card-title>{{ release.version }}</v-card-title>
-                <v-card-text>{{
-                    $root.$data.RELEASE_VARIANTS[release.variant].description
-                }}</v-card-text>
+                @click="download(latestRelease)">
+                <v-card-title>Start Download</v-card-title>
             </v-card>
         </div>
 
@@ -53,12 +36,10 @@
             >
                 <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
                 <div class="my-4">
-                    <span class="text-body-1 green--text text--darken-3"
-                        >Downloaded {{ $root.$data.OS_NAME }}
-                        {{ $root.$data.release.version }}-{{
-                            $root.$data.release.variant
-                        }}</span
-                    >
+                  <span class="text-body-1 green--text text--darken-3">
+		    Downloaded {{ $root.$data.OS_NAME }}
+                    {{ latestRelease.codename }}-{{ latestRelease.version}}
+		  </span>
                 </div>
             </v-banner>
             <v-banner
@@ -121,12 +102,11 @@ export default {
     props: ["device", "blobStore", "active"],
 
     data: () => ({
-        releaseIndex: undefined,
-        latestReleases: null,
+        releaseIndex: null,
+        latestRelease: null,
         downloadProgress: null,
         downloadingRelease: null,
         downloading: false,
-        firstDownload: true,
         error: null,
     }),
 
@@ -146,8 +126,9 @@ export default {
                     `download_build__${this.$root.$data.product}_${release.version}_${release.variant}`
                 );
                 await this.blobStore.init();
-                let blob = await this.blobStore.download(
-                    release.url,
+
+		let blob = await this.blobStore.download(
+		    release.url,
                     (progress) => {
                         this.downloadProgress = progress * 100;
                     }
@@ -156,11 +137,7 @@ export default {
                 this.downloadProgress = 100;
                 this.$root.$data.zipBlob = blob;
                 this.error = null;
-
-                if (this.firstDownload) {
-                    this.firstDownload = false;
-                    this.emit("nextStep");
-                }
+		this.emit("nextStep");
             } catch (e) {
                 this.downloadProgress = null;
 
@@ -169,12 +146,13 @@ export default {
                 if (!handled) {
                     throw e;
                 }
-            } finally {
+
+	    } finally {
                 this.downloading = false;
             }
         },
     },
-    
+
     inject: ['emit', 'emitError', 'saEvent'],
 
     watch: {
@@ -183,14 +161,12 @@ export default {
                 if (newState) {
                     this.saEvent("step_download");
 
-                    if (this.releaseIndex === undefined) {
-                        let indexResp = await fetch("/releases/index.json");
+                    if (!this.releaseIndex) {
+			let indexResp = await fetch("/releases/index.json");
                         this.releaseIndex = await indexResp.json();
+		        this.saEvent(`release index: ${JSON.stringify(this.releaseIndex)}`);
                     }
-
-                    this.latestReleases = this.releaseIndex.latest[
-                        this.$root.$data.product
-                    ];
+                    this.latestRelease = this.releaseIndex[this.$root.$data.product];
                 }
             },
             immediate: true

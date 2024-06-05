@@ -8,18 +8,17 @@ const base_path = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..
 const releases_dest_path = path.resolve(base_path, 'public', 'releases', 'index.json')
 const releases_src_url = 'https://calyxos.org/data/downloads.yml'
 
+// { codename: { codename, version, variant, url }
 function generateReleases (doc) {
-  var releases = {"latest": {}}
-  doc["stable"].forEach(device => {
-    releases["latest"][device["codename"]] = [
-      {
-        "version": device["date"],
-        "variant": "stable",
-        "url": device["factory_link"]
-      }
-    ]
-  })
-  return releases
+  return doc["stable"].reduce(function(acc, device) {
+    acc[device["codename"]] = {
+      "codename": device["codename"],
+      "version": device["date"],
+      "variant": "factory",
+      "url": device["factory_link"]
+    }
+    return acc
+  }, {})
 }
 
 function main () {
@@ -32,8 +31,9 @@ function main () {
     res.on("end", () => {
       try {
         const doc = yaml.load(body)
-        const releases = generateReleases(doc)
-        fs.writeFile(releases_dest_path, JSON.stringify(releases, null, "  "), function (err) {
+	const releases = generateReleases(doc)
+
+	fs.writeFile(releases_dest_path, JSON.stringify(releases, null, "  "), function (err) {
           if (err) {
             return console.log(err)
           } else {
