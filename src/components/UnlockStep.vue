@@ -59,7 +59,7 @@
                 <span class="text-body-1"
                     >Unlocking bootloader… Confirm using the volume and power
                     buttons.</span
-                >
+               >
             </v-banner>
             <v-banner
                 single-line
@@ -148,9 +148,9 @@ export default {
         error: null,
         oemUnlockDialog: false,
     }),
-    
+
     inject: ['emit', 'emitError', 'saEvent'],
-    
+
     methods: {
         async retryOemUnlock() {
             this.oemUnlockDialog = false;
