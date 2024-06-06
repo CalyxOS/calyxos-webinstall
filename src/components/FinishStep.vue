@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <div class="d-flex justify-space-between">
+        <div class="d-flex justify-space-between mt-4">
             <v-btn text @click="emit('prevStep')">Back</v-btn>
         </div>
     </v-container>
@@ -34,7 +34,7 @@ export default {
     name: "FinishStep",
 
     props: ["device", "blobStore", "active"],
-    
+
     inject: ['emit', 'saEvent'],
 
     watch: {
