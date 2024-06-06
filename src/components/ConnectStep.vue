@@ -3,7 +3,7 @@
         <div class="mb-10 mt-n4">
             <h6 class="text-h6 pb-4">Connect your device</h6>
 
-            <div class="text-body-1">
+            <div class="text-body-1 mb-4">
                 <p>
                     Put your device into bootloader mode by restarting it and
                     holding the

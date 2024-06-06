@@ -1,19 +1,14 @@
 <template>
     <v-container class="d-flex justify-space-between flex-column flex-grow-1">
-<v-skeleton-loader
-            v-if="latestRelease === null"
-            type="article, actions"
-        ></v-skeleton-loader>
+        <v-skeleton-loader v-if="latestRelease === null" type="article, actions">
+	</v-skeleton-loader>
         <div class="text-center" v-else-if="latestRelease === undefined">
             <p class="text-h5 red--text text--darken-3">
                 Your device isn’t supported
             </p>
         </div>
         <div v-else class="d-flex flex-wrap justify-space-around">
-	  <div class="mt-n4">
-	    <p class="text-h5 font-weight-regular">Download the latest stable build of {{ $root.$data.OS_NAME }}: <span class="font-weight-bold">{{ latestRelease.version }}</span></p>
-          </div>
-
+	  <p class="mt-4 text-h6 font-weight-regular">Download the latest stable build of {{ $root.$data.OS_NAME }}: <span class="font-weight-bold">{{ latestRelease.version }}</span></p>
           <v-card
                 :key="latestRelease.url"
                 outlined
