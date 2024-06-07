@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b687cb_a7ce3d80",
+        "filename": ".env",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-07T20:49:52Z",
+      "side": 0,
+      "message": "We could undo the changes to this file in this commit, but that\u0027s ok.",
+      "revId": "d1b4f67cffab3907578bece527e2965c628dc0cc",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
