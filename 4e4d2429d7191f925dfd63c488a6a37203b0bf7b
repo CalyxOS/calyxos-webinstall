@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50248a1_2ac48540",
+        "filename": ".env",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-07T20:52:14Z",
+      "side": 1,
+      "message": "We had a nicer desc at https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/26674/1/.env\n\nIt also closely matches what\u0027s on the website.\n\nhttps://calyxos.org/",
+      "revId": "4e4d2429d7191f925dfd63c488a6a37203b0bf7b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5b323ef_b6707210",
+        "filename": "src/config.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-07T20:52:14Z",
+      "side": 1,
+      "message": "That\u0027s not right",
+      "revId": "4e4d2429d7191f925dfd63c488a6a37203b0bf7b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}

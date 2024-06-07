@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea8a78d_450a017b",
+        "filename": "src/components/ConnectBanner.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-07T20:52:14Z",
+      "side": 0,
+      "message": "Why remove this?",
+      "revId": "d8957869018b69a6bbacd9281f257c906c9c48e1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
