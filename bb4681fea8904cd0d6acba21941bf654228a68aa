@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5366f96_29d5d480",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-07T20:50:46Z",
+      "side": 0,
+      "message": "This is actually good to have, why remove it?",
+      "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77abcc66_38619fc8",
+        "filename": "src/components/InstallTypeStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-07T20:50:46Z",
+      "side": 0,
+      "message": "This also looked ok, why change it?",
+      "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
