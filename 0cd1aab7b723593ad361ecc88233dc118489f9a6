@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b1bb806_875a0d59",
+        "filename": "src/components/LockStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-07T20:54:29Z",
+      "side": 1,
+      "message": "FTR: The `device-flasher` does a smaller pause thrice. We can tweak that as we go.",
+      "revId": "0cd1aab7b723593ad361ecc88233dc118489f9a6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
