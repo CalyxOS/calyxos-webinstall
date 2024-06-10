@@ -33,6 +33,24 @@
       "message": "That\u0027s not right",
       "revId": "4e4d2429d7191f925dfd63c488a6a37203b0bf7b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5ae7e0f_06a7d74f",
+        "filename": "src/config.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-10T14:17:46Z",
+      "side": 1,
+      "message": "We can remove RELEASE_VARIANTS; it\u0027s no longer used in the latest version as there no longer is a choice to pick between them.",
+      "parentUuid": "c5b323ef_b6707210",
+      "revId": "4e4d2429d7191f925dfd63c488a6a37203b0bf7b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
