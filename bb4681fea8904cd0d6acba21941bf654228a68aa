@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eda5159a_0eca1d95",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-10T14:18:08Z",
+      "side": 0,
+      "message": "Not sure? maybe @olivercscott@gmail.com recalls? Are there phones that don\u0027t have a warning sign or a green robot?",
+      "parentUuid": "b5366f96_29d5d480",
+      "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77abcc66_38619fc8",
         "filename": "src/components/InstallTypeStep.vue",
         "patchSetId": 1
