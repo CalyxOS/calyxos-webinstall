@@ -16,6 +16,24 @@
       "message": "Why remove this?",
       "revId": "d8957869018b69a6bbacd9281f257c906c9c48e1",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffcd3fb_92117461",
+        "filename": "src/components/ConnectBanner.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-10T14:51:06Z",
+      "side": 0,
+      "message": "I say instead of reverting back to hardcoded device names in a constant, let\u0027s add it to the index from data/downloads.yml",
+      "parentUuid": "0ea8a78d_450a017b",
+      "revId": "d8957869018b69a6bbacd9281f257c906c9c48e1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
