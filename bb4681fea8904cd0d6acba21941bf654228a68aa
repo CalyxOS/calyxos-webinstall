@@ -16,6 +16,23 @@
       "message": "Can do a formatting run later of get rid of extra whitespace",
       "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d838dca_996a1474",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-10T17:39:42Z",
+      "side": 1,
+      "message": "Will there be a follow up change to update dependencies further?",
+      "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
