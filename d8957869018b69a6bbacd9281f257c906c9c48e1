@@ -52,6 +52,24 @@
       "parentUuid": "8ffcd3fb_92117461",
       "revId": "d8957869018b69a6bbacd9281f257c906c9c48e1",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3902d7e0_6956cc45",
+        "filename": "src/components/ConnectBanner.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-10T17:44:21Z",
+      "side": 0,
+      "message": "Yeah, the goal was definitely to not hardcode strings.",
+      "parentUuid": "ad4801ad_9f64b587",
+      "revId": "d8957869018b69a6bbacd9281f257c906c9c48e1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
