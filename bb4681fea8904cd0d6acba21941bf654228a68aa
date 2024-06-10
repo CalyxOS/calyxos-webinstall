@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a04cb8c3_f56caf4f",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-10T17:43:23Z",
+      "side": 0,
+      "message": "That\u0027s right. Different devices look different in the bootloader. In fact some devices don\u0027t have the same key combo either so holding volume down wouldn\u0027t necessarily apply to all. Point of the change was to be as generic as possible to apply to as many devices as possible without causing confusion to users (in upstream context, GSIs could be installed on a variety of devices)",
+      "parentUuid": "eda5159a_0eca1d95",
+      "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77abcc66_38619fc8",
         "filename": "src/components/InstallTypeStep.vue",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "writtenOn": "2024-06-07T20:50:46Z",
       "side": 0,
       "message": "This also looked ok, why change it?",
+      "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "136476be_affe1a0a",
+        "filename": "src/components/InstallTypeStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-06-10T17:43:23Z",
+      "side": 0,
+      "message": "Because the web flasher can be used for more than just switching from stock OS or another ROM, Like reinstalling CalyxOS.",
+      "parentUuid": "77abcc66_38619fc8",
       "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
