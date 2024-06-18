@@ -70,6 +70,24 @@
       "parentUuid": "ad4801ad_9f64b587",
       "revId": "d8957869018b69a6bbacd9281f257c906c9c48e1",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e72640cc_9bd314e9",
+        "filename": "src/components/ConnectBanner.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-18T18:10:17Z",
+      "side": 0,
+      "message": "On the latest version it will use the name from data/downloads.yml",
+      "parentUuid": "3902d7e0_6956cc45",
+      "revId": "d8957869018b69a6bbacd9281f257c906c9c48e1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
