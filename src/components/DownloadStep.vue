@@ -97,7 +97,6 @@ export default {
     props: ["device", "blobStore", "active"],
 
     data: () => ({
-        releaseIndex: null,
         latestRelease: null,
         downloadProgress: null,
         downloadingRelease: null,
@@ -155,13 +154,7 @@ export default {
             async handler(newState) {
                 if (newState) {
                     this.saEvent("step_download");
-
-                    if (!this.releaseIndex) {
-			let indexResp = await fetch("/releases/index.json");
-                        this.releaseIndex = await indexResp.json();
-		        this.saEvent(`release index: ${JSON.stringify(this.releaseIndex)}`);
-                    }
-                    this.latestRelease = this.releaseIndex[this.$root.$data.product];
+                    this.latestRelease = this.$root.$data.releaseIndex[this.$root.$data.product];
                 }
             },
             immediate: true
