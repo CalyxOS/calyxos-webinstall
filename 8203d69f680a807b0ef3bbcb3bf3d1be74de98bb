@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "475cbf11_71a9e947",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-18T20:04:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b25e7c_d9964909",
+      "revId": "8203d69f680a807b0ef3bbcb3bf3d1be74de98bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f16b0665_aa908622",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-06-07T20:59:33Z",
       "side": 1,
       "message": "These still need to be edited to the actual thing",
+      "revId": "8203d69f680a807b0ef3bbcb3bf3d1be74de98bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "236845ff_f13bf658",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-18T20:04:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f16b0665_aa908622",
       "revId": "8203d69f680a807b0ef3bbcb3bf3d1be74de98bb",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
