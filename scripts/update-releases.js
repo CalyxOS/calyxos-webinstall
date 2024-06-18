@@ -8,10 +8,11 @@ const base_path = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..
 const releases_dest_path = path.resolve(base_path, 'public', 'releases', 'index.json')
 const releases_src_url = 'https://calyxos.org/data/downloads.yml'
 
-// { codename: { codename, version, variant, url }
+// { codename: { name, codename, version, variant, url }
 function generateReleases (doc) {
   return doc["stable"].reduce(function(acc, device) {
     acc[device["codename"]] = {
+      "name": device["name"],
       "codename": device["codename"],
       "version": device["date"],
       "variant": "factory",

@@ -122,9 +122,23 @@ export default {
             zipBlob: null,
             release: null,
             installType: null,
+            releaseIndex: null,
             ...Config,
         }
     },
     render: () => h(this),
+
+    async mounted() {
+        if (!this.releaseIndex) {
+            try {
+                let response = await fetch("/releases/index.json");
+                this.releaseIndex = await response.json();
+                console.log(`release index: ${JSON.stringify(this.releaseIndex)}`);
+            } catch(e) {
+                console.error('fetch("/releases/index.json") failed', e);
+            }
+        }
+
+   }
 };
 </script>

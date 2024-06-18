@@ -5,8 +5,8 @@
 
             <div class="text-body-1" v-if="$root.$data.release !== null">
                 <p>
-                    Congratulations! Your
-                    {{ $root.$data.product }} is now running
+                  Congratulations! Your
+                    {{ ($root.$data.release.name ? $root.$data.release.name : $root.$data.product) }} is now running
                     {{ $root.$data.OS_NAME }} {{ $root.$data.release.version }}.
                 </p>
             </div>
