@@ -12,15 +12,12 @@
         "docker-build": "docker build -t calyxos-webinstall:latest ."
     },
     "dependencies": {
-        "@sentry/tracing": "^7.90.0",
-        "@sentry/vue": "^7.90.0",
         "@vitejs/plugin-vue": "^5.0.4",
         "android-fastboot": "^1.0.7",
         "url": "^0.11.3",
         "vite": "^5.0.10",
         "vue": "^3.3.13",
-        "vuetify": "^3.4.8",
-        "webpack": "^5.89.0"
+        "vuetify": "^3.4.8"
     },
     "devDependencies": {
         "eslint": "^8.56.0",
