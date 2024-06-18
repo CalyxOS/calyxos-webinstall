@@ -5,7 +5,8 @@
 
             <div class="text-body-1">
                 <p>
-                  This will install {{ $root.$data.OS_NAME }} ({{ $root.$data.release.version }}) on your {{ $root.$data.product }}.
+                  This will install {{ $root.$data.OS_NAME }} ({{ $root.$data.release.version }})
+                  on your {{ ($root.$data.release.name ? $root.$data.release.name : $root.$data.product) }}.
                 </p>
                 <p v-if="$root.$data.installType === 'clean'" >
                     Because you’re doing a clean install,
