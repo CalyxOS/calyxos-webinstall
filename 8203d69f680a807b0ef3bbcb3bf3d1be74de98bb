@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17b25e7c_d9964909",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-18T14:09:22Z",
+      "side": 1,
+      "message": "npm install \u0026\u0026 npm run build",
+      "revId": "8203d69f680a807b0ef3bbcb3bf3d1be74de98bb",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f16b0665_aa908622",
         "filename": ".gitlab-ci.yml",
         "patchSetId": 1
