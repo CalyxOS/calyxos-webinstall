@@ -10,5 +10,7 @@ pages:
     paths:
       - dist
   publish: dist
+  environment:
+    BASE_URL: '/calyxos-webinstall'
   only:
     - main
