@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d00470c_ab6c10ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-25T15:35:16Z",
+      "side": 1,
+      "message": "This\u0027d only be for GitLab CI, so it\u0027d have to be conditional somehow.",
+      "revId": "b24925a4b9c4681944790d3e61ebdca7264a74aa",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
