@@ -110,6 +110,8 @@ import { h } from "vue";
 import Config from "@/config";
 import Installer from "@/components/Installer.vue";
 
+const RELEASE_INDEX_URL = (import.meta.env.BASE_URL.slice(-1) == "/" ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL) + "/releases/index.json"
+
 export default {
     name: "App",
     components: {
@@ -131,11 +133,11 @@ export default {
     async mounted() {
         if (!this.releaseIndex) {
             try {
-                let response = await fetch("/releases/index.json");
+                let response = await fetch(RELEASE_INDEX_URL);
                 this.releaseIndex = await response.json();
                 console.log(`release index: ${JSON.stringify(this.releaseIndex)}`);
             } catch(e) {
-                console.error('fetch("/releases/index.json") failed', e);
+                console.error(`fetch(${RELEASE_INDEX_URL}) failed`, e);
             }
         }
 
