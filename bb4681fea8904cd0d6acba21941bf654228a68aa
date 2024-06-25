@@ -54,6 +54,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4cb138_bcc9b04d",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-25T14:51:29Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "a04cb8c3_f56caf4f",
+      "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77abcc66_38619fc8",
@@ -85,6 +103,24 @@
       "side": 0,
       "message": "Because the web flasher can be used for more than just switching from stock OS or another ROM, Like reinstalling CalyxOS.",
       "parentUuid": "77abcc66_38619fc8",
+      "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40af3473_f8fbe39b",
+        "filename": "src/components/InstallTypeStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-25T14:51:29Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "136476be_affe1a0a",
       "revId": "bb4681fea8904cd0d6acba21941bf654228a68aa",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
