@@ -8143,7 +8143,7 @@ async function flashZip(device, blob, wipe, onReconnect, onProgress = (_action, 
     let imageReader = new ZipReader(new BlobReader(imagesBlob));
     let imageEntries = await imageReader.getEntries();
     // 3. Custom AVB key
-    entry = entries.find((e) => e.filename.endsWith("avb_pkmd.bin"));
+    entry = entries.find((e) => e.filename.endsWith("avb_custom_key.img"));
     if (entry !== undefined) {
         await device.runCommand("erase:avb_custom_key");
         await flashEntryBlob(device, entry, onProgress, "avb_custom_key");
