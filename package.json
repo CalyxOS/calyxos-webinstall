@@ -13,7 +13,7 @@
     },
     "dependencies": {
         "@vitejs/plugin-vue": "^5.0.4",
-        "android-fastboot": "^1.0.7",
+        "android-fastboot": "gitlab:CalyxOS/fastboot.js",
         "url": "^0.11.3",
         "vite": "^5.0.10",
         "vue": "^3.3.13",
