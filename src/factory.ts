@@ -260,14 +260,21 @@ export async function flashZip(
     let imageReader = new ZipReader(new BlobReader(imagesBlob));
     let imageEntries = await imageReader.getEntries();
 
-    // 3. Check requirements
+    // 3. Custom AVB key
+    entry = entries.find((e) => e.filename.endsWith("avb_pkmd.bin"));
+    if (entry !== undefined) {
+        await device.runCommand("erase:avb_custom_key");
+        await flashEntryBlob(device, entry, onProgress, "avb_custom_key");
+    }
+
+    // 4. Check requirements
     entry = imageEntries.find((e) => e.filename === "android-info.txt");
     if (entry !== undefined) {
         let reqText = await zipGetData(entry, new TextWriter());
         await checkRequirements(device, reqText);
     }
 
-    // 4. Boot-critical images
+    // 5. Boot-critical images
     await tryFlashImages(
         device,
         imageEntries,
@@ -275,7 +282,7 @@ export async function flashZip(
         BOOT_CRITICAL_IMAGES
     );
 
-    // 5. Super partition template
+    // 6. Super partition template
     // This is also where we reboot to fastbootd.
     entry = imageEntries.find((e) => e.filename === "super_empty.img");
     if (entry !== undefined) {
@@ -310,7 +317,7 @@ export async function flashZip(
         );
     }
 
-    // 6. Remaining system images
+    // 7. Remaining system images
     await tryFlashImages(device, imageEntries, onProgress, SYSTEM_IMAGES);
 
     // We unconditionally reboot back to the bootloader here if we're in fastbootd,
@@ -324,13 +331,6 @@ export async function flashZip(
             BOOTLOADER_REBOOT_TIME,
             device.reboot("bootloader", true, onReconnect)
         );
-    }
-
-    // 7. Custom AVB key
-    entry = entries.find((e) => e.filename.endsWith("avb_pkmd.bin"));
-    if (entry !== undefined) {
-        await device.runCommand("erase:avb_custom_key");
-        await flashEntryBlob(device, entry, onProgress, "avb_custom_key");
     }
 
     // 8. Wipe userdata
