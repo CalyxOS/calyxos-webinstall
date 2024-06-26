@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef98cb2_b044013e",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-26T22:58:32Z",
+      "side": 1,
+      "message": "Not sure why this changed, should compare code.",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ac244d_4e2866d5",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-26T22:58:32Z",
+      "side": 1,
+      "message": "Would this mean this only works for those with ssh access?\n\nI did `npm install https://gitlab.com/CalyxOS/fastboot.js`",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
