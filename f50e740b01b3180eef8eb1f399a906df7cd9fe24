@@ -105,6 +105,24 @@
       "parentUuid": "40d32850_6d284482",
       "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6013b36_9d87c73e",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-27T23:13:24Z",
+      "side": 1,
+      "message": "this also works:  `npm install git+https://calyxos@gitlab.com//CalyxOS/fastboot.js`",
+      "parentUuid": "467096e3_2d95669d",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
