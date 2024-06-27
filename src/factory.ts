@@ -92,7 +92,8 @@ async function flashEntryBlob(
     device: FastbootDevice,
     entry: Entry,
     onProgress: FactoryProgressCallback,
-    partition: string
+    partition: string,
+    slot: string = "current"
 ) {
     common.logDebug(`Unpacking ${partition}`);
     onProgress("unpack", partition, 0.0);
@@ -108,7 +109,7 @@ async function flashEntryBlob(
 
     common.logDebug(`Flashing ${partition}`);
     onProgress("flash", partition, 0.0);
-    await device.flashBlob(partition, blob, (progress) => {
+    await device.flashBlob(partition, slot, blob, (progress) => {
         onProgress("flash", partition, progress);
     });
 }
@@ -117,13 +118,14 @@ async function tryFlashImages(
     device: FastbootDevice,
     entries: Array<Entry>,
     onProgress: FactoryProgressCallback,
-    imageNames: Array<string>
+    imageNames: Array<string>,
+    slot: string = "current",
 ) {
     for (let imageName of imageNames) {
         let pattern = new RegExp(`${imageName}(?:-.+)?\\.img$`);
         let entry = entries.find((entry) => entry.filename.match(pattern));
         if (entry !== undefined) {
-            await flashEntryBlob(device, entry, onProgress, imageName);
+            await flashEntryBlob(device, entry, onProgress, imageName, slot);
         }
     }
 }

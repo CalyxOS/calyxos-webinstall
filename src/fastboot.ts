@@ -506,26 +506,44 @@ export class FastbootDevice {
     }
 
     /**
-     * Flash the given Blob to the given partition on the device. Any image
+     * Flash the given Blob to the given partition and slot on the device. Any image
      * format supported by the bootloader is allowed, e.g. sparse or raw images.
      * Large raw images will be converted to sparse images automatically, and
      * large sparse images will be split and flashed in multiple passes
      * depending on the bootloader's payload size limit.
      *
      * @param {string} partition - The name of the partition to flash.
+     * @param {string} slot - The slot to flash, defaults to current
      * @param {Blob} blob - The Blob to retrieve data from.
      * @param {FlashProgressCallback} onProgress - Callback for flashing progress updates.
      * @throws {FastbootError}
      */
     async flashBlob(
         partition: string,
+        slot: string = "current",
         blob: Blob,
         onProgress: FlashProgressCallback = (_progress) => {}
     ) {
-        // Use current slot if partition is A/B
+        // Check slot if partition is A/B
         if ((await this.getVariable(`has-slot:${partition}`)) === "yes") {
-            partition += "_" + (await this.getVariable("current-slot"));
+            let currentSlot = await this.getVariable("current-slot");
+            if (slot === "current") {
+                // Default behavior, flash current slot
+                partition += "_" + currentSlot;
+            } else if (slot === "other") {
+                // Allow flashing the other slot
+                let otherSlot = await this.getOtherSlot();
+                partition += "_" + otherSlot;
+            } else {
+                // Allow flashing a particular slot directly
+                if (slot === 'a' || slot === 'b') {
+                    partition += "_" + slot;
+                } else {
+                    throw new FastbootError("FAIL", `Unknown Slot: ${slot}`);
+                }
+            }
         }
+        common.logDebug(`Flashing partition ${partition}`)
 
         let maxDlSize = await this._getDownloadSize();
         let fileHeader = await common.readBlobAsBuffer(
@@ -624,5 +642,24 @@ export class FastbootDevice {
         onProgress: FactoryProgressCallback = (_progress) => {}
     ) {
         return await flashFactoryZip(this, blob, wipe, onReconnect, onProgress);
+    }
+
+    /**
+     * Determine the other slot
+     * Hardcoded for A/B currently as that's what we mostly have in the field
+     *
+     */
+    async getOtherSlot() {
+        let currentSlot = await this.getVariable("current-slot")
+        if (currentSlot === "a") {
+            return "b";
+        } else if (currentSlot === "b") {
+            return "a";
+        } else {
+            throw new FastbootError(
+                "FAIL",
+                `Unable to determine other slot, current slot: ${currentSlot}`
+            );
+        }
     }
 }
