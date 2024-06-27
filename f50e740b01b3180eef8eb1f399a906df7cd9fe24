@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3828d1ce_e115b4a6",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-27T23:29:05Z",
+      "side": 1,
+      "message": "This is because the branch I pushed was on v1.0.9, there\u0027s a v1.1.3 tag upstream, and also a typescript migration nrabch. Going through them now, will merge and then that should fix this.",
+      "parentUuid": "2483d387_2ee3ef97",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61ac244d_4e2866d5",
         "filename": "package-lock.json",
         "patchSetId": 1
@@ -121,6 +139,24 @@
       "side": 1,
       "message": "this also works:  `npm install git+https://calyxos@gitlab.com//CalyxOS/fastboot.js`",
       "parentUuid": "467096e3_2d95669d",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d64413a5_9682bcc7",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-27T23:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6013b36_9d87c73e",
       "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
