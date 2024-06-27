@@ -4,6 +4,7 @@ import * as fastboot from "../dist/fastboot.mjs";
 import { BlobStore } from "./download.js";
 
 let device = new fastboot.FastbootDevice();
+window.device = device;
 let blobStore = new BlobStore();
 
 // Enable verbose debug logging
@@ -34,6 +35,15 @@ async function sendFormCommand(event) {
     let result = (await device.runCommand(command)).text;
     document.querySelector(".result-field").textContent = result;
     inputField.value = "";
+}
+
+async function bootFormFile(event) {
+    event.preventDefault();
+
+    let fileField = document.querySelector(".boot-file");
+    let file = fileField.files[0];
+    await device.bootBlob(file);
+    fileField.value = "";
 }
 
 async function flashFormFile(event) {
@@ -123,6 +133,7 @@ document
 document
     .querySelector(".connect-button")
     .addEventListener("click", connectDevice);
+document.querySelector(".boot-form").addEventListener("submit", bootFormFile);
 document.querySelector(".flash-form").addEventListener("submit", flashFormFile);
 document
     .querySelector(".download-zip-button")
