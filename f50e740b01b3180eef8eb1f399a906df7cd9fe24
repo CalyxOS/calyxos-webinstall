@@ -33,6 +33,24 @@
       "message": "Would this mean this only works for those with ssh access?\n\nI did `npm install https://gitlab.com/CalyxOS/fastboot.js`",
       "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041c84e0_ca5e5c81",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-27T18:02:31Z",
+      "side": 1,
+      "message": "yeah weird, hmm.",
+      "parentUuid": "61ac244d_4e2866d5",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
