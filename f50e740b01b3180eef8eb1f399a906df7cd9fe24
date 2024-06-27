@@ -87,6 +87,24 @@
       "parentUuid": "041c84e0_ca5e5c81",
       "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "467096e3_2d95669d",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-27T22:57:53Z",
+      "side": 1,
+      "message": "npm seems to automatically convert https: to git+ssh for github and gitlab! if we use review.calyxos.org it leaves it alone: `npm install git+https://review.calyxos.org/CalyxOS/fastboot.js`",
+      "parentUuid": "40d32850_6d284482",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
