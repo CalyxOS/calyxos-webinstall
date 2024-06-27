@@ -3050,7 +3050,7 @@ const DEFAULT_DOWNLOAD_SIZE = 512 * 1024 * 1024; // 512 MiB
 // max download size even if the bootloader can accept more data.
 const MAX_DOWNLOAD_SIZE = 1024 * 1024 * 1024; // 1 GiB
 
-const GETVAR_TIMEOUT = 100000; // ms
+const GETVAR_TIMEOUT = 10000; // ms
 
 /**
  * Exception class for USB errors not directly thrown by WebUSB.
@@ -3086,8 +3086,6 @@ class FastbootDevice {
      */
     constructor() {
         this.device = null;
-        this.epIn = null;
-        this.epOut = null;
         this._registeredUsbListeners = false;
         this._connectResolve = null;
         this._connectReject = null;
@@ -3110,15 +3108,15 @@ class FastbootDevice {
      *
      * @private
      */
-    async _validateAndConnectDevice() {
+    async _validateAndConnectDevice(rethrowErrors) {
         // Validate device
         let ife = this.device.configurations[0].interfaces[0].alternates[0];
         if (ife.endpoints.length !== 2) {
             throw new UsbError("Interface has wrong number of endpoints");
         }
 
-        this.epIn = null;
-        this.epOut = null;
+        let epIn = null;
+        let epOut = null;
         for (let endpoint of ife.endpoints) {
             logVerbose("Checking endpoint:", endpoint);
             if (endpoint.type !== "bulk") {
@@ -3126,20 +3124,20 @@ class FastbootDevice {
             }
 
             if (endpoint.direction === "in") {
-                if (this.epIn === null) {
-                    this.epIn = endpoint.endpointNumber;
+                if (epIn === null) {
+                    epIn = endpoint.endpointNumber;
                 } else {
                     throw new UsbError("Interface has multiple IN endpoints");
                 }
             } else if (endpoint.direction === "out") {
-                if (this.epOut === null) {
-                    this.epOut = endpoint.endpointNumber;
+                if (epOut === null) {
+                    epOut = endpoint.endpointNumber;
                 } else {
                     throw new UsbError("Interface has multiple OUT endpoints");
                 }
             }
         }
-        logVerbose("Endpoints: in =", this.epIn, ", out =", this.epOut);
+        logVerbose("Endpoints: in =", epIn, ", out =", epOut);
 
         try {
             await this.device.open();
@@ -3160,7 +3158,9 @@ class FastbootDevice {
                 this._connectReject = null;
             }
 
-            throw error;
+            if (rethrowErrors) {
+                throw error;
+            }
         }
 
         // Return from waitForConnect()
@@ -3262,7 +3262,7 @@ class FastbootDevice {
                 // Check whether waitForConnect() is pending and save it for later
                 let hasPromiseReject = this._connectReject !== null;
                 try {
-                    await this._validateAndConnectDevice();
+                    await this._validateAndConnectDevice(false);
                 } catch (error) {
                     // Only rethrow errors from the event handler if waitForConnect()
                     // didn't already handle them
@@ -3275,7 +3275,7 @@ class FastbootDevice {
             this._registeredUsbListeners = true;
         }
 
-        await this._validateAndConnectDevice();
+        await this._validateAndConnectDevice(true);
     }
 
     /**
@@ -3292,7 +3292,7 @@ class FastbootDevice {
         };
         let respStatus;
         do {
-            let respPacket = await this.device.transferIn(this.epIn, 64);
+            let respPacket = await this.device.transferIn(0x01, 64);
             let response = new TextDecoder().decode(respPacket.data);
 
             respStatus = response.substring(0, 4);
@@ -3334,7 +3334,7 @@ class FastbootDevice {
 
         // Send raw UTF-8 command
         let cmdPacket = new TextEncoder("utf-8").encode(command);
-        await this.device.transferOut(this.epOut, cmdPacket);
+        await this.device.transferOut(0x01, cmdPacket);
         logDebug("Command:", command);
 
         return this._readResponse();
@@ -3428,7 +3428,7 @@ class FastbootDevice {
                 );
             }
 
-            await this.device.transferOut(this.epOut, chunk);
+            await this.device.transferOut(0x01, chunk);
 
             remainingBytes -= chunk.byteLength;
             i += 1;
