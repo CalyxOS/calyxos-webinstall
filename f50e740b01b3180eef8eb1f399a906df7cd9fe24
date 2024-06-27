@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2483d387_2ee3ef97",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-27T18:09:22Z",
+      "side": 1,
+      "message": "ukk https://github.com/npm/cli/issues/4305",
+      "parentUuid": "bef98cb2_b044013e",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61ac244d_4e2866d5",
         "filename": "package-lock.json",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "yeah weird, hmm.",
       "parentUuid": "61ac244d_4e2866d5",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d32850_6d284482",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-06-27T18:09:22Z",
+      "side": 1,
+      "message": "https://github.com/npm/cli/issues/4305",
+      "parentUuid": "041c84e0_ca5e5c81",
       "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
