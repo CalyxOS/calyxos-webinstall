@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68b623de_2eebe776",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-27T23:29:12Z",
+      "side": 1,
+      "message": "remote:   https://review.calyxos.org/c/CalyxOS/fastboot.js/+/27483 Merge tag \u0027v1.1.3\u0027 of https://github.com/kdrag0n/fastboot.js [NEW]\nremote:   https://review.calyxos.org/c/CalyxOS/fastboot.js/+/27484 Merge branch \u0027master\u0027 of https://github.com/kdrag0n/fastboot.js [NEW]",
+      "parentUuid": "3828d1ce_e115b4a6",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61ac244d_4e2866d5",
         "filename": "package-lock.json",
         "patchSetId": 1
