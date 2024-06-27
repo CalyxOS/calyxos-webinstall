@@ -72,6 +72,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c80701_9ce730fa",
+        "filename": "package-lock.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-27T23:39:57Z",
+      "side": 1,
+      "message": "Done, and the code should be identical too.",
+      "parentUuid": "68b623de_2eebe776",
+      "revId": "f50e740b01b3180eef8eb1f399a906df7cd9fe24",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61ac244d_4e2866d5",
