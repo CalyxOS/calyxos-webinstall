@@ -213,6 +213,12 @@ export async function flashZip(
     let reader = new ZipReader(new BlobReader(blob));
     let entries = await reader.getEntries();
 
+    // Ensure AVB custom key exists as expected.
+    let avbCustomKeyEntry = entries.find((e) => e.filename.endsWith("avb_custom_key.img"));
+    if (avbCustomKeyEntry === undefined) {
+        throw new Error("avb_custom_key.img not found! bootloader locking would fail.");
+    }
+
     // Bootloader and radio packs can only be flashed in the bare-metal bootloader
     if ((await device.getVariable("is-userspace")) === "yes") {
         await device.reboot("bootloader", true, onReconnect);
@@ -261,11 +267,8 @@ export async function flashZip(
     let imageEntries = await imageReader.getEntries();
 
     // 3. Custom AVB key
-    entry = entries.find((e) => e.filename.endsWith("avb_custom_key.img"));
-    if (entry !== undefined) {
-        await device.runCommand("erase:avb_custom_key");
-        await flashEntryBlob(device, entry, onProgress, "avb_custom_key");
-    }
+    await device.runCommand("erase:avb_custom_key");
+    await flashEntryBlob(device, avbCustomKeyEntry, onProgress, "avb_custom_key");
 
     // 4. Check requirements
     entry = imageEntries.find((e) => e.filename === "android-info.txt");
