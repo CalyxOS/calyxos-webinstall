@@ -33,6 +33,15 @@
             >
         </div>
 
+        <div class="mb-4 mt-n4" v-if="$root.$data.product && !connecting && !installable()">
+          <v-alert density="compact" title="Device Not Supported" type="tonal">
+            <p>
+              We're sorry, your device cannot be installed using the web installer.<br/>
+              Visit <a href="https://calyxos.org/install/">calyxos.org/install</a> for more installation methods.
+            </p>
+          </v-alert>
+        </div>
+
         <div class="mb-4">
             <connect-banner
                 :device="device"
@@ -89,7 +98,10 @@ export default {
 
                 if (this.firstConnect) {
                     this.firstConnect = false;
-                    this.emit("nextStep");
+                    if (this.installable()) {
+                        this.emit("nextStep");
+                    }
+
                 }
 
                 this.saEvent(`device_connect__${this.$root.$data.product}`);
@@ -116,6 +128,10 @@ export default {
               return product;
           }
         },
+
+        installable() {
+            return this.$root.$data.product && this.$root.$data.releaseIndex[this.$root.$data.product].web_install
+        }
     },
 
     props: ["device", "blobStore", "active"],
