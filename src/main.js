@@ -7,6 +7,9 @@ import { createApp } from 'vue'
 import { createVuetify } from 'vuetify'
 import 'vuetify/styles'
 
+import "@fontsource/roboto"
+import "@mdi/font/css/materialdesignicons.css"
+
 const vuetify = createVuetify({
     components: {
       ...components,
