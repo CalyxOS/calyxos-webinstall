@@ -8,7 +8,7 @@ const releases_dest_path = path.resolve(base_path, 'public', 'releases', 'index.
 const data = JSON.parse(fs.readFileSync(releases_dest_path))
 
 for (let [key, value] of Object.entries(data)) {
-  value['url'] = value['url'].replace('release.calyxinstitute.org', 'localhost/calyxos')
+  value['url'] = value['url'].replace('https://release.calyxinstitute.org', 'http://localhost:5173/calyxos')
 }
 
 fs.writeFileSync(releases_dest_path, JSON.stringify(data, null, "  "))
