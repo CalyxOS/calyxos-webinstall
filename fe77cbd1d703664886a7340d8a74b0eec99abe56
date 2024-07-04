@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3febef_82638738",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-07-04T12:06:55Z",
+      "side": 1,
+      "message": "Looks like the formatting of the entire file changed, may be worth just doing that tree-wide first, because this makes it harder to review the actual changes here.",
+      "revId": "fe77cbd1d703664886a7340d8a74b0eec99abe56",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
