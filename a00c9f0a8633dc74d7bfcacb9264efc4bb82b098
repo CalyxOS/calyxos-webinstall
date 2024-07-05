@@ -16,6 +16,24 @@
       "message": "still need to test the asset loading on the CI  😊",
       "revId": "a00c9f0a8633dc74d7bfcacb9264efc4bb82b098",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61de26d1_b1baf687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-07-05T18:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d50afa82_12c3a207",
+      "revId": "a00c9f0a8633dc74d7bfcacb9264efc4bb82b098",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
