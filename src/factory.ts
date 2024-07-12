@@ -241,23 +241,41 @@ export async function flashZip(
     }
 
     // 1. Bootloader pack
-    await tryFlashImages(device, entries, onProgress, ["bootloader"]);
+    await tryFlashImages(device, entries, onProgress, ["bootloader"], "other");
     await common.runWithTimedProgress(
         onProgress,
         "reboot",
         "device",
         BOOTLOADER_REBOOT_TIME,
-        tryReboot(device, "bootloader", onReconnect)
+        tryRebootWithSlotSwitch(device, "bootloader", onReconnect)
+    );
+    // Flash the other slot
+    await tryFlashImages(device, entries, onProgress, ["bootloader"], "other");
+    await common.runWithTimedProgress(
+        onProgress,
+        "reboot",
+        "device",
+        BOOTLOADER_REBOOT_TIME,
+        tryRebootWithSlotSwitch(device, "bootloader", onReconnect)
     );
 
     // 2. Radio pack
-    await tryFlashImages(device, entries, onProgress, ["radio"]);
+    await tryFlashImages(device, entries, onProgress, ["radio"], "other");
     await common.runWithTimedProgress(
         onProgress,
         "reboot",
         "device",
         BOOTLOADER_REBOOT_TIME,
-        tryReboot(device, "bootloader", onReconnect)
+        tryRebootWithSlotSwitch(device, "bootloader", onReconnect)
+    );
+    // Flash the other slot
+    await tryFlashImages(device, entries, onProgress, ["radio"], "other");
+    await common.runWithTimedProgress(
+        onProgress,
+        "reboot",
+        "device",
+        BOOTLOADER_REBOOT_TIME,
+        tryRebootWithSlotSwitch(device, "bootloader", onReconnect)
     );
 
     // Cancel snapshot update if in progress

@@ -8103,9 +8103,9 @@ async function checkRequirements(device, androidInfo) {
         }
     }
 }
-async function tryReboot(device, target, onReconnect) {
+async function tryRebootWithSlotSwitch(device, target, onReconnect) {
     try {
-        await device.reboot(target, false);
+        await device.rebootSwitchSlot(target, false);
     }
     catch (e) {
         /* Failed = device rebooted by itself */
@@ -8126,11 +8126,17 @@ async function flashZip(device, blob, wipe, onReconnect, onProgress = (_action, 
         await device.reboot("bootloader", true, onReconnect);
     }
     // 1. Bootloader pack
-    await tryFlashImages(device, entries, onProgress, ["bootloader"]);
-    await runWithTimedProgress(onProgress, "reboot", "device", BOOTLOADER_REBOOT_TIME, tryReboot(device, "bootloader", onReconnect));
+    await tryFlashImages(device, entries, onProgress, ["bootloader"], "other");
+    await runWithTimedProgress(onProgress, "reboot", "device", BOOTLOADER_REBOOT_TIME, tryRebootWithSlotSwitch(device, "bootloader", onReconnect));
+    // Flash the other slot
+    await tryFlashImages(device, entries, onProgress, ["bootloader"], "other");
+    await runWithTimedProgress(onProgress, "reboot", "device", BOOTLOADER_REBOOT_TIME, tryRebootWithSlotSwitch(device, "bootloader", onReconnect));
     // 2. Radio pack
-    await tryFlashImages(device, entries, onProgress, ["radio"]);
-    await runWithTimedProgress(onProgress, "reboot", "device", BOOTLOADER_REBOOT_TIME, tryReboot(device, "bootloader", onReconnect));
+    await tryFlashImages(device, entries, onProgress, ["radio"], "other");
+    await runWithTimedProgress(onProgress, "reboot", "device", BOOTLOADER_REBOOT_TIME, tryRebootWithSlotSwitch(device, "bootloader", onReconnect));
+    // Flash the other slot
+    await tryFlashImages(device, entries, onProgress, ["radio"], "other");
+    await runWithTimedProgress(onProgress, "reboot", "device", BOOTLOADER_REBOOT_TIME, tryRebootWithSlotSwitch(device, "bootloader", onReconnect));
     // Cancel snapshot update if in progress
     let snapshotStatus = await device.getVariable("snapshot-update-status");
     if (snapshotStatus !== null && snapshotStatus !== "none") {
