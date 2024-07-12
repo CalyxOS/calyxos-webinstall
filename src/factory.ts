@@ -200,6 +200,20 @@ async function tryReboot(
     await device.waitForConnect(onReconnect);
 }
 
+async function tryRebootWithSlotSwitch(
+    device: FastbootDevice,
+    target: string,
+    onReconnect: ReconnectCallback
+) {
+    try {
+        await device.rebootSwitchSlot(target, false);
+    } catch (e) {
+        /* Failed = device rebooted by itself */
+    }
+
+    await device.waitForConnect(onReconnect);
+}
+
 export async function flashZip(
     device: FastbootDevice,
     blob: Blob,

@@ -506,6 +506,32 @@ export class FastbootDevice {
     }
 
     /**
+     * Reboot to the given target and switch slot, and optionally wait for the device to
+     * reconnect.
+     *
+     * @param {string} target - Where to reboot to, i.e. fastboot or bootloader.
+     * @param {boolean} wait - Whether to wait for the device to reconnect.
+     * @param {ReconnectCallback} onReconnect - Callback to request device reconnection, if wait is enabled.
+     */
+    async rebootSwitchSlot(
+        target: string = "",
+        wait: boolean = false,
+        onReconnect: ReconnectCallback = () => {}
+    ) {
+        let otherSlot = await this.getOtherSlot();
+        await this.runCommand(`set_active:${otherSlot}`);
+        if (target.length > 0) {
+            await this.runCommand(`reboot-${target}`);
+        } else {
+            await this.runCommand("reboot");
+        }
+
+        if (wait) {
+            await this.waitForConnect(onReconnect);
+        }
+    }
+
+    /**
      * Flash the given Blob to the given partition and slot on the device. Any image
      * format supported by the bootloader is allowed, e.g. sparse or raw images.
      * Large raw images will be converted to sparse images automatically, and
