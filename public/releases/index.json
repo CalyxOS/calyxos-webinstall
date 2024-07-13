@@ -2,217 +2,217 @@
   "akita": {
     "name": "Pixel 8a",
     "codename": "akita",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/akita-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/akita-factory-24509000.zip",
     "web_install": false
   },
   "husky": {
     "name": "Pixel 8 Pro",
     "codename": "husky",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/husky-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/husky-factory-24509000.zip",
     "web_install": false
   },
   "shiba": {
     "name": "Pixel 8",
     "codename": "shiba",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/shiba-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/shiba-factory-24509000.zip",
     "web_install": false
   },
   "felix": {
     "name": "Pixel Fold",
     "codename": "felix",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/felix-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/felix-factory-24509000.zip",
     "web_install": false
   },
   "tangorpro": {
     "name": "Pixel Tablet",
     "codename": "tangorpro",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/tangorpro-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/tangorpro-factory-24509000.zip",
     "web_install": false
   },
   "lynx": {
     "name": "Pixel 7a",
     "codename": "lynx",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/lynx-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/lynx-factory-24509000.zip",
     "web_install": false
   },
   "cheetah": {
     "name": "Pixel 7 Pro",
     "codename": "cheetah",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/cheetah-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/cheetah-factory-24509000.zip",
     "web_install": false
   },
   "panther": {
     "name": "Pixel 7",
     "codename": "panther",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/panther-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/panther-factory-24509000.zip",
     "web_install": false
   },
   "bluejay": {
     "name": "Pixel 6a",
     "codename": "bluejay",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/bluejay-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/bluejay-factory-24509000.zip",
     "web_install": true
   },
   "raven": {
     "name": "Pixel 6 Pro",
     "codename": "raven",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/raven-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/raven-factory-24509000.zip",
     "web_install": false
   },
   "oriole": {
     "name": "Pixel 6",
     "codename": "oriole",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/oriole-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/oriole-factory-24509000.zip",
     "web_install": false
   },
   "barbet": {
     "name": "Pixel 5a (5G)",
     "codename": "barbet",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/barbet-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/barbet-factory-24509000.zip",
     "web_install": false
   },
   "bramble": {
     "name": "Pixel 4a (5G)",
     "codename": "bramble",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/bramble-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/bramble-factory-24509000.zip",
     "web_install": false
   },
   "redfin": {
     "name": "Pixel 5",
     "codename": "redfin",
-    "version": "2024-06-13",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/redfin-factory-24508000.zip",
+    "url": "https://release.calyxinstitute.org/redfin-factory-24509000.zip",
     "web_install": false
   },
   "sunfish": {
     "name": "Pixel 4a",
     "codename": "sunfish",
-    "version": "2024-06-21",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/sunfish-factory-24508012.zip",
+    "url": "https://release.calyxinstitute.org/sunfish-factory-24509000.zip",
     "web_install": false
   },
   "coral": {
     "name": "Pixel 4 XL",
     "codename": "coral",
-    "version": "2024-06-21",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/coral-factory-24508012.zip",
+    "url": "https://release.calyxinstitute.org/coral-factory-24509000.zip",
     "web_install": false
   },
   "flame": {
     "name": "Pixel 4",
     "codename": "flame",
-    "version": "2024-06-21",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/flame-factory-24508012.zip",
+    "url": "https://release.calyxinstitute.org/flame-factory-24509000.zip",
     "web_install": false
   },
   "bonito": {
     "name": "Pixel 3a XL",
     "codename": "bonito",
-    "version": "2024-06-19",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/bonito-factory-24508010.zip",
+    "url": "https://release.calyxinstitute.org/bonito-factory-24509000.zip",
     "web_install": false
   },
   "sargo": {
     "name": "Pixel 3a",
     "codename": "sargo",
-    "version": "2024-06-19",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/sargo-factory-24508010.zip",
+    "url": "https://release.calyxinstitute.org/sargo-factory-24509000.zip",
     "web_install": false
   },
   "crosshatch": {
     "name": "Pixel 3 XL",
     "codename": "crosshatch",
-    "version": "2024-06-19",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/crosshatch-factory-24508010.zip",
+    "url": "https://release.calyxinstitute.org/crosshatch-factory-24509000.zip",
     "web_install": false
   },
   "blueline": {
     "name": "Pixel 3",
     "codename": "blueline",
-    "version": "2024-06-19",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/blueline-factory-24508010.zip",
+    "url": "https://release.calyxinstitute.org/blueline-factory-24509000.zip",
     "web_install": false
   },
   "FP4": {
     "name": "Fairphone 4",
     "codename": "FP4",
-    "version": "2024-06-19",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/FP4-factory-24508010.zip",
+    "url": "https://release.calyxinstitute.org/FP4-factory-24509000.zip",
     "web_install": false
   },
   "FP5": {
     "name": "Fairphone 5",
     "codename": "FP5",
-    "version": "2024-06-19",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/FP5-factory-24508012.zip",
+    "url": "https://release.calyxinstitute.org/FP5-factory-24509000.zip",
     "web_install": false
   },
   "axolotl": {
     "name": "SHIFT6mq",
     "codename": "axolotl",
-    "version": "2024-06-19",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/axolotl-factory-24508010.zip",
+    "url": "https://release.calyxinstitute.org/axolotl-factory-24509000.zip",
     "web_install": false
   },
   "devon": {
     "name": "Moto G32",
     "codename": "devon",
-    "version": "2024-06-19",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/devon-factory-24508010.zip",
+    "url": "https://release.calyxinstitute.org/devon-factory-24509000.zip",
     "web_install": false
   },
   "hawao": {
     "name": "Moto G42",
     "codename": "hawao",
-    "version": "2024-06-19",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/hawao-factory-24508010.zip",
+    "url": "https://release.calyxinstitute.org/hawao-factory-24509000.zip",
     "web_install": false
   },
   "rhode": {
     "name": "Moto G52",
     "codename": "rhode",
-    "version": "2024-06-19",
+    "version": "2024-07-03",
     "variant": "factory",
-    "url": "https://release.calyxinstitute.org/rhode-factory-24508010.zip",
+    "url": "https://release.calyxinstitute.org/rhode-factory-24509000.zip",
     "web_install": false
   }
 }
