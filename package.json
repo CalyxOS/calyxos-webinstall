@@ -15,7 +15,7 @@
         "@fontsource/roboto": "^5.0.13",
         "@mdi/font": "^7.4.47",
         "@vitejs/plugin-vue": "^5.0.4",
-        "android-fastboot": "git+https://review.calyxos.org/CalyxOS/fastboot.js",
+        "android-fastboot": "git+https://review.calyxos.org/CalyxOS/fastboot.js#b2860cb10d6c65f43c016c4b2e379847d46a0bef",
         "url": "^0.11.3",
         "vite": "^5.0.10",
         "vue": "^3.3.13",
