@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7611f6b2_e3862849",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-07-25T21:19:25Z",
+      "side": 1,
+      "message": "This in combination with 27674: gitlab-ci: Trigger webinstall updates on changes here | https://review.calyxos.org/c/CalyxOS/fastboot.js/+/27674 will mean that this website always stays updated.",
+      "revId": "80db454715953a9e4cc3c0921e7cd366e183540e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
