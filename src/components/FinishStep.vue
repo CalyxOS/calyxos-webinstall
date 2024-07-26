@@ -2,15 +2,13 @@
     <v-container class="d-flex justify-space-between flex-column flex-grow-1">
         <div class="mt-n4">
             <h6 class="text-h6 pb-4">Installation complete</h6>
-
-            <div class="text-body-1" v-if="$root.$data.release !== null">
-                <p>
-                  Congratulations! Your
-                    {{ ($root.$data.release.name ? $root.$data.release.name : $root.$data.product) }} is now running
-                    {{ $root.$data.OS_NAME }} {{ $root.$data.release.version }}.
-                </p>
-            </div>
+              <p class="text-body-1" v-if="$root.$data.release !== null">
+                Congratulations! Your {{ ($root.$data.release.name ? $root.$data.release.name : $root.$data.product) }}
+                is now running {{ $root.$data.OS_NAME }} {{ $root.$data.release.version }}.
+              </p>
         </div>
+
+        <AboutCalyxOS />
 
         <div class="d-flex justify-space-between mt-4">
             <v-btn text @click="emit('prevStep')">Back</v-btn>
@@ -29,6 +27,7 @@
 </style>
 
 <script>
+import AboutCalyxOS from "@/components/AboutCalyxOS.vue";
 
 export default {
     name: "FinishStep",
@@ -36,6 +35,8 @@ export default {
     props: ["device", "blobStore", "active"],
 
     inject: ['emit', 'saEvent'],
+
+    components: { AboutCalyxOS },
 
     watch: {
         active: {

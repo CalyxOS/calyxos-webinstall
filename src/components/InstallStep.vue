@@ -15,11 +15,15 @@
                         lost.</strong
                     >
                 </p>
-                <p>
-                    <strong>Don’t touch, unplug, or press any buttons</strong>
-                    on your device during the install.
+                <p class="mt-2">
+                    <strong>⚠ Don’t touch, unplug, or press any
+                    buttons</strong> on your device during the
+                    install. on your device during <em>this process</em>
+                    or else it will disturb the install.
+                    <em>Watch the progress bar on this page to check the
+                    status. This may take a few minutes. </em>
                 </p>
-                <p>
+                <p class="mt-2">
                     Your phone will restart several times, but
                     <strong>don’t touch it.</strong> Watch the progress bar
                     on this page instead.
