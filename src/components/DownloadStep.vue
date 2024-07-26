@@ -8,7 +8,8 @@
             </p>
         </div>
         <div v-else class="d-flex flex-wrap justify-space-around">
-	  <p class="mt-4 text-h6 font-weight-regular">Download the latest stable build of {{ $root.$data.OS_NAME }}: <span class="font-weight-bold">{{ latestRelease.version }}</span></p>
+	  <p class="mt-4 text-h6 font-weight-regular">
+            Download the latest {{ $root.$data.OS_NAME }}: <span class="font-weight-bold">{{ latestRelease.version }}</span></p>
           <v-card
                 :key="latestRelease.url"
                 outlined

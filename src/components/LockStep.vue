@@ -1,11 +1,11 @@
 <template>
     <v-container class="d-flex justify-space-between flex-column flex-grow-1">
         <div class="mt-n4">
-            <h6 class="text-h6 pb-4">Lock your bootloader</h6>
+            <h6 class="text-h6 pb-4">Lock the bootloader on your phone</h6>
 
-            <div class="text-body-1">
+            <div class="text-body-1 mb-4">
                 <p>
-                    Re-lock bootloader
+                  Lock the bootloader using the volume buttons on your phone
                 </p>
             </div>
 
@@ -60,7 +60,7 @@
                 color="primary"
                 @click="emit('nextStep')"
                 :disabled="!locked"
-                >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
+                >Finish <v-icon dark right>mdi-arrow-right</v-icon></v-btn
             >
             <v-btn text @click="emit('prevStep')">Back</v-btn>
         </div>

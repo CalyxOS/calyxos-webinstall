@@ -5,8 +5,8 @@
 
             <div class="text-body-1">
                 <p>
-                    In order to install custom software, you need to unlock your
-                    device’s bootloader.
+                  In order to install <em>{{ $root.$data.OS_NAME}}</em>,
+                  you need to unlock your device’s bootloader.
                 </p>
                 <p>
                     If this is your first time or you haven’t already turned on
