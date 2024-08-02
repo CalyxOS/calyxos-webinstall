@@ -16,12 +16,12 @@
                     >
                 </p>
                 <p class="mt-2">
-                    <strong>⚠ Don’t touch, unplug, or press any
+                    <strong>⚠️ Don’t touch, unplug, or press any
                     buttons</strong> on your device during the
                     install. on your device during <em>this process</em>
                     or else it will disturb the install.
                     <em>Watch the progress bar on this page to check the
-                    status. This may take a few minutes. </em>
+                    status. This may take 10-15 minutes.</em>
                 </p>
                 <p class="mt-2">
                     Your phone will restart several times, but

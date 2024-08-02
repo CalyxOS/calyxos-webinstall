@@ -9,17 +9,19 @@
                     on your device. In the following steps, most
                     actions are done through clicking buttons on this
                     page. Please follow the instruction carefully to
-                    ensure successful installation. ⚠ In the next
-                    steps, your phone will get wiped. Please make sure
-                    you back up your phone's data securely before you
-                    proceed.
+                    ensure successful installation.
+                </p>
+                <p>
+                    ⚠️ <strong>In the next steps, your phone will get
+                    wiped. Please make sure you back up your phone's
+                    data securely before you proceed.</strong>
                 </p>
             </div>
 
             <h5 class="text-h5 pb-4 mt-4">Prepare your Android device</h5>
 
             <p class="text-body-1">
-              There are a few things you must do to prepare your device to accept a new operating system
+              There are a few things you must do to prepare your device to accept a new operating system.
             </p>
 
             <h6 class="text-h6 mt-4">Remove SIM card</h6>
@@ -83,7 +85,7 @@ export default {
     data: () => ({
         usbSupported: "usb" in navigator,
     }),
-    
+
     inject: ['emit', 'saEvent'],
 
     watch: {
