@@ -4,7 +4,7 @@
             <h6 class="text-h6 pb-4">Installation complete</h6>
               <p class="text-body-1" v-if="$root.$data.release !== null">
                 Congratulations! Your {{ ($root.$data.release.name ? $root.$data.release.name : $root.$data.product) }}
-                is now running {{ $root.$data.OS_NAME }} {{ $root.$data.release.version }}.
+                is now running {{ $root.$data.OS_NAME }} {{ $root.$data.release.version }} ({{ $root.$data.release.date }}).
               </p>
         </div>
 

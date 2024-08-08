@@ -118,7 +118,7 @@ export default {
 
             try {
                 this.saEvent(
-                    `download_build__${this.$root.$data.product}_${release.version}_${release.variant}`
+                    `download_build__${this.$root.$data.product}_${release.version}_${release.variant}_${release.sha256}`
                 );
                 await this.blobStore.init();
 

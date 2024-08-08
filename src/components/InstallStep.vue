@@ -43,10 +43,9 @@
             <v-banner single-line outlined rounded v-if="installed">
                 <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
                 <div class="my-4">
-                    <span class="text-body-1 green--text text--darken-3"
-                        >Installed {{ $root.$data.OS_NAME }}
-                        {{ $root.$data.release.version }}</span
-                    >
+                  <span class="text-body-1 green--text text--darken-3">
+                    Installed {{ $root.$data.OS_NAME }} {{ $root.$data.release.version }} ({{ $root.$data.release.date }})
+                  </span>
                 </div>
             </v-banner>
             <v-banner
