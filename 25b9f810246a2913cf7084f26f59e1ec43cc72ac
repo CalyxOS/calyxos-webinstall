@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6786d7_26a414b2",
+        "filename": "public/releases/index.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-08-09T00:30:45Z",
+      "side": 1,
+      "message": "FYI this is also available as \u0027the url above\u0027.append(\".sha256sum\")\n\nAnd the `minisign` signatures are (\".minisig\")",
+      "revId": "25b9f810246a2913cf7084f26f59e1ec43cc72ac",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
