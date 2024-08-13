@@ -26,5 +26,10 @@
     },
     "files": [
         "dist/fastboot.*"
-    ]
+    ],
+    "exports": {
+        "import": "dist/fastboot.mjs",
+        "require": "dist/fastboot.cjs",
+        "default": "dist/fastboot.cjs"
+    }
 }
