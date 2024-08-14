@@ -1,0 +1,20 @@
+{
+  "name": "opfs_blob_store",
+  "version": "0.0.1",
+  "description": "Store blobs in OPFS",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Calyx Institute",
+  "license": "MIT",
+  "dependencies": {
+    "jssha": "^3.3.1"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "arrowParens": "avoid",
+    "printWidth": 100
+  }
+}
