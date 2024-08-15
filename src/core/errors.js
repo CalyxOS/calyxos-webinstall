@@ -1,4 +1,3 @@
-import { XhrError } from "./download";
 import { TimeoutError } from "android-fastboot";
 
 export function isConnectSelectError(err) {
@@ -21,8 +20,7 @@ export function isStorageError(err) {
     return (
         (err instanceof DOMException &&
             err.name === "NotReadableError" &&
-            err.message.startsWith("The requested file could not be read")) ||
-        (err instanceof XhrError && err.status === 0 && err.statusText === "")
+            err.message.startsWith("The requested file could not be read"))
     );
 }
 

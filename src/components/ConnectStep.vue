@@ -134,7 +134,7 @@ export default {
         }
     },
 
-    props: ["device", "blobStore", "active"],
+    props: ["device", "active"],
 
     watch: {
         active:{
