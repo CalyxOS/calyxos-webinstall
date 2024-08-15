@@ -109,6 +109,7 @@
 
 <script>
 import * as fastboot from "fastboot";
+import OpfsBlobStore from 'opfs_blob_store'
 
 const INSTALL_STATUS_ICONS = {
     load: "mdi-archive-arrow-down-outline",
@@ -121,7 +122,7 @@ const INSTALL_STATUS_ICONS = {
 export default {
     name: "InstallStep",
 
-    props: ["device", "blobStore", "active"],
+    props: ["device", "active"],
 
     data: () => ({
         installProgress: null,
@@ -163,7 +164,10 @@ export default {
                 this.saEvent(
                     `install_build__${this.$root.$data.product}_${this.$root.$data.release.version}_${this.$root.$data.release.variant}`
                 );
-                let blob = this.$root.$data.zipBlob;
+
+                const bs = await OpfsBlobStore.create()
+                const blob = await bs.get(this.$root.$data.release.sha256)
+
                 await this.device.flashFactoryZip(
                     blob,
                     this.$root.$data.installType === "clean",

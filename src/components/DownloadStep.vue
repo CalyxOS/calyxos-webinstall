@@ -25,10 +25,17 @@
 
         <div>
             <v-banner
+                icon="mdi-microscope"
+                rounded
+                class="mt-8 pt-1"
+                v-if="verifying">
+                <v-banner-text class="text-body-1">Verifying…</v-banner-text>
+            </v-banner>
+            <v-banner
                 single-line
                 outlined
                 rounded
-                v-if="downloadProgress >= 100"
+                v-else-if="downloadProgress >= 100"
             >
                 <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
                 <div class="my-4">
@@ -51,7 +58,7 @@
                 buffer-value="0"
                 v-model="downloadProgress"
                 stream
-                v-if="downloadProgress !== null"
+                v-if="!verifying && downloadProgress !== null"
             ></v-progress-linear>
             <v-banner
                 single-line
@@ -69,11 +76,11 @@
             </v-banner>
         </div>
 
-        <div class="d-flex justify-space-between flex-row-reverse">
+        <div class="d-flex justify-space-between flex-row-reverse mt-4">
             <v-btn
                 color="primary"
                 @click="emit('nextStep')"
-                :disabled="$root.$data.zipBlob === null"
+                :disabled="verifying || downloadProgress < 100"
                 >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
             >
             <v-btn text @click="emit('prevStep')">Back</v-btn>
@@ -92,16 +99,19 @@
 </style>
 
 <script>
+import OpfsBlobStore from 'opfs_blob_store'
+
 export default {
     name: "DownloadStep",
 
-    props: ["device", "blobStore", "active"],
+    props: ["device", "active"],
 
     data: () => ({
         latestRelease: null,
         downloadProgress: null,
         downloadingRelease: null,
         downloading: false,
+        verifying: false,
         error: null,
     }),
 
@@ -112,27 +122,29 @@ export default {
 
         async download(release) {
             this.$root.$data.release = release;
-            this.downloadProgress = 0;
-            this.downloading = true;
             this.downloadingRelease = release;
+            this.downloading = true;
 
             try {
                 this.saEvent(
                     `download_build__${this.$root.$data.product}_${release.version}_${release.variant}_${release.sha256}`
                 );
-                await this.blobStore.init();
 
-		let blob = await this.blobStore.download(
-		    release.url,
-                    (progress) => {
-                        this.downloadProgress = progress * 100;
-                    }
-                );
+                const bs = await OpfsBlobStore.create()
+
+                if (await bs.has(release.sha256)) {
+                    this.saEvent(`opfs_verifying_${release.sha256}`);
+                    this.verifying = true
+                    await bs.verify(release.sha256)
+                } else {
+                    this.downloadProgress = 0;
+                    const onProgress = (progress) => this.downloadProgress = progress * 100;
+                    await bs.fetch(release.sha256, release.url, onProgress);
+                }
 
                 this.downloadProgress = 100;
-                this.$root.$data.zipBlob = blob;
                 this.error = null;
-		this.emit("nextStep");
+		//this.emit("nextStep");
             } catch (e) {
                 this.downloadProgress = null;
 
@@ -143,6 +155,7 @@ export default {
                 }
 
 	    } finally {
+                this.verifying = false;
                 this.downloading = false;
             }
         },

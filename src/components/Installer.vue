@@ -20,7 +20,6 @@
             <template v-slot:[`item.1`]>
                 <prepare-step
                     :device="device"
-                    :blob-store="blobStore"
                     :active="curStep === 1"
                 />
             </template>
@@ -28,7 +27,6 @@
             <template v-slot:[`item.2`]>
                 <connect-step
                     :device="device"
-                    :blob-store="blobStore"
                     :active="curStep === 2"
                 />
             </template>
@@ -36,7 +34,6 @@
             <template v-slot:[`item.3`]>
                 <unlock-step
                     :device="device"
-                    :blob-store="blobStore"
                     :curStep="curStep"
                     :stepNum="3"
                 />
@@ -45,7 +42,6 @@
             <template v-slot:[`item.4`]>
                 <download-step
                     :device="device"
-                    :blob-store="blobStore"
                     :active="curStep === 4"
                 />
             </template>
@@ -53,7 +49,6 @@
             <template v-slot:[`item.5`]>
                 <install-step
                     :device="device"
-                    :blob-store="blobStore"
                     :active="curStep === 5"
                 />
             </template>
@@ -61,7 +56,6 @@
             <template v-slot:[`item.6`]>
                 <lock-step
                     :device="device"
-                    :blob-store="blobStore"
                     :curStep="curStep"
                     :stepNum="6"
                 />
@@ -70,7 +64,6 @@
             <template v-slot:[`item.7`]>
                 <finish-step
                     :device="device"
-                    :blob-store="blobStore"
                     :active="curStep === 7"
                 />
             </template>
@@ -362,7 +355,6 @@
 import { logEvent } from "@/core/common";
 import * as errors from "@/core/errors";
 import * as fastboot from "fastboot";
-import { BlobStore } from "@/core/download";
 import ConnectBanner from "@/components/ConnectBanner.vue";
 import PrepareStep from "@/components/PrepareStep.vue";
 //import InstallTypeStep from "@/components/InstallTypeStep.vue";
@@ -376,7 +368,6 @@ import FinishStep from "@/components/FinishStep.vue";
 fastboot.setDebugLevel(2);
 
 let device = new fastboot.FastbootDevice();
-let blobStore = new BlobStore();
 
 export default {
     name: "WebInstaller",
@@ -394,7 +385,6 @@ export default {
 
     data: () => ({
         device: device,
-        blobStore: blobStore,
         curStep: 1,
         userAgent: navigator.userAgent,
 
