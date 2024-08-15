@@ -73,7 +73,7 @@ import { FastbootError } from "fastboot";
 export default {
     name: "LockStep",
 
-    props: ["device", "blobStore", "curStep", "stepNum"],
+    props: ["device", "curStep", "stepNum"],
 
     data: () => ({
         locking: false,
