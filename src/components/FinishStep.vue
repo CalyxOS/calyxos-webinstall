@@ -32,7 +32,7 @@ import AboutCalyxOS from "@/components/AboutCalyxOS.vue";
 export default {
     name: "FinishStep",
 
-    props: ["device", "blobStore", "active"],
+    props: ["device", "active"],
 
     inject: ['emit', 'saEvent'],
 
