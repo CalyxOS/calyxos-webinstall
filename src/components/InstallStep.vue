@@ -1,12 +1,16 @@
 <template>
     <v-container class="d-flex justify-space-between flex-column flex-grow-1">
-        <div class="mt-n4 flex-grow-1" v-if="$root.$data.release !== null">
+        <div class="mt-n4 flex-grow-1" v-if="!release">
+          <p class="mt-2"><strong>⚠️ Something went wrong</strong>Try starting over</p>
+        </div>
+
+        <div class="mt-n4 flex-grow-1" v-else>
             <h6 class="text-h6 pb-4">Install {{ $root.$data.OS_NAME }}</h6>
 
             <div class="text-body-1">
                 <p>
-                  This will install {{ $root.$data.OS_NAME }} ({{ $root.$data.release.version }})
-                  on your {{ ($root.$data.release.name ? $root.$data.release.name : $root.$data.product) }}.
+                  This will install {{ $root.$data.OS_NAME }} ({{ release.version }})
+                  on your {{ (release.name ? release.name : $root.$data.product) }}.
                 </p>
                 <p v-if="$root.$data.installType === 'clean'" >
                     Because you’re doing a clean install,
@@ -44,7 +48,7 @@
                 <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
                 <div class="my-4">
                   <span class="text-body-1 green--text text--darken-3">
-                    Installed {{ $root.$data.OS_NAME }} {{ $root.$data.release.version }} ({{ $root.$data.release.date }})
+                    Installed {{ $root.$data.OS_NAME }} {{ release.version }} ({{ release.date }})
                   </span>
                 </div>
             </v-banner>
@@ -108,7 +112,8 @@
 </style>
 
 <script>
-import * as fastboot from "fastboot";
+import * as fastboot from "android-fastboot";
+import OpfsBlobStore from 'opfs_blob_store'
 
 const INSTALL_STATUS_ICONS = {
     load: "mdi-archive-arrow-down-outline",
@@ -121,7 +126,7 @@ const INSTALL_STATUS_ICONS = {
 export default {
     name: "InstallStep",
 
-    props: ["device", "blobStore", "active"],
+    props: ["device", "active", "release"],
 
     data: () => ({
         installProgress: null,
@@ -161,9 +166,12 @@ export default {
                 }
 
                 this.saEvent(
-                    `install_build__${this.$root.$data.product}_${this.$root.$data.release.version}_${this.$root.$data.release.variant}`
+                 `install_build__${this.$root.$data.product}_${this.release.version}_${this.release.variant}`
                 );
-                let blob = this.$root.$data.zipBlob;
+
+                const bs = await OpfsBlobStore.create()
+                const blob = await bs.get(this.release.sha256)
+
                 await this.device.flashFactoryZip(
                     blob,
                     this.$root.$data.installType === "clean",
