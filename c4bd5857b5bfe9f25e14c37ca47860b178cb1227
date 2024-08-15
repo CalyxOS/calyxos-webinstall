@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67db815f_b250957c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-08-15T17:10:13Z",
+      "side": 1,
+      "message": "still need to sort out package.json and publish opfs_blob_store",
+      "revId": "c4bd5857b5bfe9f25e14c37ca47860b178cb1227",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
