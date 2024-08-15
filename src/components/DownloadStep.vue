@@ -1,165 +1,202 @@
 <template>
-    <v-container class="d-flex justify-space-between flex-column flex-grow-1">
-        <v-skeleton-loader v-if="latestRelease === null" type="article, actions">
-	</v-skeleton-loader>
-        <div class="text-center" v-else-if="latestRelease === undefined">
-            <p class="text-h5 red--text text--darken-3">
-                Your device isn’t supported
-            </p>
-        </div>
-        <div v-else class="d-flex flex-wrap justify-space-around">
-	  <p class="mt-4 text-h6 font-weight-regular">
-            Download the latest {{ $root.$data.OS_NAME }}: <span class="font-weight-bold">{{ latestRelease.version }}</span></p>
-          <v-card
-                :key="latestRelease.url"
-                outlined
-                max-width="16rem"
-                class="ma-4 d-flex flex-column"
-                ripple
-                :color="downloading ? 'grey lighten-4' : null"
-                :disabled="downloading"
-                @click="download(latestRelease)">
-                <v-card-title>Start Download</v-card-title>
-            </v-card>
-        </div>
+  <v-container class="d-flex justify-space-between flex-column flex-grow-1">
+    <div class="d-flex">
+      <v-btn variant="plain" @click="go('download')" :color="substep == 'download' ? 'primary' : 'normal'" :disabled="running">Download</v-btn>
+      <v-icon icon="mdi-chevron-right"></v-icon>
+      <v-btn variant="plain" @click="go('shasum')" :color="substep === 'shasum' ? 'primary' : 'normal'" :disabled="running || downloadProgress !== 100">Check</v-btn>
+    </div>
 
-        <div>
-            <v-banner
-                single-line
-                outlined
-                rounded
-                v-if="downloadProgress >= 100"
-            >
-                <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
-                <div class="my-4">
-                  <span class="text-body-1 green--text text--darken-3">
-		    Downloaded {{ $root.$data.OS_NAME }}
-                    {{ latestRelease.codename }}-{{ latestRelease.version}}
-		  </span>
-                </div>
-            </v-banner>
-            <v-banner
-                icon="mdi-download"
-                rounded
-                class="mt-8 pt-1"
-                v-else-if="downloadProgress !== null"
-            >
-                <v-banner-text class="text-body-1">Downloading…</v-banner-text>
-            </v-banner>
-            <v-progress-linear
-                class="my-3"
-                buffer-value="0"
-                v-model="downloadProgress"
-                stream
-                v-if="downloadProgress !== null"
-            ></v-progress-linear>
-            <v-banner
-                single-line
-                outlined
-                rounded
-                class="mt-8"
-                v-else-if="error"
-            >
-                <v-icon slot="icon" color="red darken-3">mdi-close</v-icon>
-                <div class="my-4">
-                    <span class="text-body-1 red--text text--darken-3">{{
-                        error
-                    }}</span>
-                </div>
-            </v-banner>
+    <div v-if="error" class="d-flex flex-wrap justify-space-around">
+      <v-banner single-line outlined rounded class="mt-8">
+        <v-icon slot="icon" color="red darken-3">mdi-close</v-icon>
+        <div class="my-4">
+          <span class="text-body-1 red--text text--darken-3">{{ error }}</span>
         </div>
+      </v-banner>
+    </div>
 
-        <div class="d-flex justify-space-between flex-row-reverse">
-            <v-btn
-                color="primary"
-                @click="emit('nextStep')"
-                :disabled="$root.$data.zipBlob === null"
-                >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
-            >
-            <v-btn text @click="emit('prevStep')">Back</v-btn>
-        </div>
-    </v-container>
+    <div class="d-flex flex-wrap justify-space-around">
+      <p class="mt-4 text-h6 font-weight-regular">
+        {{ $root.$data.OS_NAME }}: <span class="font-weight-bold">{{ release.version }}</span>
+        <v-btn variant="tonal" @click="go('download')" :disabled="running" class="ml-4">
+          Start
+        </v-btn>
+      </p>
+    </div>
+
+    <div class="d-flex flex-wrap justify-space-around">
+      <div v-if="substep === 'download'">
+        <v-banner v-if="running" icon="mdi-download" rounded class="mt-8 pt-1">
+          <v-banner-text class="text-body-1">Downloading…</v-banner-text>
+        </v-banner>
+
+        <v-progress-linear v-if="downloadProgress !== null" class="my-3" stream :model-value="downloadProgress" buffer-value="0">
+        </v-progress-linear>
+
+        <v-banner v-if="!error && downloadProgress === 100" single-line outlined rounded>
+          <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
+          <span class="text-body-1 green--text text--darken-3">
+            Downloaded {{ $root.$data.OS_NAME }}
+	  </span>
+        </v-banner>
+      </div>
+
+      <div v-else-if="substep === 'shasum'">
+        <v-banner v-if="running" icon="mdi-microscope" rounded  class="mt-8 pt-1" >
+          <v-banner-text class="text-body-1">Checking…</v-banner-text>
+          <v-progress-circular v-if="running" :size="20" :width="7" indeterminate>
+          </v-progress-circular>
+        </v-banner>
+
+        <v-banner v-if="!error && shasumProgress === 100" single-line outlined rounded>
+          <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
+          <span class="text-body-1 green--text text--darken-3">
+            Match {{ $root.$data.OS_NAME }} {{ releaseName() }}
+	  </span>
+        </v-banner>
+      </div>
+
+      <div v-else-if="substep === 'minisign'">
+      </div>
+    </div>
+
+    <div class="d-flex justify-space-between flex-row-reverse mt-4">
+      <v-btn color="primary" @click="emit('nextStep')" :disabled="running || Boolean(error) || shasumProgress !== 100">
+        Next<v-icon dark right>mdi-arrow-right</v-icon>
+      </v-btn>
+      <v-btn text @click="emit('prevStep')">Back</v-btn>
+    </div>
+
+  </v-container>
 </template>
 
 <style>
 .theme--light.v-sheet--outlined {
-    border-width: 2px;
+  border-width: 2px;
 }
 
 .theme--light.v-sheet--outlined.v-card--selected {
-    border: 2px solid rgba(0, 0, 0, 0.77) !important;
+  border: 2px solid rgba(0, 0, 0, 0.77) !important;
 }
 </style>
 
 <script>
+import OpfsBlobStore from 'opfs_blob_store'
+
 export default {
-    name: "DownloadStep",
+  name: "DownloadStep",
 
-    props: ["device", "blobStore", "active"],
+  props: ["device", "active", "release"],
 
-    data: () => ({
-        latestRelease: null,
-        downloadProgress: null,
-        downloadingRelease: null,
-        downloading: false,
-        error: null,
-    }),
+  data: () => ({
+    running: false,
+    substep: 'download',
+    downloadProgress: null,
+    shasumProgress: null,
+    error: null
+  }),
 
-    methods: {
-        async errorRetry() {
-            await this.download(this.$root.$data.release);
-        },
+  methods: {
+    releaseName() {
+      return `${this.release.codename}-${this.release.variant}-${this.release.version}\n${this.release.sha256}`
+    },
 
-        async download(release) {
-            this.$root.$data.release = release;
-            this.downloadProgress = 0;
-            this.downloading = true;
-            this.downloadingRelease = release;
+    async go(substep) {
+      switch (substep) {
+      case 'download':
+        const bs = await OpfsBlobStore.create()
+        let inStorage = await bs.has(this.release.sha256)
 
-            try {
-                this.saEvent(
-                    `download_build__${this.$root.$data.product}_${release.version}_${release.variant}_${release.sha256}`
-                );
-                await this.blobStore.init();
-
-		let blob = await this.blobStore.download(
-		    release.url,
-                    (progress) => {
-                        this.downloadProgress = progress * 100;
-                    }
-                );
-
-                this.downloadProgress = 100;
-                this.$root.$data.zipBlob = blob;
-                this.error = null;
-		this.emit("nextStep");
-            } catch (e) {
-                this.downloadProgress = null;
-
-                let [handled, message] = this.emitError(e);
-                this.error = message;
-                if (!handled) {
-                    throw e;
-                }
-
-	    } finally {
-                this.downloading = false;
+        // if already downloaded his session, ask to re-download
+        if (this.downloadProgress === 100) {
+          if (confirm("Download again?")) {
+            if (inStorage) {
+              await bs.delete(this.release.sha256)
+              inStorage = false
             }
-        },
+          } else {
+            if (this.shasumProgress === 100) {
+              return Promise.resolve(true)
+            }
+          }
+        }
+        // file exists, move to verify
+        if (inStorage) {
+          this.downloadProgress = 100
+          await this.go('shasum')
+        } else {
+          this.substep = 'download'
+          await this.download()
+          await (new Promise(resolve => setTimeout(resolve, 1000))) // dramatic pause
+          await this.go('shasum')
+        }
+        break;
+      case 'shasum':
+        this.substep = 'shasum'
+        await this.shasum()
+        break;
+      case 'minisign':
+        break;
+      default:
+        throw new Error(`unknown substep: ${substep}`)
+      }
     },
 
-    inject: ['emit', 'emitError', 'saEvent'],
-
-    watch: {
-        active: {
-            async handler(newState) {
-                if (newState) {
-                    this.saEvent("step_download");
-                    this.latestRelease = this.$root.$data.releaseIndex[this.$root.$data.product];
-                }
-            },
-            immediate: true
-        },
+    async download() {
+      try {
+        this.saEvent(`download_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`)
+        this.running = true
+        this.downloadProgress = 0
+        const bs = await OpfsBlobStore.create()
+        await bs.fetch(this.release.sha256, this.release.url, (i) => this.downloadProgress = (i * 100))
+        this.error = null
+      }
+      catch (e) {
+        this.downloadProgress = null
+        let [handled, message] = this.emitError(e)
+        this.error = message
+        if (!handled) {
+          throw e
+        }
+      } finally {
+        this.running = false
+      }
     },
-};
+
+    async shasum() {
+      try {
+        this.saEvent(`verify_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`)
+        this.running = true
+        this.shasumProgress = 0
+        const bs = await OpfsBlobStore.create()
+        await bs.verify(this.release.sha256, (i)=> this.shasumProgress = (i * 100))
+      } catch (e) {
+        let [handled, message] = this.emitError(e)
+        this.error = message
+        if (!handled) {
+          throw e
+        }
+      } finally {
+        this.running = false
+      }
+    },
+
+    async minisign() {
+      throw new Error("Not Yet Implemented")
+    }
+  },
+
+  inject: ['emit', 'emitError', 'saEvent'],
+
+  // async mounted() {
+  //   // const bs = await OpfsBlobStore.create()
+  //   // if (await bs.has(this.release.sha256)) {
+  //   //   await this.go('shasum')
+  //   // } else {
+  //   //   await this.go('download')
+  //   //   await this.go('shasum')
+  //   // }
+  // }
+
+}
 </script>
