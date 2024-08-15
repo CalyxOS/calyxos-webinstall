@@ -138,7 +138,7 @@ import { FastbootError } from "android-fastboot";
 export default {
     name: "UnlockStep",
 
-    props: ["device", "blobStore", "curStep", "stepNum"],
+    props: ["device", "curStep", "stepNum"],
 
     data: () => ({
         unlocking: false,

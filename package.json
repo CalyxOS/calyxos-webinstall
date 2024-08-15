@@ -16,6 +16,7 @@
         "@mdi/font": "^7.4.47",
         "@vitejs/plugin-vue": "^5.0.4",
         "android-fastboot": "git+https://review.calyxos.org/CalyxOS/fastboot.js",
+        "opfs_blob_store": "gitlab:aepyornis/opfs_blob_store",
         "url": "^0.11.3",
         "vite": "^5.0.10",
         "vue": "^3.3.13",
