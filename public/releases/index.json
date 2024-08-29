@@ -117,7 +117,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/barbet-factory-24509000.zip",
     "sha256": "d6b6fec27245cafda4b6f0fd23d711485c1befa5e515b635e0f087240373ed27",
-    "web_install": false
+    "web_install": true
   },
   "bramble": {
     "name": "Pixel 4a (5G)",
@@ -127,7 +127,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/bramble-factory-24509000.zip",
     "sha256": "a8a6eef92363f4109087a94f92a3d626f778d2ba8501b6b36834d07c1083fc5e",
-    "web_install": false
+    "web_install": true
   },
   "redfin": {
     "name": "Pixel 5",
@@ -137,7 +137,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/redfin-factory-24509000.zip",
     "sha256": "3e54b0aea5f539db896b120373bc5082aabb789e5d41cf88b6b8ffc0a5640c26",
-    "web_install": false
+    "web_install": true
   },
   "sunfish": {
     "name": "Pixel 4a",
@@ -147,7 +147,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/sunfish-factory-24509000.zip",
     "sha256": "7ba5183ff428ca9c28bc83a448183cc45e981d88ac145b4749c761e055c8b2a0",
-    "web_install": false
+    "web_install": true
   },
   "coral": {
     "name": "Pixel 4 XL",
@@ -157,7 +157,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/coral-factory-24509000.zip",
     "sha256": "b6d4c60b51a3c4d4cc59335a145145a8683b28c92c6eec33e2c7591ef94687da",
-    "web_install": false
+    "web_install": true
   },
   "flame": {
     "name": "Pixel 4",
@@ -167,7 +167,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/flame-factory-24509000.zip",
     "sha256": "2ece5a1127d1924d3eb3670c5aded5b63bb24cae8ee7759a655c031b4df307a8",
-    "web_install": false
+    "web_install": true
   },
   "bonito": {
     "name": "Pixel 3a XL",
@@ -177,7 +177,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/bonito-factory-24509000.zip",
     "sha256": "4a89db3cfaf5cf2fbdbdb5877a1f6aaea95a37fafc86e0af7cba3fa14cd9dde2",
-    "web_install": false
+    "web_install": true
   },
   "sargo": {
     "name": "Pixel 3a",
@@ -187,7 +187,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/sargo-factory-24509000.zip",
     "sha256": "9a4b969135bec179c69748e76e337ca1c89e2ea6a6ebeb287293e4c44c9cc021",
-    "web_install": false
+    "web_install": true
   },
   "crosshatch": {
     "name": "Pixel 3 XL",
@@ -197,7 +197,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/crosshatch-factory-24509000.zip",
     "sha256": "9ebc76c4746e6531e8f24d94dc3300b9e57fbc02c1c9c485e911415d07f5d8fa",
-    "web_install": false
+    "web_install": true
   },
   "blueline": {
     "name": "Pixel 3",
@@ -207,7 +207,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/blueline-factory-24509000.zip",
     "sha256": "fff02cb7b45dd41d53bf7a1ecf0c657d34a9310645e3f58a44979f1a53e2b43c",
-    "web_install": false
+    "web_install": true
   },
   "FP4": {
     "name": "Fairphone 4",
@@ -217,7 +217,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/FP4-factory-24509002.zip",
     "sha256": "9eeec693f32e0c4aa204bcd3e9243d78573bdd359a8a1d5382626e47b2b0ac91",
-    "web_install": false
+    "web_install": true
   },
   "FP5": {
     "name": "Fairphone 5",
@@ -227,7 +227,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/FP5-factory-24509002.zip",
     "sha256": "2d35dda22acf7cdfb71b73672a51a48d16f6265eca3091fdd0b27e5182a69232",
-    "web_install": false
+    "web_install": true
   },
   "axolotl": {
     "name": "SHIFT6mq",
@@ -237,7 +237,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/axolotl-factory-24509000.zip",
     "sha256": "1220a6845fda580622c20f0f3fcc4051db64008769c1d067653a531ec0a972bb",
-    "web_install": false
+    "web_install": true
   },
   "devon": {
     "name": "Moto G32",
@@ -247,7 +247,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/devon-factory-24509002.zip",
     "sha256": "8d229a39386e34572125a2d0ce30f80d0bbd47109256800b1f9dea3e3b39948c",
-    "web_install": false
+    "web_install": true
   },
   "hawao": {
     "name": "Moto G42",
@@ -257,7 +257,7 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/hawao-factory-24509000.zip",
     "sha256": "ac5517f22802d574bb43a41ed53f2f8130ac76a3ef585375714c11e32189d4ec",
-    "web_install": false
+    "web_install": true
   },
   "rhode": {
     "name": "Moto G52",
@@ -267,6 +267,6 @@
     "variant": "factory",
     "url": "https://release.calyxinstitute.org/rhode-factory-24509002.zip",
     "sha256": "e0ae283961c3271b89721960fa8de7a3eb40b1909ba6845cbbed2ffc5d0a48dc",
-    "web_install": false
+    "web_install": true
   }
 }
