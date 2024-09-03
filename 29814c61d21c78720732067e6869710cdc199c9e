@@ -16,6 +16,24 @@
       "message": "Gave it a quick try, shasum verification failed\n\n```\nopfs_blob_store.js?v\u003daea258a0:622 Uncaught (in promise) Error: shasum verification failed\n    at opfs_blob_store.js?v\u003daea258a0:622:15\n    at async Proxy.download (DownloadStep.vue:138:21)\n(anonymous) @ opfs_blob_store.js?v\u003daea258a0:622\nPromise.catch\ncallWithAsyncErrorHandling @ chunk-2LTNOSJU.js?v\u003d62d9df76:1672\ninvoker @ chunk-2LTNOSJU.js?v\u003d62d9df76:10305\nShow 3 more frames\nShow lessUnderstand this error\ncommon.js:14 Event: download_build__sargo_5.9.0_factory_9a4b969135bec179c69748e76e337ca1c89e2ea6a6ebeb287293e4c44c9cc021\ncommon.js:14 Event: opfs_verifying_9a4b969135bec179c69748e76e337ca1c89e2ea6a6ebeb287293e4c44c9cc021\n```\n\nI\u0027ll dig more / try again later.",
       "revId": "29814c61d21c78720732067e6869710cdc199c9e",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3879b8b0_d9cf8cef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-09-03T14:53:07Z",
+      "side": 1,
+      "message": "I\u0027ll see if I can also get some better error messages there too.",
+      "parentUuid": "84c17719_b82a86de",
+      "revId": "29814c61d21c78720732067e6869710cdc199c9e",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
