@@ -27,6 +27,11 @@ function generateReleases (doc) {
 
 function main () {
   https.get(releases_src_url,(res) => {
+    if (res.statusCode !== 200) {
+      res.resume() // Consume response data to free up memory
+      throw new Error(`Request Failed. Status Code: ${res.statusCode}`)
+    }
+
     let body = ""
     res.on("data", (chunk) => {
       body += chunk
