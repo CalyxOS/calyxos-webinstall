@@ -6,7 +6,10 @@ import { fileURLToPath } from 'url'
 
 const base_path = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const releases_dest_path = path.resolve(base_path, 'public', 'releases', 'index.json')
-const releases_src_url = 'https://calyxos.org/data/downloads.yml'
+
+// use gitlab because calyxos.org/data/downloads.yml returns a 404
+const releases_src_url = 'https://gitlab.com/CalyxOS/calyxos.org/-/raw/main/pages/_data/downloads.yml'
+// const releases_src_url = 'https://calyxos.org/data/downloads.yml'
 
 // { codename: { name: string, codename, version, variant, url, web_install }
 function generateReleases (doc) {
