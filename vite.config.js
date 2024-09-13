@@ -7,6 +7,7 @@ export default defineConfig({
     resolve: {
         alias: {
             "@": path.resolve(__dirname, "./src"),
+            "fastboot": path.resolve(__dirname, "./lib/fastboot")
         },
     },
     base: process.env.BASE_URL ? process.env.BASE_URL : '/'
