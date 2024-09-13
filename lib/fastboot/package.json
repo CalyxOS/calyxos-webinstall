@@ -1,0 +1,11 @@
+{
+    "name": "android-fastboot",
+    "version": "1.2.0",
+    "description": "JavaScript implementation of fastboot, using WebUSB",
+    "main": "fastboot.js",
+    "author": "Danny Lin <danny@kdrag0n.dev>, CalyxOS",
+    "license": "MIT",
+    "dependencies": {
+        "@zip.js/zip.js": "2.2.27"
+    }
+}
