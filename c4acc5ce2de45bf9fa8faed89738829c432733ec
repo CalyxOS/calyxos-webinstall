@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "919e7ab3_06227adc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-09-13T21:39:34Z",
+      "side": 1,
+      "message": "and we really only need src/* and licences, docs. we can directly import the ts without using the dist/",
+      "revId": "c4acc5ce2de45bf9fa8faed89738829c432733ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
