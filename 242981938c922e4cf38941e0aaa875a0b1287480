@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b51e58_9ada96ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-09-13T23:32:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure why our `package.json` looks so different.\n\nI ran `npm install ./lib/fastboot`",
+      "revId": "242981938c922e4cf38941e0aaa875a0b1287480",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
