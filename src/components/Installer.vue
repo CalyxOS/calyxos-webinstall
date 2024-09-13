@@ -361,7 +361,7 @@
 <script>
 import { logEvent } from "@/core/common";
 import * as errors from "@/core/errors";
-import * as fastboot from "android-fastboot";
+import * as fastboot from "fastboot";
 import { BlobStore } from "@/core/download";
 import ConnectBanner from "@/components/ConnectBanner.vue";
 import PrepareStep from "@/components/PrepareStep.vue";

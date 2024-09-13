@@ -108,7 +108,7 @@
 </style>
 
 <script>
-import * as fastboot from "android-fastboot";
+import * as fastboot from "fastboot";
 
 const INSTALL_STATUS_ICONS = {
     load: "mdi-archive-arrow-down-outline",
