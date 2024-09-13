@@ -16,6 +16,24 @@
       "message": "and we really only need src/* and licences, docs. we can directly import the ts without using the dist/",
       "revId": "c4acc5ce2de45bf9fa8faed89738829c432733ec",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "055951ed_e8e1c6d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-09-13T21:44:40Z",
+      "side": 1,
+      "message": "Gotcha. Do you have a preference between `fastboot.js/*` or `lib/fastboot/*` ?",
+      "parentUuid": "919e7ab3_06227adc",
+      "revId": "c4acc5ce2de45bf9fa8faed89738829c432733ec",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
