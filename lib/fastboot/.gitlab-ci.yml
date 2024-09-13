@@ -1,0 +1,4 @@
+update_webinstaller:
+  trigger: CalyxOS/calyxos-webinstall
+  only:
+  - main
