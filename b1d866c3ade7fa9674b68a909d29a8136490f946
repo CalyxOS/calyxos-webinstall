@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d8c859_95172e12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-09-13T23:33:27Z",
+      "side": 1,
+      "message": "Since it\u0027s a merge and pushed using a special script, we can\u0027t merge it via gerrit, but I can push it when we\u0027re ready.",
+      "revId": "b1d866c3ade7fa9674b68a909d29a8136490f946",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
