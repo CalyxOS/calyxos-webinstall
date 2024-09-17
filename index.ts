@@ -20,28 +20,29 @@ export default class OpfsBlobStore {
     return Array.fromAsync(this.rootDirectoryHandle.keys()) // chrome 121+
   }
 
-  async verify(key: string) {
-    return this.get(key)
-      .then(file => file.stream())
-      .then(stream => stream.getReader())
-      .then(async reader => {
-        let shaObj = new jsSHA("SHA-256", "UINT8ARRAY")
-        while (true) {
-          const { done, value } = await reader.read()
-          if (done) {
-            return shaObj
-          } else {
-            shaObj.update(value)
-          }
-        }
-      })
-      .then(shaObj => {
-        if (shaObj.getHash("HEX") !== key) {
-          throw new Error("shasum verification failed")
-        } else {
-          return Promise.resolve(true)
-        }
-      })
+
+  async verify(key: string, onProgress: (i: number) => void | undefined) {
+    const file = await this.get(key)
+    const fileSize = file.size
+    let shaObj = new jsSHA("SHA-256", "UINT8ARRAY")
+    let bytesRead = 0
+
+    for await (const chunk of file.stream()) {
+      shaObj.update(chunk)
+      bytesRead += chunk.length
+
+      if (onProgress) {
+        onProgress(bytesRead / fileSize)
+      }
+    }
+
+    const hash = shaObj.getHash("HEX")
+
+    if (hash !== key) {
+      throw new Error(`shasum verification failed\nexpected: ${key}\ngot: ${hash}`)
+    } else {
+      return Promise.resolve(true)
+    }
   }
 
   async has(key: string) {
@@ -82,7 +83,6 @@ export default class OpfsBlobStore {
     let contentLength: number
     let fileHandle = await this.rootDirectoryHandle.getFileHandle(key, { create: true })
     let fileStream = await fileHandle.createWritable() // FileSystemWritableFileStream
-    let shaObj = new jsSHA("SHA-256", "UINT8ARRAY")
 
     return fetch(url)
       .then(response => {
@@ -108,7 +108,6 @@ export default class OpfsBlobStore {
                 break
               }
 
-              shaObj.update(value)
               controller.enqueue(value)
               bytesReceived += value.length
 
@@ -122,14 +121,6 @@ export default class OpfsBlobStore {
         })
       })
       .then(stream => stream.pipeTo(fileStream))
-      .then(async () => {
-        if (shaObj.getHash("HEX") !== key) {
-          await this.delete(key)
-          throw new Error("shasum verification failed")
-        } else {
-          return Promise.resolve(true)
-        }
-      })
       .finally(() => {
         this.downloading = false
       })
