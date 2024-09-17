@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cecc95b_f922a80e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-09-17T16:48:58Z",
+      "side": 1,
+      "message": "any reason to wait for the calyxos.org url to be resolved?",
+      "revId": "4d73e502aa03254601037d29ac60074b5cd1e6d1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
