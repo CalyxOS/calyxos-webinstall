@@ -85,8 +85,7 @@
                     <p>
                         You need to select a device to continue installing.
                     </p>
-                    <p>
-                        Device not showing up? Try following these steps:
+                    <p>Device not showing up? Try following these steps:</p>
                         <ul class="ml-4 mb-4">
                             <li>Put your device into bootloader mode</li>
                             <li>Use a different cable</li>
@@ -94,10 +93,11 @@
                             <li>Don’t use USB hubs</li>
                             <li>Make sure the cable isn’t loose</li>
                         </ul>
-                    </p>
+
                     <p v-if="userAgent.includes('Windows')">
-                        If it’s still not working, you need to install Windows drivers:
-                        <ol class="ml-4 mb-4">
+                      If it’s still not working, you need to install Windows drivers:
+                      </p>
+                        <ol class="ml-4 mb-4" v-if="userAgent.includes('Windows')">
                             <li>Plug your device into your computer while it’s in bootloader mode</li>
                             <li>Open Settings → Windows Update</li>
                             <li>Click “Check for updates” and wait</li>
@@ -106,7 +106,7 @@
                             <li>Click “Download and install” and wait</li>
                             <li>Unplug your device and plug it back in</li>
                         </ol>
-                    </p>
+
                 </v-card-text>
 
                 <v-card-actions>
@@ -201,8 +201,7 @@
                         Your device disconnected, so we can’t
                         continue installing.
                     </p>
-                    <p>
-                        To fix this:
+                    <p>To fix this:</p>
                         <ul class="ml-4 mb-4">
                             <li>Don’t touch the device</li>
                             <li>Use a different cable</li>
@@ -210,7 +209,7 @@
                             <li>Don’t use USB hubs</li>
                             <li>Make sure the cable isn’t loose</li>
                         </ul>
-                    </p>
+
                     <connect-banner
                         :device="device"
                         :connecting="disconnectReconnecting"
