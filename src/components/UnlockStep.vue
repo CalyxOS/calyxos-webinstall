@@ -136,121 +136,81 @@
 import { FastbootError } from "android-fastboot";
 
 export default {
-    name: "UnlockStep",
+  name: "UnlockStep",
 
-    props: ["device", "curStep", "stepNum"],
+  props: ["device", "curStep", "stepNum"],
 
-    data: () => ({
-        unlocking: false,
-        unlocked: undefined,
-        initialUnlocked: undefined,
-        firstUnlock: true,
-        error: null,
-        oemUnlockDialog: false,
-    }),
+  data: () => ({
+    unlocking: false,
+    unlocked: undefined,
+    initialUnlocked: undefined,
+    firstUnlock: true,
+    error: null,
+    oemUnlockDialog: false,
+  }),
 
-    inject: ['emit', 'emitError', 'saEvent'],
+  inject: ['emit', 'emitError', 'saEvent'],
 
-    methods: {
-        async retryOemUnlock() {
-            this.oemUnlockDialog = false;
-            await this.unlock();
-        },
-
-        async errorRetry() {
-            await this.unlock();
-        },
-
-        async unlock() {
-            this.unlocking = true;
-
-            try {
-                if (!this.device.isConnected) {
-                    await this.device.connect();
-                }
-
-                // Unlocking can't be done in fastbootd
-                if ((await this.device.getVariable("is-userspace")) === "yes") {
-                    await this.device.reboot("bootloader", true, () => {
-                        this.emit("requestDeviceReconnect");
-                    });
-                }
-
-                await this.device.runCommand("flashing unlock");
-            } catch (e) {
-                this.unlocking = false;
-
-                if (e instanceof FastbootError && e.status === "FAIL") {
-                    if (e.message.includes("already")) {
-                        /* Already unlocked = success */
-                        return;
-                    } else if (e.message.includes("canceled")) {
-                        this.error = "Unlock request was canceled";
-                        return;
-                    } else if (e.message.includes("not allowed")) {
-                        this.error = "OEM unlocking is not enabled";
-                        this.oemUnlockDialog = true;
-                        return;
-                    }
-                }
-
-                let [handled, message] = this.emitError(e);
-                this.error = message;
-                if (!handled) {
-                    throw e;
-                }
-            }
-
-            this.unlocked = true;
-            this.error = null;
-
-            if (this.firstUnlock) {
-                this.firstUnlock = false;
-                this.emit("nextStep");
-            }
-
-            this.unlocking = false;
-            this.saEvent(`unlock_bootloader__${this.$root.$data.product}`);
-        },
+  methods: {
+    async retryOemUnlock() {
+      this.oemUnlockDialog = false
+      return this.unlock()
     },
 
-    watch: {
-        curStep: {
-            async handler(newStep, oldStep) {
-                if (newStep == this.stepNum) {
-                    this.saEvent("step_unlock");
+    async unlock() {
+      this.saEvent(`unlock_bootloader__${this.$root.$data.product}`)
+      this.unlocking = true
 
-                    try {
-                        // Get unlock state once and save it. Not all bootloaders
-                        // update the unlocked value immediately after unlocking.
-                        if (this.unlocked === undefined) {
-                            this.unlocked =
-                                (await this.device.getVariable("unlocked")) ===
-                                "yes";
-                            this.initialUnlocked = this.unlocked;
-                        }
+      try {
+        if (!this.device.isConnected) {
+          await this.device.connect()
+          await (new Promise(resolve => setTimeout(resolve, 1000)))
+        }
 
-                        // Skip step only if unlock state was never changed
-                        if (this.unlocked && this.initialUnlocked) {
-                        if (newStep > oldStep || oldStep == null) {
-                                this.emit("nextStep");
-                            } else {
-                                this.emit("prevStep");
-                            }
-                        }
+        // Unlocking can't be done in fastbootd
+        if ((await this.device.getVariable("is-userspace")) === "yes") {
+          await this.device.reboot("bootloader", true, () => {
+            this.emit("requestDeviceReconnect");
+          });
+        }
 
-                        this.error = null;
-                    } catch (e) {
-                        let [handled, message] = this.emitError(e);
-                        this.error = message;
-                        if (!handled) {
-                            throw e;
-                        }
-                    }
-                }
-            },
-            immediate: true
-        },
-    },
-};
+        if ((await this.device.getVariable("unlocked")) === "no") {
+          await this.device.runCommand("flashing unlock")
+          await (new Promise(resolve => setTimeout(resolve, (15000))))
+          return this.unlock()
+        } else {
+          this.unlocked = true
+        }
+
+      } catch (e) {
+        if (e instanceof FastbootError && e.status === "FAIL") {
+          if (e.message.includes("already")) {
+            e.message = error
+            return;
+          } else if (e.message.includes("canceled")) {
+            this.error = "Unlock request was canceled";
+            return;
+          } else if (e.message.includes("not allowed")) {
+            this.error = "OEM unlocking is not enabled";
+            this.oemUnlockDialog = true;
+            return;
+          }
+        }
+
+        let [handled, message] = this.emitError(e);
+        this.error = message;
+        if (!handled) {
+          throw e;
+        }
+      } finally {
+        this.unlocking = false;
+      }
+
+    }
+  },
+  async mounted() {
+    return this.unlock()
+  }
+}
+
 </script>
