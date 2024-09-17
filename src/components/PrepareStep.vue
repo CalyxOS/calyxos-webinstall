@@ -11,7 +11,7 @@
                     page. Please follow the instruction carefully to
                     ensure successful installation.
                 </p>
-                <p>
+                <p class="mt-2">
                     ⚠️ <strong>In the next steps, your phone will get
                     wiped. Please make sure you back up your phone's
                     data securely before you proceed.</strong>

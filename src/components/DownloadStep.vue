@@ -81,6 +81,7 @@
 </style>
 
 <script>
+import { nextTick } from 'vue'
 import OpfsBlobStore from 'opfs_blob_store'
 
 export default {
@@ -135,9 +136,11 @@ export default {
       case 'shasum':
         this.substep = 'shasum'
         if (this.shasumProgress === 100) {
-
+          if (confirm("Check again?")) {
+            return this.shasum()
+          }
         } else {
-          await this.shasum()
+          return this.shasum()
         }
 
         break;
@@ -174,6 +177,7 @@ export default {
         this.saEvent(`verify_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`)
         this.running = true
         this.shasumProgress = 0
+        await nextTick()
         const bs = await OpfsBlobStore.create()
         await bs.verify(this.release.sha256, (i) => this.shasumProgress = (i * 100))
       } catch (e) {
@@ -195,15 +199,9 @@ export default {
 
   inject: ['emit', 'emitError', 'saEvent'],
 
-  // async mounted() {
-  //   // const bs = await OpfsBlobStore.create()
-  //   // if (await bs.has(this.release.sha256)) {
-  //   //   await this.go('shasum')
-  //   // } else {
-  //   //   await this.go('download')
-  //   //   await this.go('shasum')
-  //   // }
-  // }
+  async mounted() {
+    await this.go('download')
+  }
 
 }
 </script>
