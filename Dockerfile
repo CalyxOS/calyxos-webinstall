@@ -1,8 +1,9 @@
-FROM node:lts
+FROM node:lts AS builder
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
 COPY . .
-RUN mkdir -p dist
-EXPOSE 5173
-CMD ["npm", "run", "dev", "--", "--host"]
+RUN npm ci
+RUN npm run build
+
+FROM caddy:2-alpine
+COPY --from=builder /app/dist /site
+COPY ./Caddyfile /etc/caddy/Caddyfile
