@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "245cff76_e515b630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-09-24T22:44:13Z",
+      "side": 1,
+      "message": "@ziggy@calyxinstitute.org mind updating `update-releases.js` for this in a followup? Thanks!",
+      "revId": "a6247605cac55bcf5da32dbb184740d3b8422cf4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
