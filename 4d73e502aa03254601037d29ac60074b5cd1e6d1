@@ -16,6 +16,24 @@
       "message": "any reason to wait for the calyxos.org url to be resolved?",
       "revId": "4d73e502aa03254601037d29ac60074b5cd1e6d1",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc57745_68f1b16b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-09-24T19:47:42Z",
+      "side": 1,
+      "message": "No I think it\u0027s fine, we can always switch back.",
+      "parentUuid": "6cecc95b_f922a80e",
+      "revId": "4d73e502aa03254601037d29ac60074b5cd1e6d1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
