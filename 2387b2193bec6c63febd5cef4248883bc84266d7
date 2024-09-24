@@ -16,6 +16,24 @@
       "message": "I\u0027ll vendor this too",
       "revId": "2387b2193bec6c63febd5cef4248883bc84266d7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "108816aa_0c2cb94c",
+        "filename": "package.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-09-24T20:13:41Z",
+      "side": 1,
+      "message": "https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/31025 Import opfs_blob_store",
+      "parentUuid": "bf456139_b532f299",
+      "revId": "2387b2193bec6c63febd5cef4248883bc84266d7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
