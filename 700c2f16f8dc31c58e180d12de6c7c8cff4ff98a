@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1ae51d_5bf81af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-09-25T16:38:36Z",
+      "side": 1,
+      "message": "there could be gitlab settings that need changed too...",
+      "revId": "700c2f16f8dc31c58e180d12de6c7c8cff4ff98a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
