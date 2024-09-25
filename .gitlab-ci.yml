@@ -1,7 +1,10 @@
-image: node:lts
+stages:
+  - deploy
+  - registry
 
 pages:
   stage: deploy
+  image: node:lts
   before_script:
     - npm install
   script:
@@ -12,5 +15,22 @@ pages:
   publish: dist
   variables:
     BASE_URL: '/calyxos-webinstall'
+  only:
+    - main
+
+build:
+  image: docker:27
+  stage: registry
+  services:
+    - name: docker:27-dind
+      alias: docker
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
+    - docker tag $IMAGE_TAG $CI_REGISTRY_IMAGE:latest
+    - docker push $CI_REGISTRY_IMAGE:latest
   only:
     - main
