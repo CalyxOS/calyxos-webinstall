@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9384e468_a7074335",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-09-25T19:55:20Z",
+      "side": 1,
+      "message": "Whenever you\u0027re ready.",
+      "revId": "dc6f289769ea303435ad4de8521ecd4a03664e12",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
