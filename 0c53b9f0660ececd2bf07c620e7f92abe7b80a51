@@ -16,6 +16,24 @@
       "message": "This\u0027ll definitely need more work, now for an unsupported device: \"TypeError: Cannot read properties of undefined (reading \u0027web_install\u0027)\" with a blank page.\n\nHowever that\u0027s still better than an accidental install / brick, so I\u0027ll take it.\n\nUX and errors we can fix, bricked phones we cannot",
       "revId": "0c53b9f0660ececd2bf07c620e7f92abe7b80a51",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a766639a_7dde09a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-09-25T16:37:25Z",
+      "side": 1,
+      "message": "won\u0027t this message show up if web_install \u003d false https://gitlab.com/CalyxOS/calyxos-webinstall/-/blob/main/src/components/ConnectStep.vue?ref_type\u003dheads#L36-43 or am I missing something else here?",
+      "parentUuid": "b9a30f06_f657aab8",
+      "revId": "0c53b9f0660ececd2bf07c620e7f92abe7b80a51",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
