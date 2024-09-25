@@ -34,6 +34,24 @@
       "parentUuid": "b9a30f06_f657aab8",
       "revId": "0c53b9f0660ececd2bf07c620e7f92abe7b80a51",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4761ca9a_8f0bad58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-09-25T19:53:08Z",
+      "side": 1,
+      "message": "It will, but I remember I was able to bypass the first iteration of that, and I got paranoid.\n\nIn case there\u0027s ever an issue with the device-detection / error, right now since the images are all present, it may end up continuing and then leading to a brick / non-functional device.\n\nWith this change, worst case it does nothing.",
+      "parentUuid": "a766639a_7dde09a5",
+      "revId": "0c53b9f0660ececd2bf07c620e7f92abe7b80a51",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
