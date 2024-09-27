@@ -71,6 +71,12 @@ export default class OpfsBlobStore {
     }
   }
 
+  async clear() {
+    for (const key of (await this.keys())) {
+      await this.delete(key)
+    }
+  }
+
   // KEY is sha256sum of file located at URL
   // onProgress is called with ratio of data received
   async fetch(key: string, url: string, onProgress: (i: number) => void | undefined) {
@@ -86,9 +92,12 @@ export default class OpfsBlobStore {
 
     return fetch(url)
       .then(response => {
-        if (!response.headers.get("content-length")) {
+        if (response.status !== 200) {
+          throw new Error(`http error. status code: ${response.status}`)
+        } else if (!response.headers.get("content-length")) {
           throw new Error(`response for ${url} is missing content-length header`)
         }
+
         contentLength = Number(response.headers.get("content-length"))
         let contentType = response.headers.get("content-type")
         console.debug(`downloading ${url}. length: ${contentLength}. type: ${contentType}.`)
