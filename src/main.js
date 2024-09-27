@@ -10,6 +10,8 @@ import 'vuetify/styles'
 import "@fontsource/roboto"
 import "@mdi/font/css/materialdesignicons.css"
 
+import OpfsBlobStore from 'opfs_blob_store'
+
 const vuetify = createVuetify({
     components: {
       ...components,
@@ -22,4 +24,5 @@ const app = createApp(App).use(vuetify).mount('#app')
 
 if (process.env.NODE_ENV !== 'production' && typeof(window) !== 'undefined') {
   window.$app = app;
+  window.OpfsBlobStore = OpfsBlobStore
 }
