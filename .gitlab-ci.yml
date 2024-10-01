@@ -2,6 +2,7 @@ stages:
   - deploy
   - update-releases
   - registry
+  - test
 
 pages:
   stage: deploy
@@ -43,3 +44,13 @@ releases:
   artifacts:
     paths:
       - public/releases/index.json
+
+minisign_test:
+  stage: test
+  image: node:lts
+  when: manual
+  script:
+    - cd lib/minisign_verify
+    - npm install
+    - npm run build
+    - npm run test
