@@ -58,6 +58,10 @@
       </div>
 
       <div v-else-if="substep === 'minisign'">
+        <v-banner v-if="running" icon="mdi-file-check-outline" rounded  class="mt-8 pt-1" >
+          <v-banner-text class="text-body-1">Verifying signature</v-banner-text>
+        </v-banner>
+
       </div>
     </div>
 
@@ -82,156 +86,202 @@
 </style>
 
 <script>
-import { nextTick } from 'vue'
-import OpfsBlobStore from 'opfs_blob_store'
+ import { nextTick } from 'vue'
+ import OpfsBlobStore from 'opfs_blob_store'
+ import MinisignVerify, { InvalidSignatureError } from 'minisign_verify'
 
-export default {
-  name: "DownloadStep",
+ export default {
+   name: "DownloadStep",
 
-  props: ["device", "active", "release"],
+   props: ["device", "active", "release"],
 
-  data: () => ({
-    running: false,
-    substep: 'download',
-    downloadProgress: null,
-    shasumProgress: null,
-    error: null
-  }),
+   data: () => ({
+     running: false,
+     substep: 'download',
+     downloadProgress: null,
+     shasumProgress: null,
+     minisignProgress: null,
+     error: null
+   }),
 
-  methods: {
-    releaseName() {
-      return `${this.release.codename}-${this.release.variant}-${this.release.version}\n${this.release.sha256}`
-    },
+   methods: {
+     releaseName() {
+       return `${this.release.codename}-${this.release.variant}-${this.release.version}\n${this.release.sha256}`
+     },
 
-    async go(substep) {
-      try {
-        switch (substep) {
-          case 'download':
-            const bs = await OpfsBlobStore.create()
-            let inStorage = await bs.has(this.release.sha256)
+     async go(substep) {
+       try {
+         switch (substep) {
+           case 'download':
+             const bs = await OpfsBlobStore.create()
+             let inStorage = await bs.has(this.release.sha256)
 
-            // if already downloaded this session, ask to re-download
-            if (this.downloadProgress === 100) {
-              if (confirm("Download again?")) {
-                this.shasumProgress = null
-                if (inStorage) {
-                  await bs.delete(this.release.sha256)
-                  inStorage = false
-                }
-              } else {
-                if (this.shasumProgress === 100) {
-                  return Promise.resolve(true)
-                }
-              }
-            }
+             // if already downloaded this session, ask to re-download
+             if (this.downloadProgress === 100) {
+               if (confirm("Download again?")) {
+                 this.shasumProgress = null
+                 if (inStorage) {
+                   await bs.delete(this.release.sha256)
+                   inStorage = false
+                 }
+               } else {
+                 if (this.shasumProgress === 100) {
+                   return Promise.resolve(true)
+                 }
+               }
+             }
 
-            if (inStorage) { // file exists, move to verify
-              this.downloadProgress = 100
-              await this.go('shasum')
-            } else {
-              this.substep = 'download'
-              await this.download()
-              await this.go('shasum')
-            }
+             if (inStorage) { // file exists, move to verify
+               this.downloadProgress = 100
+               await this.go('shasum')
+             } else {
+               this.substep = 'download'
+               await this.download()
+               await this.go('shasum')
+             }
 
-            break;
-          case 'shasum':
-            this.substep = 'shasum'
-            if (this.shasumProgress === 100) {
-              if (confirm("Check again?")) {
-                return this.shasum()
-              }
-            } else {
-              await this.shasum()
-              return Promise.resolve(true)
-            }
-            break;
-          case 'minisign':
-            break;
-          default:
-            throw new Error(`unknown substep: ${substep}`)
-        }
+             break;
+           case 'shasum':
+             this.substep = 'shasum'
+             if (this.shasumProgress === 100) {
+               if (confirm("Check again?")) {
+                 return this.shasum()
+               }
+             } else {
+               await this.shasum()
+               return Promise.resolve(true)
+             }
+             break;
+           case 'minisign':
+             this.substep = 'minisign'
 
-      } catch (e) {
-        let [handled, message] = this.emitError(e)
-        this.error = message
-        if (!handled) {
-          throw e
-        }
-      }
+             try {
+               const bs = await OpfsBlobStore.create()
+               let file = await bs.get(this.release.sha256)
+               let bytes = await file.bytes()
+               if (await MinisignVerify.verify(this.release, bytes)) {
+                 this.
+               }
 
-    },
 
-    async download() {
-      this.saEvent(`download_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`)
 
-      return new Promise( (resolve, reject) => {
-        const worker = new Worker(new URL("../workers/fetch_worker.js", import.meta.url), { "type": "module" } )
+             }
 
-        worker.addEventListener("message", async event => {
-          switch (event.data.type) {
-            case "progress":
-              this.downloadProgress = (event.data.i * 100)
-              /// await nextTick()
-              break;
-            case "error":
-              this.running = false
-              reject(event.data.e)
-              break;
-            case "complete":
-              this.running = false
-              resolve(true)
-              break;
-            default:
-              throw new Error(`unknown type: ${e.data.type}`)
-          }
-        })
 
-        this.running = true
-        worker.postMessage({ "type": "start", "sha256": this.release.sha256, "url": this.release.url })
-      })
-    },
 
-    async shasum() {
-      this.saEvent(`verify_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`)
 
-      return new Promise( (resolve, reject) => {
-        const worker = new Worker(new URL("../workers/shasum_worker.js", import.meta.url), { "type": "module" } )
+             break;
+           default:
+             throw new Error(`unknown substep: ${substep}`)
+         }
 
-        worker.addEventListener("message", async event => {
-          switch (event.data.type) {
-            case "progress":
-              this.shasumProgress = (event.data.i * 100)
-              break;
-            case "error":
-              this.running = false
-              reject(event.data.e)
-              break;
-            case "complete":
-              this.running = false
-              resolve(true)
-              break;
-            default:
-              throw new Error(`unknown type: ${e.data.type}`)
-          }
-        })
+       } catch (e) {
+         let [handled, message] = this.emitError(e)
+         this.error = message
+         if (!handled) {
+           throw e
+         }
+       }
 
-        this.running = true
-        this.shasumProgress = 0
-        worker.postMessage({ "type": "start", "sha256": this.release.sha256 })
-      })
-    },
+     },
 
-    async minisign() {
-      throw new Error("Not Yet Implemented")
-    }
-  },
+     async download() {
+       this.saEvent(`download_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`)
 
-  inject: ['emit', 'emitError', 'saEvent'],
+       return new Promise( (resolve, reject) => {
+         const worker = new Worker(new URL("../workers/fetch_worker.js", import.meta.url), { "type": "module" } )
 
-  async mounted() {
-    await this.go('download')
-  }
+         worker.addEventListener("message", async event => {
+           switch (event.data.type) {
+             case "progress":
+               this.downloadProgress = (event.data.i * 100)
+               /// await nextTick()
+               break;
+             case "error":
+               this.running = false
+               reject(event.data.e)
+               break;
+             case "complete":
+               this.running = false
+               resolve(true)
+               break;
+             default:
+               throw new Error(`unknown type: ${e.data.type}`)
+           }
+         })
 
-}
+         this.running = true
+         worker.postMessage({ "type": "start", "sha256": this.release.sha256, "url": this.release.url })
+       })
+     },
+
+     async shasum() {
+       this.saEvent(`shasum_verify_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`)
+
+       return new Promise( (resolve, reject) => {
+         const worker = new Worker(new URL("../workers/shasum_worker.js", import.meta.url), { "type": "module" } )
+
+         worker.addEventListener("message", async event => {
+           switch (event.data.type) {
+             case "progress":
+               this.shasumProgress = (event.data.i * 100)
+               break;
+             case "error":
+               this.running = false
+               reject(event.data.e)
+               break;
+             case "complete":
+               this.running = false
+               resolve(true)
+               break;
+             default:
+               throw new Error(`unknown type: ${e.data.type}`)
+           }
+         })
+
+         this.running = true
+         this.shasumProgress = 0
+         worker.postMessage({ "type": "start", "sha256": this.release.sha256 })
+       })
+     },
+
+     async minisign() {
+       this.saEvent(`minisign_verify_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`)
+
+
+       return new Promise( (resolve, reject) => {
+         const worker = new Worker(new URL("../workers/minisign_worker.js", import.meta.url), { "type": "module" } )
+
+         worker.addEventListener("message", async event => {
+           switch (event.data.type) {
+             case "progress":
+               this.minisignProgress = (event.data.i * 100)
+               break;
+             case "error":
+               this.running = false
+               reject(event.data.e)
+               break;
+             case "complete":
+               this.running = false
+               resolve(true)
+               break;
+             default:
+               throw new Error(`unknown type: ${e.data.type}`)
+           }
+         })
+
+         this.running = true
+         this.minisignProgress = 0
+         worker.postMessage({ "type": "start", "release": this.release })
+       })
+     }
+   },
+
+   inject: ['emit', 'emitError', 'saEvent'],
+
+   async mounted() {
+     await this.go('download')
+   }
+
+ }
 </script>
