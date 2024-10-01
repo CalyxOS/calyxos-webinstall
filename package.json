@@ -16,6 +16,7 @@
         "@mdi/font": "^7.4.47",
         "@vitejs/plugin-vue": "^5.1.3",
         "android-fastboot": "file:lib/fastboot",
+        "minisign_verify": "file:lib/minisign_verify",
         "opfs_blob_store": "file:lib/opfs_blob_store",
         "url": "^0.11.4",
         "vite": "^5.4.6",
