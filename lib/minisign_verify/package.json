@@ -1,0 +1,22 @@
+{
+  "name": "minisign_verify",
+  "version": "0.0.1",
+  "description": "Verify minisign signatures",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild index.ts --bundle --platform=neutral --target=node20 --outfile=minisign_verify.mjs",
+    "test": "node test.js"
+  },
+  "author": "CalyxOS",
+  "license": "MIT",
+  "dependencies": {
+    "@noble/ed25519": "^2.1.0",
+    "blakejs": "^1.2.1",
+    "fast-deep-equal": "^3.1.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "node-fetch": "^3.3.2"
+  }
+}
