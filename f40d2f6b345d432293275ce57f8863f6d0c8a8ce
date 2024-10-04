@@ -51,6 +51,24 @@
       "message": "Still keeps failing for bluejay here\n\n```\nshasum verification failed expected: 8f3251a10be43369d9b5f4e294ad8b087206c9a00c30d026e8e21cbae586d7fe got: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n```\n\nHow can I debug this further?",
       "revId": "f40d2f6b345d432293275ce57f8863f6d0c8a8ce",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1cb146_a58ba250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-10-04T18:51:00Z",
+      "side": 1,
+      "message": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 is empty hash. it would be good to check if the stored file is empty or not. \n\nyou can also try `await (await navigator.storage.getDirectory()).remove({ recursive: true }) ` if you want to just clear all storage and try again without data.",
+      "parentUuid": "42c359f9_2c4337e8",
+      "revId": "f40d2f6b345d432293275ce57f8863f6d0c8a8ce",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
