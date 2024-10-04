@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78242dc8_170efa4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-04T14:16:21Z",
+      "side": 1,
+      "message": "I had to `npm install @rollup/rollup-darwin-amd64` to get this to run on my laptop. Linux desktop was fine as-is.\n\nThe output of that doesn\u0027t look quite right though since it ends up adding that as a dep - what would be the right way to add it here?",
+      "revId": "f563ac7ef1a75b20b410c537604e1706c2c6c388",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
