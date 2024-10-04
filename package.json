@@ -19,6 +19,7 @@
         "opfs_blob_store": "file:lib/opfs_blob_store",
         "url": "^0.11.4",
         "vite": "^5.4.6",
+        "vite-plugin-version-mark": "^0.1.0",
         "vue": "^3.5.6",
         "vuetify": "^3.7.2"
     },

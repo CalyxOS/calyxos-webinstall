@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import { vitePluginVersionMark } from 'vite-plugin-version-mark'
 
 export default defineConfig({
-    plugins: [vue()],
+    plugins: [
+        vitePluginVersionMark({ ifShortSHA: true, ifMeta: true, ifLog: true, ifGlobal: true, }),
+        vue()
+    ],
     resolve: {
         alias: {
             "@": path.resolve(__dirname, "./src"),
