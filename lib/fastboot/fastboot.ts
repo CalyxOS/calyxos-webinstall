@@ -86,8 +86,8 @@ export class FastbootDevice {
      * Create a new fastboot device instance. This doesn't actually connect to
      * any USB devices; call {@link connect} to do so.
      */
-    constructor() {
-        this.device = null;
+    constructor(device: USBDevice = null) {
+        this.device = device;
         this.epIn = null;
         this.epOut = null;
 

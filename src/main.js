@@ -11,6 +11,7 @@ import "@fontsource/roboto"
 import "@mdi/font/css/materialdesignicons.css"
 
 import OpfsBlobStore from 'opfs_blob_store'
+import { FastbootDevice} from "android-fastboot"
 
 const vuetify = createVuetify({
     components: {
@@ -25,4 +26,5 @@ const app = createApp(App).use(vuetify).mount('#app')
 if (process.env.NODE_ENV !== 'production' && typeof(window) !== 'undefined') {
   window.$app = app;
   window.OpfsBlobStore = OpfsBlobStore
+  window.FastbootDevice = FastbootDevice
 }

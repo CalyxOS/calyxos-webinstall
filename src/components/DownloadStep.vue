@@ -144,7 +144,10 @@
 
              if (inStorage) { // file exists, move to verify
                this.downloadProgress = 100
-               await this.go('shasum')
+               //await this.go('shasum')
+               this.shasumProgress = 100
+               this.minisignProgress = 100
+
              } else {
                this.substep = 'download'
                await this.download()

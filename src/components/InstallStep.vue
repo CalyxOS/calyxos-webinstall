@@ -1,23 +1,17 @@
 <template>
     <v-container class="d-flex justify-space-between flex-column flex-grow-1">
-        <div class="mt-n4 flex-grow-1" v-if="!release">
-          <p class="mt-2"><strong>⚠️ Something went wrong</strong>Try starting over</p>
-        </div>
+        <div class="mt-n4 flex-grow-1" v-if="release !== null">
+            <h6 class="text-h4 pb-4">Install {{ $root.$data.OS_NAME }}</h6>
 
-        <div class="mt-n4 flex-grow-1" v-else>
-            <h6 class="text-h6 pb-4">Install {{ $root.$data.OS_NAME }}</h6>
-
-            <div class="text-body-1">
+            <div class="text-body-1 mb-2">
                 <p>
                   This will install {{ $root.$data.OS_NAME }} ({{ release.version }})
                   on your {{ (release.name ? release.name : $root.$data.product) }}.
                 </p>
-                <p v-if="$root.$data.installType === 'clean'" >
-                    Because you’re doing a clean install,
-                    <strong class="red--text text--darken-3"
-                        >all data on your device will be permanently
-                        lost.</strong
-                    >
+                <p class="mt-2">
+                  <strong class="text-red-darken-3">
+                    All data on your device will be permanently lost.
+                  </strong>
                 </p>
                 <p class="mt-2">
                     <strong>⚠️ Don’t touch, unplug, or press any
@@ -95,130 +89,122 @@
                 >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
             >
             <v-btn text @click="emit('prevStep')" :disabled="installing"
-                >Back</v-btn
-            >
+            >Back</v-btn
+                 >
         </div>
     </v-container>
 </template>
 
 <style>
-.v-progress-linear__determinate {
-    transition: none !important;
-}
+ .v-progress-linear__determinate {
+   transition: none !important;
+ }
 
-.v-banner--single-line .v-banner__text {
-    white-space: normal !important;
-}
+ .v-banner--single-line .v-banner__text {
+   white-space: normal !important;
+ }
 </style>
 
 <script>
-import * as fastboot from "android-fastboot";
-import OpfsBlobStore from 'opfs_blob_store'
+ const INSTALL_STATUS_ICONS = {
+   load: "mdi-archive-arrow-down-outline",
+   unpack: "mdi-archive-arrow-down-outline",
+   flash: "mdi-cellphone-arrow-down",
+   wipe: "mdi-cellphone-erase",
+   reboot: "mdi-restart",
+ };
 
-const INSTALL_STATUS_ICONS = {
-    load: "mdi-archive-arrow-down-outline",
-    unpack: "mdi-archive-arrow-down-outline",
-    flash: "mdi-cellphone-arrow-down",
-    wipe: "mdi-cellphone-erase",
-    reboot: "mdi-restart",
-};
+ const USER_ACTION_MAP = {
+   load: "Loading",
+   unpack: "Unpacking",
+   flash: "Writing",
+   wipe: "Wiping",
+   reboot: "Restarting",
+ }
 
-export default {
-    name: "InstallStep",
+ export default {
+   name: "InstallStep",
 
-    props: ["device", "active", "release"],
+   props: ["device", "active", "release"],
 
-    data: () => ({
-        installProgress: null,
-        installStatus: "",
-        installStatusIcon: null,
-        installed: false,
-        installing: false,
-        firstInstall: true,
-        error: null,
+   data: () => ({
+     installProgress: null,
+     installStatus: "",
+     installStatusIcon: null,
+     installed: false,
+     installing: false,
+     firstInstall: true,
+     error: null,
 
-        memoryDialog: false,
-    }),
+     memoryDialog: false,
+   }),
 
-    inject: ['emit', 'emitError', 'saEvent'],
+   inject: ['emit', 'emitError', 'saEvent'],
 
-    methods: {
-        reconnectCallback() {
-            this.emit("requestDeviceReconnect");
-        },
+   methods: {
+     async installWorker() {
+       return new Promise( (resolve, reject) => {
+         const worker = new Worker(new URL("../workers/install_worker.js", import.meta.url), { "type": "module" } )
+         worker.addEventListener("message", event => {
+           switch (event.data.type) {
+             case "progress":
+               const { action, item, progress  } = event.data
+               let userAction = USER_ACTION_MAP[action]
+               let userItem = item === "avb_custom_key" ? "verified boot key" : item
+               this.installStatus = `${userAction} ${userItem}`
+               this.installStatusIcon = INSTALL_STATUS_ICONS[action]
+               this.installProgress = progress * 100
+               break;
+             case "reconnect":
+               this.reconnectError = null
+               this.reconnectDialog = true
+               break;
+             case "error":
+               this.installing = false
+               this.error = event.data.e.message
+               reject(event.data.e)
+               break;
+             case "complete":
+               this.installing = false
+               this.installed = true
+               resolve(true)
+               break;
+             default:
+               throw new Error(`unknown type: ${e.data.type}`)
+           }
+         })
+         this.installing = true
+         worker.postMessage({ "type": "start", "sha256": this.release.sha256 })
+       })
+     },
 
-        async retryMemory() {
-            this.memoryDialog = false;
-            await this.install();
-        },
+     async install() {
+       this.saEvent(`install_build__${this.$root.$data.product}_${this.release.version}_${this.release.variant}`)
 
-        async errorRetry() {
-            await this.install();
-        },
+       this.error = null
+       this.installed = false
+       this.installing = true
 
-        async install() {
-            this.installed = false;
-            this.installing = true;
+       try {
+         while (!this.device.isConnected) {
+           await this.device.connect()
+           await (new Promise(resolve => setTimeout(resolve, 1000)))
+         }
 
-            try {
-                if (!this.device.isConnected) {
-                    await this.device.connect();
-                }
+         const numberOfDevices = (await navigator.usb.getDevices()).length
+         if (numberOfDevices !== 1) {
+           throw new Error('more than one usb device connected')
+         }
 
-                this.saEvent(
-                 `install_build__${this.$root.$data.product}_${this.release.version}_${this.release.variant}`
-                );
-
-                const bs = await OpfsBlobStore.create()
-                const blob = await bs.get(this.release.sha256)
-
-                await this.device.flashFactoryZip(
-                    blob,
-                    this.$root.$data.installType === "clean",
-                    this.reconnectCallback,
-                    (action, item, progress) => {
-                        let userAction = fastboot.USER_ACTION_MAP[action];
-                        let userItem =
-                            item === "avb_custom_key"
-                                ? "verified boot key"
-                                : item;
-                        this.installStatus = `${userAction} ${userItem}`;
-                        this.installStatusIcon = INSTALL_STATUS_ICONS[action];
-                        this.installProgress = progress * 100;
-                    }
-                );
-
-                this.installed = true;
-                this.error = null;
-
-                if (this.firstInstall) {
-                    this.firstInstall = false;
-                    this.emit("nextStep");
-                }
-            } catch (e) {
-                this.installed = false;
-                this.installProgress = null;
-
-                let [handled, message] = this.emitError(e);
-                this.error = message;
-                if (!handled) {
-                    throw e;
-                }
-            } finally {
-                this.installing = false;
-            }
-        },
-    },
-
-    watch: {
-        active: {
-            async handler(newState) {
-                if (newState) {
-                    this.saEvent("step_install");
-                }
-            },
-            immediate: true
-        },
-    },
-};
+         await this.installWorker()
+       }  catch(e) {
+         let [handled, message] = this.emitError(e)
+         this.error = message
+         if (!handled) {
+           throw e
+         }
+       }
+     }
+   }
+ }
 </script>
