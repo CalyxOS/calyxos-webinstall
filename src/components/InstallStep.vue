@@ -1,224 +1,204 @@
-<template>
-    <v-container class="d-flex justify-space-between flex-column flex-grow-1">
-        <div class="mt-n4 flex-grow-1" v-if="!release">
-          <p class="mt-2"><strong>⚠️ Something went wrong</strong>Try starting over</p>
+
+
+    <div class="mt-n4 flex-grow-1" v-else>
+      <h6 class="text-h6 pb-4">Install {{ $root.$data.OS_NAME }}</h6>
+
+      <div class="text-body-1">
+        <p>
+          This will install {{ $root.$data.OS_NAME }} ({{ release.version }})
+          on your {{ (release.name ? release.name : $root.$data.product) }}.
+        </p>
+        <p>
+          <strong class="red--text text--darken-3">
+            all data on your device will be permanently lost.
+          </strong>
+        </p>
+        <p class="mt-2">
+          <strong>⚠️ Don’t touch, unplug, or press any
+            buttons</strong> on your device during the
+            install. on your device during <em>this process</em>
+            or else it will disturb the install.
+          <em>Watch the progress bar on this page to check the
+            status. This may take 10-15 minutes.</em>
+        </p>
+        <p class="mt-2">
+          Your phone will restart several times, but
+          <strong>don’t touch it.</strong> Watch the progress bar
+          on this page instead.
+        </p>
+      </div>
+
+      <v-btn
+        :color="installed ? null : 'primary'"
+        :disabled="installProgress !== null"
+        @click="install"
+	class="mt-2">Install</v-btn>
+    </div>
+
+    <div class="pb-8">
+      <v-banner single-line outlined rounded v-if="installed">
+        <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
+        <div class="my-4">
+          <span class="text-body-1 green--text text--darken-3">
+            Installed {{ $root.$data.OS_NAME }} {{ release.version }} ({{ release.date }})
+          </span>
         </div>
-
-        <div class="mt-n4 flex-grow-1" v-else>
-            <h6 class="text-h6 pb-4">Install {{ $root.$data.OS_NAME }}</h6>
-
-            <div class="text-body-1">
-                <p>
-                  This will install {{ $root.$data.OS_NAME }} ({{ release.version }})
-                  on your {{ (release.name ? release.name : $root.$data.product) }}.
-                </p>
-                <p v-if="$root.$data.installType === 'clean'" >
-                    Because you’re doing a clean install,
-                    <strong class="red--text text--darken-3"
-                        >all data on your device will be permanently
-                        lost.</strong
-                    >
-                </p>
-                <p class="mt-2">
-                    <strong>⚠️ Don’t touch, unplug, or press any
-                    buttons</strong> on your device during the
-                    install. on your device during <em>this process</em>
-                    or else it will disturb the install.
-                    <em>Watch the progress bar on this page to check the
-                    status. This may take 10-15 minutes.</em>
-                </p>
-                <p class="mt-2">
-                    Your phone will restart several times, but
-                    <strong>don’t touch it.</strong> Watch the progress bar
-                    on this page instead.
-                </p>
-            </div>
-
-            <v-btn
-                :color="installed ? null : 'primary'"
-                :disabled="installProgress !== null"
-                @click="install"
-	        class="mt-2"
-                >Install</v-btn
-            >
+      </v-banner>
+      <v-banner
+        rounded
+        class="mt-8 pt-1"
+        v-else-if="installProgress !== null">
+        <v-icon slot="icon" color="primary">
+          {{installStatusIcon}}
+        </v-icon>
+        <v-banner-text class="text-body-1">
+          {{ installStatus }}
+        </v-banner-text>
+      </v-banner>
+      <v-progress-linear
+        class="my-3"
+        buffer-value="0"
+        v-model="installProgress"
+        stream
+        v-if="installProgress !== null"
+      ></v-progress-linear>
+      <v-banner
+        single-line
+        outlined
+        rounded
+        class="mt-8"
+        v-else-if="error"
+      >
+        <v-icon slot="icon" color="red darken-3">mdi-close</v-icon>
+        <div class="my-4">
+          <span class="text-body-1 red--text text--darken-3">{{
+                                                             error
+                                                             }}</span>
         </div>
+      </v-banner>
+    </div>
 
-        <div class="pb-8">
-            <v-banner single-line outlined rounded v-if="installed">
-                <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
-                <div class="my-4">
-                  <span class="text-body-1 green--text text--darken-3">
-                    Installed {{ $root.$data.OS_NAME }} {{ release.version }} ({{ release.date }})
-                  </span>
-                </div>
-            </v-banner>
-            <v-banner
-                rounded
-                class="mt-8 pt-1"
-                v-else-if="installProgress !== null"
-            >
-                <v-icon slot="icon" color="primary">{{
-                    installStatusIcon
-                }}</v-icon>
-                <v-banner-text class="text-body-1">
-                    {{ installStatus }}
-                </v-banner-text>
-            </v-banner>
-            <v-progress-linear
-                class="my-3"
-                buffer-value="0"
-                v-model="installProgress"
-                stream
-                v-if="installProgress !== null"
-            ></v-progress-linear>
-            <v-banner
-                single-line
-                outlined
-                rounded
-                class="mt-8"
-                v-else-if="error"
-            >
-                <v-icon slot="icon" color="red darken-3">mdi-close</v-icon>
-                <div class="my-4">
-                    <span class="text-body-1 red--text text--darken-3">{{
-                        error
-                    }}</span>
-                </div>
-            </v-banner>
-        </div>
-
-        <div class="d-flex justify-space-between flex-row-reverse">
-            <v-btn
-                color="primary"
-                @click="emit('nextStep')"
-                :disabled="installing || !installed"
-                >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
-            >
-            <v-btn text @click="emit('prevStep')" :disabled="installing"
-                >Back</v-btn
-            >
-        </div>
-    </v-container>
+    <div class="d-flex justify-space-between flex-row-reverse">
+      <v-btn
+        color="primary"
+        @click="emit('nextStep')"
+        :disabled="installing || !installed"
+      >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
+                                                       >
+      <v-btn text @click="emit('prevStep')" :disabled="installing"
+      >Back</v-btn
+           >
+    </div>
+  </v-container>
 </template>
 
 <style>
-.v-progress-linear__determinate {
-    transition: none !important;
-}
+ .v-progress-linear__determinate {
+   transition: none !important;
+ }
 
-.v-banner--single-line .v-banner__text {
-    white-space: normal !important;
-}
+ .v-banner--single-line .v-banner__text {
+   white-space: normal !important;
+ }
 </style>
 
 <script>
-import * as fastboot from "android-fastboot";
-import OpfsBlobStore from 'opfs_blob_store'
+ const INSTALL_STATUS_ICONS = {
+   load: "mdi-archive-arrow-down-outline",
+   unpack: "mdi-archive-arrow-down-outline",
+   flash: "mdi-cellphone-arrow-down",
+   wipe: "mdi-cellphone-erase",
+   reboot: "mdi-restart",
+ };
 
-const INSTALL_STATUS_ICONS = {
-    load: "mdi-archive-arrow-down-outline",
-    unpack: "mdi-archive-arrow-down-outline",
-    flash: "mdi-cellphone-arrow-down",
-    wipe: "mdi-cellphone-erase",
-    reboot: "mdi-restart",
-};
+ const USER_ACTION_MAP = {
+   load: "Loading",
+   unpack: "Unpacking",
+   flash: "Writing",
+   wipe: "Wiping",
+   reboot: "Restarting",
+ }
 
-export default {
-    name: "InstallStep",
+ export default {
+   name: "InstallStep",
 
-    props: ["device", "active", "release"],
+   props: ["device", "active", "release"],
 
-    data: () => ({
-        installProgress: null,
-        installStatus: "",
-        installStatusIcon: null,
-        installed: false,
-        installing: false,
-        firstInstall: true,
-        error: null,
+   data: () => ({
+     installProgress: null,
+     installStatus: "",
+     installStatusIcon: null,
+     installed: false,
+     installing: false,
+     firstInstall: true,
+     error: null,
 
-        memoryDialog: false,
-    }),
+     memoryDialog: false,
+   }),
 
-    inject: ['emit', 'emitError', 'saEvent'],
+   inject: ['emit', 'emitError', 'saEvent'],
 
-    methods: {
-        reconnectCallback() {
-            this.emit("requestDeviceReconnect");
-        },
+   methods: {
+     async install() {
+       this.error = null
+       this.installed = false
+       this.installing = true
 
-        async retryMemory() {
-            this.memoryDialog = false;
-            await this.install();
-        },
+       try {
+         while (!this.device.isConnected) {
+           await this.device.connect()
+           await (new Promise(resolve => setTimeout(resolve, 1000)))
+         }
 
-        async errorRetry() {
-            await this.install();
-        },
+         // only one usb connection for best results
+         const numberOfDevices = (await navigator.usb.getDevices()).length
+         if (numberOfDevices !== 1) {
+           throw new Error('more than one usb device connected')
+         }
 
-        async install() {
-            this.installed = false;
-            this.installing = true;
+         this.saEvent(`install_build__${this.$root.$data.product}_${this.release.version}_${this.release.variant}`)
 
-            try {
-                if (!this.device.isConnected) {
-                    await this.device.connect();
-                }
+         return new Promise( (resolve, reject) => {
+           const worker = new Worker(new URL("../workers/install_worker.js", import.meta.url), { "type": "module" } )
 
-                this.saEvent(
-                 `install_build__${this.$root.$data.product}_${this.release.version}_${this.release.variant}`
-                );
+           worker.addEventListener("message", async event => {
+             switch (event.data.type) {
+               case "progress":
+                 const { action, item, progress  } = event.data
+                 let userAction = USER_ACTION_MAP[action]
+                 let userItem = item === "avb_custom_key" ? "verified boot key" : item
+                 this.installStatus = `${userAction} ${userItem}`;
+                 this.installStatusIcon = INSTALL_STATUS_ICONS[action];
+                 this.installProgress = progress * 100;
+                 break;
+               case "reconnect"
+                 this.reconnectError = null
+                 this.reconnectDialog = true
+                 break;
+               case "error":
+                 this.installing = false
+                 this.error = event.data.e.message
+                 reject(event.data.e)
+                 break;
+               case "complete":
+                 this.installing = false
+                 resolve(true)
+                 break;
+               default:
+                 throw new Error(`unknown type: ${e.data.type}`)
+             }
+           })
 
-                const bs = await OpfsBlobStore.create()
-                const blob = await bs.get(this.release.sha256)
+           this.installing = true
 
-                await this.device.flashFactoryZip(
-                    blob,
-                    this.$root.$data.installType === "clean",
-                    this.reconnectCallback,
-                    (action, item, progress) => {
-                        let userAction = fastboot.USER_ACTION_MAP[action];
-                        let userItem =
-                            item === "avb_custom_key"
-                                ? "verified boot key"
-                                : item;
-                        this.installStatus = `${userAction} ${userItem}`;
-                        this.installStatusIcon = INSTALL_STATUS_ICONS[action];
-                        this.installProgress = progress * 100;
-                    }
-                );
+           worker.postMessage({ "type": "start",
+                                "serialNumber": this.device.serialNumber, // we can't directly pass a USB Device to a web worker
+                                "sha256": this.release.sha256 })
+         })
 
-                this.installed = true;
-                this.error = null;
-
-                if (this.firstInstall) {
-                    this.firstInstall = false;
-                    this.emit("nextStep");
-                }
-            } catch (e) {
-                this.installed = false;
-                this.installProgress = null;
-
-                let [handled, message] = this.emitError(e);
-                this.error = message;
-                if (!handled) {
-                    throw e;
-                }
-            } finally {
-                this.installing = false;
-            }
-        },
-    },
-
-    watch: {
-        active: {
-            async handler(newState) {
-                if (newState) {
-                    this.saEvent("step_install");
-                }
-            },
-            immediate: true
-        },
-    },
-};
+       } catch(e) {
+         throw e;
+       }
+     }
+   }
 </script>
