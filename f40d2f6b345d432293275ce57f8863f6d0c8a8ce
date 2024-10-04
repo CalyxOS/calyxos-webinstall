@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc81e83_76965cce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-04T13:46:13Z",
+      "side": 1,
+      "message": "If the download is interrupted / failed, shasum verification fails, and then there\u0027s no way to re-try.",
+      "revId": "f40d2f6b345d432293275ce57f8863f6d0c8a8ce",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
