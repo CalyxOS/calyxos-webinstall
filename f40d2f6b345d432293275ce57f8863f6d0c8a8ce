@@ -87,6 +87,24 @@
       "parentUuid": "4e1cb146_a58ba250",
       "revId": "f40d2f6b345d432293275ce57f8863f6d0c8a8ce",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25c2bbf_604c32c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-10-08T18:02:43Z",
+      "side": 1,
+      "message": "If you are running in dev mode you can use `await (await OpfsBlobStore.create()).keys()` to list files and  `let file \u003d await (await OpfsBlobStore.create()).get(\u0027\u003cSHASUM\u003e\u0027)`\n\nto inspect the file: file.size, file.lastModified, etc. \n\nif you are using a production build you won\u0027t have access to window.OpfsBlobStore but try:\n\nlet file \u003d await navigator.storage.getDirectory()\n    .then( opfsRoot \u003d\u003e opfsRoot.getDirectoryHandle(\u0027default\u0027))\n    .then( dirHandle \u003d\u003e dirHandle.getFileHandle(\u0027\u003cSHASUM\u003e\u0027))\n    .then( fileHandle \u003d\u003e fileHandle.getFile() )",
+      "parentUuid": "0f1719f9_98828930",
+      "revId": "f40d2f6b345d432293275ce57f8863f6d0c8a8ce",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
