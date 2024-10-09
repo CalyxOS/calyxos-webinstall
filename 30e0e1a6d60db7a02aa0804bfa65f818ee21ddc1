@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85539d89_b72be3c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-09T18:44:33Z",
+      "side": 1,
+      "message": "The index already changes everytime there\u0027s a js or css change, see https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/31036/1/index.html\n\nIn my case, it was loading the old index, for whatever reason.\n\nIt could be something with my setup although I don\u0027t really configure my browser too much.",
+      "revId": "30e0e1a6d60db7a02aa0804bfa65f818ee21ddc1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
