@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2e2dd9_b29143f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-10T20:29:21Z",
+      "side": 1,
+      "message": "Curious to hear more about this.\n\nWe do use serialNumber specific connections in `device-flasher`",
+      "revId": "4fa16b118fa1e4027b98f7fd794ea244259d28f2",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
