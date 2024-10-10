@@ -34,6 +34,24 @@
       "parentUuid": "85539d89_b72be3c2",
       "revId": "30e0e1a6d60db7a02aa0804bfa65f818ee21ddc1",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38bea12e_39ed5fb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-10T20:28:55Z",
+      "side": 1,
+      "message": "```\n$ curl -I https://install.calyxos.org\nHTTP/2 200\nserver: nginx/1.22.1\ndate: Thu, 10 Oct 2024 20:27:35 GMT\ncontent-type: text/html\ncontent-length: 1243\nlast-modified: Tue, 24 Sep 2024 21:16:36 GMT\netag: \"66f32c34-4db\"\nstrict-transport-security: max-age\u003d63072000\naccept-ranges: bytes\n\n$ curl -I https://install.calyxos.org/index.html\nHTTP/2 200\nserver: nginx/1.22.1\ndate: Thu, 10 Oct 2024 20:27:39 GMT\ncontent-type: text/html\ncontent-length: 1243\nlast-modified: Tue, 24 Sep 2024 21:16:36 GMT\netag: \"66f32c34-4db\"\nstrict-transport-security: max-age\u003d63072000\naccept-ranges: bytes\n```\n\nlast-modified is accurate per https://gitlab.com/CalyxOS/calyxos-webinstall/-/blob/public/index.html?ref_type\u003dheads",
+      "parentUuid": "c9341b7b_433d17aa",
+      "revId": "30e0e1a6d60db7a02aa0804bfa65f818ee21ddc1",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
