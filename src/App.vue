@@ -1,33 +1,27 @@
 <template>
-    <v-app full-height id="inspire">
-        <v-main class="grey lighten-3">
-            <v-container fluid>
-                <v-row align="center" justify="center">
-                    <v-col cols="12" sm="2"></v-col>
+  <v-app full-height id="inspire">
+    <v-main class="grey lighten-3">
+      <v-container fluid>
+        <v-row align="center" justify="center">
+          <v-col cols="12" sm="2"></v-col>
 
-                    <v-col
-                        cols="12"
-                        sm="8"
-                        class="d-flex flex-row justify-center"
-                    >
-                        <v-sheet
-                            :min-height="
-                                $vuetify.display.mobile ? '100vh' : '75vh'
-                            "
-                            width="50rem"
-                            :rounded="$vuetify.display.mobile ? null : 'lg'"
-                            :elevation="$vuetify.display.mobile ? 0 : 4"
-                            class="d-flex flex-column"
-                        >
-                            <Installer />
-                        </v-sheet>
-                    </v-col>
+          <v-col cols="12" sm="8" class="d-flex flex-row justify-center">
+            <v-sheet
+              :min-height="$vuetify.display.mobile ? '100vh' : '75vh'"
+              width="50rem"
+              :rounded="$vuetify.display.mobile ? null : 'lg'"
+              :elevation="$vuetify.display.mobile ? 0 : 4"
+              class="d-flex flex-column"
+            >
+              <Installer />
+            </v-sheet>
+          </v-col>
 
-                    <v-col cols="12" sm="2"></v-col>
-                </v-row>
-            </v-container>
-        </v-main>
-    </v-app>
+          <v-col cols="12" sm="2"></v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <style>
@@ -101,46 +95,48 @@
 .col-3,
 .col-2,
 .col-1 {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 </style>
 
 <script>
-import { h } from "vue";
-import Config from "@/config";
-import Installer from "@/components/Installer.vue";
+import { h } from "vue"
+import Config from "@/config"
+import Installer from "@/components/Installer.vue"
 
-const RELEASE_INDEX_URL = (import.meta.env.BASE_URL.slice(-1) == "/" ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL) + "/releases/index.json"
+const RELEASE_INDEX_URL =
+  (import.meta.env.BASE_URL.slice(-1) == "/"
+    ? import.meta.env.BASE_URL.slice(0, -1)
+    : import.meta.env.BASE_URL) + "/releases/index.json"
 
 export default {
-    name: "App",
-    components: {
-        Installer,
-    },
-    data() {
-        return {
-            links: ["Home", "Install"],
-            product: null,
-            zipBlob: null,
-            release: null,
-            installType: null,
-            releaseIndex: null,
-            ...Config,
-        }
-    },
-    render: () => h(this),
+  name: "App",
+  components: {
+    Installer,
+  },
+  data() {
+    return {
+      links: ["Home", "Install"],
+      product: null,
+      zipBlob: null,
+      release: null,
+      installType: null,
+      releaseIndex: null,
+      ...Config,
+    }
+  },
+  render: () => h(this),
 
-    async mounted() {
-        if (!this.releaseIndex) {
-            try {
-                let response = await fetch(RELEASE_INDEX_URL);
-                this.releaseIndex = await response.json();
-                console.log(`release index: ${JSON.stringify(this.releaseIndex)}`);
-            } catch(e) {
-                console.error(`fetch(${RELEASE_INDEX_URL}) failed`, e);
-            }
-        }
-
-   }
-};
+  async mounted() {
+    if (!this.releaseIndex) {
+      try {
+        let response = await fetch(RELEASE_INDEX_URL)
+        this.releaseIndex = await response.json()
+        console.log(`release index: ${JSON.stringify(this.releaseIndex)}`)
+      } catch (e) {
+        console.error(`fetch(${RELEASE_INDEX_URL}) failed`, e)
+      }
+    }
+  },
+}
 </script>

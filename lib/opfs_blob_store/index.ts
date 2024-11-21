@@ -6,9 +6,13 @@ export default class OpfsBlobStore {
   downloading: boolean
 
   static async create() {
-    return new OpfsBlobStore(await navigator.storage.getDirectory().then(opfsRoot =>
-      opfsRoot.getDirectoryHandle(OpfsBlobStore.TopLevelDirectory, { create: true })
-    ))
+    return new OpfsBlobStore(
+      await navigator.storage
+        .getDirectory()
+        .then(opfsRoot =>
+          opfsRoot.getDirectoryHandle(OpfsBlobStore.TopLevelDirectory, { create: true }),
+        ),
+    )
   }
 
   constructor(rootDirectoryHandle: FileSystemDirectoryHandle) {
@@ -19,7 +23,6 @@ export default class OpfsBlobStore {
   async keys(): Promise<Array<string>> {
     return Array.fromAsync(this.rootDirectoryHandle.keys()) // chrome 121+
   }
-
 
   async verify(key: string, onProgress: (i: number) => void | undefined) {
     const file = await this.get(key)
@@ -72,7 +75,7 @@ export default class OpfsBlobStore {
   }
 
   async clear() {
-    for (const key of (await this.keys())) {
+    for (const key of await this.keys()) {
       await this.delete(key)
     }
   }
