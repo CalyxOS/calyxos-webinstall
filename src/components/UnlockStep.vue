@@ -39,7 +39,7 @@
 
         <div class="mb-4">
             <v-banner single-line outlined rounded class="mt-4" v-if="unlocked">
-                <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
+                <v-icon color="green darken-3">mdi-check</v-icon>
                 <span class="text-body-1 green--text text--darken-3"
                     >Bootloader unlocked</span
                 >
@@ -52,7 +52,6 @@
                 v-else-if="unlocking"
             >
                 <v-progress-circular
-                    slot="icon"
                     indeterminate
                     color="primary"
                 ></v-progress-circular>
@@ -68,7 +67,7 @@
                 class="mt-4"
                 v-else-if="error"
             >
-                <v-icon slot="icon" color="red darken-3">mdi-close</v-icon>
+                <v-icon color="red darken-3">mdi-close</v-icon>
                 <span class="text-body-1 red--text text--darken-3">{{
                     error
                 }}</span>
