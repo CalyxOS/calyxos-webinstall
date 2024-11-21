@@ -15,7 +15,7 @@ pages:
       - dist
   publish: dist
   variables:
-    BASE_URL: '/calyxos-webinstall'
+    BASE_URL: "/calyxos-webinstall"
   only:
     - main
 

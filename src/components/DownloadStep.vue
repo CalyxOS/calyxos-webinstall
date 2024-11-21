@@ -1,9 +1,21 @@
 <template>
   <v-container class="d-flex justify-space-between flex-column flex-grow-1">
     <div class="d-flex">
-      <v-btn variant="plain" @click="go('download')" :color="substep == 'download' ? 'primary' : 'normal'" :disabled="running">Download</v-btn>
+      <v-btn
+        variant="plain"
+        @click="go('download')"
+        :color="substep == 'download' ? 'primary' : 'normal'"
+        :disabled="running"
+        >Download</v-btn
+      >
       <v-icon icon="mdi-chevron-right"></v-icon>
-      <v-btn variant="plain" @click="go('shasum')" :color="substep === 'shasum' ? 'primary' : 'normal'" :disabled="running || downloadProgress !== 100">Check</v-btn>
+      <v-btn
+        variant="plain"
+        @click="go('shasum')"
+        :color="substep === 'shasum' ? 'primary' : 'normal'"
+        :disabled="running || downloadProgress !== 100"
+        >Check</v-btn
+      >
     </div>
 
     <div v-if="error" class="d-flex flex-wrap justify-space-around">
@@ -17,7 +29,8 @@
 
     <div class="d-flex flex-wrap justify-space-around">
       <p class="mt-4 text-h6 font-weight-regular">
-        {{ $root.$data.OS_NAME }}: <span class="font-weight-bold">{{ release.version }}</span>
+        {{ $root.$data.OS_NAME }}:
+        <span class="font-weight-bold">{{ release.version }}</span>
         <v-btn variant="tonal" @click="go('download')" :disabled="running" class="ml-4">
           Start
         </v-btn>
@@ -30,44 +43,58 @@
           <v-banner-text class="text-body-1">Downloading…</v-banner-text>
         </v-banner>
 
-        <v-progress-linear v-if="downloadProgress !== null" class="my-3" stream :model-value="downloadProgress" buffer-value="0">
+        <v-progress-linear
+          v-if="downloadProgress !== null"
+          class="my-3"
+          stream
+          :model-value="downloadProgress"
+          buffer-value="0"
+        >
         </v-progress-linear>
 
         <v-banner v-if="!error && downloadProgress === 100" single-line outlined rounded>
           <v-icon color="green darken-3">mdi-check</v-icon>
           <span class="text-body-1 green--text text--darken-3">
             Downloaded {{ $root.$data.OS_NAME }}
-	  </span>
+          </span>
         </v-banner>
       </div>
 
       <div v-else-if="substep === 'shasum'">
-        <v-banner v-if="running" icon="mdi-microscope" rounded  class="mt-8 pt-1" >
+        <v-banner v-if="running" icon="mdi-microscope" rounded class="mt-8 pt-1">
           <v-banner-text class="text-body-1">Checking…</v-banner-text>
         </v-banner>
 
-        <v-progress-linear v-if="shasumProgress !== null" class="my-3" stream :model-value="shasumProgress" buffer-value="0">
+        <v-progress-linear
+          v-if="shasumProgress !== null"
+          class="my-3"
+          stream
+          :model-value="shasumProgress"
+          buffer-value="0"
+        >
         </v-progress-linear>
 
         <v-banner v-if="!error && shasumProgress === 100" single-line outlined rounded>
           <v-icon color="green darken-3">mdi-check</v-icon>
           <span class="text-body-1 green--text text--darken-3">
             Match {{ $root.$data.OS_NAME }} {{ releaseName() }}
-	  </span>
+          </span>
         </v-banner>
       </div>
 
-      <div v-else-if="substep === 'minisign'">
-      </div>
+      <div v-else-if="substep === 'minisign'"></div>
     </div>
 
     <div class="d-flex justify-space-between flex-row-reverse mt-4">
-      <v-btn color="primary" @click="emit('nextStep')" :disabled="running || Boolean(error) || shasumProgress !== 100">
+      <v-btn
+        color="primary"
+        @click="emit('nextStep')"
+        :disabled="running || Boolean(error) || shasumProgress !== 100"
+      >
         Next<v-icon dark right>mdi-arrow-right</v-icon>
       </v-btn>
       <v-btn text @click="emit('prevStep')">Back</v-btn>
     </div>
-
   </v-container>
 </template>
 
@@ -82,8 +109,8 @@
 </style>
 
 <script>
-import { nextTick } from 'vue'
-import OpfsBlobStore from 'opfs_blob_store'
+import { nextTick } from "vue"
+import OpfsBlobStore from "opfs_blob_store"
 
 export default {
   name: "DownloadStep",
@@ -92,10 +119,10 @@ export default {
 
   data: () => ({
     running: false,
-    substep: 'download',
+    substep: "download",
     downloadProgress: null,
     shasumProgress: null,
-    error: null
+    error: null,
   }),
 
   methods: {
@@ -106,7 +133,7 @@ export default {
     async go(substep) {
       try {
         switch (substep) {
-          case 'download':
+          case "download":
             const bs = await OpfsBlobStore.create()
             let inStorage = await bs.has(this.release.sha256)
 
@@ -125,18 +152,19 @@ export default {
               }
             }
 
-            if (inStorage) { // file exists, move to verify
+            if (inStorage) {
+              // file exists, move to verify
               this.downloadProgress = 100
-              await this.go('shasum')
+              await this.go("shasum")
             } else {
-              this.substep = 'download'
+              this.substep = "download"
               await this.download()
-              await this.go('shasum')
+              await this.go("shasum")
             }
 
-            break;
-          case 'shasum':
-            this.substep = 'shasum'
+            break
+          case "shasum":
+            this.substep = "shasum"
             if (this.shasumProgress === 100) {
               if (confirm("Check again?")) {
                 return this.shasum()
@@ -145,13 +173,12 @@ export default {
               await this.shasum()
               return Promise.resolve(true)
             }
-            break;
-          case 'minisign':
-            break;
+            break
+          case "minisign":
+            break
           default:
             throw new Error(`unknown substep: ${substep}`)
         }
-
       } catch (e) {
         let [handled, message] = this.emitError(e)
         this.error = message
@@ -159,58 +186,69 @@ export default {
           throw e
         }
       }
-
     },
 
     async download() {
-      this.saEvent(`download_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`)
+      this.saEvent(
+        `download_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`,
+      )
 
-      return new Promise( (resolve, reject) => {
-        const worker = new Worker(new URL("../workers/fetch_worker.js", import.meta.url), { "type": "module" } )
+      return new Promise((resolve, reject) => {
+        const worker = new Worker(new URL("../workers/fetch_worker.js", import.meta.url), {
+          type: "module",
+        })
 
-        worker.addEventListener("message", async event => {
+        worker.addEventListener("message", async (event) => {
           switch (event.data.type) {
             case "progress":
-              this.downloadProgress = (event.data.i * 100)
+              this.downloadProgress = event.data.i * 100
               /// await nextTick()
-              break;
+              break
             case "error":
               this.running = false
               reject(event.data.e)
-              break;
+              break
             case "complete":
               this.running = false
               resolve(true)
-              break;
+              break
             default:
               throw new Error(`unknown type: ${e.data.type}`)
           }
         })
 
         this.running = true
-        worker.postMessage({ "type": "start", "sha256": this.release.sha256, "url": this.release.url })
+        worker.postMessage({
+          type: "start",
+          sha256: this.release.sha256,
+          url: this.release.url,
+        })
       })
     },
 
     async shasum() {
-      this.saEvent(`verify_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`)
+      this.saEvent(
+        `verify_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`,
+      )
 
-      return new Promise( (resolve, reject) => {
-        const worker = new Worker(new URL("../workers/shasum_worker.js", import.meta.url), { "type": "module" } )
+      return new Promise((resolve, reject) => {
+        const worker = new Worker(new URL("../workers/shasum_worker.js", import.meta.url), {
+          type: "module",
+        })
 
-        worker.addEventListener("message", async event => {
+        worker.addEventListener("message", async (event) => {
           switch (event.data.type) {
             case "progress":
-              this.shasumProgress = (event.data.i * 100)
-              break;
+              this.shasumProgress = event.data.i * 100
+              break
             case "error":
               this.running = false
               reject(event.data.e)
-              break;
+              break
             case "complete":
               this.running = false
               resolve(true)
-              break;
+              break
             default:
               throw new Error(`unknown type: ${e.data.type}`)
           }
@@ -218,20 +256,19 @@ export default {
 
         this.running = true
         this.shasumProgress = 0
-        worker.postMessage({ "type": "start", "sha256": this.release.sha256 })
+        worker.postMessage({ type: "start", sha256: this.release.sha256 })
       })
     },
 
     async minisign() {
       throw new Error("Not Yet Implemented")
-    }
+    },
   },
 
-  inject: ['emit', 'emitError', 'saEvent'],
+  inject: ["emit", "emitError", "saEvent"],
 
   async mounted() {
-    await this.go('download')
-  }
-
+    await this.go("download")
+  },
 }
 </script>
