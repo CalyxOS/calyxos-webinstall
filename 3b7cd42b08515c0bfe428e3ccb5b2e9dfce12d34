@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb45951_fb8f84c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-11-21T19:36:19Z",
+      "side": 1,
+      "message": "maybe exclude lib/fastboot?",
+      "revId": "3b7cd42b08515c0bfe428e3ccb5b2e9dfce12d34",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
