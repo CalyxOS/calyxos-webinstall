@@ -45,7 +45,7 @@
 
         <div class="pb-8">
             <v-banner single-line outlined rounded v-if="installed">
-                <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
+                <v-icon color="green darken-3">mdi-check</v-icon>
                 <div class="my-4">
                   <span class="text-body-1 green--text text--darken-3">
                     Installed {{ $root.$data.OS_NAME }} {{ release.version }} ({{ release.date }})
@@ -57,7 +57,7 @@
                 class="mt-8 pt-1"
                 v-else-if="installProgress !== null"
             >
-                <v-icon slot="icon" color="primary">{{
+                <v-icon color="primary">{{
                     installStatusIcon
                 }}</v-icon>
                 <v-banner-text class="text-body-1">
@@ -78,7 +78,7 @@
                 class="mt-8"
                 v-else-if="error"
             >
-                <v-icon slot="icon" color="red darken-3">mdi-close</v-icon>
+                <v-icon color="red darken-3">mdi-close</v-icon>
                 <div class="my-4">
                     <span class="text-body-1 red--text text--darken-3">{{
                         error

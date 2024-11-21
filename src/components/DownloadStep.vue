@@ -8,7 +8,7 @@
 
     <div v-if="error" class="d-flex flex-wrap justify-space-around">
       <v-banner single-line outlined rounded class="mt-8">
-        <v-icon slot="icon" color="red darken-3">mdi-close</v-icon>
+        <v-icon color="red darken-3">mdi-close</v-icon>
         <div class="my-4">
           <span class="text-body-1 red--text text--darken-3">{{ error }}</span>
         </div>
@@ -34,7 +34,7 @@
         </v-progress-linear>
 
         <v-banner v-if="!error && downloadProgress === 100" single-line outlined rounded>
-          <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
+          <v-icon color="green darken-3">mdi-check</v-icon>
           <span class="text-body-1 green--text text--darken-3">
             Downloaded {{ $root.$data.OS_NAME }}
 	  </span>
@@ -50,7 +50,7 @@
         </v-progress-linear>
 
         <v-banner v-if="!error && shasumProgress === 100" single-line outlined rounded>
-          <v-icon slot="icon" color="green darken-3">mdi-check</v-icon>
+          <v-icon color="green darken-3">mdi-check</v-icon>
           <span class="text-body-1 green--text text--darken-3">
             Match {{ $root.$data.OS_NAME }} {{ releaseName() }}
 	  </span>

@@ -292,9 +292,7 @@
                         class="mt-8"
                         v-if="reconnectError"
                     >
-                        <v-icon slot="icon" color="red darken-3"
-                            >mdi-close</v-icon
-                        >
+                        <v-icon color="red darken-3">mdi-close</v-icon>
                         <div class="my-4">
                             <span
                                 class="text-body-1 red--text text--darken-3"
