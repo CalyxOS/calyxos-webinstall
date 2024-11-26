@@ -16,6 +16,24 @@
       "message": "maybe exclude lib/fastboot?",
       "revId": "3b7cd42b08515c0bfe428e3ccb5b2e9dfce12d34",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4781db3_4845b3ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-11-26T19:36:52Z",
+      "side": 1,
+      "message": "I think we should include it, I don\u0027t expect upstream to have updates. We can deal with the changes when the time comes.\n\nAlso because we\u0027re planning to make more changes to fastboot going forward, so it\u0027ll help having this setup all around.",
+      "parentUuid": "feb45951_fb8f84c0",
+      "revId": "3b7cd42b08515c0bfe428e3ccb5b2e9dfce12d34",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
