@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e858fe84_e407b48d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-11-26T20:03:40Z",
+      "side": 1,
+      "message": "sounds good. and anyways, it\u0027s annoying to have mixed setting in one repo.",
+      "revId": "192b366408b4ce18b85e422fcefb73552015ff06",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
