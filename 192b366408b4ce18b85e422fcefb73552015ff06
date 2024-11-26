@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e4fa3a_0eb0071e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-11-26T21:10:17Z",
+      "side": 1,
+      "message": "fixed all errors in another change to keep it separate from prettier: https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/32740",
+      "parentUuid": "ca69bf66_70072ffa",
+      "revId": "192b366408b4ce18b85e422fcefb73552015ff06",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e858fe84_e407b48d",
