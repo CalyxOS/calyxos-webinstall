@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca69bf66_70072ffa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-11-26T20:27:19Z",
+      "side": 1,
+      "message": "That fails here:\n\n```\n/mnt/golu3/android/calyx/other.repos/calyxos-webinstall/scripts/use-host.js\n  14:11  error  \u0027key\u0027 is assigned a value but never used  no-unused-vars\n\n/mnt/golu3/android/calyx/other.repos/calyxos-webinstall/src/components/DownloadStep.vue\n   85:10  error  \u0027nextTick\u0027 is defined but never used          no-unused-vars\n  110:13  error  Unexpected lexical declaration in case block  no-case-declarations\n  111:13  error  Unexpected lexical declaration in case block  no-case-declarations\n  186:48  error  \u0027e\u0027 is not defined                            no-undef\n  215:48  error  \u0027e\u0027 is not defined                            no-undef\n\n/mnt/golu3/android/calyx/other.repos/calyxos-webinstall/src/components/UnlockStep.vue\n  187:25  error  \u0027error\u0027 is not defined  no-undef\n\n/mnt/golu3/android/calyx/other.repos/calyxos-webinstall/src/main.js\n  25:5  error  \u0027process\u0027 is not defined  no-undef\n\n/mnt/golu3/android/calyx/other.repos/calyxos-webinstall/vite.config.js\n   9:31  error  \u0027__dirname\u0027 is not defined  no-undef\n  10:38  error  \u0027__dirname\u0027 is not defined  no-undef\n  11:45  error  \u0027__dirname\u0027 is not defined  no-undef\n  14:11  error  \u0027process\u0027 is not defined    no-undef\n  14:34  error  \u0027process\u0027 is not defined    no-undef\n```",
+      "revId": "192b366408b4ce18b85e422fcefb73552015ff06",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e858fe84_e407b48d",
