@@ -109,7 +109,6 @@
 </style>
 
 <script>
-import { nextTick } from "vue"
 import OpfsBlobStore from "opfs_blob_store"
 
 export default {
@@ -133,7 +132,7 @@ export default {
     async go(substep) {
       try {
         switch (substep) {
-          case "download":
+          case "download": {
             const bs = await OpfsBlobStore.create()
             let inStorage = await bs.has(this.release.sha256)
 
@@ -163,7 +162,8 @@ export default {
             }
 
             break
-          case "shasum":
+          }
+          case "shasum": {
             this.substep = "shasum"
             if (this.shasumProgress === 100) {
               if (confirm("Check again?")) {
@@ -174,6 +174,7 @@ export default {
               return Promise.resolve(true)
             }
             break
+          }
           case "minisign":
             break
           default:
@@ -213,7 +214,7 @@ export default {
               resolve(true)
               break
             default:
-              throw new Error(`unknown type: ${e.data.type}`)
+              throw new Error(`unknown type: ${event.data.type}`)
           }
         })
 
@@ -250,7 +251,7 @@ export default {
               resolve(true)
               break
             default:
-              throw new Error(`unknown type: ${e.data.type}`)
+              throw new Error(`unknown type: ${event.data.type}`)
           }
         })
 

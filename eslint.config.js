@@ -10,4 +10,8 @@ export default [
   {
     ignores: ["dist/*"],
   },
+  {
+    files: ["scripts/*", "vite.config.js"],
+    languageOptions: { globals: globals.node },
+  },
 ]
