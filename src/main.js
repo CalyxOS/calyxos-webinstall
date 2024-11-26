@@ -22,7 +22,7 @@ const vuetify = createVuetify({
 
 const app = createApp(App).use(vuetify).mount("#app")
 
-if (process.env.NODE_ENV !== "production" && typeof window !== "undefined") {
+if (import.meta.env.DEV && typeof window !== "undefined") {
   window.$app = app
   window.OpfsBlobStore = OpfsBlobStore
 }

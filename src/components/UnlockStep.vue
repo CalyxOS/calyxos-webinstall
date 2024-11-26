@@ -129,7 +129,7 @@ export default {
       } catch (e) {
         if (e instanceof FastbootError && e.status === "FAIL") {
           if (e.message.includes("already")) {
-            e.message = error
+            this.error = e.message
             return
           } else if (e.message.includes("canceled")) {
             this.error = "Unlock request was canceled"
