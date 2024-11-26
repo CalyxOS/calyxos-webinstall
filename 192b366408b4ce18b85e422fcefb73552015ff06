@@ -33,6 +33,23 @@
       "message": "sounds good. and anyways, it\u0027s annoying to have mixed setting in one repo.",
       "revId": "192b366408b4ce18b85e422fcefb73552015ff06",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee3af196_7a2f1012",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-11-26T20:44:59Z",
+      "side": 1,
+      "message": "we might need to tweak eslint to ignore those. most of the no-undef are actually nodejs globals. but I can certainly fix the errors in the vue files.",
+      "revId": "192b366408b4ce18b85e422fcefb73552015ff06",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
