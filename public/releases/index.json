@@ -1,6 +1,6 @@
 {
   "comet": {
-    "name": "Pixel 9 Pro Fold",
+    "name": "Pixel 9 Pro Fold (Beta)",
     "codename": "comet",
     "date": "2024-11-14",
     "version": "6.1.1",
@@ -10,7 +10,7 @@
     "web_install": true
   },
   "komodo": {
-    "name": "Pixel 9 Pro XL",
+    "name": "Pixel 9 Pro XL (Beta)",
     "codename": "komodo",
     "date": "2024-11-14",
     "version": "6.1.1",
@@ -20,7 +20,7 @@
     "web_install": true
   },
   "caiman": {
-    "name": "Pixel 9 Pro",
+    "name": "Pixel 9 Pro (Beta)",
     "codename": "caiman",
     "date": "2024-11-14",
     "version": "6.1.1",
@@ -30,7 +30,7 @@
     "web_install": true
   },
   "tokay": {
-    "name": "Pixel 9",
+    "name": "Pixel 9 (Beta)",
     "codename": "tokay",
     "date": "2024-11-14",
     "version": "6.1.1",
