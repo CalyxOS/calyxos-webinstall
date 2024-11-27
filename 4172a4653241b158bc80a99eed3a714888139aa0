@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bfdd6c1_fbd3e2c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-11-27T14:18:31Z",
+      "side": 1,
+      "message": "Tested using `./node_modules/.bin/vite build --minify false`\n\nOnly differences are formatting: https://zifb.in/ns3DSt1FyS",
+      "revId": "4172a4653241b158bc80a99eed3a714888139aa0",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
