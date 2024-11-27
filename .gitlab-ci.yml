@@ -1,7 +1,17 @@
 stages:
+  - check
   - deploy
-  - update-releases
   - registry
+  - update-releases
+
+prettier:
+  stage: check
+  image: node:lts
+  before_script:
+    - npm ci
+  script:
+    - npx prettier --check .
+    - npx eslint
 
 pages:
   stage: deploy
