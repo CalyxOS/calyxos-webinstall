@@ -1,23 +1,23 @@
-import { FactoryProgressCallback } from "./factory";
+import { FactoryProgressCallback } from "./factory"
 
 export enum DebugLevel {
-    Silent = 0,
-    Debug,
-    Verbose,
+  Silent = 0,
+  Debug,
+  Verbose,
 }
 
-let debugLevel = DebugLevel.Silent;
+let debugLevel = DebugLevel.Silent
 
 export function logDebug(...data: any[]) {
-    if (debugLevel >= 1) {
-        console.log(...data);
-    }
+  if (debugLevel >= 1) {
+    console.log(...data)
+  }
 }
 
 export function logVerbose(...data: any[]) {
-    if (debugLevel >= 2) {
-        console.log(...data);
-    }
+  if (debugLevel >= 2) {
+    console.log(...data)
+  }
 }
 
 /**
@@ -29,7 +29,7 @@ export function logVerbose(...data: any[]) {
  * @param {number} level - Debug level to use.
  */
 export function setDebugLevel(level: DebugLevel) {
-    debugLevel = level;
+  debugLevel = level
 }
 
 /**
@@ -40,95 +40,92 @@ export function setDebugLevel(level: DebugLevel) {
  * @ignore
  */
 export function readBlobAsBuffer(blob: Blob): Promise<ArrayBuffer> {
-    return new Promise((resolve, reject) => {
-        let reader = new FileReader();
-        reader.onload = () => {
-            resolve(reader.result! as ArrayBuffer);
-        };
-        reader.onerror = () => {
-            reject(reader.error);
-        };
+  return new Promise((resolve, reject) => {
+    let reader = new FileReader()
+    reader.onload = () => {
+      resolve(reader.result! as ArrayBuffer)
+    }
+    reader.onerror = () => {
+      reject(reader.error)
+    }
 
-        reader.readAsArrayBuffer(blob);
-    });
+    reader.readAsArrayBuffer(blob)
+  })
 }
 
 function waitForFrame() {
-    return new Promise((resolve, _reject) => {
-        window.requestAnimationFrame(resolve);
-    });
+  return new Promise((resolve, _reject) => {
+    window.requestAnimationFrame(resolve)
+  })
 }
 
 export async function runWithTimedProgress<T>(
-    onProgress: FactoryProgressCallback,
-    action: string,
-    item: string,
-    duration: number,
-    workPromise: Promise<T>
+  onProgress: FactoryProgressCallback,
+  action: string,
+  item: string,
+  duration: number,
+  workPromise: Promise<T>,
 ) {
-    let startTime = new Date().getTime();
-    let stop = false;
+  let startTime = new Date().getTime()
+  let stop = false
 
-    onProgress(action, item, 0.0);
-    let progressPromise = (async () => {
-        let now;
-        let targetTime = startTime + duration;
+  onProgress(action, item, 0.0)
+  let progressPromise = (async () => {
+    let now
+    let targetTime = startTime + duration
 
-        do {
-            now = new Date().getTime();
-            onProgress(action, item, (now - startTime) / duration);
-            await waitForFrame();
-        } while (!stop && now < targetTime);
-    })();
+    do {
+      now = new Date().getTime()
+      onProgress(action, item, (now - startTime) / duration)
+      await waitForFrame()
+    } while (!stop && now < targetTime)
+  })()
 
-    await Promise.race([progressPromise, workPromise]);
-    stop = true;
-    await progressPromise;
-    await workPromise;
+  await Promise.race([progressPromise, workPromise])
+  stop = true
+  await progressPromise
+  await workPromise
 
-    onProgress(action, item, 1.0);
+  onProgress(action, item, 1.0)
 }
 
 /** Exception class for operations that exceeded their timeout duration. */
 export class TimeoutError extends Error {
-    timeout: number;
+  timeout: number
 
-    constructor(timeout: number) {
-        super(`Timeout of ${timeout} ms exceeded`);
-        this.name = "TimeoutError";
-        this.timeout = timeout;
-    }
+  constructor(timeout: number) {
+    super(`Timeout of ${timeout} ms exceeded`)
+    this.name = "TimeoutError"
+    this.timeout = timeout
+  }
 }
 
-export function runWithTimeout<T>(
-    promise: Promise<T>,
-    timeout: number
-): Promise<T> {
-    return new Promise((resolve, reject) => {
-        // Set up timeout
-        let timedOut = false;
-        let tid = setTimeout(() => {
-            // Set sentinel first to prevent race in promise resolving
-            timedOut = true;
-            reject(new TimeoutError(timeout));
-        }, timeout);
+export function runWithTimeout<T>(promise: Promise<T>, timeout: number): Promise<T> {
+  return new Promise((resolve, reject) => {
+    // Set up timeout
+    let timedOut = false
+    let tid = setTimeout(() => {
+      // Set sentinel first to prevent race in promise resolving
+      timedOut = true
+      reject(new TimeoutError(timeout))
+    }, timeout)
 
-        // Passthrough
-        promise
-            .then((val) => {
-                if (!timedOut) {
-                    resolve(val);
-                }
-            })
-            .catch((err) => {
-                if (!timedOut) {
-                    reject(err);
-                }
-            })
-            .finally(() => {
-                if (!timedOut) {
-                    clearTimeout(tid);
-                }
-            });
-    });
+    // Passthrough
+    promise
+      .then((val) => {
+        if (!timedOut) {
+          resolve(val)
+        }
+      })
+      .catch((err) => {
+        if (!timedOut) {
+          reject(err)
+        }
+      })
+      .finally(() => {
+        if (!timedOut) {
+          clearTimeout(tid)
+        }
+      })
+  })
 }

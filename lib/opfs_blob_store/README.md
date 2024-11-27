@@ -1,7 +1,6 @@
 store sha256 addressable data in OPFS
 
-
-``` js
+```js
 import OpfsBlobStore from "opfs_blob_store"
 
 // API
@@ -21,10 +20,11 @@ await bs.keys()
 
 // how to use
 
-const hash = '26150972b0d5e221fe3509075d5916cd3dc4998ef219f4057cd0bd3b9e8f6c58'
-const url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Ursus_americanus.jpg/252px-Ursus_americanus.jpg'
+const hash = "26150972b0d5e221fe3509075d5916cd3dc4998ef219f4057cd0bd3b9e8f6c58"
+const url =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Ursus_americanus.jpg/252px-Ursus_americanus.jpg"
 const bs = await OpfsBlobStore.create()
-const onProgress = (ratio) => `${Math.round(ratio * 100, 2)}%`
+const onProgress = ratio => `${Math.round(ratio * 100, 2)}%`
 
 await bs.fetch(hash, url, onProgress)
 await bs.verify(hash, onProgress)
