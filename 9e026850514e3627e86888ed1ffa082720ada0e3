@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4225197f_d78f0bb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2024-11-27T17:32:30Z",
+      "side": 1,
+      "message": "this was surprising https://eslint.org/docs/latest/rules/no-case-declarations#rule-details lol it found my bugs 😎",
+      "revId": "9e026850514e3627e86888ed1ffa082720ada0e3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
