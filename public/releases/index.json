@@ -248,5 +248,65 @@
     "url": "https://release.calyxinstitute.org/blueline-factory-24513000.zip",
     "sha256": "b90ef75b638e4f19be56eafd826af03aa849dcfae182e3a436efa6813363fa34",
     "web_install": true
+  },
+  "FP4": {
+    "name": "Fairphone 4",
+    "codename": "FP4",
+    "date": "2024-11-13",
+    "version": "5.13.0-2",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/FP4-factory-24513002.zip",
+    "sha256": "dcccb819e00dbb94b9da0dbaff17c991118fa96114294e2d4b4c441eeeab20bb",
+    "web_install": false
+  },
+  "FP5": {
+    "name": "Fairphone 5",
+    "codename": "FP5",
+    "date": "2024-11-13",
+    "version": "5.13.0-2",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/FP5-factory-24513002.zip",
+    "sha256": "4114dada5507fd41eaf35c093f01711b29ce9b2a3b8c1e48be9001d426545faf",
+    "web_install": false
+  },
+  "axolotl": {
+    "name": "SHIFT6mq",
+    "codename": "axolotl",
+    "date": "2024-11-13",
+    "version": "5.13.0",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/axolotl-factory-24513000.zip",
+    "sha256": "32796df046b320635785de37eb29c44a7619cae0ca755ddc0e12c732f4239233",
+    "web_install": false
+  },
+  "devon": {
+    "name": "Moto G32",
+    "codename": "devon",
+    "date": "2024-11-13",
+    "version": "5.13.0",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/devon-factory-24513000.zip",
+    "sha256": "4754cd2f59f45e0f83b101ea9f55929ef127966002bc4a031d45067691815505",
+    "web_install": false
+  },
+  "hawao": {
+    "name": "Moto G42",
+    "codename": "hawao",
+    "date": "2024-11-13",
+    "version": "5.13.0",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/hawao-factory-24513000.zip",
+    "sha256": "7b6a9c7cdeb5915fcac3e55bf4005a1803027614c12c151b5b2bd79f3059ebc4",
+    "web_install": false
+  },
+  "rhode": {
+    "name": "Moto G52",
+    "codename": "rhode",
+    "date": "2024-11-13",
+    "version": "5.13.0",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/rhode-factory-24513000.zip",
+    "sha256": "a3c4690d671eccfb30c9e64bc9765de5f071ac03ddc014c057329d4c006cd018",
+    "web_install": false
   }
 }
