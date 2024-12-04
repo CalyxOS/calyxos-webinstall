@@ -32,11 +32,23 @@
 
     <div class="mb-4 mt-n4" v-if="$root.$data.product && !connecting && !installable()">
       <v-alert density="compact" title="Device Not Supported" type="tonal">
-        <p>
-          We're sorry, your device cannot be installed using the web installer.<br />
-          Visit <a href="https://calyxos.org/install/">calyxos.org/install</a> for more
-          installation methods.
-        </p>
+        <div v-if="cliInstallOnly()">
+          <p>
+            We're sorry, your device cannot be installed through the web installer.<br />
+            Please Visit
+            <a :href="`https://calyxos.org/install/devices/${this.$root.$data.product}/`"
+              >calyxos.org/install/devices/{{ this.$root.$data.product }}</a
+            >
+            for instructions on how to use the command-line device flasher.
+          </p>
+        </div>
+        <div v-else>
+          <p>
+            We're sorry, your device is not supported by CalyxOS.<br />
+            Please Visit <a href="https://calyxos.org/install/">calyxos.org/install</a> for a list of
+            supported devices.
+          </p>
+        </div>
       </v-alert>
     </div>
 
@@ -50,7 +62,10 @@
     </div>
 
     <div class="d-flex justify-space-between flex-row-reverse">
-      <v-btn color="primary" @click="emit('nextStep')" :disabled="$root.$data.product === null"
+      <v-btn
+        color="primary"
+        @click="emit('nextStep')"
+        :disabled="$root.$data.product === null || !installable()"
         >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
       >
       <v-btn text @click="emit('prevStep')">Back</v-btn>
@@ -124,7 +139,16 @@ export default {
     installable() {
       return (
         this.$root.$data.product &&
+        this.$root.$data.releaseIndex[this.$root.$data.product] &&
         this.$root.$data.releaseIndex[this.$root.$data.product].web_install
+      )
+    },
+
+    cliInstallOnly() {
+      return (
+        this.$root.$data.product &&
+        this.$root.$data.releaseIndex[this.$root.$data.product] &&
+        !this.$root.$data.releaseIndex[this.$root.$data.product].web_install
       )
     },
   },
