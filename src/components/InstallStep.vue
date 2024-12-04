@@ -9,8 +9,9 @@
 
       <div class="text-body-1">
         <p>
-          This will install {{ $root.$data.OS_NAME }} ({{ release.version }}) on your
-          {{ release.name ? release.name : $root.$data.product }}.
+          This will install <strong>{{ $root.$data.OS_NAME }} ({{ release.version }})</strong> on
+          your <strong>{{ release.name ? release.name : $root.$data.product }}</strong
+          >. Your phone will restart several times.
         </p>
         <p v-if="$root.$data.installType === 'clean'">
           Because you’re doing a clean install,
@@ -19,18 +20,11 @@
           >
         </p>
         <p class="mt-2">
-          <strong>⚠️ Don’t touch, unplug, or press any buttons</strong> on your device during the
-          install. on your device during <em>this process</em>
-          or else it will disturb the install.
-          <em
-            >Watch the progress bar on this page to check the status. This may take 10-15
-            minutes.</em
-          >
+          <strong>⚠️ Don’t touch, unplug, or press any buttons</strong> on your device during
+          <i>this process</i> or else the installation may be failed. Watch the progress bar on
+          this page to check the status.
         </p>
-        <p class="mt-2">
-          Your phone will restart several times, but
-          <strong>don’t touch it.</strong> Watch the progress bar on this page instead.
-        </p>
+        <p class="mt-2">This may take 10-15 minutes.</p>
       </div>
 
       <v-btn
