@@ -4,8 +4,8 @@ store sha256 addressable data in OPFS
 import OpfsBlobStore from "opfs_blob_store"
 
 // API
-
-// download and store
+const bs = await OpfsBlobStore.create()
+// download, check, and store
 await bs.fetch(hash, url, onProgress)
 // verify data
 await bs.verify(hash, onProgress)
