@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mocha Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="https://unpkg.com/chai@4/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "opfs_blob_store": "/opfs_blob_store.js"
+        }
+      }
+    </script>
+
+    <script type="module">
+      import OpfsBlobStore from "opfs_blob_store"
+      window.OpfsBlobStore = OpfsBlobStore
+
+      const assert = chai.assert
+      mocha.setup("tdd")
+      mocha.checkLeaks()
+
+      const onProgress = ratio => console.log(`${Math.round(ratio * 100, 2)}%`)
+
+      suite("OpfsBlobStore", function () {
+        this.timeout(60 * 1000)
+
+        setup(async function bye() {
+          this.timeout(1000)
+          await (await navigator.storage.getDirectory()).remove({ recursive: true })
+        })
+
+        test("🐻", async function () {
+          const hash = "26150972b0d5e221fe3509075d5916cd3dc4998ef219f4057cd0bd3b9e8f6c58"
+          const url =
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Ursus_americanus.jpg/252px-Ursus_americanus.jpg"
+
+          const bs = await OpfsBlobStore.create()
+          assert.deepEqual(await bs.keys(), [])
+          assert.isFalse(await bs.has(hash))
+
+          await bs.fetch(hash, url, onProgress)
+          assert.isTrue(await bs.has(hash))
+          assert.isTrue(await bs.verify(hash))
+          assert.deepEqual(await bs.keys(), [hash])
+
+          // modify file
+          const topLevel = await navigator.storage
+            .getDirectory()
+            .then(opfsRoot => opfsRoot.getDirectoryHandle(OpfsBlobStore.TopLevelDirectory))
+          const fileHandle = await topLevel.getFileHandle(hash)
+          const stream = await fileHandle.createWritable({ keepExistingData: true })
+          await stream.write(new Uint8Array(8))
+          await stream.close()
+
+          try {
+            await bs.verify(hash)
+          } catch (e) {
+            assert.equal(e.name, "ShasumVerificationError")
+            assert.include(
+              e.message,
+              "actual: e03c6316f1253a837fdaf1006e7210d04ddeba9a062630422e43584b2b1d230",
+            )
+            assert.include(
+              e.message,
+              "expected: 26150972b0d5e221fe3509075d5916cd3dc4998ef219f4057cd0bd3b9e8f6c58",
+            )
+          }
+
+          await bs.delete(hash)
+          assert.isFalse(await bs.has(hash))
+        })
+
+        test("verify shasum while downloading", async function () {
+          const bs = await OpfsBlobStore.create()
+          const hash = "3eb10792d1f0c7e07e7248273540f1952d9a5a2996f4b5df70ab026cd9f05517"
+          const url = "https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png"
+
+          try {
+            await bs.fetch("0000000000000000000000000000000000000000000000000000000000000000", url)
+          } catch (e) {
+            assert.equal(e.name, "ShasumVerificationError")
+            assert.include(e.message, `actual: ${hash}`)
+            assert.isFalse(await bs.has(hash))
+          }
+
+          await bs.fetch(hash, url)
+          assert.isTrue(await bs.has(hash))
+        })
+      })
+      mocha.run()
+    </script>
+  </body>
+</html>
