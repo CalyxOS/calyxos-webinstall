@@ -1,5 +1,12 @@
 import jsSHA from "jssha"
 
+class ShasumVerificationError extends Error {
+  constructor(actual, expected) {
+    super(`verification failed\nactual: ${actual}\nexpected: ${expected}`)
+    this.name = "ShasumVerificationError"
+  }
+}
+
 export default class OpfsBlobStore {
   static TopLevelDirectory = "default"
   rootDirectoryHandle: FileSystemDirectoryHandle
@@ -42,7 +49,7 @@ export default class OpfsBlobStore {
     const hash = shaObj.getHash("HEX")
 
     if (hash !== key) {
-      throw new Error(`shasum verification failed\nexpected: ${key}\ngot: ${hash}`)
+      throw new ShasumVerificationError(hash, key)
     } else {
       return Promise.resolve(true)
     }
@@ -82,12 +89,12 @@ export default class OpfsBlobStore {
 
   // KEY is sha256sum of file located at URL
   // onProgress is called with ratio of data received
+  // sha256 is checked while downloading
   async fetch(key: string, url: string, onProgress: (i: number) => void | undefined) {
+    this.downloading = true
     if (await this.has(key)) {
       throw new DOMException(`${key} already exists.`, "OperationError")
     }
-
-    this.downloading = true
 
     let contentLength: number
     let fileHandle = await this.rootDirectoryHandle.getFileHandle(key, { create: true })
@@ -96,7 +103,7 @@ export default class OpfsBlobStore {
     return fetch(url)
       .then(response => {
         if (response.status !== 200) {
-          throw new Error(`http error. status code: ${response.status}`)
+          throw new DOMEError(`http error. status code: ${response.status}`)
         } else if (!response.headers.get("content-length")) {
           throw new Error(`response for ${url} is missing content-length header`)
         }
@@ -108,18 +115,26 @@ export default class OpfsBlobStore {
       })
       .then(response => {
         let bytesReceived = 0
+        let shaObj = new jsSHA("SHA-256", "UINT8ARRAY")
         const reader = response.body.getReader()
 
         return new ReadableStream({
           async start(controller) {
+            console.debug(`start download ${url} at ${Date.now().toString()}`)
             while (true) {
               const { done, value } = await reader.read() // value is Uint8array
 
               if (done) {
-                console.debug("Finished downloading ", url)
+                console.debug(`stop download ${url} at ${Date.now().toString()}`)
+                const hash = shaObj.getHash("HEX")
+
+                if (hash !== key) {
+                  throw new ShasumVerificationError(hash, key)
+                }
                 break
               }
 
+              shaObj.update(value)
               controller.enqueue(value)
               bytesReceived += value.length
 
