@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c491b13_8e2060ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000121
+      },
+      "writtenOn": "2025-01-05T17:58:15Z",
+      "side": 1,
+      "message": "I did another round of web installer test. Not sure where to put my comments so I\u0027m summarizing them here. Sorry for the long comment.\n\nScreen: 1. Start\nRegarding the following paragraph, should we address the e-SIM card situation?\n\nRemove SIM card\nOn brand new devices, especially those obtained from a carrier, it’s better to remove the SIM card from the device before starting it for the first time, to help with the “OEM Unlocking” step below.\n\nScreen: 5. Install\nTypo in the paragraphs:\n\nThis will install CalyxOS (6.2.1-2) on your Pixel 6a.\n\n⚠️ Don’t touch, unplug, or press any buttons on your device during the install. on your device during this process or else it will disturb the install. Watch the progress bar on this page to check the status. This may take 10-15 minutes.\n\nYour phone will restart several times, but don’t touch it. Watch the progress bar on this page instead.\n\nShould be:\n\nThis will install \u003cb\u003eCalyxOS (6.2.1-2)\u003c/b\u003e on your \u003cb\u003ePixel 6a\u003c/b\u003e. Your phone will restart several times.\n\n⚠️ Do not touch, unplug, or press any buttons on your device during \u003ci\u003ethis process\u003c/i\u003e or else the installation may be failed. Watch the progress bar on this page to check the status. \n\nThis may take 10-15 minutes.\n\nScreen: 7. Finish\n\nThe text on this page is too much. We can cut most of them. Also the styling is a bit off. @ziggy@calyxinstitute.org please let me know where and how I can send you all the edits, or if you want to discuss in real time.",
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f857c8f8_af79e81a",
         "filename": "src/components/ConnectStep.vue",
         "patchSetId": 1
