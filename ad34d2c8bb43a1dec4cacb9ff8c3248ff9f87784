@@ -16,6 +16,24 @@
       "message": "I\u0027m still worried about bricks.",
       "revId": "ad34d2c8bb43a1dec4cacb9ff8c3248ff9f87784",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a931b6f_ac9e257a",
+        "filename": "public/releases/index.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000121
+      },
+      "writtenOn": "2025-01-06T22:02:00Z",
+      "side": 1,
+      "message": "How can I test this?",
+      "parentUuid": "0bcbd888_4c279775",
+      "revId": "ad34d2c8bb43a1dec4cacb9ff8c3248ff9f87784",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }

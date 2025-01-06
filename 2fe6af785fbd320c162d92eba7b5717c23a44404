@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2609c2c_5811c86c",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000121
+      },
+      "writtenOn": "2025-01-06T22:02:00Z",
+      "side": 1,
+      "message": "I know, I know. I was asking if we could spell out https in the link text.",
+      "parentUuid": "f84d13e2_9e367f57",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b386185_4398211e",
         "filename": "src/components/ConnectStep.vue",
         "patchSetId": 1
@@ -243,6 +267,30 @@
       "side": 1,
       "message": "Delete what? :-D This comment or something in the file?",
       "parentUuid": "5b386185_4398211e",
+      "range": {
+        "startLine": 42,
+        "startChar": 55,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f97872cd_f19b2698",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000121
+      },
+      "writtenOn": "2025-01-06T22:02:00Z",
+      "side": 1,
+      "message": "Delete \u0027line\u0027 LOL. Basically I was asking changing \u0027commend line\u0027 to \u0027commend-line.\u0027 I was afraid of duplicating the word \u0027line.\u0027",
+      "parentUuid": "4ed48050_044437e3",
       "range": {
         "startLine": 42,
         "startChar": 55,
