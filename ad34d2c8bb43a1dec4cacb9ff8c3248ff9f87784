@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bcbd888_4c279775",
+        "filename": "public/releases/index.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-01-06T21:49:57Z",
+      "side": 1,
+      "message": "I\u0027m still worried about bricks.",
+      "revId": "ad34d2c8bb43a1dec4cacb9ff8c3248ff9f87784",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
