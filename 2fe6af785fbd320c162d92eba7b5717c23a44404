@@ -41,6 +41,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65f7033_ab48a0d5",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-01-06T21:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f857c8f8_af79e81a",
+      "range": {
+        "startLine": 37,
+        "startChar": 57,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a059eeb0_0fa72ae1",
@@ -64,6 +88,30 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aed5f902_20c944e5",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-01-06T21:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a059eeb0_0fa72ae1",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ed92819_7bed66da",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-01-05T17:26:48Z",
       "side": 1,
       "message": "I always prefer having https:// for urls since not all urls forces ssl connection. But since calyxos.org does. Probably fine leaving it as is.",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f84d13e2_9e367f57",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-01-06T21:49:01Z",
+      "side": 1,
+      "message": "The actual URL is `https://`, but it\u0027s not shown.",
+      "parentUuid": "4ed92819_7bed66da",
       "range": {
         "startLine": 40,
         "startChar": 15,
@@ -133,6 +205,54 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f9675d6_40352932",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-01-06T21:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c698a636_dec41bf8",
+      "range": {
+        "startLine": 42,
+        "startChar": 47,
+        "endLine": 42,
+        "endChar": 54
+      },
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed48050_044437e3",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-01-06T21:49:01Z",
+      "side": 1,
+      "message": "Delete what? :-D This comment or something in the file?",
+      "parentUuid": "5b386185_4398211e",
+      "range": {
+        "startLine": 42,
+        "startChar": 55,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "686c3bfa_2fc7ec40",
@@ -146,6 +266,24 @@
       "writtenOn": "2025-01-05T17:26:48Z",
       "side": 1,
       "message": "Please visit",
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63b03343_2e8b1754",
+        "filename": "src/components/ConnectStep.vue",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-01-06T21:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "686c3bfa_2fc7ec40",
       "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
