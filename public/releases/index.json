@@ -248,5 +248,65 @@
     "url": "https://release.calyxinstitute.org/blueline-factory-25514020.zip",
     "sha256": "15b1c8b97a594d26a88d29c8ce05ca32a0008b89a8c62395b28b3f77c0da5b90",
     "web_install": true
+  },
+  "FP4": {
+    "name": "Fairphone 4",
+    "codename": "FP4",
+    "date": "2025-01-03",
+    "version": "5.14.2",
+    "variant": "factory",
+    "url": "",
+    "sha256": "2ef9c1ae80bbc3d50f2dd50d00f9521f6e0a844cb7441274917bb9506cad466a",
+    "web_install": false
+  },
+  "FP5": {
+    "name": "Fairphone 5",
+    "codename": "FP5",
+    "date": "2025-01-03",
+    "version": "5.14.2",
+    "variant": "factory",
+    "url": "",
+    "sha256": "2f4999340c4fd5e436a35c2ca1b0037cf43cb7ae9e681f8ebaa6f030ac2e235b",
+    "web_install": false
+  },
+  "axolotl": {
+    "name": "SHIFT6mq",
+    "codename": "axolotl",
+    "date": "2025-01-03",
+    "version": "5.14.2",
+    "variant": "factory",
+    "url": "",
+    "sha256": "e5e5808725866a36760dfc9dca52e73f3fcfe282fdc120137c66b8508db4d859",
+    "web_install": false
+  },
+  "devon": {
+    "name": "Moto G32",
+    "codename": "devon",
+    "date": "2025-01-03",
+    "version": "5.14.2",
+    "variant": "factory",
+    "url": "",
+    "sha256": "43ed6721d7d7bfa75f411207afb3025537151ab8d9ac0f434cd38ee6f3e34f4d",
+    "web_install": false
+  },
+  "hawao": {
+    "name": "Moto G42",
+    "codename": "hawao",
+    "date": "2025-01-03",
+    "version": "5.14.2",
+    "variant": "factory",
+    "url": "",
+    "sha256": "7bfbdbdadcaf577a2e1a3ac3a968e23aef86a97141e180d7b4fe794f2651dc5d",
+    "web_install": false
+  },
+  "rhode": {
+    "name": "Moto G52",
+    "codename": "rhode",
+    "date": "2025-01-03",
+    "version": "5.14.2",
+    "variant": "factory",
+    "url": "",
+    "sha256": "b88cba3d32ee51a4dfbed0cfb561c3719180cba23b272f7e2f365c83cb89743d",
+    "web_install": false
   }
 }
