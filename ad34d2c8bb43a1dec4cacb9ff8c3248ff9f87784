@@ -34,6 +34,24 @@
       "parentUuid": "0bcbd888_4c279775",
       "revId": "ad34d2c8bb43a1dec4cacb9ff8c3248ff9f87784",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "990f414e_7411c4e8",
+        "filename": "public/releases/index.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-01-07T12:38:47Z",
+      "side": 1,
+      "message": "What I\u0027m worried about is that if this code has a bug, and it tries to install on a \u0027device not supported\u0027 - it will permanently damage the device.\n\nBut I solved that with 34155: update-releases: Skip factory URL if web install is not supported | https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/34155",
+      "parentUuid": "2a931b6f_ac9e257a",
+      "revId": "ad34d2c8bb43a1dec4cacb9ff8c3248ff9f87784",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
