@@ -21,7 +21,7 @@ function generateReleases(doc) {
       date: device["date"],
       version: device["version"],
       variant: "factory",
-      url: device["factory_link"],
+      url: device["web_install"] ? device["factory_link"] : "",
       sha256: device["factory_sha256"],
       web_install: device["web_install"],
     }
