@@ -16,6 +16,24 @@
       "message": "Is this used just by the `test.html`, or otherwise as well?",
       "revId": "0bfd6fe1f69a0568fe0c4e6a6f3ec1242ec917e5",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7b1e67_46892ae4",
+        "filename": "lib/opfs_blob_store/package.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2025-01-08T22:18:27Z",
+      "side": 1,
+      "message": "just in test.html. the browser doesn\u0027t know about typescript yet :)",
+      "parentUuid": "37880071_b713d3ab",
+      "revId": "0bfd6fe1f69a0568fe0c4e6a6f3ec1242ec917e5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
