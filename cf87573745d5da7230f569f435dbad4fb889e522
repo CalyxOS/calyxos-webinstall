@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "902e3eb9_64912eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2025-01-08T23:43:34Z",
+      "side": 1,
+      "message": "related download UI change coming soon...",
+      "revId": "cf87573745d5da7230f569f435dbad4fb889e522",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
