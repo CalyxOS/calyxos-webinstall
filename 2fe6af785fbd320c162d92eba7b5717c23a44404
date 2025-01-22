@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00629ae5_2f2f0289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2025-01-22T17:37:15Z",
+      "side": 1,
+      "message": "I\u0027ve updated the text to what\u0027s above. What\u0027s the e-SIM situation?\n\n@sagecheng@calyxinstitute.org regarding the Finish page, whatever works for you. Feel free to post suggestions here or in a gitlab issue",
+      "parentUuid": "8c491b13_8e2060ed",
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f857c8f8_af79e81a",
         "filename": "src/components/ConnectStep.vue",
         "patchSetId": 1
