@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de8a3706_f505b397",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000121
+      },
+      "writtenOn": "2025-01-22T18:18:34Z",
+      "side": 1,
+      "message": "Re: e-SIM, Chirayu said it doesn\u0027t affect the e-SIM and wouldn\u0027t trigger a re-installation / re-registration of e-SIMs. We can drop this for now.\n\nFinish page is pulling content from https://gitlab.com/CalyxOS/calyxos-webinstall/-/blob/main/src/components/AboutCalyxOS.vue\n\nI would reduce the new copy of AboutCalyxOS.vue to:\n\n\u003ch4\u003eMore to know about CalyxOS\u003c/h4\u003e\n\n\u003cp\u003eBefore you start, here are a few tips to maximize your experience with CalyxOS.\u003c/p\u003e\n\n\u003cp\u003e\u003cb\u003eBetter app compatibility:\u003c/b\u003e In the setup wizard, you can choose to use MicroG, an open-source alternative to Google Play Services, to have push notifications, location services, and apps without logging into a Google account.\u003c/p\u003e\n\n\u003cp\u003e\u003cb\u003eAutomatic system updates:\u003c/b\u003e CalyxOS ensures monthly (at least), over-the-air security and feature updates to keep your phone secure and compatible with popular apps.\u003c/p\u003e\n\n\u003cp\u003e\u003cb\u003eDatura firewall:\u003c/b\u003e You can use Datura to easily block network access for particular apps.\u003c/p\u003e\n\n\u003cp\u003e\u003cb\u003eSecure backup:\u003c/b\u003e You can use SeedVault to back up your entire device encrypted through simple clicks.\u003c/p\u003e\n\n\u003cp\u003e\u003cb\u003eAlternative app stores:\u003c/b\u003e You can install open-source apps with F-Droid or install apps from the Play Store anonymously with Aurora Store to minimize your digital trace.\u003c/p\u003e\n\n\u003cp\u003e\u003cb\u003ePrivacy-enhancing browser:\u003c/b\u003e The CalyxOS native Chromium browser allows you to browse the internet free of concerns with default ad-blocking and advanced anti-tracking settings.\u003c/p\u003e\n\n\u003cp\u003e\u003cb\u003eWork Profile:\u003c/b\u003e You can use this feature to contain work-related apps and files to turn them on and off with one click.\u003c/p\u003e\n\n\u003cp\u003e\u003cb\u003eSupported apps:\u003c/b\u003e Paid Google Play store apps usually won’t work. Some free apps will not work, such as Google Wallet or Google Pay.\u003c/p\u003e\n\n\u003ch4\u003eWant to know more about how to use CalyxOS? \u003c/h4\u003e\n\n\u003cp\u003e\u003cb\u003eMastodon\u003c/b\u003e\u003cbr/\u003e@calyxos@fosstodon.org\u003cbr/\u003e\n@calyxinstitute@mastodon.social\u003c/p\u003e\n\n\u003cp\u003e\u003cb\u003eX\u003c/b\u003e\u003cbr/\u003e@CalyxOS\u003cbr/\u003e \n@calyxinstitute\u003c/p\u003e\n\n\u003cp\u003e\u003cb\u003eFull guide\u003c/b\u003e\u003cbr/\u003e\nhttps://calyxos.org/start\u003c/p\u003e\n\n(Please also add links to the social media accounts and the full guide.)",
+      "parentUuid": "00629ae5_2f2f0289",
+      "revId": "2fe6af785fbd320c162d92eba7b5717c23a44404",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f857c8f8_af79e81a",
         "filename": "src/components/ConnectStep.vue",
         "patchSetId": 1
