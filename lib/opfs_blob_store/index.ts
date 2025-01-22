@@ -1,6 +1,6 @@
 import jsSHA from "jssha"
 
-class ShasumVerificationError extends Error {
+export class ShasumVerificationError extends Error {
   constructor(actual, expected) {
     super(`verification failed\nactual: ${actual}\nexpected: ${expected}`)
     this.name = "ShasumVerificationError"
