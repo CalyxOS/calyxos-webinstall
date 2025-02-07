@@ -76,7 +76,7 @@ export class FastbootDevice {
 
   private _registeredUsbListeners: boolean
   private _connectResolve: ((value: any) => void) | null
-  private _connectReject: ((err: Error) => void) | null
+  private _connectReject: ((err: Error | any) => void) | null
   private _disconnectResolve: ((value: any) => void) | null
 
   /**
@@ -156,7 +156,7 @@ export class FastbootDevice {
 
       await this.device!.selectConfiguration(1)
       await this.device!.claimInterface(0) // fastboot
-    } catch (error) {
+    } catch (error: unknown) {
       // Propagate exception from waitForConnect()
       if (this._connectReject !== null) {
         this._connectReject(error)

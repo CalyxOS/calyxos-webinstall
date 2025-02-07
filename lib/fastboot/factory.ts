@@ -1,13 +1,6 @@
 import * as common from "./common"
-import {
-  ZipReader,
-  BlobReader,
-  BlobWriter,
-  TextWriter,
-  Entry,
-  EntryGetDataOptions,
-  Writer,
-} from "@zip.js/zip.js"
+import { ZipReader, BlobReader, BlobWriter, TextWriter, Entry, Writer } from "@zip.js/zip.js"
+import type { GetDataOptions, ZipReaderOptions } from "@zip.js/zip.js"
 import { FastbootDevice, FastbootError, ReconnectCallback } from "./fastboot"
 
 /**
@@ -64,7 +57,11 @@ const FASTBOOTD_REBOOT_TIME = 16000 // ms
 const USERDATA_ERASE_TIME = 1000 // ms
 
 // Wrapper for Entry#getData() that unwraps ProgressEvent errors
-async function zipGetData(entry: Entry, writer: Writer, options?: EntryGetDataOptions) {
+async function zipGetData(
+  entry: Entry,
+  writer: Writer,
+  options?: GetDataOptions | ZipReaderOptions,
+) {
   try {
     return await entry.getData!(writer, options)
   } catch (e) {
