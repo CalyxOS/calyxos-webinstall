@@ -50,13 +50,17 @@ function main() {
             `${Object.values(releases).filter((release) => release.web_install).length} devices are ready`,
           )
 
-          fs.writeFile(releases_dest_path, JSON.stringify(releases, null, "  ") + '\n', function (err) {
-            if (err) {
-              return console.log(err)
-            } else {
-              console.log(`WROTE ${releases_dest_path}`)
-            }
-          })
+          fs.writeFile(
+            releases_dest_path,
+            JSON.stringify(releases, null, "  ") + "\n",
+            function (err) {
+              if (err) {
+                return console.log(err)
+              } else {
+                console.log(`WROTE ${releases_dest_path}`)
+              }
+            },
+          )
         } catch (error) {
           console.error(error.message)
         }
