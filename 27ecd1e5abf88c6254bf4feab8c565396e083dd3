@@ -34,6 +34,24 @@
       "parentUuid": "b8f83e09_4dc19bb7",
       "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7254e1f0_4f6335b9",
+        "filename": "src/components/DownloadStep.vue",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2025-04-01T20:49:31Z",
+      "side": 1,
+      "message": "hmm perhaps install button + (not auto-start) OR auto-start + (not button) ?  The button is useful to restart after an error but otherwise not needed.",
+      "parentUuid": "c3b33085_da497a5f",
+      "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
