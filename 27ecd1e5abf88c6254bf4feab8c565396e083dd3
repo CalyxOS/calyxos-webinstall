@@ -52,6 +52,24 @@
       "parentUuid": "c3b33085_da497a5f",
       "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0655233e_2ed7d7db",
+        "filename": "src/components/DownloadStep.vue",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-04-01T20:52:10Z",
+      "side": 1,
+      "message": "I\u0027m fine either way, perhaps @sagecheng@calyxinstitute.org has thoughts?\n\nThe question is if downloads should auto-start, or do we want to user to click a button to start downloading?",
+      "parentUuid": "7254e1f0_4f6335b9",
+      "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
