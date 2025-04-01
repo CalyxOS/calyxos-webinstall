@@ -16,6 +16,24 @@
       "message": "First test here and it just started downloading away, without clicking?\n\nIf that\u0027s intentional, we should remove the button.\nIf not, I\u0027ll try again.",
       "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b33085_da497a5f",
+        "filename": "src/components/DownloadStep.vue",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-04-01T17:18:16Z",
+      "side": 1,
+      "message": "Tried again, still the same. Good otherwise",
+      "parentUuid": "b8f83e09_4dc19bb7",
+      "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
