@@ -70,6 +70,24 @@
       "parentUuid": "7254e1f0_4f6335b9",
       "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cec7c43b_a8a33a79",
+        "filename": "src/components/DownloadStep.vue",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000121
+      },
+      "writtenOn": "2025-04-16T22:56:01Z",
+      "side": 1,
+      "message": "@chirayu@calyxinstitute.org I strongly vote for having a download button. The previous page\u0027s button to indicate the next action is \u0027Next.\u0027 By clicking that you will go to the \u0027Download\u0027 step/page. However, this does not explicitly indicating the download will start automatically. Also, automatic download is something malware always does, we certainly don\u0027t want people to connect us with malware. So having a \u0027download\u0027 button where people can click to start the downloading process is more straight forward without raising questions or confusions.\n\nBTW, from the code I also couldn\u0027t tell what is actually showing on this page. So I could be missing something important. My guess is you are asking if download should start automatically once people get to 4. Download page. (and the checking of sha1sum will happen if the image is already downloaded.)",
+      "parentUuid": "0655233e_2ed7d7db",
+      "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
