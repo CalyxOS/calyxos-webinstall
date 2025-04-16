@@ -88,6 +88,24 @@
       "parentUuid": "0655233e_2ed7d7db",
       "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e364c3_601d5771",
+        "filename": "src/components/DownloadStep.vue",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-04-16T22:58:16Z",
+      "side": 1,
+      "message": "Yes, that is what I was asking.\n\nIn that @ziggy@calyxinstitute.org could you make it need the button again, and then we can ship this",
+      "parentUuid": "cec7c43b_a8a33a79",
+      "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
