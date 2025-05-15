@@ -106,6 +106,24 @@
       "parentUuid": "cec7c43b_a8a33a79",
       "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3010b8a_fb16e807",
+        "filename": "src/components/DownloadStep.vue",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-05-15T19:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5e364c3_601d5771",
+      "revId": "27ecd1e5abf88c6254bf4feab8c565396e083dd3",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
