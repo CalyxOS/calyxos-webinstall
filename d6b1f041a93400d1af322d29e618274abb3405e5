@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a551ff3f_56ce8165",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-05-15T19:04:34Z",
+      "side": 1,
+      "message": "`npm ci; npm run build # And then copy dist/`",
+      "revId": "d6b1f041a93400d1af322d29e618274abb3405e5",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
