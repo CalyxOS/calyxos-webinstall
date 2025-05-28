@@ -2,11 +2,11 @@
   "FP5": {
     "name": "Fairphone 5",
     "codename": "FP5",
-    "date": "2025-05-08",
-    "version": "0.0.0",
+    "date": "2025-05-14",
+    "version": "6.7.22",
     "variant": "factory",
     "url": "",
-    "sha256": null,
+    "sha256": "54bc7630a1902c96cbe4390ccec2a13d96fd87a47b7c3fe1adff731c71473eeb",
     "web_install": false
   },
   "FP4": {
@@ -17,6 +17,36 @@
     "variant": "factory",
     "url": "",
     "sha256": "cc54f57c75dc387dca9217b942e765b38af7953ab9e29558a70dc5720d2da44b",
+    "web_install": false
+  },
+  "fogo": {
+    "name": "moto g 5G - 2024",
+    "codename": "fogo",
+    "date": "2025-05-21",
+    "version": "6.7.22-4",
+    "variant": "factory",
+    "url": "",
+    "sha256": "7f241cb5499f9f5a618088538abb74b678d6d41d6c3f048af2bc106a44407302",
+    "web_install": false
+  },
+  "bangkk": {
+    "name": "moto g84 5G",
+    "codename": "bangkk",
+    "date": "2025-05-20",
+    "version": "6.7.22-2",
+    "variant": "factory",
+    "url": "",
+    "sha256": "585c0e8f297bfae1d867a0e23b1810670a3d416864977586a1f8fefaa6698b35",
+    "web_install": false
+  },
+  "fogos": {
+    "name": "moto g34 5G and g45 5G",
+    "codename": "fogos",
+    "date": "2025-05-14",
+    "version": "6.7.22",
+    "variant": "factory",
+    "url": "",
+    "sha256": "6941a1a4865590f032666bb66add457a7bd6ee086fc36b86feb8ec49df53f1d1",
     "web_install": false
   },
   "rhode": {
@@ -228,15 +258,5 @@
     "url": "https://release.calyxinstitute.org/redfin-factory-25607212.zip",
     "sha256": "07496da235fed565a9c66e59f0de1004e64836a60d81ec01bae84b93df987356",
     "web_install": true
-  },
-  "axolotl": {
-    "name": "SHIFT6mq",
-    "codename": "axolotl",
-    "date": "2025-03-29",
-    "version": "5.17.1",
-    "variant": "factory",
-    "url": "",
-    "sha256": "ccea8a105419157077575fe0a0be3504e3ebba6bcb683660c786569b3c6be4de",
-    "web_install": false
   }
 }
