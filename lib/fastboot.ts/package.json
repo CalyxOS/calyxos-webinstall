@@ -1,0 +1,27 @@
+{
+  "name": "@aepyornis/fastboot.ts",
+  "version": "0.0.2",
+  "description": "fastboot again",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild src/index.ts --bundle --sourcemap --format=esm --platform=browser --target=chrome121 --outfile=dist/fastboot.js"
+  },
+  "keywords": [],
+  "author": "Ziggy, Calyx Institute",
+  "license": "MIT",
+  "packageManager": "pnpm@10.8.0",
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "@types/w3c-web-usb": "^1.0.10",
+    "esbuild": "^0.25.2",
+    "eslint": "^9.24.0",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.29.1"
+  },
+  "dependencies": {
+    "@zip.js/zip.js": "^2.7.60"
+  }
+}
