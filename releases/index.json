@@ -79,6 +79,16 @@
     "sha256": "46a57530e49d436f19df6764134471aa60147b01283400e1b7fb0d9380a6b0a1",
     "web_install": false
   },
+  "tegu": {
+    "name": "Pixel 9a",
+    "codename": "tegu",
+    "date": "2025-06-07",
+    "version": "6.8.11",
+    "variant": "factory",
+    "url": "https://release.calyxinstitute.org/tegu-factory-25608110.zip",
+    "sha256": "6897cfdfea5910f5d25a77c1e38c314ba877172f97f28939a2bfcdd745356dfa",
+    "web_install": true
+  },
   "comet": {
     "name": "Pixel 9 Pro Fold",
     "codename": "comet",
