@@ -1,8 +1,7 @@
 <template>
   <v-container class="d-flex justify-space-between flex-column flex-grow-1">
-    <div class="mb-10 mt-n4">
-      <h6 class="text-h6 pb-4">Connect your device</h6>
-
+    <div class="mb-10">
+      <h6 class="text-h6 mb-2">Connect your device</h6>
       <div class="text-body-1 mb-4">
         <p>
           Put your device into bootloader mode by restarting it and holding the
@@ -22,19 +21,29 @@
         </p>
       </div>
 
-      <v-btn :color="connected() ? 'null' : 'primary'" @click="connect" :disabled="connecting"
+      <v-btn
+        :color="connected() ? 'null' : 'primary'"
+        @click="connect"
+        :disabled="connecting || connected()"
         >Connect</v-btn
       >
     </div>
 
-    <div class="mb-4 mt-n4" v-if="connected() && !installable()">
-      <v-alert density="compact" title="Device Not Supported" type="tonal">
-        <div v-if="cliInstallOnly()">
+    <div class="mb-10" v-if="connected()">
+      <v-alert>
+        <v-icon color="green darken-3">mdi-check</v-icon>
+        <span class="text-body-1 green--text text--darken-3">
+          Connected to {{ store.product }}
+        </span>
+      </v-alert>
+
+      <v-alert v-if="!store.installable()" class="mt-4" title="Device Not Supported" type="tonal">
+        <div v-if="store.cliInstallOnly()">
           <p>
             We're sorry, your device cannot be installed through the web installer.<br />
             Please visit
-            <a :href="`https://calyxos.org/install/devices/${this.getDeviceName()}/`"
-              >https://calyxos.org/install/devices/{{ this.getDeviceName() }}</a
+            <a :href="`https://calyxos.org/install/devices/${store.product}/`"
+              >https://calyxos.org/install/devices/{{ store.product }}</a
             >
             for instructions on how to use the command-line device flasher.
           </p>
@@ -49,59 +58,47 @@
       </v-alert>
     </div>
 
-    <div class="mb-4"></div>
-
     <div class="d-flex justify-space-between flex-row-reverse">
-      <v-btn color="primary" @click="nextStep" :disabled="!mayContinue()"
+      <v-btn color="primary" @click="store.nextStep" :disabled="!mayContinue()"
         >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
       >
-      <v-btn text @click="prevStep">Back</v-btn>
+      <v-btn text @click="store.prevStep">Back</v-btn>
     </div>
   </v-container>
 </template>
 
 <script>
+import { store } from "../store.js"
+
 export default {
   name: "ConnectStep",
 
   components: {},
 
-  data: () => ({
-    connecting: false,
-    error: null,
-    firstConnect: true,
-  }),
-
-  inject: ["nextStep", "prevStep", "setDevice"],
-
-  props: ["active", "device"],
+  data() {
+    return {
+      store,
+      connecting: false,
+    }
+  },
 
   methods: {
-    async errorRetry() {
-      await this.connect()
-    },
-
     async connect() {
-      this.connecting = true
+      try {
+        this.connecting = true
+        await store.createClient()
+      } finally {
+        this.connecting = false
+      }
     },
 
     connected() {
-      return false
+      return store.client != null && store.product != null && store.client.fd.device.opened
     },
 
     mayContinue() {
-      return this.device && installable()
+      return this.connected() && store.installable()
     },
-
-    getDeviceName() {
-      //
-    },
-
-    installable() {
-      return false
-    },
-
-    cliInstallOnly() {},
   },
 }
 </script>
