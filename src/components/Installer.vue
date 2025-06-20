@@ -2,7 +2,7 @@
   <div>
     <v-stepper
       ref="stepper"
-      v-model="curStep"
+      v-model="store.curStep"
       class="d-flex flex-column flex-grow-1"
       :items="['Start', 'Connect', 'Unlock', 'Download', 'Install', 'Lock', 'Finish']"
       hideActions
@@ -39,9 +39,8 @@
 </template>
 
 <script>
-import { FastbootClient, FastbootFlasher } from "@aepyornis/fastboot.ts"
+import { store } from "../store.js"
 
-import ConnectBanner from "@/components/ConnectBanner.vue"
 import PrepareStep from "@/components/PrepareStep.vue"
 //import InstallTypeStep from "@/components/InstallTypeStep.vue";
 import ConnectStep from "@/components/ConnectStep.vue"
@@ -62,40 +61,13 @@ export default {
      * InstallStep,
      * LockStep,
      * FinishStep,
-     * ConnectBanner, */
+     */
   },
 
   data() {
     return {
-      client: this.client,
-      curStep: 1,
+      store,
     }
-  },
-
-  provide() {
-    return {
-      nextStep: this.nextStep,
-      prevStep: this.prevStep,
-      client: this.client,
-      createClient: this.createClient,
-    }
-  },
-
-  methods: {
-    async createClient() {
-      if (this.client) {
-        throw new Error("FastbootClient already connected")
-      }
-
-      this.client = await FastbootClient.create()
-    },
-
-    nextStep() {
-      this.curStep++
-    },
-    prevStep() {
-      this.curStep--
-    },
   },
 }
 </script>
