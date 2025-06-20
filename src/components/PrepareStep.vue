@@ -5,9 +5,9 @@
 
       <div class="text-body-1">
         <p>
-          Here are simple steps to install {{ $root.$data.OS_NAME }}
-          on your device. In the following steps, most actions are done through clicking buttons on
-          this page. Please follow the instruction carefully to ensure successful installation.
+          Here are simple steps to install CalyxOS on your device. In the following steps, most
+          actions are done through clicking buttons on this page. Please follow the instruction
+          carefully to ensure successful installation.
         </p>
         <p class="mt-2">
           ⚠️
@@ -71,7 +71,7 @@
     </div>
 
     <div class="d-flex justify-space-between flex-row-reverse">
-      <v-btn color="primary" @click="emit('nextStep')" :disabled="!usbSupported">
+      <v-btn color="primary" @click="nextStep" :disabled="!usbSupported">
         Start
         <v-icon dark right>mdi-arrow-right</v-icon>
       </v-btn>
@@ -81,23 +81,10 @@
 
 <script>
 export default {
-  props: ["device", "active"],
-
   data: () => ({
     usbSupported: "usb" in navigator,
   }),
 
-  inject: ["emit", "saEvent"],
-
-  watch: {
-    active: {
-      async handler(newState) {
-        if (newState) {
-          this.saEvent("step_prepare")
-        }
-      },
-      immediate: true,
-    },
-  },
+  inject: ["nextStep"],
 }
 </script>
