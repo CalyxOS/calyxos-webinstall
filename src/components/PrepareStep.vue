@@ -57,9 +57,9 @@
 
       <div class="text-body-1">
         <p>
-          Unfortunately, you can’t use this web installer for
-          {{ $root.$data.OS_NAME }} because your browser doesn’t support WebUSB. Only Google Chrome
-          and other browsers based on Chromium, such as Brave and Microsoft Edge, are supported.
+          Unfortunately, you can’t use this web installer for CalyxOS because your browser doesn’t
+          support WebUSB. Only Google Chrome and other browsers based on Chromium, such as Brave
+          and Microsoft Edge, are supported.
         </p>
       </div>
 
@@ -71,7 +71,7 @@
     </div>
 
     <div class="d-flex justify-space-between flex-row-reverse">
-      <v-btn color="primary" @click="nextStep" :disabled="!usbSupported">
+      <v-btn color="primary" @click="store.nextStep" :disabled="!usbSupported">
         Start
         <v-icon dark right>mdi-arrow-right</v-icon>
       </v-btn>
@@ -80,11 +80,14 @@
 </template>
 
 <script>
-export default {
-  data: () => ({
-    usbSupported: "usb" in navigator,
-  }),
+import { store } from "../store.js"
 
-  inject: ["nextStep"],
+export default {
+  data() {
+    return {
+      store,
+      usbSupported: Boolean(navigator.usb),
+    }
+  },
 }
 </script>
