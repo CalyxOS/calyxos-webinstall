@@ -44,7 +44,7 @@ import { store } from "../store.js"
 import PrepareStep from "@/components/PrepareStep.vue"
 //import InstallTypeStep from "@/components/InstallTypeStep.vue";
 import ConnectStep from "@/components/ConnectStep.vue"
-//import UnlockStep from "@/components/UnlockStep.vue"
+import UnlockStep from "@/components/UnlockStep.vue"
 //import DownloadStep from "@/components/DownloadStep.vue"
 //import InstallStep from "@/components/InstallStep.vue"
 //import LockStep from "@/components/LockStep.vue"
@@ -56,7 +56,8 @@ export default {
   components: {
     PrepareStep,
     ConnectStep,
-    /* UnlockStep,
+    UnlockStep,
+    /*
      * DownloadStep,
      * InstallStep,
      * LockStep,
