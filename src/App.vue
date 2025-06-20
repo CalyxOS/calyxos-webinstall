@@ -97,6 +97,20 @@
 .col-1 {
   padding: 0 !important;
 }
+
+.v-stepper {
+  box-shadow: none !important;
+  border-radius: 8px !important;
+}
+.v-stepper__header {
+  box-shadow: none !important;
+  border-bottom: thin solid rgba(0, 0, 0, 0.12);
+}
+.v-stepper__wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
 </style>
 
 <script>
@@ -104,10 +118,7 @@ import { h } from "vue"
 import Config from "@/config"
 import Installer from "@/components/Installer.vue"
 
-const RELEASE_INDEX_URL =
-  (import.meta.env.BASE_URL.slice(-1) == "/"
-    ? import.meta.env.BASE_URL.slice(0, -1)
-    : import.meta.env.BASE_URL) + "/releases/index.json"
+import RELEASE_INDEX from "/src/releases.json"
 
 export default {
   name: "App",
@@ -116,27 +127,14 @@ export default {
   },
   data() {
     return {
-      links: ["Home", "Install"],
-      product: null,
-      zipBlob: null,
-      release: null,
-      installType: null,
-      releaseIndex: null,
-      ...Config,
+      releaseIndex: RELEASE_INDEX,
     }
   },
+
   render: () => h(this),
 
-  async mounted() {
-    if (!this.releaseIndex) {
-      try {
-        let response = await fetch(RELEASE_INDEX_URL)
-        this.releaseIndex = await response.json()
-        console.log(`release index: ${JSON.stringify(this.releaseIndex)}`)
-      } catch (e) {
-        console.error(`fetch(${RELEASE_INDEX_URL}) failed`, e)
-      }
-    }
+  mounted() {
+    console.log(`release index: ${JSON.stringify(RELEASE_INDEX)}`)
   },
 }
 </script>
