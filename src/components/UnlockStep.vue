@@ -83,7 +83,7 @@ import { FastbootError } from "fastboot"
 export default {
   name: "UnlockStep",
 
-  props: ["device", "curStep", "stepNum"],
+  props: ["device", "active"],
 
   data: () => ({
     unlocking: false,

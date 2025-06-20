@@ -22,22 +22,19 @@
         </p>
       </div>
 
-      <v-btn
-        :color="$root.$data.product === null ? 'primary' : null"
-        @click="connect"
-        :disabled="connecting"
+      <v-btn :color="connected() ? 'null' : 'primary'" @click="connect" :disabled="connecting"
         >Connect</v-btn
       >
     </div>
 
-    <div class="mb-4 mt-n4" v-if="$root.$data.product && !connecting && !installable()">
+    <div class="mb-4 mt-n4" v-if="connected() && !installable()">
       <v-alert density="compact" title="Device Not Supported" type="tonal">
         <div v-if="cliInstallOnly()">
           <p>
             We're sorry, your device cannot be installed through the web installer.<br />
             Please visit
-            <a :href="`https://calyxos.org/install/devices/${this.$root.$data.product}/`"
-              >https://calyxos.org/install/devices/{{ this.$root.$data.product }}</a
+            <a :href="`https://calyxos.org/install/devices/${this.getDeviceName()}/`"
+              >https://calyxos.org/install/devices/{{ this.getDeviceName() }}</a
             >
             for instructions on how to use the command-line device flasher.
           </p>
@@ -52,36 +49,22 @@
       </v-alert>
     </div>
 
-    <div class="mb-4">
-      <connect-banner
-        :device="device"
-        :connecting="connecting"
-        :error="error"
-        :name="getDeviceName()"
-      />
-    </div>
+    <div class="mb-4"></div>
 
     <div class="d-flex justify-space-between flex-row-reverse">
-      <v-btn
-        color="primary"
-        @click="emit('nextStep')"
-        :disabled="$root.$data.product === null || !installable()"
+      <v-btn color="primary" @click="nextStep" :disabled="!mayContinue()"
         >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
       >
-      <v-btn text @click="emit('prevStep')">Back</v-btn>
+      <v-btn text @click="prevStep">Back</v-btn>
     </div>
   </v-container>
 </template>
 
 <script>
-import ConnectBanner from "./ConnectBanner.vue"
-
 export default {
   name: "ConnectStep",
 
-  components: {
-    ConnectBanner,
-  },
+  components: {},
 
   data: () => ({
     connecting: false,
@@ -89,7 +72,9 @@ export default {
     firstConnect: true,
   }),
 
-  inject: ["emitError", "emit", "saEvent"],
+  inject: ["nextStep", "prevStep", "setDevice"],
+
+  props: ["active", "device"],
 
   methods: {
     async errorRetry() {
@@ -98,72 +83,25 @@ export default {
 
     async connect() {
       this.connecting = true
+    },
 
-      try {
-        await this.device.connect()
-        this.$root.$data.product = await this.device.getVariable("product")
-        this.error = null
+    connected() {
+      return false
+    },
 
-        if (this.firstConnect) {
-          this.firstConnect = false
-          if (this.installable()) {
-            this.emit("nextStep")
-          }
-        }
-
-        this.saEvent(`device_connect__${this.$root.$data.product}`)
-      } catch (e) {
-        let [handled, message] = this.emitError(e)
-        this.error = message
-        if (!handled) {
-          throw e
-        }
-      } finally {
-        this.connecting = false
-      }
+    mayContinue() {
+      return this.device && installable()
     },
 
     getDeviceName() {
-      let product = this.$root.$data.product
-      if (!product) {
-        return ""
-      }
-      let release = this.$root.$data.releaseIndex[product]
-      if (release && release.name) {
-        return release.name
-      } else {
-        return product
-      }
+      //
     },
 
     installable() {
-      return (
-        this.$root.$data.product &&
-        this.$root.$data.releaseIndex[this.$root.$data.product] &&
-        this.$root.$data.releaseIndex[this.$root.$data.product].web_install
-      )
+      return false
     },
 
-    cliInstallOnly() {
-      return (
-        this.$root.$data.product &&
-        this.$root.$data.releaseIndex[this.$root.$data.product] &&
-        !this.$root.$data.releaseIndex[this.$root.$data.product].web_install
-      )
-    },
-  },
-
-  props: ["device", "active"],
-
-  watch: {
-    active: {
-      handler(newState) {
-        if (newState) {
-          this.saEvent("step_connect")
-        }
-      },
-      immediate: true,
-    },
+    cliInstallOnly() {},
   },
 }
 </script>
