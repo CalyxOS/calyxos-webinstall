@@ -11,7 +11,7 @@
 
     <div class="d-flex flex-wrap justify-space-around">
       <p class="mt-4 text-h6 font-weight-regular">
-        {{ $root.$data.OS_NAME }}: <span class="font-weight-bold">{{ release.version }}</span>
+        CalyxOS: <span class="font-weight-bold">{{ release.version }}</span>
         <v-btn variant="tonal" @click="run()" :disabled="running" class="ml-4"> Download </v-btn>
       </p>
     </div>
@@ -43,12 +43,12 @@
     <div class="d-flex justify-space-between flex-row-reverse mt-4">
       <v-btn
         color="primary"
-        @click="emit('nextStep')"
+        @click="store.nextStep"
         :disabled="running || Boolean(error) || progress !== 100"
       >
         Next<v-icon dark right>mdi-arrow-right</v-icon>
       </v-btn>
-      <v-btn text @click="emit('prevStep')" :disabled="running">Back</v-btn>
+      <v-btn text @click="store.prevStep" :disabled="running">Back</v-btn>
     </div>
   </v-container>
 </template>
@@ -65,74 +65,70 @@
 
 <script>
 import OpfsBlobStore from "opfs_blob_store"
+import { store } from "../store.js"
 
 export default {
   name: "DownloadStep",
 
-  props: ["device", "active", "release"],
-
-  data: () => ({
-    running: false,
-    progress: null,
-    error: null,
-  }),
+  data() {
+    return {
+      store,
+      release: store.release(),
+      running: false,
+      progress: null,
+      error: null,
+    }
+  },
 
   methods: {
     releaseName() {
-      return `${this.release.codename}-${this.release.variant}-${this.release.version}\n${this.release.sha256}`
+      const release = store.release()
+      return `${release.codename}-${release.variant}-${release.version}\n${release.sha256}`
     },
 
     async run() {
-      try {
-        this.error = null
-        const bs = await OpfsBlobStore.create()
-        let inStorage = await bs.has(this.release.sha256)
+      const release = store.release()
+      this.error = null
+      const bs = await OpfsBlobStore.create()
+      let inStorage = await bs.has(release.sha256)
 
-        // if already downloaded this session, ask to re-download
-        if (inStorage && this.progress === 100) {
-          if (confirm("Download again?")) {
-            await bs.delete(this.release.sha256)
-            inStorage = false
-          } else {
-            return Promise.resolve(true)
-          }
-        }
-
-        if (inStorage) {
-          // if file size is too small we can re-download without wasting time checking
-          const file = await bs.get(this.release.sha256)
-          if (file.size < 200000000) {
-            console.debug(
-              `The file for ${this.release.sha256} is too small: ${file.size}. Downloading again.`,
-            )
-            await bs.delete(this.release.sha256)
-            await this.download()
-          } else {
-            try {
-              await this.shasum()
-            } catch (e) {
-              console.debug(
-                `${this.release.sha256} check failed: ${e.message}. Downloading again.`,
-              )
-              await bs.delete(this.release.sha256)
-              await this.download()
-            }
-          }
+      // if already downloaded this session, ask to re-download
+      if (inStorage && this.progress === 100) {
+        if (confirm("Download again?")) {
+          await bs.delete(release.sha256)
+          inStorage = false
         } else {
+          return Promise.resolve(true)
+        }
+      }
+
+      if (inStorage) {
+        // if file size is too small we can re-download without wasting time checking
+        const file = await bs.get(release.sha256)
+        if (file.size < 200000000) {
+          console.debug(
+            `The file for ${release.sha256} is too small: ${file.size}. Downloading again.`,
+          )
+          await bs.delete(release.sha256)
           await this.download()
+        } else {
+          try {
+            await this.shasum()
+          } catch (e) {
+            console.debug(`${release.sha256} check failed: ${e.message}. Downloading again.`)
+            await bs.delete(release.sha256)
+            await this.download()
+          }
         }
-      } catch (e) {
-        let [handled, message] = this.emitError(e)
-        this.error = message
-        if (!handled) {
-          throw e
-        }
+      } else {
+        await this.download()
       }
     },
 
     async download() {
-      this.saEvent(
-        `download_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`,
+      const release = store.release()
+      console.log(
+        `download_${release.codename}_${release.version}_${release.variant}_${this.release.sha256}`,
       )
 
       this.progress = 0
@@ -161,13 +157,14 @@ export default {
         })
 
         this.running = true
-        worker.postMessage({ type: "start", sha256: this.release.sha256, url: this.release.url })
+        worker.postMessage({ type: "start", sha256: release.sha256, url: release.url })
       })
     },
 
     async shasum() {
-      this.saEvent(
-        `verify_${this.$root.$data.product}_${this.release.version}_${this.release.variant}_${this.release.sha256}`,
+      const release = store.release()
+      console.log(
+        `verify_${release.codename}_${release.version}_${release.variant}_${this.release.sha256}`,
       )
 
       this.progress = 0
@@ -196,11 +193,9 @@ export default {
         })
 
         this.running = true
-        worker.postMessage({ type: "start", sha256: this.release.sha256 })
+        worker.postMessage({ type: "start", sha256: release.sha256 })
       })
     },
   },
-
-  inject: ["emit", "emitError", "saEvent"],
 }
 </script>
