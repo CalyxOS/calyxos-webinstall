@@ -16,6 +16,13 @@ export const store = reactive({
     store.product = await store.client.getVar("product")
   },
 
+  release() {
+    if (store.product === null) {
+      throw new Error("store.product is null. Is the device connected?")
+    }
+    return RELEASE_INDEX[store.product]
+  },
+
   installable() {
     return (
       store.product != null &&
