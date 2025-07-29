@@ -30,10 +30,10 @@ pages:
     - main
 
 build:
-  image: docker:27
+  image: docker:28
   stage: registry
   services:
-    - name: docker:27-dind
+    - name: docker:28-dind
       alias: docker
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
@@ -49,7 +49,7 @@ releases:
   stage: update-releases
   script:
     - npm run update-releases
-    - git diff public/releases/index.json
+    - git diff src/releases.json
   artifacts:
     paths:
       - public/releases/index.json
