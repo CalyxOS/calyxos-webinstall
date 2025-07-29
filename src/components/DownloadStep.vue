@@ -64,7 +64,7 @@
 </style>
 
 <script>
-import OpfsBlobStore from "opfs_blob_store"
+import OpfsBlobStore from "@aepyornis/opfs_blob_store"
 import { store } from "../store.js"
 
 export default {

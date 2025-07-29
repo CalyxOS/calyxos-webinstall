@@ -87,7 +87,7 @@
 
 <script>
 import * as fastboot from "android-fastboot"
-import OpfsBlobStore from "opfs_blob_store"
+import OpfsBlobStore from "@aepyornis/opfs_blob_store"
 
 const INSTALL_STATUS_ICONS = {
   load: "mdi-archive-arrow-down-outline",
