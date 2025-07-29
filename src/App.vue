@@ -42,7 +42,6 @@
 
 <script>
 import { h } from "vue"
-import Config from "@/config"
 import Installer from "@/components/Installer.vue"
 
 import { store } from "./store.js"
