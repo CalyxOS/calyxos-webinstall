@@ -10,7 +10,7 @@ import "vuetify/styles"
 import "@fontsource/roboto"
 import "@mdi/font/css/materialdesignicons.css"
 
-import OpfsBlobStore from "opfs_blob_store"
+import OpfsBlobStore from "@aepyornis/opfs_blob_store"
 
 const vuetify = createVuetify({
   components: {
