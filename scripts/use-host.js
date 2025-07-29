@@ -8,7 +8,7 @@ import { argv } from "process"
 
 const replacement = argv[2] ? argv[2] : "http://localhost:5173/calyxos"
 const base_path = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
-const releases_dest_path = path.resolve(base_path, "public", "releases", "index.json")
+const releases_dest_path = path.resolve(base_path, "src", "releases.json")
 const data = JSON.parse(fs.readFileSync(releases_dest_path))
 
 for (let value of Object.values(data)) {

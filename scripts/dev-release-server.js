@@ -24,14 +24,21 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, {
     "Content-Type": "application/zip",
     "Content-Length": zipFileStats.size,
+    "Access-Control-Allow-Origin": "*",
   })
 
   const readStream = fs.createReadStream(ZIPFILE)
-  // readStream.pipe(res)
+  readStream.pipe(res)
 
-  const limitStream = maxSizeTransform(200000000)
-  limitStream.on("error", () => res.destroy())
-  readStream.pipe(limitStream).pipe(res)
+  // stop request after sending x amount
+  // const limitStream = maxSizeTransform(200000000)
+  //limitStream.on("error", () => res.destroy())
+  // readStream.pipe(limitStream).pipe(res)
+
+  // corrupt the image by modifing the data
+  // const changeStream = changeOneByte(65536 * 100)
+  // changeStream.on("error", () => res.destroy())
+  // readStream.pipe(changeStream).pipe(res)
 })
 
 server.listen(PORT, () => {
@@ -58,6 +65,23 @@ function maxSizeTransform(max) {
       } else {
         callback(null, chunk)
       }
+    },
+  })
+}
+
+function changeOneByte(minFileLoc) {
+  var size = 0
+  var changedLoc = null
+
+  return new Transform({
+    transform(chunk, encoding, callback) {
+      if (changedLoc === null && size >= minFileLoc) {
+        changedLoc = size
+        console.log(`changed byte ${changedLoc}`)
+        chunk[0] = chunk[0] + 1
+      }
+      callback(null, chunk)
+      size += chunk.length
     },
   })
 }
