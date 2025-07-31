@@ -1,5 +1,6 @@
 import { reactive } from "vue"
 import { FastbootClient } from "@aepyornis/fastboot.ts"
+import OpfsBlobStore from "@aepyornis/opfs_blob_store"
 
 import RELEASE_INDEX from "/src/releases.json"
 
@@ -42,7 +43,12 @@ export const store = reactive({
   nextStep() {
     store.curStep++
   },
+
   prevStep() {
     store.curStep--
+  },
+
+  async getImage() {
+    return (await OpfsBlobStore.create()).get(RELEASE_INDEX[store.product].sha256)
   },
 })
