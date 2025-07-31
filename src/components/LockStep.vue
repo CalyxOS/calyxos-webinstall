@@ -28,88 +28,39 @@
     </div>
 
     <div class="d-flex justify-space-between flex-row-reverse">
-      <v-btn color="primary" @click="emit('nextStep')" :disabled="!locked"
+      <v-btn color="primary" @click="store.nextStep" :disabled="!locked"
         >Finish <v-icon dark right>mdi-arrow-right</v-icon></v-btn
       >
-      <v-btn text @click="emit('prevStep')">Back</v-btn>
+      <v-btn text @click="store.prevStep">Back</v-btn>
     </div>
   </v-container>
 </template>
 
 <script>
-import { FastbootError } from "android-fastboot"
+import { store } from "../store.js"
 
 export default {
   name: "LockStep",
 
-  props: ["device", "curStep", "stepNum"],
-
-  data: () => ({
-    locking: false,
-    locked: null,
-    error: null,
-  }),
-
-  inject: ["emit", "emitError", "saEvent"],
+  data() {
+    return {
+      store,
+      locking: false,
+      locked: null,
+      error: null,
+    }
+  },
 
   methods: {
     async lock() {
-      this.saEvent(`lock_bootloader${this.$root.$data.product}`)
-      this.locked = null
-      this.locking = true
-      this.error = null
-
       try {
-        if (!this.device.isConnected) {
-          await this.device.connect()
-          await new Promise((resolve) => setTimeout(resolve, 1000))
-        }
-
-        // Locking can't be done in fastbootd
-        if ((await this.device.getVariable("is-userspace")) === "yes") {
-          await this.device.reboot("bootloader", true, () => {
-            this.emit("requestDeviceReconnect")
-          })
-          return this.lock()
-        }
-
-        if ((await this.device.getVariable("unlocked")) === "no") {
-          this.locked = true
-          await this.device.reboot("")
-        } else {
-          this.locked = false
-          try {
-            await this.device.runCommand("flashing lock")
-            // pause while lock message is on screen
-            await new Promise((resolve) => setTimeout(resolve, 15000))
-            // until the user confirms on the phone, fastboot cannot connect
-            while (!this.device.isConnected) {
-              await new Promise((resolve) => setTimeout(resolve, 1000))
-            }
-            return this.lock()
-          } catch (e) {
-            if (
-              e instanceof FastbootError &&
-              e.status === "FAIL" &&
-              e.message.includes("already")
-            ) {
-              //  Try again if already locked
-              return this.lock()
-            } else {
-              throw e
-            }
-          }
-        }
+        this.locking = true
+        this.error = null
+        await store.client.lock()
+        this.locked = true
       } catch (e) {
-        if (e instanceof DOMException && e.message.includes("A transfer error has occurred")) {
-          console.error("Transfer error", e)
-        }
-
-        let [handled, message] = this.emitError(e)
-        this.error = message
-        if (!handled) {
-          throw e
-        }
+        console.debug(e)
+        this.error = e.message
       } finally {
         this.locking = false
       }
@@ -117,7 +68,7 @@ export default {
   },
 
   async mounted() {
-    return this.lock()
+    await this.lock()
   },
 }
 </script>

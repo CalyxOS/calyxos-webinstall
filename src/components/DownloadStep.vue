@@ -33,9 +33,7 @@
 
         <v-banner v-if="!error && progress === 100" single-line outlined rounded>
           <v-icon color="green darken-3">mdi-check</v-icon>
-          <span class="text-body-1 green--text text--darken-3">
-            Downloaded {{ $root.$data.OS_NAME }}
-          </span>
+          <span class="text-body-1 green--text text--darken-3">Downloaded CalyxOS</span>
         </v-banner>
       </div>
     </div>
