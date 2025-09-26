@@ -66,6 +66,12 @@ export default {
       try {
         this.unlocking = true
         this.error = null
+
+        if (await store.client.isUserspace()) {
+          await store.client.rebootBootloader()
+          await new Promise((resolve) => setTimeout(resolve, 1000))
+        }
+
         await store.client.unlock()
         this.unlocked = true
       } catch (e) {

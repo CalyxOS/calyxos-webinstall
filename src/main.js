@@ -12,6 +12,8 @@ import "@mdi/font/css/materialdesignicons.css"
 
 import OpfsBlobStore from "@aepyornis/opfs_blob_store"
 
+import { FastbootDevice, FastbootClient, FastbootFlasher } from "@aepyornis/fastboot.ts"
+
 const vuetify = createVuetify({
   components: {
     ...components,
@@ -22,7 +24,10 @@ const vuetify = createVuetify({
 
 const app = createApp(App).use(vuetify).mount("#app")
 
-if (import.meta.env.DEV && typeof window !== "undefined") {
+if (typeof window !== "undefined") {
   window.$app = app
   window.OpfsBlobStore = OpfsBlobStore
+  window.FastbootDevice = FastbootDevice
+  window.FastbootClient = FastbootClient
+  window.FastbootFlasher = FastbootFlasher
 }

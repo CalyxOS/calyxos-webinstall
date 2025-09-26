@@ -14,7 +14,7 @@ export const store = reactive({
       throw new Error("FastbootClient already connected")
     }
     store.client = await FastbootClient.create()
-    store.product = await store.client.getVar("product")
+    store.product = await store.client.getVarCache("product")
   },
 
   release() {

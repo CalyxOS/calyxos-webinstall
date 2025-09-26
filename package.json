@@ -13,7 +13,7 @@
     "docker-build": "docker build -t calyxos-webinstall:latest ."
   },
   "dependencies": {
-    "@aepyornis/fastboot.ts": "^0.0.4",
+    "@aepyornis/fastboot.ts": "^0.0.12",
     "@aepyornis/opfs_blob_store": "^0.0.1",
     "@fontsource/roboto": "^5.2.6",
     "@mdi/font": "^7.4.47",
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@eslint/js": "^9.32.0",
     "@vitejs/plugin-vue": "^6.0.1",
-    "@vue/tsconfig": "^0.7.0",
+    "@vue/tsconfig": "^0.8.1",
     "eslint": "^9.32.0",
     "eslint-plugin-vue": "^10.3.0",
     "prettier": "^3.5.3",
