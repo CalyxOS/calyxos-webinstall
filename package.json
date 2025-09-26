@@ -13,7 +13,7 @@
     "docker-build": "docker build -t calyxos-webinstall:latest ."
   },
   "dependencies": {
-    "@aepyornis/fastboot.ts": "^0.0.4",
+    "@aepyornis/fastboot.ts": "^0.0.9",
     "@aepyornis/opfs_blob_store": "^0.0.1",
     "@fontsource/roboto": "^5.2.6",
     "@mdi/font": "^7.4.47",

@@ -35,9 +35,9 @@
     "date": "2025-06-06",
     "version": "6.8.21",
     "variant": "factory",
-    "url": "",
+    "url": "https://release.calyxinstitute.org/bangkk-factory-25608210.zip",
     "sha256": "db9ab330a1b5d5ebf131f378dca8b5f6400337f438a97aef2a09a1ba88f3935c",
-    "web_install": false
+    "web_install": true
   },
   "fogos": {
     "name": "moto g34 5G and g45 5G",
