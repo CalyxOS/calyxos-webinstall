@@ -5,7 +5,7 @@
     "date": "2025-06-05",
     "version": "6.8.21",
     "variant": "factory",
-    "url": "",
+    "url": "https://release.calyxinstitute.org/FP5-factory-25608210.zip",
     "sha256": "cc4c5b174e91b9df7f58945ac868cc6871d92dcf9569b5cc311e61a9a6e0849e",
     "web_install": false
   },
@@ -15,7 +15,7 @@
     "date": "2025-06-05",
     "version": "6.8.21",
     "variant": "factory",
-    "url": "",
+    "url": "https://release.calyxinstitute.org/FP4-factory-25608210.zip",
     "sha256": "bd5869d4a84954ac69bc9e03073b3d5fcb30c1c3a8a595227221acc5491e042d",
     "web_install": false
   },
@@ -25,9 +25,9 @@
     "date": "2025-06-05",
     "version": "6.8.21",
     "variant": "factory",
-    "url": "",
+    "url": "https://release.calyxinstitute.org/fogo-factory-25608210.zip",
     "sha256": "ba0a16eb6201b237eb9d72cc1038d3286a5c840a111e56cdb3be13397f58b6bc",
-    "web_install": false
+    "web_install": true
   },
   "bangkk": {
     "name": "moto g84 5G",
@@ -45,9 +45,9 @@
     "date": "2025-06-06",
     "version": "6.8.21",
     "variant": "factory",
-    "url": "",
+    "url": "https://release.calyxinstitute.org/fogos-factory-25608210.zip",
     "sha256": "8340f5436e7614d0bdf2256cdb6712f52797ad60cd1012689f3b9f687b060e8c",
-    "web_install": false
+    "web_install": true
   },
   "rhode": {
     "name": "moto g52",
@@ -55,9 +55,9 @@
     "date": "2025-06-06",
     "version": "6.8.21",
     "variant": "factory",
-    "url": "",
+    "url": "https://release.calyxinstitute.org/rhode-factory-25608210.zip",
     "sha256": "4995f82e5a375faa4edfdbd200c5dd1a56e26292d3c7f4cbf961c2b325d95e43",
-    "web_install": false
+    "web_install": true
   },
   "hawao": {
     "name": "moto g42",
@@ -65,9 +65,9 @@
     "date": "2025-06-06",
     "version": "6.8.21",
     "variant": "factory",
-    "url": "",
+    "url": "https://release.calyxinstitute.org/hawao-factory-25608210.zip",
     "sha256": "d985cbacde79be63110f94747454187bfd834ff64bca5f74222f9bfa503c6a82",
-    "web_install": false
+    "web_install": true
   },
   "devon": {
     "name": "moto g32",
@@ -75,9 +75,9 @@
     "date": "2025-06-06",
     "version": "6.8.21",
     "variant": "factory",
-    "url": "",
+    "url": "https://release.calyxinstitute.org/devon-factory-25608210.zip",
     "sha256": "ab4042b34dd57442464e6388dcba69881b2e7a93e5303c687af823b4dbb04e94",
-    "web_install": false
+    "web_install": true
   },
   "tegu": {
     "name": "Pixel 9a",
