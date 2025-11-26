@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf50c3c_0585f65c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2025-11-26T19:39:36Z",
+      "side": 1,
+      "message": "works for chromium\n\n✓ bramble\n✓ lynx\n✓ bangkk",
+      "revId": "929d47500ffd53f740d53a841ca69e24703b3707",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
