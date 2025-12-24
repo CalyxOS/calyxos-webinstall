@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af00f2af_a0e76d34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2025-12-24T18:51:40Z",
+      "side": 1,
+      "message": "looking at the logs it seems to do with `getvar unlocked` not being valid for this device\n\nthere is securestate though, which can return probably `oem_locked` (before first unlock), `flashing_unlocked` (unlocked), and `flashing_locked` relocked after first unlock\n\ni looked further and it seems there\u0027s already logic for this, it just didn\u0027t include rhode and the other motos, currently trying to install it on rhode now after a few modifications.",
+      "parentUuid": "d87aa438_4ff72526",
+      "revId": "929d47500ffd53f740d53a841ca69e24703b3707",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c918914b_c22e0bc2",
         "filename": "src/releases.json",
         "patchSetId": 1
