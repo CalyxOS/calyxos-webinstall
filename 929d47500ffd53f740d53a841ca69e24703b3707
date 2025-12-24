@@ -16,6 +16,40 @@
       "message": "works for chromium\n\n✓ bramble\n✓ lynx\n✓ bangkk",
       "revId": "929d47500ffd53f740d53a841ca69e24703b3707",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d87aa438_4ff72526",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2025-12-24T18:36:27Z",
+      "side": 1,
+      "message": "rhode finally connects, however, when it comes to unlock, it seems to hang the device, and nothing happens. both when already unlocked, and when locked, which doesn\u0027t allow proceeding.",
+      "revId": "929d47500ffd53f740d53a841ca69e24703b3707",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c918914b_c22e0bc2",
+        "filename": "src/releases.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2025-12-24T18:36:27Z",
+      "side": 1,
+      "message": "On the CLI flasher, the Fairphones have an extra safety precaution by checking get_unlock_ability before deciding to relock, it isn\u0027t clear to me if this is implemented here and it wasn\u0027t tested\n\nIt can cause a hard brick\n\nhttps://gitlab.com/CalyxOS/device-flasher/-/blob/main/flasher.go?ref_type\u003dheads#L416",
+      "revId": "929d47500ffd53f740d53a841ca69e24703b3707",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
