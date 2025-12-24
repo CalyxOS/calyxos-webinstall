@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f402a429_ff868950",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2025-12-24T19:48:55Z",
+      "side": 1,
+      "message": "it seems that worked, and after playing around, it flashed, and relocked successfully!\n\nunfortunately there is one issue, not sure it is the same for bangkk; when it comes time to reboot to fastbootd, it seems that it requires permissions to be granted again for that interface, of course, the installer doesn\u0027t request them, and unless you go into another tab, connect the device while in fastbootd, and replug it, it won\u0027t be able to continue.\n\nin the past we had this issue where udev rules worked for fastbootd but not bootloader/fastboot mode, likely because they\u0027re identified differently for whatever reason\n\nother than those two things, it seems to work fine",
+      "parentUuid": "af00f2af_a0e76d34",
+      "revId": "929d47500ffd53f740d53a841ca69e24703b3707",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c918914b_c22e0bc2",
         "filename": "src/releases.json",
         "patchSetId": 1
