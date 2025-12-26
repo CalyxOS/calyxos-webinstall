@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ca067f0_dd453cc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2025-12-26T17:35:16Z",
+      "side": 1,
+      "message": "Thanks Lucas!! \n\nyes, I wasn\u0027t totally sure how to find out which motos (or if all) that logic applies but it should be easy to add that change in.\n\nInteresting, never found I had to re-plug it but I have encountered similar issues with bangkk in fastbootd, so I think there\u0027s more work to be done here. In my case, I found that backgrounding chrome or switching tabs could cause bangkk to get stuck in fastbootd and not able to reboot back into bootloader mode. I had experimented using usb.requestDevice() but chrome throws a security error and doesn\u0027t let you call that outside of a user interaction (I also thought about making a button appear to \"recover\", which could avoid to have to re-plug it, but ideally we\u0027d find a solution without having to do that).",
+      "parentUuid": "f402a429_ff868950",
+      "revId": "929d47500ffd53f740d53a841ca69e24703b3707",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c918914b_c22e0bc2",
         "filename": "src/releases.json",
         "patchSetId": 1
