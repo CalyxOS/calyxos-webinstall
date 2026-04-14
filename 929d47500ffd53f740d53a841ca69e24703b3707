@@ -107,6 +107,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1a12ca_dadab0d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2026-04-14T17:48:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdc5bf8e_163ebf1a",
+      "revId": "929d47500ffd53f740d53a841ca69e24703b3707",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c918914b_c22e0bc2",
@@ -120,6 +138,24 @@
       "writtenOn": "2025-12-24T18:36:27Z",
       "side": 1,
       "message": "On the CLI flasher, the Fairphones have an extra safety precaution by checking get_unlock_ability before deciding to relock, it isn\u0027t clear to me if this is implemented here and it wasn\u0027t tested\n\nIt can cause a hard brick\n\nhttps://gitlab.com/CalyxOS/device-flasher/-/blob/main/flasher.go?ref_type\u003dheads#L416",
+      "revId": "929d47500ffd53f740d53a841ca69e24703b3707",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bda0411_b4e93ece",
+        "filename": "src/releases.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2026-04-14T17:48:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c918914b_c22e0bc2",
       "revId": "929d47500ffd53f740d53a841ca69e24703b3707",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
