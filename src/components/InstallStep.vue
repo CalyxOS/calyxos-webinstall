@@ -34,7 +34,14 @@
         <p class="mt-2">This may take 10-15 minutes.</p>
       </div>
 
-      <v-btn color="primary" :disabled="installProgress !== null" @click="install()" class="mt-2">
+      <div>
+        <div ref="logViewer" class="log-viewer pa-2 bg-surface text-high-emphasis">
+          <div v-for="(line, i) in log" :key="i" class="log-line">{{ line }}</div>
+          <div ref="logBottom"></div>
+        </div>
+      </div>
+
+      <v-btn color="primary" :disabled="installing" @click="install()" class="mt-2">
         Install
       </v-btn>
       <v-btn
@@ -62,13 +69,6 @@
           {{ installStatus }}
         </v-banner-text>
       </v-banner>
-      <v-progress-linear
-        class="my-3"
-        buffer-value="0"
-        v-model="installProgress"
-        stream
-        v-if="installProgress !== null"
-      ></v-progress-linear>
 
       <v-banner single-line outlined rounded class="mt-8" v-else-if="error">
         <v-icon color="red darken-3">mdi-close</v-icon>
@@ -92,6 +92,17 @@
   </v-container>
 </template>
 
+<style scoped>
+.log-viewer {
+  height: calc(10 * 1.5em);
+  overflow-y: auto;
+  font-family: monospace;
+}
+.log-line {
+  white-space: pre-wrap;
+}
+</style>
+
 <script>
 import { store } from "../store.js"
 import { FastbootFlasher, FastbootClient } from "@aepyornis/fastboot.ts"
@@ -108,7 +119,20 @@ export default {
       error: null,
       askForReconnect: false,
       reconnectResolve: null,
+      log: [],
     }
+  },
+
+  mounted() {
+    this._observer = new MutationObserver(() => {
+      this.$refs.logBottom.scrollIntoView()
+    })
+
+    this._observer.observe(this.$refs.logViewer, { childList: true })
+  },
+
+  beforeUnmount() {
+    this._observer?.disconnect()
   },
 
   methods: {
@@ -119,6 +143,10 @@ export default {
       this.installProgress = 0
       this.installStatus = "Installing..."
       this.askForReconnect = false
+      this.log = []
+
+      const oLogger = store.client.logger
+      store.client.logger = this.createLogger()
 
       store.client.reconnectUserAction = () => {
         return this.requestDeviceAndReconnect()
@@ -136,6 +164,7 @@ export default {
         throw e
       } finally {
         this.installing = false
+        store.client.logger = oLogger
       }
     },
 
@@ -157,6 +186,16 @@ export default {
       } catch (e) {
         this.error = e
         throw e
+      }
+    },
+
+    createLogger() {
+      const thisLog = this.log
+      return {
+        log(message) {
+          thisLog.push(message)
+          window.console.log(message)
+        },
       }
     },
   },
