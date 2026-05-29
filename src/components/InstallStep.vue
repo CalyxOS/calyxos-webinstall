@@ -21,15 +21,25 @@
         </p>
         <p class="mt-2">
           <strong>⚠️ Don’t touch, unplug, or press any buttons</strong> on your device during
-          <i>this process</i> or else the installation may be failed. Watch the progress bar on
-          this page to check the status.
+          <i>this process</i> or else the installation may fail. Watch the progress bar on this
+          page to check the status.
         </p>
+
+        <p class="mt-2">
+          After a restart, you may be asked to
+          <strong>click a button so that your browser may prompt you</strong> to choose a device
+          and reconnect.
+        </p>
+
         <p class="mt-2">This may take 10-15 minutes.</p>
       </div>
 
-      <v-btn color="primary" :disabled="installProgress !== null" @click="install()" class="mt-2"
-        >Install</v-btn
-      >
+      <v-btn color="primary" :disabled="installProgress !== null" @click="install()" class="mt-2">
+        Install
+      </v-btn>
+      <v-btn color="yellow-lighten-2" v-if="askForReconnect" @click="requestDevice()" class="ml-2 mt-2">
+        Reconnect
+      </v-btn>
     </div>
 
     <div class="pb-8 mt-2">
@@ -79,7 +89,7 @@
 
 <script>
 import { store } from "../store.js"
-import { FastbootFlasher } from "@aepyornis/fastboot.ts"
+import { FastbootFlasher, FastbootClient } from "@aepyornis/fastboot.ts"
 
 export default {
   name: "InstallStep",
@@ -91,6 +101,8 @@ export default {
       installStatus: "",
       installing: false,
       error: null,
+      askForReconnect: false,
+      reconnectResolve: null,
     }
   },
 
@@ -101,6 +113,11 @@ export default {
       this.error = null
       this.installProgress = 0
       this.installStatus = "Installing..."
+      this.askForReconnect = false
+
+      store.client.reconnectUserAction = () => {
+        return this.requestDeviceAndReconnect()
+      }
 
       try {
         const t0 = performance.now()
@@ -114,6 +131,27 @@ export default {
         throw e
       } finally {
         this.installing = false
+      }
+    },
+
+    async requestDeviceAndReconnect() {
+      this.askForReconnect = true
+      return new Promise((resolve) => {
+        this.reconnectResolve = resolve
+      })
+    },
+
+    async requestDevice() {
+      try {
+        const device = await FastbootClient.requestUsbDevice()
+        if (device) {
+          this.askForReconnect = false
+          this.reconnectResolve?.()
+          this.reconnectResolve = null
+        }
+      } catch (e) {
+        this.error = e
+        throw e
       }
     },
   },

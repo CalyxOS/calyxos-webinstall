@@ -1,6 +1,6 @@
 import { reactive } from "vue"
 import { FastbootClient } from "@aepyornis/fastboot.ts"
-import OpfsBlobStore from "@aepyornis/opfs_blob_store"
+import OpfsBlobStore from "opfs_blob_store"
 
 import RELEASE_INDEX from "/src/releases.json"
 
