@@ -1,4 +1,4 @@
-import OpfsBlobStore from "@aepyornis/opfs_blob_store"
+import OpfsBlobStore from "opfs_blob_store"
 
 async function start(data) {
   if (!data.sha256) {
