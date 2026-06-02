@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bfeeeed_45223c85",
+        "filename": "src/releases.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-06-02T18:00:56Z",
+      "side": 0,
+      "message": "These devices are still supported",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 3
+      },
+      "revId": "933b393900c8b7955150d7aeb75868d3b1d7932b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
