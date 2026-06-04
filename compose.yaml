@@ -1,0 +1,6 @@
+services:
+  calyxos-webinstall:
+    build: .
+    image: calyxos-webinstall
+    ports:
+      - "8080:80"
