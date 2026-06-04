@@ -67,38 +67,26 @@
   </v-container>
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue"
 import { store } from "../store.js"
 
-export default {
-  name: "ConnectStep",
+const connecting = ref(false)
 
-  components: {},
+async function connect() {
+  try {
+    connecting.value = true
+    await store.createClient()
+  } finally {
+    connecting.value = false
+  }
+}
 
-  data() {
-    return {
-      store,
-      connecting: false,
-    }
-  },
+function connected() {
+  return store.client != null && store.product != null && store.client.fd.device.opened
+}
 
-  methods: {
-    async connect() {
-      try {
-        this.connecting = true
-        await store.createClient()
-      } finally {
-        this.connecting = false
-      }
-    },
-
-    connected() {
-      return store.client != null && store.product != null && store.client.fd.device.opened
-    },
-
-    mayContinue() {
-      return this.connected() && store.installable()
-    },
-  },
+function mayContinue() {
+  return connected() && store.installable()
 }
 </script>
