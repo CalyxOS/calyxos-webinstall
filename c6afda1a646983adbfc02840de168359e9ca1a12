@@ -16,6 +16,24 @@
       "message": "hey!! Why should we use pnpm instead of npm?",
       "revId": "c6afda1a646983adbfc02840de168359e9ca1a12",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e58e50_e461b80e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000210
+      },
+      "writtenOn": "2026-06-04T23:58:25Z",
+      "side": 1,
+      "message": "It has some niceties like:\n- faster\n- prevents installation of new updates with minimum release age (for supply chain attacks)\n- prevents auto post install scripts from running unless approved (supply chain attacks)\n- does not replace git https dependencies with ssh randomly",
+      "parentUuid": "f9395ff6_42dda927",
+      "revId": "c6afda1a646983adbfc02840de168359e9ca1a12",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
