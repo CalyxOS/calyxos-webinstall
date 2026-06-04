@@ -40,20 +40,10 @@
 }
 </style>
 
-<script>
-import { h } from "vue"
+<script setup>
 import Installer from "@/components/Installer.vue"
 
 import { store } from "./store.js"
-
-export default {
-  name: "App",
-  components: {
-    Installer,
-  },
-
-  render: () => h(this),
-}
 
 if (import.meta.env.DEV && typeof window !== "undefined") {
   window.$store = store

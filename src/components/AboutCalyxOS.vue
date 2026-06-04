@@ -71,9 +71,3 @@
     </p>
   </div>
 </template>
-
-<script>
-export default {
-  name: "AboutCalyxOS",
-}
-</script>

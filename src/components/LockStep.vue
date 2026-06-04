@@ -38,39 +38,29 @@
   </v-container>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from "vue"
 import { store } from "../store.js"
 
-export default {
-  name: "LockStep",
+const locking = ref(false)
+const locked = ref(null)
+const error = ref(null)
 
-  data() {
-    return {
-      store,
-      locking: false,
-      locked: null,
-      error: null,
-    }
-  },
-
-  methods: {
-    async lock() {
-      try {
-        this.locking = true
-        this.error = null
-        await store.client.lock()
-        this.locked = true
-      } catch (e) {
-        console.debug(e)
-        this.error = e.message
-      } finally {
-        this.locking = false
-      }
-    },
-  },
-
-  async mounted() {
-    await this.lock()
-  },
+async function lock() {
+  try {
+    locking.value = true
+    error.value = null
+    await store.client.lock()
+    locked.value = true
+  } catch (e) {
+    console.debug(e)
+    error.value = e.message
+  } finally {
+    locking.value = false
+  }
 }
+
+onMounted(async () => {
+  await lock()
+})
 </script>

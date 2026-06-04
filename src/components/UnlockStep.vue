@@ -47,40 +47,31 @@
   </v-container>
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue"
 import { store } from "../store.js"
 
-export default {
-  name: "UnlockStep",
+const unlocking = ref(false)
+const unlocked = ref(false)
+const error = ref(null)
 
-  data() {
-    return {
-      store,
-      unlocking: false,
-      unlocked: false,
-      error: null,
+async function unlock() {
+  try {
+    unlocking.value = true
+    error.value = null
+
+    if (await store.client.isUserspace()) {
+      await store.client.rebootBootloader()
+      await new Promise((resolve) => setTimeout(resolve, 1000))
     }
-  },
-  methods: {
-    async unlock() {
-      try {
-        this.unlocking = true
-        this.error = null
 
-        if (await store.client.isUserspace()) {
-          await store.client.rebootBootloader()
-          await new Promise((resolve) => setTimeout(resolve, 1000))
-        }
-
-        await store.client.unlock()
-        this.unlocked = true
-      } catch (e) {
-        console.debug(e)
-        this.error = e.message
-      } finally {
-        this.locking = false
-      }
-    },
-  },
+    await store.client.unlock()
+    unlocked.value = true
+  } catch (e) {
+    console.debug(e)
+    error.value = e.message
+  } finally {
+    unlocking.value = false
+  }
 }
 </script>
