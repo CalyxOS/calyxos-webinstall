@@ -1,4 +1,15 @@
-export default {
+export interface ReleaseVariant {
+  description: string
+  suffix: string
+}
+
+export interface Config {
+  OS_NAME: string
+  ACCENT_COLOR: string
+  RELEASE_VARIANTS: Record<string, ReleaseVariant>
+}
+
+const config: Config = {
   OS_NAME: import.meta.env.VITE_APP_OS_NAME,
   ACCENT_COLOR: "#0366d6",
   RELEASE_VARIANTS: {
@@ -21,3 +32,5 @@ export default {
     },
   },
 }
+
+export default config

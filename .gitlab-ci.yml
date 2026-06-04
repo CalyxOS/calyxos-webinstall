@@ -60,7 +60,7 @@ releases:
   stage: update-releases
   script:
     - pnpm update-releases
-    - git diff src/releases.json
+    - git diff src/assets/releases.json
   artifacts:
     paths:
       - public/releases/index.json

@@ -100,30 +100,32 @@
 }
 </style>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from "vue"
-import { store } from "../store.js"
+import { store } from "../store"
 import { FastbootFlasher, FastbootClient } from "@aepyornis/fastboot.ts"
 
-const installProgress = ref(null)
+const installProgress = ref<number | null>(null)
 const installStatus = ref("")
 const installing = ref(false)
-const error = ref(null)
+const error = ref<Error | null>(null)
 const askForReconnect = ref(false)
-const reconnectResolve = ref(null)
-const log = ref([])
+const reconnectResolve = ref<(() => void) | null>(null)
+const log = ref<string[]>([])
 
-const logViewer = ref(null)
-const logBottom = ref(null)
+const logViewer = ref<HTMLElement | null>(null)
+const logBottom = ref<HTMLElement | null>(null)
 
-let observer = null
+let observer: MutationObserver | null = null
 
 onMounted(() => {
   observer = new MutationObserver(() => {
-    logBottom.value.scrollIntoView()
+    logBottom.value?.scrollIntoView()
   })
 
-  observer.observe(logViewer.value, { childList: true })
+  if (logViewer.value) {
+    observer.observe(logViewer.value, { childList: true })
+  }
 })
 
 onBeforeUnmount(() => {
@@ -138,33 +140,38 @@ async function install() {
   askForReconnect.value = false
   log.value = []
 
-  const oLogger = store.client.logger
-  store.client.logger = createLogger()
+  const client = store.client
+  if (!client) {
+    throw new Error("FastbootClient is not connected")
+  }
 
-  store.client.reconnectUserAction = () => {
+  const oLogger = client.logger
+  client.logger = createLogger()
+
+  client.reconnectUserAction = () => {
     return requestDeviceAndReconnect()
   }
 
   try {
     const t0 = performance.now()
-    const ff = new FastbootFlasher(store.client, await store.getImage())
+    const ff = new FastbootFlasher(client, await store.getImage())
     await ff.runFlashAll()
     const t1 = performance.now()
     installStatus.value = `Finished in ${(t1 - t0) / 1000} seconds.`
     installProgress.value = 100
   } catch (e) {
-    error.value = e
+    error.value = e instanceof Error ? e : new Error(String(e))
     throw e
   } finally {
     installing.value = false
-    store.client.logger = oLogger
+    client.logger = oLogger
   }
 }
 
-async function requestDeviceAndReconnect() {
+function requestDeviceAndReconnect(): Promise<void> {
   askForReconnect.value = true
-  return new Promise((resolve) => {
-    reconnectResolve.value = resolve
+  return new Promise<void>((resolve) => {
+    reconnectResolve.value = () => resolve()
   })
 }
 
@@ -177,7 +184,7 @@ async function requestDevice() {
       reconnectResolve.value = null
     }
   } catch (e) {
-    error.value = e
+    error.value = e instanceof Error ? e : new Error(String(e))
     throw e
   }
 }
@@ -185,7 +192,7 @@ async function requestDevice() {
 function createLogger() {
   const thisLog = log.value
   return {
-    log(message) {
+    log(message: string) {
       thisLog.push(message)
       window.console.log(message)
     },

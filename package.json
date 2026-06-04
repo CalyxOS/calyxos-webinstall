@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
     "lint": "oxlint --type-aware",
     "format": "oxfmt .",
     "update-releases": "node scripts/update-releases.js",
@@ -16,23 +18,23 @@
     "@aepyornis/fastboot.ts": "^0.0.17",
     "@fontsource/roboto": "^5.2.6",
     "@mdi/font": "^7.4.47",
-    "opfs_blob_store": "^0.0.2",
+    "opfs_blob_store": "^0.0.3",
     "vue": "^3.5.18",
     "vuetify": "^4.0.7"
   },
   "devDependencies": {
+    "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^24.12.4",
+    "@types/w3c-web-usb": "^1.0.14",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/tsconfig": "^0.9.1",
+    "npm-run-all2": "^9.0.1",
     "oxfmt": "^0.52.0",
     "oxlint": "^1.66.0",
     "oxlint-tsgolint": "^0.23.0",
-    "typescript": "^6.0.2",
+    "typescript": "^6.0.3",
     "vite": "^8.0.13",
+    "vite-plugin-vue-devtools": "^8.1.2",
     "vue-tsc": "^3.3.1"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  }
 }
