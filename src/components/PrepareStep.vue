@@ -1,7 +1,7 @@
 <template>
   <v-container class="d-flex justify-space-between flex-column flex-grow-1">
     <div class="mb-10 mt-n4" v-if="usbSupported">
-      <h5 class="text-h5 pb-4">Get started</h5>
+      <h1 class="pb-4 mt-0">Get started</h1>
 
       <div class="text-body-1">
         <p>

@@ -1,7 +1,7 @@
 <template>
   <v-container class="d-flex justify-space-between flex-column flex-grow-1">
     <div class="mb-10">
-      <h6 class="text-h6 mb-2">Connect your device</h6>
+      <h1 class="mb-2 mt-0">Connect your device</h1>
       <div class="text-body-1 mb-4">
         <p>
           Put your device into bootloader mode by restarting it and holding the
