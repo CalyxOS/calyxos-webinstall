@@ -7,7 +7,7 @@
         <p>Lock the bootloader using the volume buttons on your phone</p>
       </div>
 
-      <v-btn color="primary" @click="lock" :disabled="locking || locked">Lock</v-btn>
+      <v-btn color="primary" @click="lock" :disabled="locking || !!locked">Lock</v-btn>
     </div>
 
     <div class="mb-4">
@@ -36,23 +36,29 @@
   </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from "vue"
-import { store } from "../store.js"
+import { store } from "../store"
 
 const locking = ref(false)
-const locked = ref(null)
-const error = ref(null)
+const locked = ref<boolean | null>(null)
+const error = ref<string | null>(null)
 
 async function lock() {
   try {
     locking.value = true
     error.value = null
-    await store.client.lock()
+
+    const client = store.client
+    if (!client) {
+      throw new Error("FastbootClient is not connected")
+    }
+
+    await client.lock()
     locked.value = true
   } catch (e) {
     console.debug(e)
-    error.value = e.message
+    error.value = e instanceof Error ? e.message : String(e)
   } finally {
     locking.value = false
   }

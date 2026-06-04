@@ -4,7 +4,7 @@
       <h6 class="text-h6 pb-4">Installation complete</h6>
       <p class="text-body-1">
         Congratulations! Your
-        {{ release.name ? release.name : release.product }} is now running CalyxOS
+        {{ release.name ? release.name : release.codename }} is now running CalyxOS
         {{ release.version }} ({{ release.date }}).
       </p>
     </div>
@@ -27,14 +27,14 @@
 }
 </style>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from "vue"
-import { store } from "../store.js"
+import { store } from "../store"
 import AboutCalyxOS from "@/components/AboutCalyxOS.vue"
 
 const release = store.release()
 
 onMounted(() => {
-  store.client.reboot()
+  void store.client?.reboot()
 })
 </script>

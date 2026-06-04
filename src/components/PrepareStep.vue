@@ -79,8 +79,8 @@
   </v-container>
 </template>
 
-<script setup>
-import { store } from "../store.js"
+<script setup lang="ts">
+import { store } from "../store"
 
 const usbSupported = Boolean(navigator.usb)
 </script>
