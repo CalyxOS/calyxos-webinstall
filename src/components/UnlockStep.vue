@@ -1,7 +1,7 @@
 <template>
   <v-container class="d-flex justify-space-between flex-column flex-grow-1">
     <div class="mt-n4">
-      <h6 class="text-h6 pb-4">Unlock your bootloader</h6>
+      <h1 class="pb-4 mt-0">Unlock your bootloader</h1>
 
       <div class="text-body-1">
         <p>In order to install <em>CalyxOS</em>, you need to unlock your device’s bootloader.</p>

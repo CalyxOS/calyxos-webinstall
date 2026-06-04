@@ -33,11 +33,6 @@
     </p>
 
     <p class="mt-2">
-      <b>Privacy-enhancing browser:</b> The CalyxOS native Chromium browser allows you to browse
-      the internet free of concerns with default ad-blocking and advanced anti-tracking settings.
-    </p>
-
-    <p class="mt-2">
       <b>Work Profile:</b> You can use this feature to contain work-related apps and files to turn
       them on and off with one click.
     </p>
@@ -58,6 +53,16 @@
       <b>X</b><br />
       <a href="https://x.com/calyxos">@CalyxOS</a><br />
       <a href="https://x.com/calyxinstitute">@calyxinstitute</a><br />
+    </p>
+
+    <p class="mt-2">
+      <b>Matrix</b><br />
+      <a href="https://app.element.io/#/room/#CalyxOS:matrix.org">#CalyxOS:matrix.org</a>
+    </p>
+
+    <p class="mt-2">
+      <b>Reddit</b><br />
+      <a href="https://www.reddit.com/r/CalyxOS/">r/CalyxOS</a>
     </p>
 
     <p class="mt-2 mb-2">

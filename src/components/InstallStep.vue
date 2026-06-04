@@ -5,30 +5,29 @@
     </div>
 
     <div class="mt-n4 flex-grow-1" v-else>
-      <h6 class="text-h6 pb-4">Install CalyxOS</h6>
+      <h1 class="pb-4 mt-0">Install CalyxOS</h1>
 
       <div class="text-body-1">
         <p>
           This will install <strong>CalyxOS ({{ store.release().version }})</strong> on your
           <strong>{{ store.release().name }}</strong
-          >. Your phone will restart several times.
+          >.
         </p>
         <p>
           Because you’re doing a clean install,
-          <strong class="red--text text--darken-3">
-            all data on your device will be permanently lost.
-          </strong>
+          <strong>all data on your device will be permanently lost.</strong>
         </p>
         <p class="mt-2">
-          <strong>⚠️ Don’t touch, unplug, or press any buttons</strong> on your device during
-          <i>this process</i> or else the installation may fail. Watch the progress bar on this
-          page to check the status.
+          <strong>⚠️ Don't touch, unplug, or press any buttons</strong> on the device you are
+          flashing <i>during this process</i> or else the installation may fail.
         </p>
 
         <p class="mt-2">
-          After a restart, you may be asked to
-          <strong>click a button so that your browser may prompt you</strong> to choose a device
-          and reconnect.
+          Your device will restart several times while the installation proceeds. After a restart,
+          you may see a button on this page to reconnect your device.
+          <strong
+            >Click the button and select the device in the pop-up window to reconnect.</strong
+          >
         </p>
 
         <p class="mt-2">This may take 10-15 minutes.</p>
@@ -76,8 +75,6 @@
           <span class="text-body-1 red--text text--darken-3">{{ error.message }}</span>
         </div>
       </v-banner>
-
-      <v-banner single-line outlined rounded v-else> </v-banner>
     </div>
 
     <div class="d-flex justify-space-between flex-row-reverse">
