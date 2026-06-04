@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e830f5f7_c982cf13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000210
+      },
+      "writtenOn": "2026-06-04T17:04:47Z",
+      "side": 1,
+      "message": "Need to merge fastboot.ts changes and upstream opfs changes",
+      "revId": "7407a2518e9013fd643174e864e651dfb56c121b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
