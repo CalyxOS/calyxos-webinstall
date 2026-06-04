@@ -7,7 +7,7 @@
         <p>Lock the bootloader using the volume buttons on your phone</p>
       </div>
 
-      <v-btn color="primary" @click="lock" :disabled="locking || locked">Lock</v-btn>
+      <v-btn color="primary" @click="lock" v-show ="!locked && !locking" :disabled="locking">Lock</v-btn>
     </div>
 
     <div class="mb-4">
