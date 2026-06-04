@@ -45,8 +45,8 @@ server.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)
 })
 
-/* oxlint-disable no-unused-vars */
 
+// oxlint-disable-next-line no-unused-vars
 function errorHandler(res) {
   return (err) => {
     res.statusCode = 500
@@ -54,6 +54,7 @@ function errorHandler(res) {
   }
 }
 
+// oxlint-disable-next-line no-unused-vars
 function maxSizeTransform(max) {
   var size = 0
 
@@ -71,6 +72,7 @@ function maxSizeTransform(max) {
   })
 }
 
+// oxlint-disable-next-line no-unused-vars
 function changeOneByte(minFileLoc) {
   var size = 0
   var changedLoc = null
