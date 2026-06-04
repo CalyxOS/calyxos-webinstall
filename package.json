@@ -8,14 +8,15 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "oxlint --type-aware",
+    "format": "oxfmt .",
     "update-releases": "node scripts/update-releases.js",
     "docker-build": "docker build -t calyxos-webinstall:latest ."
   },
   "dependencies": {
     "@aepyornis/fastboot.ts": "^0.0.17",
-    "opfs_blob_store": "^0.0.2",
     "@fontsource/roboto": "^5.2.6",
     "@mdi/font": "^7.4.47",
+    "opfs_blob_store": "^0.0.2",
     "vue": "^3.5.18",
     "vuetify": "^4.0.7"
   },
