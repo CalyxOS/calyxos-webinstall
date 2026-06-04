@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e0c06a6_84cbbc50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2026-06-04T21:16:19Z",
+      "side": 1,
+      "message": "cool with me, I think I prefer this style. Is there a tool that converts automatically?",
+      "revId": "7f81c0c2eaf79fe44692e1927fc45696d2b5d577",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
