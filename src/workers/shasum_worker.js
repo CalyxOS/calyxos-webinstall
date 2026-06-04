@@ -22,7 +22,7 @@ async function start(data) {
 
 onmessage = function (e) {
   if (e.data.type === "start") {
-    start(e.data)
+    void start(e.data)
   } else {
     throw new Error(`unknown type: ${e.data.type}`)
   }
