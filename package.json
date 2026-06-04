@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "oxlint --type-aware",
+    "format": "oxfmt .",
     "update-releases": "node scripts/update-releases.js",
     "docker-build": "docker build -t calyxos-webinstall:latest ."
   },

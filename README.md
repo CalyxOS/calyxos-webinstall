@@ -6,23 +6,23 @@ Based on the the original and useful installer for [ProtonAOSP](https://github.c
 
 ## Development
 
-- `npm install`
-- `npm run dev`
-- `npm run build`
-- `npm run lint`
+- `pnpm install`
+- `pnpm run dev`
+- `pnpm run build`
+- `pnpm run lint`
 
-All configuration is in `src/config.js` and `.env`, and the release index at `src/releases.json`. `npm run update-releases` will update `src/releases.json` from the data in `calyxos.org/data/downloads.yml`.
+All configuration is in `src/config.js` and `.env`, and the release index at `src/releases.json`. `pnpm run update-releases` will update `src/releases.json` from the data in `calyxos.org/data/downloads.yml`.
 
 ### Using docker
 
-Build the docker image: `docker build --tag YOUR_TAG .` or `npm run docker-build`
+Build the docker image: `docker build --tag YOUR_TAG .` or `pnpm run docker-build`
 
 Run the app: `docker run --rm -p 8080:80 calyxos-webinstall:latest`
 
 Create a production build:
 
-```
-npm run docker-build
+```sh
+pnpm run docker-build
 container_id=$(docker create calyxos-webinstall:latest)
 mkdir docker-build/
 docker cp -a "$container_id":/site ./docker-build

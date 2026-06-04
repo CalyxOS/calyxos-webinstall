@@ -12,4 +12,4 @@ calyxos-webinstall changes from upstream android-webinstall:
 
 Scripts:
 
-- `yarn run update-releases`: This will grab the latest list of factory images and update webinstall's `releases/index.json` file.
+- `pnpm run update-releases`: This will grab the latest list of factory images and update webinstall's `releases/index.json` file.

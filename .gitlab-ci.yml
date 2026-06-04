@@ -6,20 +6,28 @@ stages:
 
 prettier:
   stage: check
-  image: node:lts
+  image: node:24
   before_script:
-    - npm ci
+    - npm install --global corepack@latest
+    - corepack enable
+    - corepack prepare pnpm@latest-11 --activate
+    - pnpm config set store-dir .pnpm-store
   script:
-    - npx prettier --check .
-    - npx eslint
+    - pnpm install --frozen-lockfile
+    - pnpm format --check
+    - pnpm lint
 
 pages:
   stage: deploy
-  image: node:lts
+  image: node:24
   before_script:
-    - npm ci
+    - npm install --global corepack@latest
+    - corepack enable
+    - corepack prepare pnpm@latest-11 --activate
+    - pnpm config set store-dir .pnpm-store
   script:
-    - npm run build
+    - pnpm install --frozen-lockfile
+    - pnpm build
   artifacts:
     paths:
       - dist
@@ -43,12 +51,15 @@ build:
     - docker push $IMAGE_TAG
 
 releases:
-  image: node:lts
+  image: node:24
   before_script:
-    - npm ci
+    - npm install --global corepack@latest
+    - corepack enable
+    - corepack prepare pnpm@latest-11 --activate
+    - pnpm config set store-dir .pnpm-store
   stage: update-releases
   script:
-    - npm run update-releases
+    - pnpm update-releases
     - git diff src/releases.json
   artifacts:
     paths:
