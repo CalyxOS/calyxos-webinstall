@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9395ff6_42dda927",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2026-06-04T19:05:14Z",
+      "side": 1,
+      "message": "hey!! Why should we use pnpm instead of npm?",
+      "revId": "c6afda1a646983adbfc02840de168359e9ca1a12",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
