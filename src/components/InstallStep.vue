@@ -35,16 +35,21 @@
       </div>
 
       <div>
-	<div ref="logViewer" class="log-viewer pa-2 bg-surface text-high-emphasis">
-	  <div v-for="(line, i) in log" :key="i" class="log-line">{{ line }}</div>
-	  <div ref="logBottom"></div>
-	</div>
+        <div ref="logViewer" class="log-viewer pa-2 bg-surface text-high-emphasis">
+          <div v-for="(line, i) in log" :key="i" class="log-line">{{ line }}</div>
+          <div ref="logBottom"></div>
+        </div>
       </div>
 
       <v-btn color="primary" :disabled="installing" @click="install()" class="mt-2">
         Install
       </v-btn>
-      <v-btn color="yellow-lighten-2" v-if="askForReconnect" @click="requestDevice()" class="ml-2 mt-2">
+      <v-btn
+        color="yellow-lighten-2"
+        v-if="askForReconnect"
+        @click="requestDevice()"
+        class="ml-2 mt-2"
+      >
         Reconnect
       </v-btn>
     </div>
@@ -88,112 +93,111 @@
 </template>
 
 <style scoped>
- .log-viewer {
-   height: calc(10 * 1.5em);
-   overflow-y: auto;
-   font-family: monospace;
- }
- .log-line {
-   white-space: pre-wrap;
- }
+.log-viewer {
+  height: calc(10 * 1.5em);
+  overflow-y: auto;
+  font-family: monospace;
+}
+.log-line {
+  white-space: pre-wrap;
+}
 </style>
 
 <script>
- import { store } from "../store.js"
- import { FastbootFlasher, FastbootClient } from "@aepyornis/fastboot.ts"
+import { store } from "../store.js"
+import { FastbootFlasher, FastbootClient } from "@aepyornis/fastboot.ts"
 
- export default {
-   name: "InstallStep",
+export default {
+  name: "InstallStep",
 
-   data() {
-     return {
-       store,
-       installProgress: null,
-       installStatus: "",
-       installing: false,
-       error: null,
-       askForReconnect: false,
-       reconnectResolve: null,
-       log: []
-     }
-   },
+  data() {
+    return {
+      store,
+      installProgress: null,
+      installStatus: "",
+      installing: false,
+      error: null,
+      askForReconnect: false,
+      reconnectResolve: null,
+      log: [],
+    }
+  },
 
-   mounted() {
-     this._observer = new MutationObserver(() => {
-       this.$refs.logBottom.scrollIntoView()
-     })
+  mounted() {
+    this._observer = new MutationObserver(() => {
+      this.$refs.logBottom.scrollIntoView()
+    })
 
-     this._observer.observe(this.$refs.logViewer, { childList: true })
-   },
+    this._observer.observe(this.$refs.logViewer, { childList: true })
+  },
 
-   beforeUnmount() {
+  beforeUnmount() {
     this._observer?.disconnect()
   },
 
-   methods: {
-     async install() {
-       this.installed = false
-       this.installing = true
-       this.error = null
-       this.installProgress = 0
-       this.installStatus = "Installing..."
-       this.askForReconnect = false
-       this.log = []
+  methods: {
+    async install() {
+      this.installed = false
+      this.installing = true
+      this.error = null
+      this.installProgress = 0
+      this.installStatus = "Installing..."
+      this.askForReconnect = false
+      this.log = []
 
-       const oLogger = store.client.logger
-       store.client.logger = this.createLogger()
+      const oLogger = store.client.logger
+      store.client.logger = this.createLogger()
 
-       store.client.reconnectUserAction = () => {
-         return this.requestDeviceAndReconnect()
-       }
+      store.client.reconnectUserAction = () => {
+        return this.requestDeviceAndReconnect()
+      }
 
-       try {
-         const t0 = performance.now()
-         const ff = new FastbootFlasher(store.client, await store.getImage())
-         await ff.runFlashAll()
-         const t1 = performance.now()
-         this.installStatus = `Finished in ${(t1 - t0) / 1000} seconds.`
-         this.installProgress = 100
-       } catch (e) {
-         this.error = e
-         throw e
-       } finally {
-         this.installing = false
-	 store.client.logger = oLogger
-       }
-     },
+      try {
+        const t0 = performance.now()
+        const ff = new FastbootFlasher(store.client, await store.getImage())
+        await ff.runFlashAll()
+        const t1 = performance.now()
+        this.installStatus = `Finished in ${(t1 - t0) / 1000} seconds.`
+        this.installProgress = 100
+      } catch (e) {
+        this.error = e
+        throw e
+      } finally {
+        this.installing = false
+        store.client.logger = oLogger
+      }
+    },
 
-     async requestDeviceAndReconnect() {
-       this.askForReconnect = true
-       return new Promise((resolve) => {
-         this.reconnectResolve = resolve
-       })
-     },
+    async requestDeviceAndReconnect() {
+      this.askForReconnect = true
+      return new Promise((resolve) => {
+        this.reconnectResolve = resolve
+      })
+    },
 
-     async requestDevice() {
-       try {
-         const device = await FastbootClient.requestUsbDevice()
-         if (device) {
-           this.askForReconnect = false
-           this.reconnectResolve?.()
-           this.reconnectResolve = null
-         }
-       } catch (e) {
-         this.error = e
-         throw e
-       }
-     },
+    async requestDevice() {
+      try {
+        const device = await FastbootClient.requestUsbDevice()
+        if (device) {
+          this.askForReconnect = false
+          this.reconnectResolve?.()
+          this.reconnectResolve = null
+        }
+      } catch (e) {
+        this.error = e
+        throw e
+      }
+    },
 
-     createLogger() {
-       const thisLog = this.log
-       return {
-	 log(message) {
-	   thisLog.push(message)
-	   window.console.log(message)
-	 }
-       }
-     },
-
-   }
- }
+    createLogger() {
+      const thisLog = this.log
+      return {
+        log(message) {
+          thisLog.push(message)
+          window.console.log(message)
+        },
+      }
+    },
+  },
+}
 </script>
