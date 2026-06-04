@@ -11,7 +11,7 @@ Based on the the original and useful installer for [ProtonAOSP](https://github.c
 - `npm run build`
 - `npm run lint`
 
-All configuration is in `src/config.js` and `.env`, and the release index at `src/releases.json`. `npm run update-releases` will update `src/releases.json` from the data in `calyxos.org/data/downloads.yml`.
+All configuration is in `src/config.js` and `.env`, and the release index at `src/assets/releases.json`. `npm run update-releases` will update `src/assets/releases.json` from the data in `calyxos.org/data/downloads.yml`.
 
 ### Using docker
 

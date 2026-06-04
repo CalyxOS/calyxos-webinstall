@@ -37,7 +37,12 @@
         </span>
       </v-alert>
 
-      <v-alert v-if="!store.installable()" class="mt-4" title="Device Not Supported" type="tonal">
+      <v-alert
+        v-if="!store.installable()"
+        class="mt-4"
+        title="Device Not Supported"
+        variant="tonal"
+      >
         <div v-if="store.cliInstallOnly()">
           <p>
             We're sorry, your device cannot be installed through the web installer.<br />
@@ -67,9 +72,9 @@
   </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue"
-import { store } from "../store.js"
+import { store } from "../store"
 
 const connecting = ref(false)
 

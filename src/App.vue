@@ -9,7 +9,7 @@
             <v-sheet
               :min-height="$vuetify.display.mobile ? '100vh' : '75vh'"
               width="50rem"
-              :rounded="$vuetify.display.mobile ? null : 'lg'"
+              :rounded="$vuetify.display.mobile ? false : 'lg'"
               :elevation="$vuetify.display.mobile ? 0 : 4"
               class="d-flex flex-column"
             >
@@ -40,10 +40,10 @@
 }
 </style>
 
-<script setup>
+<script setup lang="ts">
 import Installer from "@/components/Installer.vue"
 
-import { store } from "./store.js"
+import { store } from "./store"
 
 if (import.meta.env.DEV && typeof window !== "undefined") {
   window.$store = store
