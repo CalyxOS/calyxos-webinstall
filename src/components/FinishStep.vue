@@ -1,7 +1,7 @@
 <template>
   <v-container class="d-flex justify-space-between flex-column flex-grow-1">
     <div class="mt-n4">
-      <h6 class="text-h6 pb-4">Installation complete</h6>
+      <h1 class="pb-4 mt-0">Installation complete</h1>
       <p class="text-body-1">
         Congratulations! Your
         {{ release.name ? release.name : release.product }} is now running CalyxOS
@@ -16,16 +16,6 @@
     </div>
   </v-container>
 </template>
-
-<style>
-.theme--light.v-sheet--outlined {
-  border-width: 2px;
-}
-
-.theme--light.v-sheet--outlined.v-card--p-highlight {
-  border: 2px solid #007cfa !important;
-}
-</style>
 
 <script>
 import { store } from "../store.js"
