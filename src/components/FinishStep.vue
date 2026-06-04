@@ -17,24 +17,14 @@
   </v-container>
 </template>
 
-<script>
+<script setup>
+import { onMounted } from "vue"
 import { store } from "../store.js"
 import AboutCalyxOS from "@/components/AboutCalyxOS.vue"
 
-export default {
-  name: "FinishStep",
+const release = store.release()
 
-  components: { AboutCalyxOS },
-
-  data() {
-    return {
-      store,
-      release: store.release(),
-    }
-  },
-
-  async mounted() {
-    store.client.reboot()
-  },
-}
+onMounted(() => {
+  store.client.reboot()
+})
 </script>

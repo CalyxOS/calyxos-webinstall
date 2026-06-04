@@ -61,139 +61,120 @@
 }
 </style>
 
-<script>
+<script setup>
+import { ref } from "vue"
 import OpfsBlobStore from "opfs_blob_store"
 import { store } from "../store.js"
 
-export default {
-  name: "DownloadStep",
+const release = store.release()
+const running = ref(false)
+const progress = ref(null)
+const error = ref(null)
 
-  data() {
-    return {
-      store,
-      release: store.release(),
-      running: false,
-      progress: null,
-      error: null,
+async function run() {
+  const release = store.release()
+  error.value = null
+  const bs = await OpfsBlobStore.create()
+  let inStorage = await bs.has(release.sha256)
+
+  // if already downloaded this session, ask to re-download
+  if (inStorage && progress.value === 100) {
+    if (confirm("Download again?")) {
+      await bs.delete(release.sha256)
+      inStorage = false
+    } else {
+      return Promise.resolve(true)
     }
-  },
+  }
 
-  methods: {
-    releaseName() {
-      const release = store.release()
-      return `${release.codename}-${release.variant}-${release.version}\n${release.sha256}`
-    },
-
-    async run() {
-      const release = store.release()
-      this.error = null
-      const bs = await OpfsBlobStore.create()
-      let inStorage = await bs.has(release.sha256)
-
-      // if already downloaded this session, ask to re-download
-      if (inStorage && this.progress === 100) {
-        if (confirm("Download again?")) {
-          await bs.delete(release.sha256)
-          inStorage = false
-        } else {
-          return Promise.resolve(true)
-        }
-      }
-
-      if (inStorage) {
-        // if file size is too small we can re-download without wasting time checking
-        const file = await bs.get(release.sha256)
-        if (file.size < 200000000) {
-          console.debug(
-            `The file for ${release.sha256} is too small: ${file.size}. Downloading again.`,
-          )
-          await bs.delete(release.sha256)
-          await this.download()
-        } else {
-          try {
-            await this.shasum()
-          } catch (e) {
-            console.debug(`${release.sha256} check failed: ${e.message}. Downloading again.`)
-            await bs.delete(release.sha256)
-            await this.download()
-          }
-        }
-      } else {
-        await this.download()
-      }
-    },
-
-    async download() {
-      const release = store.release()
-      console.log(
-        `download_${release.codename}_${release.version}_${release.variant}_${this.release.sha256}`,
+  if (inStorage) {
+    // if file size is too small we can re-download without wasting time checking
+    const file = await bs.get(release.sha256)
+    if (file.size < 200000000) {
+      console.debug(
+        `The file for ${release.sha256} is too small: ${file.size}. Downloading again.`,
       )
+      await bs.delete(release.sha256)
+      await download()
+    } else {
+      try {
+        await shasum()
+      } catch (e) {
+        console.debug(`${release.sha256} check failed: ${e.message}. Downloading again.`)
+        await bs.delete(release.sha256)
+        await download()
+      }
+    }
+  } else {
+    await download()
+  }
+}
 
-      this.progress = 0
+async function download() {
+  const rel = store.release()
+  console.log(`download_${rel.codename}_${rel.version}_${rel.variant}_${release.sha256}`)
 
-      return new Promise((resolve, reject) => {
-        const worker = new Worker(new URL("../workers/fetch_worker.js", import.meta.url), {
-          type: "module",
-        })
+  progress.value = 0
 
-        worker.addEventListener("message", async (event) => {
-          switch (event.data.type) {
-            case "progress":
-              this.progress = event.data.i * 100
-              break
-            case "error":
-              this.running = false
-              reject(event.data.e)
-              break
-            case "complete":
-              this.running = false
-              resolve(true)
-              break
-            default:
-              throw new Error(`unknown type: ${event.data.type}`)
-          }
-        })
+  return new Promise((resolve, reject) => {
+    const worker = new Worker(new URL("../workers/fetch_worker.js", import.meta.url), {
+      type: "module",
+    })
 
-        this.running = true
-        worker.postMessage({ type: "start", sha256: release.sha256, url: release.url })
-      })
-    },
+    worker.addEventListener("message", async (event) => {
+      switch (event.data.type) {
+        case "progress":
+          progress.value = event.data.i * 100
+          break
+        case "error":
+          running.value = false
+          reject(event.data.e)
+          break
+        case "complete":
+          running.value = false
+          resolve(true)
+          break
+        default:
+          throw new Error(`unknown type: ${event.data.type}`)
+      }
+    })
 
-    async shasum() {
-      const release = store.release()
-      console.log(
-        `verify_${release.codename}_${release.version}_${release.variant}_${this.release.sha256}`,
-      )
+    running.value = true
+    worker.postMessage({ type: "start", sha256: rel.sha256, url: rel.url })
+  })
+}
 
-      this.progress = 0
+async function shasum() {
+  const rel = store.release()
+  console.log(`verify_${rel.codename}_${rel.version}_${rel.variant}_${release.sha256}`)
 
-      return new Promise((resolve, reject) => {
-        const worker = new Worker(new URL("../workers/shasum_worker.js", import.meta.url), {
-          type: "module",
-        })
+  progress.value = 0
 
-        worker.addEventListener("message", async (event) => {
-          switch (event.data.type) {
-            case "progress":
-              this.progress = event.data.i * 100
-              break
-            case "error":
-              this.running = false
-              reject(event.data.e)
-              break
-            case "complete":
-              this.running = false
-              resolve(true)
-              break
-            default:
-              throw new Error(`unknown type: ${event.data.type}`)
-          }
-        })
+  return new Promise((resolve, reject) => {
+    const worker = new Worker(new URL("../workers/shasum_worker.js", import.meta.url), {
+      type: "module",
+    })
 
-        this.running = true
-        worker.postMessage({ type: "start", sha256: release.sha256 })
-      })
-    },
-  },
+    worker.addEventListener("message", async (event) => {
+      switch (event.data.type) {
+        case "progress":
+          progress.value = event.data.i * 100
+          break
+        case "error":
+          running.value = false
+          reject(event.data.e)
+          break
+        case "complete":
+          running.value = false
+          resolve(true)
+          break
+        default:
+          throw new Error(`unknown type: ${event.data.type}`)
+      }
+    })
+
+    running.value = true
+    worker.postMessage({ type: "start", sha256: rel.sha256 })
+  })
 }
 </script>
