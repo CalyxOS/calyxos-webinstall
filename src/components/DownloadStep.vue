@@ -61,15 +61,15 @@
 }
 </style>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue"
 import OpfsBlobStore from "opfs_blob_store"
-import { store } from "../store.js"
+import { store } from "../store"
 
 const release = store.release()
 const running = ref(false)
-const progress = ref(null)
-const error = ref(null)
+const progress = ref<number | null>(null)
+const error = ref<string | null>(null)
 
 async function run() {
   const release = store.release()
@@ -100,7 +100,11 @@ async function run() {
       try {
         await shasum()
       } catch (e) {
-        console.debug(`${release.sha256} check failed: ${e.message}. Downloading again.`)
+        console.debug(
+          `${release.sha256} check failed: ${
+            e instanceof Error ? e.message : String(e)
+          }. Downloading again.`,
+        )
         await bs.delete(release.sha256)
         await download()
       }
@@ -117,7 +121,7 @@ async function download() {
   progress.value = 0
 
   return new Promise((resolve, reject) => {
-    const worker = new Worker(new URL("../workers/fetch_worker.js", import.meta.url), {
+    const worker = new Worker(new URL("../workers/fetch_worker.ts", import.meta.url), {
       type: "module",
     })
 
@@ -151,7 +155,7 @@ async function shasum() {
   progress.value = 0
 
   return new Promise((resolve, reject) => {
-    const worker = new Worker(new URL("../workers/shasum_worker.js", import.meta.url), {
+    const worker = new Worker(new URL("../workers/shasum_worker.ts", import.meta.url), {
       type: "module",
     })
 

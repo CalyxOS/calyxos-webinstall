@@ -38,8 +38,8 @@
   </div>
 </template>
 
-<script setup>
-import { store } from "../store.js"
+<script setup lang="ts">
+import { store } from "../store"
 
 import PrepareStep from "@/components/PrepareStep.vue"
 import ConnectStep from "@/components/ConnectStep.vue"
