@@ -34,6 +34,24 @@
       "parentUuid": "f9395ff6_42dda927",
       "revId": "c6afda1a646983adbfc02840de168359e9ca1a12",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443d1577_7d5641e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2026-06-05T18:55:27Z",
+      "side": 1,
+      "message": "seems useful but I might prefer we keep it compatible with the default npm\n\nnpm ci runs in 1s and including pnpm makes docker builds slower so does it balance out? \n\nwe can mitigate somewhat with \"npm config set ignore-scripts true\", but hold on, what does npm do with https !? 🙁",
+      "parentUuid": "95e58e50_e461b80e",
+      "revId": "c6afda1a646983adbfc02840de168359e9ca1a12",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
