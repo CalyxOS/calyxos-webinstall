@@ -33,6 +33,24 @@
       "message": "Oops, worthy note, I altered releases.json to point to the new release and that also worked. (after installing some extension to ignore some sort of CORS web rule or something)",
       "revId": "f3506bea62983c5ddbc99f079d43fa2b55f588b4",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cce6a14_7d41d9dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2026-06-05T21:59:14Z",
+      "side": 1,
+      "message": "Yup, we\u0027ll need to get CORS headers before we laun",
+      "parentUuid": "f6441654_034e0b0c",
+      "revId": "f3506bea62983c5ddbc99f079d43fa2b55f588b4",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
