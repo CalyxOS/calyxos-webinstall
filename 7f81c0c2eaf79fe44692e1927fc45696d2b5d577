@@ -16,6 +16,24 @@
       "message": "cool with me, I think I prefer this style. Is there a tool that converts automatically?",
       "revId": "7f81c0c2eaf79fe44692e1927fc45696d2b5d577",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18db9f6_5f42897f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000210
+      },
+      "writtenOn": "2026-06-05T00:00:37Z",
+      "side": 1,
+      "message": "No tool, this has to be converted manually. This style was introduced in Vue 3 and I am not sure if they will keep the old style for future releases. This also allows us to convert project to typescript more easily",
+      "parentUuid": "9e0c06a6_84cbbc50",
+      "revId": "7f81c0c2eaf79fe44692e1927fc45696d2b5d577",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
