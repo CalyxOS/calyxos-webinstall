@@ -52,6 +52,24 @@
       "parentUuid": "95e58e50_e461b80e",
       "revId": "c6afda1a646983adbfc02840de168359e9ca1a12",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a07eb43b_9aeb8c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000210
+      },
+      "writtenOn": "2026-06-06T12:04:01Z",
+      "side": 1,
+      "message": "known npm bug where it replace git dependencies installed via https with ssh link, which causes packages to fail to install because user usually lacks private keys to access ssh git version. And I\u0027m pretty sure pnpm installs faster than npm?",
+      "parentUuid": "443d1577_7d5641e2",
+      "revId": "c6afda1a646983adbfc02840de168359e9ca1a12",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
