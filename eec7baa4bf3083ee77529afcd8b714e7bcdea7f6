@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "096f736f_2badbb77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-06-09T19:46:29Z",
+      "side": 1,
+      "message": "Worked to regenerate this: https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/46049",
+      "revId": "eec7baa4bf3083ee77529afcd8b714e7bcdea7f6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
