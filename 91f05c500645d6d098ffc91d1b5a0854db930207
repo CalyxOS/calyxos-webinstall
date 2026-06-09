@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1b5b3f_ed9b42e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-06-09T19:45:24Z",
+      "side": 1,
+      "message": "Patchset 5 regenerates releases.json using the script (instead of manual) and including this change https://review.calyxos.org/c/CalyxOS/calyxos-webinstall/+/46135/",
+      "revId": "91f05c500645d6d098ffc91d1b5a0854db930207",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
