@@ -33,6 +33,24 @@
       "message": "addressing feeddback by @sage@calyx.org but I\u0027m cool with either way. I like this because in the best case the user never has to see it, but button is necessary if lock fails for some reason.",
       "revId": "e8f24b8098c36bbbbd39e2551cf194928e3d00a9",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd19a05_c5ef3885",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000121
+      },
+      "writtenOn": "2026-06-09T18:57:09Z",
+      "side": 1,
+      "message": "Let\u0027s proceed with hiding then. Will run more UX tests once the build is up. \n\nOriginal comment in response to @niclimcy@lineageos.org (didn\u0027t send):\n\nVisually if there is a disabled \u0027lock\u0027 button when the device has been locked, it feels a bit confusing for users. They can\u0027t tell if the device is locked or cannot be locked. Hiding it removes the confusion.",
+      "parentUuid": "b4dbdc0c_43fd4d27",
+      "revId": "e8f24b8098c36bbbbd39e2551cf194928e3d00a9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
