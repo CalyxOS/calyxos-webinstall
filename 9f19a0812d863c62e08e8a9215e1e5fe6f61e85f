@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cdd1e08_f4e6d905",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-06-09T19:45:43Z",
+      "side": 1,
+      "message": "Patchset 2 just formats the code",
+      "revId": "9f19a0812d863c62e08e8a9215e1e5fe6f61e85f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
