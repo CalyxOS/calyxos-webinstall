@@ -23,7 +23,7 @@ function generateReleases(doc) {
       variant: "factory",
       url: device["factory_link"],
       sha256: device["factory_sha256"],
-      web_install: true, // device["web_install"],
+      web_install: device["web_install"],
     }
     return acc
   }, {})
