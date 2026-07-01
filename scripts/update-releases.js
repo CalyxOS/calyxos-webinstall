@@ -1,5 +1,5 @@
 import https from "https"
-import yaml from "js-yaml"
+import { load as loadYaml } from "js-yaml"
 import path from "path"
 import fs from "fs"
 import { fileURLToPath } from "url"
@@ -44,7 +44,7 @@ function main() {
 
       res.on("end", () => {
         try {
-          const doc = yaml.load(body)
+          const doc = loadYaml(body)
           const releases = generateReleases(doc)
           console.log(
             `${Object.values(releases).filter((release) => release.web_install).length} devices are ready`,
