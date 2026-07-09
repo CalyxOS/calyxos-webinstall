@@ -18,13 +18,13 @@
         </p>
       </div>
 
-      <h5 class="text-h5 pb-4 mt-4">Prepare your Android device</h5>
+      <h2 class="text-h2 pb-4 mt-4">Prepare your Android device</h2>
 
       <p class="text-body-1">
         There are a few things you must do to prepare your device to accept a new operating system.
       </p>
 
-      <h6 class="text-h6 mt-4">Remove SIM card</h6>
+      <h3 class="text-h3 mt-4">Remove SIM card</h3>
 
       <p class="text-body-1 mt-2">
         On brand new devices, especially those obtained from a carrier, it’s better to remove the
@@ -32,14 +32,14 @@
         Unlocking” step below.
       </p>
 
-      <h6 class="text-h6 mt-4">Enable Developer Options</h6>
+      <h3 class="text-h3 mt-4">Enable Developer Options</h3>
 
       <p class="text-body-1 mt-2">
         <strong>Settings</strong> → <strong>About Phone</strong> → tap
         <strong>Build number</strong> 7 times
       </p>
 
-      <h6 class="text-h6 mt-4">Enable OEM Unlocking</h6>
+      <h3 class="text-h3 mt-4">Enable OEM Unlocking</h3>
 
       <p class="text-body-1 mt-2">
         <strong>Settings</strong> → <strong>System</strong> → <strong>Advanced</strong> →
@@ -53,7 +53,7 @@
     </div>
 
     <div class="mb-10 mt-n4" v-else>
-      <h6 class="text-h6 pb-4 red--text text--darken-4">Your browser isn’t supported</h6>
+      <h3 class="text-h3 pb-4 red--text text--darken-4">Your browser isn’t supported</h3>
 
       <div class="text-body-1">
         <p>
