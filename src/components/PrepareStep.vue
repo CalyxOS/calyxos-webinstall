@@ -16,6 +16,14 @@
             phone's data securely before you proceed.</strong
           >
         </p>
+
+	<p class="mt-2">
+          ⚠️
+          <strong
+            >Motorola devices should follow the <a href="https://en-us.support.motorola.com/app/standalone/bootloader/unlock-your-device-a">official Motorola guide</a> to get unlocked. This process could take up to three days and unlocking your Moto devices will void its warranty. </strong
+          >
+        </p>
+
       </div>
 
       <h2 class="text-h2 pb-4 mt-4">Prepare your Android device</h2>
