@@ -47,7 +47,7 @@
     "variant": "factory",
     "url": "https://release.calyxos.org/factory/fogos/16/fogos-factory-260720200.zip",
     "sha256": "e0596c677999bf564430d9b65b65be1518c06513777952ae3c6e4b34cfcd461b",
-    "web_install": true
+    "web_install": false
   },
   "rhode": {
     "name": "moto g52",
