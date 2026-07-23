@@ -10,7 +10,7 @@ export function setDebugMode(mode) {
   debugMode = mode
 }
 
-export function logEvent(event, callback = undefined) {
+export function logEvent(event, callback) {
   console.log("Event:", event)
   if (
     window.sa_event &&
