@@ -4,14 +4,13 @@ stages:
   - registry
   - update-releases
 
-prettier:
+lint:
   stage: check
   image: node:lts
   before_script:
     - npm ci
   script:
-    - npx prettier --check .
-    - npx eslint
+    - npm run lint
 
 pages:
   stage: deploy
@@ -30,10 +29,10 @@ pages:
     - main
 
 build:
-  image: docker:28
+  image: docker:29
   stage: registry
   services:
-    - name: docker:28-dind
+    - name: docker:29-dind
       alias: docker
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG

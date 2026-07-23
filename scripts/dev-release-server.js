@@ -45,6 +45,8 @@ server.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)
 })
 
+/* oxlint-disable no-unused-vars */
+
 function errorHandler(res) {
   return (err) => {
     res.statusCode = 500
