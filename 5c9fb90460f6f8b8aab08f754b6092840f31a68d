@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4769d89a_5f49fcd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000210
+      },
+      "writtenOn": "2026-08-17T18:25:43Z",
+      "side": 1,
+      "message": "Waiting for this chain to merge https://review.calyxos.org/c/CalyxOS/fastboot.ts/+/46071",
+      "revId": "5c9fb90460f6f8b8aab08f754b6092840f31a68d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
