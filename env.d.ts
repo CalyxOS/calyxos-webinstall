@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 /// <reference types="w3c-web-usb" />
 
-import type { FastbootDevice, FastbootClient, FastbootFlasher } from "@aepyornis/fastboot.ts"
+import type { FastbootDevice, FastbootClient, FastbootFlasher } from "@calyxos/fastboot.ts"
 import type OpfsBlobStore from "opfs_blob_store"
 import type { store } from "@/store"
 

@@ -1,5 +1,5 @@
-import { reactive } from "vue"
-import { FastbootClient } from "@aepyornis/fastboot.ts"
+import { shallowReactive } from "vue"
+import { FastbootClient } from "@calyxos/fastboot.ts"
 import OpfsBlobStore from "opfs_blob_store"
 
 import RELEASE_INDEX_JSON from "@/assets/releases.json"
@@ -30,7 +30,7 @@ interface Store {
   getImage(): Promise<File>
 }
 
-export const store: Store = reactive({
+export const store: Store = shallowReactive({
   curStep: 1,
   client: null as FastbootClient | null,
   product: null as string | null,
