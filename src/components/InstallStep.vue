@@ -103,7 +103,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from "vue"
 import { store } from "../store"
-import { FastbootFlasher, FastbootClient } from "@aepyornis/fastboot.ts"
+import { FastbootFlasher, FastbootClient } from "@calyxos/fastboot.ts"
 
 const installProgress = ref<number | null>(null)
 const installStatus = ref("")
