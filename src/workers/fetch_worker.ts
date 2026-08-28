@@ -30,11 +30,7 @@ async function start(data: StartMessage) {
 }
 
 self.onmessage = function (e: MessageEvent<StartMessage>) {
-  if (e.data.type === "start") {
-    start(e.data).catch((error) => {
-      console.error(error)
-    })
-  } else {
-    throw new Error(`unknown type: ${e.data.type}`)
-  }
+  start(e.data).catch((error) => {
+    console.error(error)
+  })
 }
