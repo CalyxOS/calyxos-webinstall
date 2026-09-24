@@ -60,6 +60,9 @@ importers:
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
+      user-agent-data-types:
+        specifier: ^0.4.3
+        version: 0.4.3
       vite:
         specifier: ^8.2.1
         version: 8.3.0(@types/node@24.13.6)
@@ -1173,6 +1176,9 @@ packages:
     peerDependencies:
       browserslist: '>= 4.21.0'
 
+  user-agent-data-types@0.4.3:
+    resolution: {integrity: sha512-Dn3fjwVgeM363mx1sEgOpOp9NNqHBj6Gn68dFbV1WoTr3s05CijKdxfH6A3Q5uzXnYNB6vdAfs/1HWFpObc7EQ==}
+
   vite-dev-rpc@2.0.0:
     resolution: {integrity: sha512-yKwbTwdHKSD2k/aGqyWpPHepo45OQc8lH3/6IfT4ZqeKE26ooKvi4WIEKzqWav8v+9Is8u1k8q54hvOmqASazA==}
     peerDependencies:
@@ -2201,6 +2207,8 @@ snapshots:
       browserslist: 4.29.0
       escalade: 3.2.0
       picocolors: 1.1.1
+
+  user-agent-data-types@0.4.3: {}
 
   vite-dev-rpc@2.0.0(vite@8.3.0(@types/node@24.13.6)):
     dependencies:

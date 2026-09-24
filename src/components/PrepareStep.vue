@@ -58,6 +58,42 @@
         This step might fail if there is no internet connection. In that case, connect to a WiFi
         network and then try again.
       </p>
+
+      <div v-if="isLinux">
+	<h3 class="text-h3 mt-4">Install udev rules</h3>
+
+        <p class="text-body-1">
+	  For users on Ubuntu-based distros, it is important to highlight that the use of browsers in Snap packages is not supported and does not work with our web installer. Make sure that you're using a native package, or at the very least a Flatpak with adequate permissions.
+	</p>
+	<p class="text-body-1">
+	    It may be required for the user to get udev rules from Android Platform Tools, this has been since been addressed in systemd, and it should not be required going forward, however, some distros, notably Linux Mint, may not have this available for you yet.
+	</p>
+
+	<p class="text-body-1 mt-2">
+	  On Debian-based distros (Ubuntu, Mint), install the udev rules by installing Android Platform Tools
+	</p>
+	<pre>
+	    sudo apt update
+	    sudo apt install android-sdk-platform-tools-common
+	</pre>
+      </div>
+
+      <div v-else-if="isWindows">
+	<h3 class="text-h3 mt-4">Install Google USB Drivers</h3>
+
+	<p class="text-body-1">
+	  In order to make sure that the device will be recognized properly at all stages of the installation process, you must install the Google USB drivers.
+	</p>
+	<p class="text-body-1">
+	  Download them <a href="https://developer.android.com/studio/run/win-usb">here</a>, extract the archive, then right click on Android_winusb and hit Install.
+	</p>
+	<p class="text-body-1">
+	  Also check for other drivers Windows may not be installing automatically for your device, go into Windows Update, hit "Check for updates", then "Advanced options", then "Optional drivers".
+	</p>
+	<p class="text-body-1">
+	  Before checking for and installing drivers, it may help to boot the device into fastboot/bootloader mode before so that Windows is aware of the device.
+	</p>
+      </div>
     </div>
 
     <div class="mb-10 mt-n4" v-else>
@@ -88,7 +124,11 @@
 </template>
 
 <script setup lang="ts">
+/// <reference types="user-agent-data-types" />
+
 import { store } from "../store"
 
 const usbSupported = Boolean(navigator.usb)
+const isLinux = (navigator.userAgentData?.platform === 'Linux')
+const isWindows = (navigator.userAgentData?.platform === 'Windows')
 </script>
