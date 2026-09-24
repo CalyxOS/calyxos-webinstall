@@ -1,13 +1,17 @@
 <template>
   <v-container class="d-flex justify-space-between flex-column flex-grow-1">
-    <div class="mt-n4 flex-grow-1" v-if="error">
-      <p class="mt-2"><strong>⚠️ Something went wrong</strong>Try starting over</p>
-    </div>
-
-    <div class="mt-n4 flex-grow-1" v-else>
+    <div class="mt-n4 flex-grow-1">
       <h1 class="pb-4 mt-0">Install CalyxOS</h1>
 
-      <div class="text-body-1">
+      <v-alert v-if="error">
+        <p>
+          <strong>⚠️ Something went wrong</strong><br />
+          <span>{{ error.message }} </span>
+          <v-btn @click="locationReload()" variant="tonal">Start Over</v-btn><br />
+        </p>
+      </v-alert>
+
+      <div class="text-body-1" v-if="!error">
         <p>
           This will install <strong>CalyxOS ({{ store.release().version }})</strong> on your
           <strong>{{ store.release().name }}</strong
@@ -33,14 +37,14 @@
         <p class="mt-2">This may take 10-15 minutes.</p>
       </div>
 
-      <div>
+      <div class="mt-4">
         <div ref="logViewer" class="log-viewer pa-2 bg-surface text-high-emphasis">
           <div v-for="(line, i) in log" :key="i" class="log-line">{{ line }}</div>
           <div ref="logBottom"></div>
         </div>
       </div>
 
-      <v-btn color="primary" :disabled="installing" @click="install()" class="mt-2">
+      <v-btn color="primary" :disabled="installing || !!error" @click="install()" class="mt-2">
         Install
       </v-btn>
       <v-btn
@@ -161,7 +165,8 @@ async function install() {
     installProgress.value = 100
   } catch (e) {
     error.value = e instanceof Error ? e : new Error(String(e))
-    throw e
+    // Starting over is recommended
+    // throw e
   } finally {
     installing.value = false
     client.logger = oLogger
@@ -197,5 +202,9 @@ function createLogger() {
       window.console.log(message)
     },
   }
+ }
+
+function locationReload() {
+  return window.location.reload()
 }
 </script>
