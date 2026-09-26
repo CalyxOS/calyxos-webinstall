@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29570bc7_b858d9fa",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-09-26T23:07:04Z",
+      "side": 1,
+      "message": "This section is about specific instructions for Linux users, and this isn\u0027t just about udev rules, and might change in the future\n\n\"For Linux users\" is my suggestion",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afa6c57c_853336c0",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-09-26T23:07:04Z",
+      "side": 1,
+      "message": "```suggestion\n\t\u003ch3 class\u003d\"text-h3 mt-4\"\u003eFor Linux users\u003c/h3\u003e\n```",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25adab7a_42e278aa",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-09-26T23:07:04Z",
+      "side": 1,
+      "message": "```suggestion\n\t    It may be required for the user to get udev rules from Android Platform Tools, this has been since been addressed in systemd, and it should not be required going forward, however, some distros, notably Linux Mint, do not have this available out of the box yet.\n```",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7136443_4af0480b",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-09-26T23:07:04Z",
+      "side": 1,
+      "message": "```suggestion\n\t  On Debian-based distros (Ubuntu, Mint), install the udev with the following commands\n```",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f8de02c_4cbef4b6",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-09-26T23:07:04Z",
+      "side": 1,
+      "message": "The package in the commands is only udev rules, not the full platform tools, either we say it is just udev or just say \u0027install this\u0027",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0a9c48_5ed23cd0",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-09-26T23:07:04Z",
+      "side": 1,
+      "message": "ATM drivers are the only concern for Windows, but maybe we also switch to \"For Windows users\"?",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4d06e2_3b1e0e5a",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-09-26T23:07:04Z",
+      "side": 1,
+      "message": "```suggestion\n\t\u003ch3 class\u003d\"text-h3 mt-4\"\u003eFor Windows users\u003c/h3\u003e\n```",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0491d1_d675e5a9",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-09-26T23:07:04Z",
+      "side": 1,
+      "message": "```suggestion\n\t  Download them \u003ca href\u003d\"https://developer.android.com/studio/run/win-usb\"\u003ehere\u003c/a\u003e, extract the archive, right click on \u003cb\u003eAndroid_winusb\u003c/b\u003e, then finally, hit Install.\n```",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
