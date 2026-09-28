@@ -37,7 +37,7 @@
     "variant": "factory",
     "url": "https://release.calyxos.org/factory/fogo/16/fogo-factory-260720520.zip",
     "sha256": "ff9138359f467e0719cb31ec50f878d023a41d8aee1a5e6a3d898d2423a2af02",
-    "web_install": true
+    "web_install": false
   },
   "bangkk": {
     "name": "moto g84 5G",
@@ -57,7 +57,7 @@
     "variant": "factory",
     "url": "https://release.calyxos.org/factory/fogos/16/fogos-factory-260720520.zip",
     "sha256": "f06fedeb2e4e813ca53955abec7cf0e7c0fd1fca0edeb1828d832d992758f021",
-    "web_install": true
+    "web_install": false
   },
   "rhode": {
     "name": "moto g52",
