@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f892f7_f916a5c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-09-30T17:16:51Z",
+      "side": 1,
+      "message": "I saw your screenshot where the logs were still available after it failing, which was something I meant to open an issue about originally, but now I\u0027m wondering if this is addressed here.",
+      "revId": "1ca64b92500357f6dfa49d9dfa5e59cb37f7a49f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
