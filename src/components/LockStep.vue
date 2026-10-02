@@ -2,7 +2,7 @@
   <v-container class="d-flex justify-space-between flex-column flex-grow-1">
     <div class="mt-n4">
       <p class="text-headline-small mb-4" v-if="rollbackDowngrade">
-        Anti-rollback downgrade detected, not locking bootloader.
+        ⚠️ Anti-rollback downgrade detected
       </p>
       <p class="text-headline-small mb-4" v-else>
         Lock the bootloader using the volume buttons on your phone
@@ -34,20 +34,19 @@
       </v-banner>
       <div class="mt-4" v-else-if="rollbackDowngrade">
         <p>
-          The flashed factory image has a lower AVB rollback index than the OS previously on the
-          device.
+	  The Anti-Rollback protection has stopped the bootloader relocking of your {{ product }} ({{ serialNumber }}).
         </p>
-        <p>
-          <b>
-            ⚠️ Locking the bootloader now will prevent the device from booting, so it has been left
-            unlocked.
-          </b>
-        </p>
-        <p>
-          You can visit
-          <a href="https://calyxos.org/motorola-relock">https://calyxos.org/motorola-relock</a> for
-          more information.
-        </p>
+	<p>
+	  CalyxOS has been fully installed. However, the flashed factory image has a lower Anti-Rollback index, <strong>{{ rollbackImageIndex }}</strong>, than the previous OS installed on this device, <strong>{{ rollbackStoredIndex }}</strong>.
+	</p>
+	<p>
+	  Locking the bootloader now will prevent the device from booting. It will stay unlocked.
+	  Do not try to lock the bootloader manually when you see this warning.
+	</p>
+	<p>
+	  We recommend that you download and flash a newer factory image to be able to relock the bootloader for maximum security.
+	  Visit <a href="https://calyxos.org/motorola-relock">https://calyxos.org/motorola-relock</a> for more information.
+	</p>
       </div>
     </div>
 
@@ -67,7 +66,11 @@ import { store } from "../store"
 const locking = ref(false)
 const locked = ref<boolean | null>(null)
 const error = ref<string | null>(null)
+const product = ref<string>("")
+const serialNumber = ref<string>("")
 const rollbackDowngrade = ref(false)
+const rollbackImageIndex = ref<string | null>(null)
+const rollbackStoredIndex = ref<string | null>(null)
 
 async function lock() {
   try {
@@ -79,8 +82,13 @@ async function lock() {
       throw new Error("FastbootClient is not connected")
     }
 
+    product.value = await client.getVarCache("product")
+    serialNumber.value = client.fd.serialNumber
+
     if (client.rollbackDowngrade && (await client.isMotorolaProduct())) {
       rollbackDowngrade.value = true
+      rollbackImageIndex.value = client.rollbackImageIndex || ""
+      rollbackStoredIndex.value = client.rollbackStoredIndex || ""
     } else {
       await client.lock()
       locked.value = true
