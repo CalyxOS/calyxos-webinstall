@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@calyxos/fastboot.ts':
-        specifier: 0.0.18-rc.4
-        version: 0.0.18-rc.4
+        specifier: 0.0.18-rc.5
+        version: 0.0.18-rc.5
       '@fontsource/roboto':
         specifier: ^5.3.0
         version: 5.3.0
@@ -215,8 +215,8 @@ packages:
     resolution: {integrity: sha512-Vj1jF3cPfxg7OAfoI7QnVKLoILlm2JF9pnVHrX8qx7AHMiYWT+NDAA7jChlNgRS4WTLc/fD1lXLmPixluj+3Gg==}
     engines: {node: '>=6.9.0'}
 
-  '@calyxos/fastboot.ts@0.0.18-rc.4':
-    resolution: {integrity: sha512-nH36KkKNekvsNImGck82xO52uLdJxDwI6VZzgVipIwgcA/7q3DuYrPPrsoXZg7VlycvLyhUboDomKBVbc48k/A==}
+  '@calyxos/fastboot.ts@0.0.18-rc.5':
+    resolution: {integrity: sha512-pOxHTMpxeCqiIejCvF7ogoe2piCX5se4kMym4r/Bz/jFA9uWbb8Pq/NTx2pMPYBNCvsFQd6ELVuDCBrn3wXUVg==}
 
   '@fontsource/roboto@5.3.0':
     resolution: {integrity: sha512-BapRJOWYP+LZ21zp+wBQjfpPYKRoxc4LspJ/RLuI+HSMBD5u/X4O+ESDrSvEqDSy0rAl7GwBJ+09mdc16cVQ1Q==}
@@ -750,8 +750,8 @@ packages:
       vue-i18n:
         optional: true
 
-  '@zip.js/zip.js@2.17.0':
-    resolution: {integrity: sha512-WxvSsJvlI+5v4f1gWjGfqvzOB8XkAIughO+iJUPOJR6OSpUkFauBzi1G4xS2MmK1fxHGuDAqq9Lnpq/ri7BWuw==}
+  '@zip.js/zip.js@2.22.0':
+    resolution: {integrity: sha512-QgkA+BSEPNR0C2l6xbSu5HDXieUxiuDK+Jx4ZeZlp22QO/qRUIF6JRXdxh4WlLiQUmnE/9aaGerlni+OY81wqg==}
     engines: {bun: '>=0.7.0', deno: '>=1.0.0', node: '>=18.0.0'}
 
   alien-signals@3.2.1:
@@ -1496,9 +1496,9 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@calyxos/fastboot.ts@0.0.18-rc.4':
+  '@calyxos/fastboot.ts@0.0.18-rc.5':
     dependencies:
-      '@zip.js/zip.js': 2.17.0
+      '@zip.js/zip.js': 2.22.0
 
   '@fontsource/roboto@5.3.0': {}
 
@@ -1851,7 +1851,7 @@ snapshots:
     dependencies:
       vue: 3.5.43(typescript@6.0.3)
 
-  '@zip.js/zip.js@2.17.0': {}
+  '@zip.js/zip.js@2.22.0': {}
 
   alien-signals@3.2.1: {}
 
