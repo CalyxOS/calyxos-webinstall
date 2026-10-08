@@ -40,6 +40,16 @@
         Unlocking” step below.
       </p>
 
+      <h3 class="text-h3 mt-4">Remove Google accounts (FRP)</h3>
+
+      <p class="text-body-1 mt-2">
+        Google's FRP (Factory Reset Protection) is a mechanism to protect stolen devices from being used without the rightful owner. Unfortunately, FRP does not work with CalyxOS, and can cause troubles when it comes time to relock the bootloader or use the system.
+      </p>
+
+      <p class="text-body-1 mt-2">
+        While we've restored some logic to automatically disable it in CalyxOS, your safest bet is to remove your accounts before installation, in <b>Settings</b> → <b>Accounts...</b> (menu varies by Android version)
+      </p>
+
       <h3 class="text-h3 mt-4">Enable Developer Options</h3>
 
       <p class="text-body-1 mt-2">
