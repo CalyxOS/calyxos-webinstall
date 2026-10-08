@@ -21,6 +21,7 @@ interface Store {
   curStep: number
   client: FastbootClient | null
   product: string | null
+  deleteDownload: boolean
   createClient(): Promise<void>
   release(): Release
   installable(): boolean
@@ -34,6 +35,7 @@ export const store: Store = shallowReactive({
   curStep: 1,
   client: null as FastbootClient | null,
   product: null as string | null,
+  deleteDownload: true,
 
   async createClient(): Promise<void> {
     if (store.client) {
