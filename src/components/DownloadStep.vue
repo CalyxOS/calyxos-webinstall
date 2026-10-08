@@ -17,24 +17,50 @@
     </div>
 
     <div class="d-flex flex-wrap justify-space-around">
-      <div>
-        <v-banner v-if="running" icon="mdi-download" rounded class="mt-8 pt-1">
-          <v-banner-text class="text-body-1">Downloading…</v-banner-text>
+      <div class="download-progress w-100">
+        <v-banner v-if="running" rounded class="mt-8 pt-1">
+          <template #prepend>
+            <v-icon icon="mdi-download" size="small" />
+          </template>
+          <v-banner-text class="text-body-medium">Downloading…</v-banner-text>
         </v-banner>
 
         <v-progress-linear
           v-if="progress !== null"
-          class="my-3"
+          class="my-4"
+          color="primary"
+          height="10"
+          rounded
           stream
           :model-value="progress"
           buffer-value="0"
         >
         </v-progress-linear>
 
-        <v-banner v-if="!error && progress === 100" single-line outlined rounded>
-          <v-icon color="green darken-3">mdi-check</v-icon>
-          <span class="text-body-1 green--text text--darken-3">Downloaded CalyxOS</span>
+        <v-banner v-if="!error && progress === 100" color="success" rounded class="mt-2">
+          <template #prepend>
+            <v-icon icon="mdi-check" size="large" color="success" />
+          </template>
+          <v-banner-text class="text-body-medium"> Downloaded CalyxOS </v-banner-text>
         </v-banner>
+      </div>
+    </div>
+
+    <div class="d-flex flex-wrap justify-space-around" v-if="progress !== null">
+      <div class="download-progress w-100">
+        <v-switch
+          v-model="store.deleteDownload"
+          label="Remove download after installation"
+          color="primary"
+          size="small"
+          :disabled="running"
+          hide-details
+          inset
+        >
+          <template #label>
+            <span class="text-body-medium ms-3">Remove download after installation</span>
+          </template>
+        </v-switch>
       </div>
     </div>
 
@@ -52,6 +78,10 @@
 </template>
 
 <style>
+.download-progress {
+  max-width: 480px;
+}
+
 .theme--light.v-sheet--outlined {
   border-width: 2px;
 }

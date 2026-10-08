@@ -19,12 +19,28 @@
 
 <script setup lang="ts">
 import { onMounted } from "vue"
+import OpfsBlobStore from "opfs_blob_store"
 import { store } from "../store"
 import AboutCalyxOS from "@/components/AboutCalyxOS.vue"
 
 const release = store.release()
 
 onMounted(() => {
-  void store.client?.reboot()
+  if (store.client) {
+    store.client.reboot().catch((e) => console.error(e) )
+  }
+
+  if (store.deleteDownload) {
+    void deleteDownload()
+  }
 })
+
+async function deleteDownload() {
+  try {
+    await (await OpfsBlobStore.create()).delete(release.sha256)
+    console.log(`Deleted ${release.sha256}`)
+  } catch (e) {
+    console.error(`Failed to delete ${release.sha256}`, e)
+  }
+}
 </script>
