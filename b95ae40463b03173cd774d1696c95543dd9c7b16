@@ -35,6 +35,42 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96260c92_aa7c785e",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-10-08T02:07:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afa6c57c_853336c0",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89c0e7e_4fb2fbd5",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-10-08T02:07:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29570bc7_b858d9fa",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25adab7a_42e278aa",
@@ -48,6 +84,24 @@
       "writtenOn": "2026-09-26T23:07:04Z",
       "side": 1,
       "message": "```suggestion\n\t    It may be required for the user to get udev rules from Android Platform Tools, this has been since been addressed in systemd, and it should not be required going forward, however, some distros, notably Linux Mint, do not have this available out of the box yet.\n```",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a46f31_58f7fb84",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-10-08T02:07:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25adab7a_42e278aa",
       "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
@@ -86,6 +140,42 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51565013_d34a9b83",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-10-08T02:07:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7136443_4af0480b",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e107aa9a_eeb10ee0",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-10-08T02:07:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f8de02c_4cbef4b6",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f0a9c48_5ed23cd0",
@@ -120,6 +210,42 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63155118_19a20d70",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-10-08T02:07:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f0a9c48_5ed23cd0",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52eba0d9_620001b0",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-10-08T02:07:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef4d06e2_3b1e0e5a",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a0491d1_d675e5a9",
@@ -133,6 +259,24 @@
       "writtenOn": "2026-09-26T23:07:04Z",
       "side": 1,
       "message": "```suggestion\n\t  Download them \u003ca href\u003d\"https://developer.android.com/studio/run/win-usb\"\u003ehere\u003c/a\u003e, extract the archive, right click on \u003cb\u003eAndroid_winusb\u003c/b\u003e, then finally, hit Install.\n```",
+      "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "356ce8a6_64fb19b6",
+        "filename": "src/components/PrepareStep.vue",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000109
+      },
+      "writtenOn": "2026-10-08T02:07:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a0491d1_d675e5a9",
       "revId": "b95ae40463b03173cd774d1696c95543dd9c7b16",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
