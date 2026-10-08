@@ -16,6 +16,24 @@
       "message": "I saw your screenshot where the logs were still available after it failing, which was something I meant to open an issue about originally, but now I\u0027m wondering if this is addressed here.",
       "revId": "1ca64b92500357f6dfa49d9dfa5e59cb37f7a49f",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b735bcdc_93b765f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2026-10-08T19:27:50Z",
+      "side": 1,
+      "message": "Yup, this change also keeps those logs on the screen.",
+      "parentUuid": "93f892f7_f916a5c1",
+      "revId": "1ca64b92500357f6dfa49d9dfa5e59cb37f7a49f",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
