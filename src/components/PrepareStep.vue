@@ -17,7 +17,7 @@
           >
         </p>
 
-	<p class="mt-2">
+        <p class="mt-2">
           ⚠️
           <strong
             >Motorola devices should follow the <a href="https://en-us.support.motorola.com/app/standalone/bootloader/unlock-your-device-a">official Motorola guide</a> to get unlocked. This process can take up to three days and unlocking your Moto devices will void its warranty. </strong
@@ -58,6 +58,43 @@
         This step might fail if there is no internet connection. In that case, connect to a WiFi
         network and then try again.
       </p>
+
+      <div v-if="isLinux">
+        <h3 class="text-h3 mt-4">For Linux users</h3>
+
+        <p class="text-body-1">
+          For users on <b>Ubuntu-based distros</b>, it is important to highlight that the use of browsers in <b>Snap packages</b> is not supported and does not work with our web installer. Make sure that you're using a native package, for Ubuntu, it may force a Snap on you.
+        </p>
+        <p class="text-body-1">
+            It may be required for the user to get udev rules from Android Platform Tools, this has been since been addressed in systemd, and it should not be required going forward, however, some distros, notably <i>Linux Mint</i>, do not have this available out of the box yet.
+        </p>
+
+        <p class="text-body-1 mt-2">
+          On Debian-based distros (Ubuntu, Mint), install the udev rules with the following command:
+        </p>
+        <pre>
+            sudo apt update
+            sudo apt install android-sdk-platform-tools-common
+        </pre>
+      </div>
+
+      <div v-else-if="isWindows">
+        <h3 class="text-h3 mt-4">For Windows users</h3>
+
+        <p class="text-body-1">
+          In order to make sure that the device will be recognized properly at all stages of the installation process, you must install the Google USB drivers.
+        </p>
+        <p class="text-body-1">
+          Download them <a href="https://developer.android.com/studio/run/win-usb">here</a>, extract the archive, open the extracted folder, select and right click on <b>Android_winusb</b> (.inf), then finally, hit <b>Install</b>.
+        </p>
+        <p class="text-body-1">
+          Also check for other drivers Windows may not be installing automatically for your device:
+          Open Windows Update, hit "Check for updates", then "Advanced options", then "Optional drivers", select drivers mentioning "Android", "ADB", and/or "Fastboot" and install.
+        </p>
+        <p class="text-body-1">
+          Before checking for and installing drivers, it may help to boot the device into fastboot/bootloader mode before so that Windows is aware of the device.
+        </p>
+      </div>
     </div>
 
     <div class="mb-10 mt-n4" v-else>
@@ -88,7 +125,11 @@
 </template>
 
 <script setup lang="ts">
+/// <reference types="user-agent-data-types" />
+
 import { store } from "../store"
 
 const usbSupported = Boolean(navigator.usb)
+const isLinux = (navigator.userAgentData?.platform === 'Linux')
+const isWindows = (navigator.userAgentData?.platform === 'Windows')
 </script>

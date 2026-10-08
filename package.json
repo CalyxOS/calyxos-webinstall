@@ -34,6 +34,7 @@
     "oxlint": "^1.78.0",
     "oxlint-tsgolint": "^7.0.2001",
     "typescript": "^6.0.3",
+    "user-agent-data-types": "^0.4.3",
     "vite": "^8.2.1",
     "vite-plugin-vue-devtools": "^8.2.1",
     "vue-tsc": "^3.3.10"
