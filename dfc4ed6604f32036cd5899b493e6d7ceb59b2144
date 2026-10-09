@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46daa9b3_2b1c56ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-10-09T11:23:21Z",
+      "side": 1,
+      "message": "Fixed tabs -\u003e spaces",
+      "revId": "dfc4ed6604f32036cd5899b493e6d7ceb59b2144",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
